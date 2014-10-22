@@ -1,0 +1,124 @@
+\documentclass[11pt,letterpaper,twoside,english]{article}
+
+\usepackage[margin=1.4in]{geometry} % controls the size of the margins
+
+% Special symbols, etc.
+\usepackage{amssymb,amsbsy,latexsym}
+\usepackage{amsmath}
+\usepackage{graphics, subfigure, float} 
+\usepackage{cancel}
+%\usepackage{todonotes}
+% Encoding settings
+\usepackage[latin1]{inputenc}
+\usepackage[american]{babel}
+\usepackage[T1]{fontenc} 
+
+\usepackage{titling} % allows posttitle command
+
+% AMS Math packages
+
+\usepackage{amscd,amsthm}
+
+\usepackage{verbatim, comment} % can comment out text 
+\usepackage{mdwlist} 
+
+% Graphics
+\usepackage[dvips]{graphicx,epsfig,color}
+\usepackage{subfigure}
+%\usepackage{pst-all}
+%\usepackage{pstricks-add}
+\usepackage{hyperref}  % can only be used with pdflatex - gives hyperlinks
+\usepackage{bm} % bold math font
+\usepackage{bbm}
+\usepackage{todonotes}
+
+\newtheoremstyle{theorem}{1em}{1em}{\slshape}{0pt}{\bfseries}{.}{ }{}
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{claim*}{Claim}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem*{question*}{Question}
+\newtheorem{question}{Question}
+\newtheorem{example}{Example}
+
+\providecommand{\setN}{\mathbb{N}}
+\providecommand{\setZ}{\mathbb{Z}}
+\providecommand{\setQ}{\mathbb{Q}}
+\providecommand{\setR}{\mathbb{R}}
+\providecommand{\E}{\mathrm{E}}
+\providecommand{\Pr}{\mathrm{Pr}}
+\providecommand{\Var}{\mathrm{Var}}
+
+\makeatother
+
+\title{18.821 Project 2} 
+
+\author{Yajit Jain, Deepak Narayanan, Leon Zhang}
+
+\begin{document}
+
+\maketitle
+
+\section{Terms in the sequence $s_n(312)$}
+
+We claim that the sequence of numbers $s_n(312)$ is in fact the sequence of Catalan numbers. We state this result formally as the following theorem,
+
+\begin{theorem}
+The total number of permutations of $\{1,2,3,...,n\}$ that avoid the order $312$ as a subsequence is $C_n$ where $C_n$ is the $n^{th}$ Catalan number.
+\end{theorem}
+
+Before proving the theorem, we state and prove the following lemma, that will be used in our proof of the theorem.
+\begin{lemma}
+All permutations of $\{1,2,...,k,k+1\}$ ending in $i$ that avoid the order $312$ as a sub-sequence must be of the form,
+$$\pi_1 \pi_2 i$$
+where $\pi_1$ is a permutation of $A$ that avoids the order $312$ as a sub-sequence and $\pi_2$ is a permutation of $B$ that avoids the order $312$ as a sub-sequence.
+\end{lemma}
+
+\begin{proof}
+It is clear that the permutations $\pi_1$ and $\pi_2$ themselves must avoid the order $312$ as a subsequence.
+
+Now, we need to prove that the ordering between $\pi_1$ and $\pi_2$ is necessary. We proceed with a proof by contradiction.
+
+For the sake of contradiction, let us assume that there exists some permutation $\pi$ of $\{1,2,...,k,k+1\}$ that ends with value $i$ such that some integer $x < i$ is to the right of some integer $y > i$. Clearly, this permutation is not of the form described above. It is also easy to see that $\pi$ does \textbf{not} avoid the order $312$ since the triple $(y, x, i)$ satisfies the condition $y > x > i$ and hence is in the order $312$.
+
+\end{proof}
+
+With this lemma proven, we move on to the proof of our theorem.
+
+\begin{proof}
+The inductive hypothesis holds for our base case of $\{1\}$, since the only permutation of $\{1\}$ avoids $312$.
+
+Now, we need to prove the inductive case. Let us first assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid the order $312$ as a subsequence is $C_i$.
+
+Now, we want to prove the inductive hypothesis for $\{1,2,...,k,k+1\}$ as well, that is the number of permutations of $\{1,2,...,k,k+1\}$ that avoid the order $312$ as a subsequence is $C_{k+1}$.
+
+We count the number of permutations of $\{1,2,...,k,k+1\}$ that avoid $312$ by enumerating through all possible values of the last term of a valid permutation.
+If the last term of the permutation is $i$ (where $i \in \{1,2,...,k,k+1\}$), then let us define the subsets $A$ and $B$ of the  set $\{1,2,...,k+1\} \setminus \{i\}$ as the set of integers less than $i$ and the set of integers greater than $i$ respectively. It is clear from the definition of $A$ and $B$ that $A$ and $B$ are disjoint from each other.
+
+Now, from the above lemma, we know that all permutations of $\{1,2,...,k,k+1\}$ ending in $i$ that avoid $312$ must be of the form,
+
+$$\pi = \pi_1 \pi_2 i$$
+
+where $\pi_1$ is a permutation of $A$ that avoids the order $312$ as a sub-sequence and $\pi_2$ is a permutation of $B$ that avoids the order $312$ as a sub-sequence. It is clear that the above permutation contains all integers between $1$ and $k+1$, from the definitions of the subsets $A$ and $B$, which implies that $\pi_1\pi_2i$ is permutation of the set $\{1,2,...,k,k+1\}$.
+
+Now, the total number of permutations $\pi$ is,
+$$n_{\pi_1} \cdot n_{\pi_2} = C_{i-1} \cdot C_{k-i+1}$$
+since the total number of valid permuations $\pi_1$ is simply going to be $C_{i-1}$ (total number of valid permutations of length $i-1$ that avoid the order $312$ as a sub-sequence is $C_{i-1}$, and correspondingly $n_{\pi_2} = C_{k-1+1}$)
+
+Now, summing over all valid $i$, we see that the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
+$$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ which is in fact $C_{k+1}$, and we are done.
+
+\end{proof}
+
+\end{document}
