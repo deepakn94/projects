@@ -52,3 +52,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Annoying Mac file
+*.DS_Store
+
+# Annoying LaTeX files
+*.log
+*.aux
+*.synctex.gz
+*.out
