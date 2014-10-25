@@ -18,8 +18,10 @@ def get_subsets(permutation, length):
 def process_subsets(subsets):
     processed_subsets = list()
     for subset in subsets:
-        processed_subset = range(1, len(subset) + 1)
-        processed_subset = sorted(processed_subset, key = lambda x: subset[x-1])
+        mapping = {i : subset[i] for i in xrange(len(subset))}
+        subset_copy = list(subset)
+        subset_copy.sort()
+        processed_subset = [1 + subset_copy.index(mapping[i]) for i in xrange(len(subset))]
         processed_subsets.append(tuple(processed_subset))
     return processed_subsets
 
