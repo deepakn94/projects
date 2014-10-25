@@ -18,10 +18,9 @@ def get_subsets(permutation, length):
 def process_subsets(subsets):
     processed_subsets = list()
     for subset in subsets:
-        mapping = {i : subset[i] for i in xrange(len(subset))}
         subset_copy = list(subset)
         subset_copy.sort()
-        processed_subset = [1 + subset_copy.index(mapping[i]) for i in xrange(len(subset))]
+        processed_subset = [1 + subset_copy.index(subset[i]) for i in xrange(len(subset))]
         processed_subsets.append(tuple(processed_subset))
     return processed_subsets
 
@@ -58,7 +57,7 @@ def compute_sn(n, order):
 
 if __name__ == '__main__':
     n = int(sys.argv[1])
-    order = [5, 4, 1, 2, 3]
+    order = [1, 2, 3, 4]
     k = len(order)
     for i in xrange(k, n):
         print compute_sn(i, order)

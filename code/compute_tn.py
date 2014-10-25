@@ -25,10 +25,9 @@ def is_sorted(sequence):
 def process_subsets(subsets):
     processed_subsets = list()
     for subset in subsets:
-        mapping = {i : subset[i] for i in xrange(len(subset))}
         subset_copy = list(subset)
         subset_copy.sort()
-        processed_subset = [1 + subset_copy.index(mapping[i]) for i in xrange(len(subset))]
+        processed_subset = [1 + subset_copy.index(subset[i]) for i in xrange(len(subset))]
         processed_subsets.append(tuple(processed_subset))
     return processed_subsets
 
@@ -80,7 +79,7 @@ def compute_tn(n, order):
 
 if __name__ == '__main__':
     n = int(sys.argv[1])
-    order = [1, 3, 2]
+    order = [3, 1, 2]
     for i in xrange(n):
         if (2*i < len(order)):
             continue
