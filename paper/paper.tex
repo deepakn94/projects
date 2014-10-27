@@ -3,7 +3,7 @@
 \usepackage[margin=1.4in]{geometry} % controls the size of the margins
 
 % Special symbols, etc.
-\usepackage{amssymb,amsbsy,latexsym}
+\usepackage{amssymb,amsbsy,latexsym,ytableau}
 \usepackage{amsmath}
 \usepackage{graphics, subfigure, float} 
 \usepackage{cancel}
@@ -209,6 +209,142 @@ since the total number of valid permuations $\pi_1$ is simply going to be $C_{i-
 Now, summing over all possible values of $i$, we see that the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
 $$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ which is in fact $C_{k+1}$, and we are done.
 
+\end{proof}
+
+\section{Terms in the sequence $s_n(321)$}
+
+Unfortunately, there is no clear way to reformulate Lemma 2 for the case of avoiding the permutation 321 or 123. As a consequence, the proof in the previous section simply does not hold. Fortunately, however, we still have a closed form expression for $s_n(321)$ (recall that $s_n(321)=s_n(123)$ by our flipping principle). Surprisingly, in fact, the sequence remains the same: $s_n(321)=C_n$, the $n^{th}$ Catalan number. In order to prove this result, however, we will need the machinery of Young tableaux. What follows is a brief exposition of the key results, adapted from Stanley's \emph{Algebraic Combinatorics}.
+
+\begin{definition}
+A Young diagram of a partition $\lambda=\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of the integer $\sum_{i=1}^n \lambda_i$ is a left-justified array of squares, with $\lambda_i$ squares in the $i$th row.
+\end{definition}
+\begin{example}
+The Young diagram of $(4, 3, 1, 1)$ looks like:
+\[
+\ytableausetup{centertableaux}
+\begin{ytableau}
+\ & \ & \ & \ \\
+\ & \ & \ \\
+\ \\
+\
+\end{ytableau}
+\]
+\end{example}
+
+\begin{definition}
+A standard Young tableau (or SYT) consists of the Young diagram $D$ of some partition $\lambda$ of an integer $n$, together with the numbers $1, 2, \ldots, n$ inserted into the squares of $D$, so that each number appears exactly once, and every row and column is \emph{increasing}. We call $\lambda$ the \emph{shape} of the SYT.
+\end{definition}
+
+\begin{example}
+There are five SYT of the shape $(2, 2, 1)$. They are given by
+\[\ytableausetup{aligntableaux=top}
+\begin{ytableau}
+1 & 2 \\
+3 & 4\\
+5
+\end{ytableau}\ \ \ \ \
+\hfill
+\begin{ytableau}
+1 & 2 \\
+3 & 5\\
+4
+\end{ytableau}\ \ \ \ \
+\hfill
+\begin{ytableau}
+1 & 3 \\
+2 & 4\\
+5
+\end{ytableau}\ \ \ \ \
+\hfill
+\begin{ytableau}
+1 & 3 \\
+2 & 5\\
+4
+\end{ytableau}\ \ \ \ \
+\hfill
+\begin{ytableau}
+1 & 4 \\
+2 & 5\\
+3
+\end{ytableau}.\]
+\end{example}
+
+\begin{definition}
+Let $u$ be a square of the Young diagram of the partition $\lambda$. Then the hook $H(u)$ is the set of all squares directly to the right of $u$ or directly below $u$, including $u$ itself. The size of $H(u)$ is called the hook length of $u$, and is denoted $h(u)$.
+\end{definition}
+
+\begin{example}
+In the Young diagram of the partition $(4, 2, 2)$ below, each square $u$ contains its hook length $h(u)$.
+\[\ytableausetup{centertableaux}
+\begin{ytableau}
+6 & 5 & 2 & 1\\
+3 & 2\\
+2 & 1
+\end{ytableau}\]
+\end{example}
+
+\begin{theorem}
+Let $\lambda$ be a partition of $n$. Then $f^\lambda$, the number of SYT of shape $\lambda$, is given by
+\[f^\lambda=\frac{n!}{\prod_{u\in \lambda} h(u)},\]
+where the notation $u\in \lambda$ means that $u$ ranges over all squares of the Young diagram of $\lambda$.
+\end{theorem}
+
+The theorem above is called the \emph{hook-length formula}.
+
+\begin{example}
+The diagram above for the hook lengths of $\lambda=(4, 2, 2)$ tells us that the number of SYT of shape $\lambda$ is given by
+\[\frac{8!}{6\cdot 5\cdot 2 \cdot 1 \cdot 3 \cdot 2 \cdot 2\cdot 1}=56.\]
+\end{example}
+
+It is an easy application of the hook-length formula to prove the following theorem:
+
+\begin{theorem}
+The number of SYT of shape $(n, n)$ is given by $C_n$, the $n^{th}$ Catalan number.
+\end{theorem}
+
+We need only one more result before we are ready to prove our central result.
+
+\begin{theorem}
+There exists an algorithm (called the \emph{RSK algorithm}) which defines a bijection between the set of permutations in $S(n)$ avoiding a decreasing subsequence of length 3 and the set of pairs of size-$n$ SYT of the same shape and at most two rows. 
+\end{theorem}
+Using all this machinery and all these results, we are finally able to prove the closed-form expression for $s_n(321)$.
+\begin{theorem}
+The total number of permutations of $\{1,2,3,\ldots, n\}$ that avoid the order 321 as a subsequence is $C_n$, where $C_n$ is the $n^{th}$ Catalan number.
+\end{theorem}
+\begin{proof}
+By the first part of Theorem 12, there are $s_n(321)$ elements in the set $A$ of pairs of size-$n$ SYT of the same shape and at most two rows. By Theorem 11, the set $B_n$ of SYT of shape $(n, n)$ has its size given by $C_n$. We will construct a bijection between the sets $A_n$ and $B_n$: because $|A_n|=s_n(321)$ and $|B_n|=C_n$, it will therefore follow that $s_n(321)=C_n$, as desired.
+
+Given any pair of size $n$ Young tableaux of the same shape and at most two parts, take the second tableau and invert its numbers: that is, send $i$ to $2n+1-i$ for all $i$. Now rotate the Young tableau and `fit' it into the first tableau. We demonstrate this process for a pair of Young tableaux with $n=6$: we begin with
+\[\ytableausetup{aligntableaux=top}
+\begin{ytableau}
+1 & 2 &3&4\\
+5 & 6
+\end{ytableau} \ \ \ \ \ 
+\hfill
+\begin{ytableau}
+1 & 3 & 4 & 5\\
+2 & 6
+\end{ytableau}.\]
+Inverting the numbers of the second tableau gives us
+\[\ytableausetup{aligntableaux=top}
+\begin{ytableau}
+1 & 2 &3&4\\
+5 & 6
+\end{ytableau} \ \ \ \ \ 
+\hfill
+\begin{ytableau}
+12 & 10 & 9 & 8\\
+11 & 7
+\end{ytableau}.\]
+Finally, rotating the second Young tableau and fitting it into the first gives us
+\[\ytableausetup{aligntableaux=top}
+\begin{ytableau}
+1 & 2 &3&4&7&11\\
+5 & 6&8&9&10&12
+\end{ytableau},\]
+a valid Young tableau of shape $(6, 6)$. 
+
+Beginning with a pair of size $n$ Young tableaux of shape $\lambda$ and at most two parts, it is easy to see that this process always yields a valid Young tableau of shape $(n, n)$. Indeed, we can also define the inverse: given any Young tableau for the partition $(n, n)$, we can find the shape formed by all numbers greater than $n$: split it off from the original tableau, rotate it, and invert the numbers to get a pair of size $n$ Young tableau of the same shape and at most two parts. These processes can be easily checked to be inverses: hence the two sets are of the same size, and the proof follows.
 \end{proof}
 
 \section{Conjectures on $s_n(\pi)$ for $\pi\in S_4$}
