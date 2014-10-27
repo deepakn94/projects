@@ -76,9 +76,44 @@
 
 \maketitle
 
-\section{Terms in the sequence $s_n(312)$}
+\section{Introduction}
 
-\begin{figure}
+In this paper we will consider investigate pattern avoidance in permutations of finite sets of positive integers. 
+
+\begin{definition}
+Two finite sequences $a_1,\cdots a_k$ and $b_1,\cdots b_k$ have the same relative order if the $i^\text{th}$ largest entry of each unordered set $\{a_1,\cdots,a_n\}$ and $\{b_1,\cdots, b_n\}$ appears in the same position in $a_1\cdots a_k$ and $b_1\cdots b_k$ for each $1\le i\le k$. 
+\end{definition}
+
+\begin{definition}
+A finite sequence of numbers $a_1a_2\cdots a_n$ avoids a sequence $b_1\cdots b_k$ with $n\ge k$ if no subsequence $a_{i_1}a_{i_2}\cdots a_{i_k}$ of $a_1a_2\cdots a_n$ has its terms in the same relative order as $b_1\cdots b_k$. 
+\end{definition}
+
+\begin{example}
+The sequence 15432 avoids 123 while the sequence 13425 does not. The latter example fails because 134 appears in 15342 with the same relative order as 123. 
+\end{example}
+
+
+\begin{remark}
+Let $S_n$ be the set of permutations of $\{1,\cdots, n\}$. There are two conventions commonly used to write elements of $S_n$. The first is $\emph{one-line}$ notation where permutations in $S_n$ are written explicitly, e.g. 43215 is a permutation of $\{1,2,3,4,5\}$ in $S_5$. 
+
+The second is \emph{cycle notation}, where a cycle $(a_1\cdots a_n)\in S_n$ with $1\le a_i\le n$ acts on a sequence by sending $a_1\mapsto a_2$, $a_2\mapsto a_3$, $\cdots$, $a_n\mapsto a_1$. For example, the cycle $(14)(23)$ sends $12345$ to $43215$. Unless otherwise stated, we will refer to permutations in one-line notation. 
+\end{remark}
+
+\begin{definition} 
+When $n\ge k$, a permutation $\sigma\in S_n$ avoids a permutation $\pi\in S_k$ if $pi$ and $\sigma$ avoid each other when written as sequences in one-line notation. 
+\end{definition}
+
+\begin{definition}
+For a permutation $\pi$, we write $s_n(\pi$ for the number of permutations in $S_n$ that avoid $\pi$. 
+\end{definition}
+
+In this paper we concern ourselves with the sequences $s_n(\pi)$ for various $\pi$. In section \ref{S3} we will consider sequence $s_n(\pi)$ for $\pi\in S_3$, and in section \ref{S4} we will consider sequence $s_n(\pi)$ for $\pi\in S_4$. In section \ref{Tn} we consider a variation on the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of $S_n$. 
+
+\subsection{Generating Trees}
+
+Before continuing we introduce generating trees, a tool we can use to study pattern avoidance. The generating tree for the sequence $s_n(\pi)$ is the infinite tree whose vertices are elements of $S_n$ that avoid $\pi$. To construct the tree, we define the children of an arbitrary node. Let $\omega\in S_k$ be a node of the generating tree of $s_n(\pi)$. Then the children of $\omega$ are elements of $S_{k+1}$ that avoid $\pi$ and that can be obtained by inserting the integer $k+1$ between integers in $\omega$. Figure \ref{fig:M1} is an example of the generating tree of $s_n(312)$. 
+
+\begin{figure}[h!]
 \begin{tikzpicture}[level distance=0.5cm, growth parent anchor={south}, nodes={anchor=north}]
 \tikzstyle{hollow node}=[circle,draw,inner sep=0.1mm, text width=1.36cm,align=center]
 \tikzstyle{level 1}=[sibling distance=6cm] 
@@ -118,6 +153,12 @@
 \end{tikzpicture}
 \caption{Generating tree of the sequence $s_n(312)$} \label{fig:M1}
 \end{figure}
+
+\section{Terms in the sequence $s_n(312)$}
+\label{S3}
+
+
+
 
 We claim that the sequence of numbers $s_n(312)$ is in fact the sequence of Catalan numbers. We state this result formally as the following theorem,
 
@@ -170,7 +211,11 @@ $$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ wh
 
 \end{proof}
 
+\section{Conjectures on $s_n(\pi)$ for $\pi\in S_4$}
+\label{S4}
+
 \section{Avoidance of permutations of $T_n$}
+\label{Tn}
 We now impose further restrictions on the set of permutations $S_n$. This new set of permutations, $T_n$ is defined follows.
 
 \begin{definition}
