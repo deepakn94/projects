@@ -154,6 +154,8 @@ Before continuing we introduce generating trees, a tool we can use to study patt
 \caption{Generating tree of the sequence $s_n(312)$} \label{fig:M1}
 \end{figure}
 
+\subsection{Flipping}
+
 \section{Terms in the sequence $s_n(312)$}
 \label{S3}
 
@@ -213,6 +215,52 @@ $$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ wh
 
 \section{Conjectures on $s_n(\pi)$ for $\pi\in S_4$}
 \label{S4}
+
+In this section we will present our findings and conjectures about sequences $s_n(\pi)$ for $\pi\in S_4$. We computed values up to $s_{10}$. It appears that there are three sequences that appear, and we have sorted the permutations according to which sequence they produce and paired them with their flips.  
+
+We define the following sequences based on the first 8 terms:
+$$
+A:=1,2,6,23,103,512,2740,15485,91245\ldots
+$$
+$$
+B:=1,2,6,23,103,513,2761,15767,94359\ldots
+$$
+$$
+C:=1,2,6,23,103,513,2762,15793,94776\ldots
+$$
+
+The table below lists the elements of $S_4$ generate sequences $A,B,C$ for the first 8 terms.
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+B &A&C\\
+\hline
+1234, 4321&4132, 1423&4231,1324\\
+1243, 4312&4213, 1342&\\
+1432, 4123&2431,3124&\\
+2134, 3421&2413, 3142&\\
+2143, 3412&2314, 3241&\\
+2341, 3214&&\\
+\end{tabular}
+\end{center}
+
+There is no guarantee that these sequences will not diverge and produce more than three distinct sequences, however for now we hypothesize that $A$, $B$, and $C$ are the only sequences that arise for $s_n(\pi)$ with $\pi\in S_4$. Assuming this hypothesis, if we write each length four permutation in cycle notation, a pattern begins to emerge. 
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+B &A&C\\
+\hline
+(1),(14)(23)&(243),(142)&(23),(14)\\
+(34),(1423)&(234),(143)&\\
+(24),(1432)&(124),(132)&\\
+(12),(1324)&(123),(134)&\\
+(12)(34),(13)(24)&(1243),(1342)&\\
+(1234),(13)&&\\
+\end{tabular}
+\end{center}
+
+So we conjecture that sequence $A$ is characterized by elements of $S_4$ that are three cycles or four cycles when written in cycle notation. Sequence $B$ seems to be characterized by either a pair of disjoint two cycles paired with a flip that is a 2-cycle, or a single 4-cycle paired with a flip that is a 2-cycle. Sequence $C$ appears to be characterized by a 2-cycle paired with a 2-cycle as a flip. 
+
 
 \section{Avoidance of permutations of $T_n$}
 \label{Tn}
