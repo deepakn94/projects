@@ -80,7 +80,7 @@
 
 In this paper we will investigate pattern avoidance in permutations of finite sets of positive integers.
 
-Before, beginning our discussion, we present the following definitions.
+Before beginning our discussion, we present the following definitions.
 
 \begin{definition}
 Two finite sequences $a_1,\cdots a_k$ and $b_1,\cdots b_k$ have the same relative order if the $i^\text{th}$ largest entry of each unordered set $\{a_1,\cdots,a_k\}$ and $\{b_1,\cdots, b_k\}$ appears in the same position in $a_1\cdots a_k$ and $b_1\cdots b_k$ for each $1\le i\le k$. 
@@ -102,11 +102,11 @@ The second is \emph{cycle notation}, where a cycle $(a_1\cdots a_n)\in S_n$ with
 \end{remark}
 
 \begin{definition} 
-When $n\ge k$, a permutation $\sigma\in S_n$ avoids a permutation $\pi\in S_k$ if $\pi$ and $\sigma$ avoid each other when written as sequences in one-line notation. 
+A permutation $\sigma\in S_n$ avoids a permutation $\pi\in S_k$ if the sequence of numbers for the one-line notation for $\sigma$ avoids the sequence of numbers for the one-line notation for $\pi$.
 \end{definition}
 
 \begin{definition}
-For a permutation $\pi$, $s_n(\pi)$ represents the number of permutations in $S_n$ that avoid $\pi$. 
+For a permutation $\pi\in S_k$, $s_n(\pi)$ represents the number of permutations in $S_n$ that avoid $\pi$. 
 \end{definition}
 
 In this paper we concern ourselves with the sequence of numbers $s_n(\pi)$ for various $\pi$. In section \ref{S3} we will consider sequence $s_n(\pi)$ for $\pi\in S_3$, and prove that the sequence $s_n(\pi)$ for all such $\pi$ is in fact the sequence of Catalan numbers. In section \ref{S4} we will consider sequence $s_n(\pi)$ for $\pi\in S_4$. In section \ref{Tn} we consider a variation on the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of $S_n$. 
@@ -157,7 +157,7 @@ Before continuing we introduce generating trees, a tool we can use to study patt
 \end{figure}
 
 \subsection{Flipping}
-Another concept that we will use in this paper is the concept of flipping. We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with elements in the opposite order. More concretely, if $a = a_1, a_2, \dots, a_n$ for some arbitrary $n$, then the flip of the sequence $a$ will be the sequence $b = a_n, a_{n-1}, \dots, a_2, a_1$.
+Another notion that we will use in this paper is the concept of flipping. We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with elements in the opposite order. More concretely, if $a = a_1, a_2, \dots, a_n$ for some arbitrary $n$, then the flip of the sequence $a$ will be the sequence $b = a_n, a_{n-1}, \dots, a_2, a_1$.
 
 We will talk about how the flip of a sequence is important to this avoidance problem later in the paper.
 
