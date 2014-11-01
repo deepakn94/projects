@@ -73,6 +73,7 @@ def compute_tn(n, order):
     for permutation in all_permutations:
         if does_permutation_satisfy_constraint(permutation):
             if not is_order_in_permutation(permutation, order):
+                print " ".join([str(ele) for ele in permutation])
                 tot_count += 1
     return tot_count
 

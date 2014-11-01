@@ -122,32 +122,31 @@ Before continuing we introduce generating trees, a tool we can use to study patt
 \tikzstyle{level 2}=[sibling distance=3cm] 
 \tikzstyle{level 3}=[sibling distance=1.8cm]
 \tikzstyle{level 4}=[sibling distance=0.9cm]
-\node [hollow node]{(1)}
+\node [hollow node]{1}
 	child {
-		node[hollow node] {(1,2)}
+		node[hollow node] {12}
 		child{
-			node[hollow node]{(1,2,3)}
-			child{node[hollow node]{(1,2,3,4)}}
-			child{node[hollow node]{(1,2,4,3)}}
-			child{node[hollow node]{(1,4,2,3)}}
-			child{node[hollow node]{(4,1,2,3)}}
+			node[hollow node]{123}
+			child{node[hollow node]{1234}}
+			child{node[hollow node]{1243}}
 		}
 		child{
-			node[hollow node]{(1,3,2)}
+			node[hollow node]{132}
+			child{node{\vdots}}
 		}
 	}
     	child {
-		node[hollow node] {(2,1)}
+		node[hollow node] {21}
     		child {
-			node[hollow node] {(2,1,3)}
+			node[hollow node] {213}
 			child{node{\vdots}}
 		}
       		child {
-			node[hollow node] {(2,3,1)}
+			node[hollow node] {231}
 			child{node{\vdots}}
 		}
 		child {
-			node[hollow node] {(3,2,1)}
+			node[hollow node] {321}
 			child{node{\vdots}}
 		}
     	};
@@ -172,6 +171,7 @@ The total number of permutations of $\{1,2,3,...,n\}$ that avoid the order $312$
 
 Before proving the theorem, we state and prove the following lemma, that will be used in our proof of the theorem.
 \begin{lemma}
+\label{lemma1}
 All permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid the order $312$ as a sub-sequence must be of the form,
 $$\pi_1 \pi_2 i$$
 where $\pi_1$ is a permutation of $\{1,2,\ldots,(i-1)\}$ that avoids the order $312$ as a sub-sequence and $\pi_2$ is a permutation of $\{(i+1),\ldots,(k+1)\}$ that avoids the order $312$ as a sub-sequence.
@@ -219,7 +219,7 @@ It is easy to see that the above proof can be modified slightly to prove that th
 
 \section{Terms in the sequence $s_n(321)$}
 
-Unfortunately, there is no clear way to reformulate Lemma 2 for the case of avoiding the permutation 321 or 123. As a consequence, the proof in the previous section simply does not hold. Fortunately, however, we still have a closed form expression for $s_n(321)$ (recall that $s_n(321)=s_n(123)$ by our flipping principle). Surprisingly, in fact, the sequence remains the same: $s_n(321)=C_n$, the $n^{th}$ Catalan number. In order to prove this result, however, we will need the machinery of Young tableaux. What follows is a brief exposition of the key results, adapted from Stanley's \emph{Algebraic Combinatorics}.
+Unfortunately, there is no clear way to reformulate Lemma \ref{lemma1} for the case of avoiding the permutation 321 or 123. As a consequence, the proof in the previous section simply does not hold. Fortunately, however, we still have a closed form expression for $s_n(321)$ (recall that $s_n(321)=s_n(123)$ by our flipping principle). Surprisingly, in fact, the sequence remains the same: $s_n(321)=C_n$, the $n^{th}$ Catalan number. In order to prove this result, however, we will need the machinery of Young tableaux. What follows is a brief exposition of the key results, adapted from Stanley's \emph{Algebraic Combinatorics}.
 
 \begin{definition}
 A Young diagram of a partition $\lambda=\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of the integer $\sum_{i=1}^n \lambda_i$ is a left-justified array of squares, with $\lambda_i$ squares in the $i$th row.
@@ -441,6 +441,67 @@ $$t_n(321) = 1, 3, 12, 55, 273, \ldots$$
 
 It is easy to see why $t_n(123)$ and $t_n(132)$ behave the way they do -- since all odd numbers in $T_n$ are increasing, it is impossible to have a permutation in $T_n$ that avoids $123$ and the permutation consisting of all increasing integers is the only permutation of $T_n$ that avoids $132$.
 
-More interesting is the equivalences between $213$ and $231$, and $312$ and $321$. Proving these equivalences remains future work.
+More interesting is the equivalences between $213$ and $231$, and $312$ and $321$. Before proving these equivalences, we state and prove the following lemmas which will be useful in our proof.
+
+\begin{lemma}
+\label{tn_avoidance}
+If $a$ and $b$ are two elements that appear in a permutation in $T_n$ such that $a$ is to the left of $b$, then if $a > b$, $b$ must be even.
+\end{lemma}
+
+\begin{proof}
+For the sake of contradiction, let us assume that $b$ is odd. Then there exist two possibilities that need to be considered -- one, that $a$ is odd, and two, that $a$ is even.
+
+\begin{itemize}
+\item \textbf{Case 1:} $a$ is odd.
+
+Note that all permutations in $T_n$ must have odd elements monotonically increasing. So if $a$ appears to the left of $b$, and both $a$ and $b$ are odd, then $a$ must be less than $b$ -- a contradiction. Hence, we conclude that $a$ can't be odd.
+
+\item \textbf{Case 2:} $a$ is even.
+
+For all permutations $\sigma$ in $T_n$, every even element $j$ must be to the right of all odd elements less than $j$. From this, we conclude that since $a$ is even, it must be to the right of all odd numbers less than it. But $b$ is an odd number less than $a$ -- we conclude that $a$ can't be even either.
+\end{itemize}
+
+Since $a$ can't be odd or even if $b$ is odd, we conclude that $b$ must be even, as desired.
+\end{proof}
+
+\begin{lemma}
+\label{swapping_lemma}
+If $x, y, z$ is a three-element subsequence of a permutation $\pi$ in $T_n$ such that $x > y > z$ or $x > z > y$, then swapping $y$ and $z$ in the permutation $\pi$ yields a permutation $\pi'$ that also belongs to $T_n$.
+\end{lemma}
+
+\begin{proof}
+From Lemma \ref{tn_avoidance} we see that both $y$ and $z$ must be even. Then there exist two cases that need to be covered.
+\begin{itemize}
+\item \textbf{Case 1:} $x$ is odd.
+
+If $x$ is odd, then it is clear that the permutation $\pi'$ obtained from swapping $y$ and $z$ is still valid, since both $y$ and $z$ are to the right of the odd numbers $y-1$ and $z-1$ (since $y-1$ and $z-1$ are themselves to the left of $x$ since they are strictly less than $x$)
+
+\item \textbf{Case 2:} $x$ is even.
+
+If $x$ is even, then $x-1$ which is an odd number greater than both $y-1$ and $z-1$, must be to the left of $x$. Since $y-1$ and $z-1$ are already to the left of $x-1$, we conclude that swapping $y$ and $z$ still ensures that $y$ and $z$ are both to the right of $y-1$ and $z-1$.
+\end{itemize}
+Hence, we see that regardless of whether $x$ is even or odd, swapping $y$ and $z$ in a permutation $\pi \in T_n$ if $x > y > z$ or $x > z > y$ yields a permutation $\pi'$ that also belongs to $T_n$.
+\end{proof}
+
+Given these lemmas, we now present a proof for $t_n(312) = t_n(321)$.
+
+\begin{theorem}
+$t_n(312) = t_n(321)$
+\end{theorem}
+
+\begin{proof}
+First observe from Lemma \ref{tn_avoidance} that if $x, y, z$ is a subsequence of three elements of a permutation in $T_n$ in the relative order $312$ or $321$, then both $y$ and $z$ must be even.
+
+We now construct a bijective mapping between all permutations in $T_n$ that avoid $312$ and all permutations in $T_n$ that avoid $321$.
+
+Consider a permutation $\pi$ in $T_n$ that avoids $312$. For each permutation $\pi \in T_n$ that avoids $312$, we want to show that there exists a sequence of transformation moves that transforms $\pi$ to a unique permutation $\pi'$ that avoids $321$.
+
+If the original permutation $\pi$ avoids $321$ already, then clearly $\pi' = \pi$ avoids $321$.
+
+Now if $\pi$ does not avoid $321$, there must exist some sub-sequence $x, y, z$ in $\pi$ in the relative ordering $321$. From Lemma \ref{swapping_lemma}, we see that swapping $y$ and $z$ in the permutation $\pi$ yields another valid permutation in $T_n$ -- note that the permutation produced after this swap has $x, y, z$ in the relative ordering $312$ instead of $321$. If we do this for every sub-sequence in the relative ordering $321$, we see that we will produce a permutation in $T_n$ that avoids $321$. This process is completely invertible, since we can take a permutation $\pi'$ in $T_n$ that avoids $321$, and similarly swap all elements that violates $\pi'$'s avoidance of $321$ to obtain a permutation that avoids $312$. \textbf{Make this more rigorous}
+
+Since there exists a bijective mapping between permutations in $T_n$ that avoid $312$ and permutations in $T_n$ that avoid $321$, we can conclude that $t_n(312) = t_n(321)$.
+
+\end{proof}
 
 \end{document}
