@@ -439,7 +439,7 @@ $$t_n(321) = 1, 3, 12, 55, 273, \ldots$$
 
 It is easy to see why $t_n(123)$ and $t_n(132)$ behave the way they do -- since all odd numbers in $T_n$ are increasing, it is impossible to have a permutation in $T_n$ that avoids $123$ and the permutation consisting of all increasing integers is the only permutation of $T_n$ that avoids $132$.
 
-More interesting is the equivalences between $213$ and $231$, and $312$ and $321$. Before proving these equivalences, we state and prove the following lemmas which will be useful in our proof.
+More interesting is the equivalences between $213$ and $231$, and $312$ and $321$. We will prove the equivalence between $312$ and $321$ below, but before doing so, we first state and prove the following lemmas which will be useful in our proof.
 
 \begin{lemma}
 \label{tn_avoidance}
@@ -494,12 +494,22 @@ We now construct a bijective mapping between all permutations in $T_n$ that avoi
 
 Consider a permutation $\pi$ in $T_n$ that avoids $312$. For each permutation $\pi \in T_n$ that avoids $312$, we want to show that there exists a sequence of transformation moves that transforms $\pi$ to a unique permutation $\pi'$ that avoids $321$.
 
+\textbf{May want to skip the transformation stuff, and directly talk about the bijection being established.}
+
 If the original permutation $\pi$ avoids $321$ already, then clearly $\pi' = \pi$ avoids $321$.
 
-Now if $\pi$ does not avoid $321$, there must exist some sub-sequence $x, y, z$ in $\pi$ in the relative ordering $321$. From Lemma \ref{swapping_lemma}, we see that swapping $y$ and $z$ in the permutation $\pi$ yields another valid permutation in $T_n$ -- note that the permutation produced after this swap has $x, y, z$ in the relative ordering $312$ instead of $321$. If we do this for every sub-sequence in the relative ordering $321$, we see that we will produce a permutation in $T_n$ that avoids $321$. This process is completely invertible, since we can take a permutation $\pi'$ in $T_n$ that avoids $321$, and similarly swap all elements that violates $\pi'$'s avoidance of $321$ to obtain a permutation that avoids $312$. \textbf{Make this more rigorous}
+Now if $\pi$ does not avoid $321$, there must exist some sub-sequence $x, y, z$ in $\pi$ in the relative ordering $321$. From Lemma \ref{swapping_lemma}, we see that swapping $y$ and $z$ in the permutation $\pi$ yields another valid permutation $\pi_1$ in $T_n$ -- note that the permutation produced after this swap has $x, y, z$ in the relative ordering $312$ instead of $321$. Note that $\pi_1$ may still have sub-sequences in the relative ordering $321$, so we may have to perform the above swapping operation again to get some permutation $\pi_2 \in T_n$ such that a sub-sequence $x_1, y_1, z_1$ in $\pi_1$ that has a relative ordering $321$ is in the relative ordering $312$ in $\pi_2$. Continuing this process produces the following chain of permutations,
+$$\pi \rightarrow \pi_1 \rightarrow \pi_2 \rightarrow \ldots \rightarrow \pi_k$$
+Where the last permutation in the chain $\pi_k$ does not have a single three-element sub-sequence in the relative ordering $321$, that is $\pi' = \pi_k$ is a permutation in $T_n$ that avoids $321$.
+
+This process is completely invertible, since we can take a permutation $\pi'$ in $T_n$ that avoids $321$, and traverse through the above chain in reverse order to obtain a permutation that avoids $312$.
+
+What remains to be proven is that the order of swapping operations in the chain of transformations does not matter -- that is, any valid transformation chain starting with some permutation $\pi \in T_n$ that avoids $312$, will always produce the same permutation $\pi' \in T_n$ that avoids $321$. Note that since we're only swapping even elements, the odd elements are in exactly the same position in both $\pi$ and $\pi'$. In addition, for every element $i \in \pi$, all even numbers in $\pi$ to the right of $i$ and less than $i$ must be in decreasing order; in $\pi'$, for every element $i \in \pi'$, all even numbers in $\pi'$ to the right of $i$ and less than $i$ must be in increasing order.
 
 Since there exists a bijective mapping between permutations in $T_n$ that avoid $312$ and permutations in $T_n$ that avoid $321$, we can conclude that $t_n(312) = t_n(321)$.
 
 \end{proof}
+
+Unfortunately, it turns out that proving the equivalence between $231$ and $213$ is not as straightforward as above, partially due to the fact that the element corresponding to $2$ and $3$ in the above sub-sequences can be either even or odd, which means we now also have to account for the positions of odd elements too. Proving this equivalence remains future work.
 
 \end{document}
