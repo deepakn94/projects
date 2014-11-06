@@ -80,7 +80,7 @@ def compute_tn(n, order):
 
 if __name__ == '__main__':
     n = int(sys.argv[1])
-    order = [3, 1, 2]
+    order = [2, 1, 3]
     for i in xrange(n):
         if (2*i < len(order)):
             continue

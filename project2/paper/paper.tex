@@ -510,11 +510,9 @@ $t_n(312) = t_n(321)$
 \begin{proof}
 First observe from Lemma \ref{tn_avoidance} that if $x, y, z$ is a subsequence of three elements of a permutation in $T_n$ in the relative order $312$ or $321$, then both $y$ and $z$ must be even.
 
-We now construct a bijective mapping between all permutations in $T_n$ that avoid $312$ and all permutations in $T_n$ that avoid $321$.
+Before proving that there exists a bijective mapping between all permutations in $T_n$ that avoid $312$ (call this set $A$) and all permutations in $T_n$ that avoid $321$ (call this set $B$), we establish a chain of transformation moves that can be used to transform an element $a \in A$ to an element $b \in B$.
 
 Consider a permutation $\pi$ in $T_n$ that avoids $312$. For each permutation $\pi \in T_n$ that avoids $312$, we want to show that there exists a sequence of transformation moves that transforms $\pi$ to a unique permutation $\pi'$ that avoids $321$.
-
-\textbf{May want to skip the transformation stuff, and directly talk about the bijection being established.}
 
 If the original permutation $\pi$ avoids $321$ already, then clearly $\pi' = \pi$ avoids $321$.
 
@@ -524,7 +522,11 @@ Where the last permutation in the chain $\pi_k$ does not have a single three-ele
 
 This process is completely invertible, since we can take a permutation $\pi'$ in $T_n$ that avoids $321$, and traverse through the above chain in reverse order to obtain a permutation that avoids $312$.
 
-What remains to be proven is that the order of swapping operations in the chain of transformations does not matter -- that is, any valid transformation chain starting with some permutation $\pi \in T_n$ that avoids $312$, will always produce the same permutation $\pi' \in T_n$ that avoids $321$. Note that since we're only swapping even elements, the odd elements are in exactly the same position in both $\pi$ and $\pi'$. In addition, for every element $i \in \pi$, all even numbers in $\pi$ to the right of $i$ and less than $i$ must be in decreasing order; in $\pi'$, for every element $i \in \pi'$, all even numbers in $\pi'$ to the right of $i$ and less than $i$ must be in increasing order.
+We now prove that there exists a bijection between the sets $A$ and $B$. 
+
+Let $a$ be an arbitrary permutation in $A$. Clearly, by the definition of $A$, $a$ must avoid $312$. Now, we claim that for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in decreasing order; if this were not the case, then we would have a subsequence in the relative ordering $312$, which would be a contradiction. It is easy to see that we can make a corresponding claim about permutation $b$, that is for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in increasing order.
+
+The above two claims shows there's actually an easy way to transform an arbitrary permutation $a \in A$ to a $b \in B$, and similarly, to transform an arbitrary permutation $b \in B$ to a $a \in A$ -- to obtain a permutation in $B$ from a permutation $a \in A$, for every element $i$ in the permutation $a$, all even elements in $a$ to the right of $i$ less than $i$ should be reversed (that is reordered to in increasing order); similarly to obtain a permutation in $A$ from a permutation $b \in B$, for every element $i$ in the permutation $b$, all even elements in $b$ to the right of $i$, less than $i$ should be reversed (that is reordered to in decreasing order). Since the mapping from $A$ to $B$ is clearly reversible, and hence invertible, we conclude that the mapping we just established between $A$ and $B$ is bijective.
 
 Since there exists a bijective mapping between permutations in $T_n$ that avoid $312$ and permutations in $T_n$ that avoid $321$, we can conclude that $t_n(312) = t_n(321)$.
 
