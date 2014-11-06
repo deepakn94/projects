@@ -77,12 +77,11 @@
 \maketitle
 
 \section{Introduction}
+In this paper we investigate pattern avoidance in finite sequences of natural numbers. We begin with an example: consider the sequences 123 and 1324. Note the order relationships of the elements of 123: we have $1< 2 < 3$. Notice in addition that there is an ordered subsequence of 1324 that follows the same general pattern, namely 124. In this situation we say that the sequence 1324 \emph{does not avoid the pattern 123}. We can also examine the sequence 1432, and observe that none of its subsequences have the same order relationships as 123. We say that 1432 \emph{avoids} 123.
 
-In this paper we will investigate pattern avoidance in finite sequences of natural numbers. Let us start by consider the ordered sequences 123 and 1324. We can describe the relationships between elements of the sequence 123 as follows: the first element in the sequence is the smallest element of the sequence, the second element of the sequence is the second smallest element of the sequence, and the third element of the sequence is the largest element of the sequence. Now notice that there is an ordered subsequence of 1324 that follows the same general pattern, namely 124. The relationships between elements of the sequence 124 is the same as the relationships we described for 123. In this situation we say that the sequence 1324 \emph{does not avoid} 123. If we examine the sequence 1432 we see that there are no ordered subsequences of 1432 that have the same relations between elements as 123. We say that 1432 \emph{avoids} 123. 
+With examples of a four element sequence that avoids 123 and a four element sequence that does not avoid 123, it is natural to ask the question: how many four element sequences avoid 123? And more generally, how many $n$-element sequences avoid 123? If we define $s_n(123)$ to be the number of $n$ element sequences that avoid 123, then the question above is equivalent to identifying the sequence $(s_n(123))_n$. In this paper we consider specific cases of a very general avoidance problem, describing the sequence $(s_n(\sigma))_n$ where $\sigma$ is any permutation of the elements of the set $\{1,2,\cdots, k\}\subset\mathbb{N}$ for some $k$.
 
-With an example of a four element sequence that avoids 123 and a four element sequence that does not avoid 123, it is natural to ask the question, how many four element sequences avoid 123? As we will see below, the answer to this question is simply 5, but this leads to a more general question, how many $n$-element sequences avoid 123? If we define $s_n(123)$ to be the number of $n$ element sequences that avoid 123, then the question above is equivalent to identifying the sequence $(s_n(123))_n$. In this paper we consider specific cases of a very general avoidance problem, describing the sequence $(s_n(\sigma))_n$ where $\sigma$ is any permutation of the elements of the set $\{1,2,\cdots, k\}\subset\mathbb{N}$ for some $k$. 
-
-In section \ref{S3} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation on the set $\{1,2,3\}$, and prove that the sequence $s_n(\pi)$ for all such $\pi$ is in fact the sequence of Catalan numbers. In section \ref{S4} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation of $\{1,2,3,4\}$. In section \ref{Tn} we consider a variation of the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of the permutations of $n$ elements. Before proceeding, we will formally introduce the notation that will be used throughout this paper. 
+In Section \ref{S3} we consider sequences $s_n(\pi)$ for $\pi$ a permutation on the set $\{1,2,3\}$, and prove that the sequence $s_n(\pi)$ for all such $\pi$ is in fact the sequence of Catalan numbers. In Section \ref{S4} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation of $\{1,2,3,4\}$. In Section \ref{Tn} we consider a variation of the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of the permutations of $n$ elements. Before proceeding, however, we formally introduce the notation that will be used throughout this paper. 
 
 
 \subsection{Notation}
@@ -95,23 +94,23 @@ The set $S_n$ is the collection of permutations of the set $\{1,2,\cdots, n\}$.
 $S_3=\{123,132,213,231,312,321\}$. 
 \end{example}
 
+\todo{We never define what a pattern is. Either scrub the paper of mentions or define it here}
+
 \begin{remark}
-The notation used to describe the elements of $S_n$ above is `one-line' notation. Thus far we have ignored the fact that $S_n$ has a group structure. When discussing this group structure it is convenient to use a different notation known as `cycle' notation. This alternative notation will be used in Section\ref{S4} and an introduction to cycle notation can be found in Appendix []. 
+The notation used to describe the elements of $S_n$ above is `one-line' notation.\todo{Jerison wanted us to define this formally, I think} Thus far we have ignored the fact that $S_n$ has a group structure. When discussing this group structure it is convenient to use a different notation known as `cycle' notation.\todo{Also should define this formally} This alternative notation will be used in Section \ref{S4} and an introduction to cycle notation can be found in Appendix []. 
 \end{remark}
 
 \begin{definition}
-Two finite permutations $a_1,\cdots a_k$ and $b_1,\cdots b_k$ in $S_k$ have the same relative order if the $i^\text{th}$ largest entry of each unordered set $\{a_1,\cdots,a_k\}$ and $\{b_1,\cdots, b_k\}$ appears in the same position in $a_1\cdots a_k$ and $b_1\cdots b_k$ for each $1\le i\le k$. 
-\end{definition}
+Two finite sequences of distinct positive integers $a_1,\cdots a_k$ and $b_1,\cdots b_k$ have the same relative order if the $i^\text{th}$ largest entry of each unordered set $\{a_1,\cdots,a_k\}$ and $\{b_1,\cdots, b_k\}$ appears in the same position in $a_1\cdots a_k$ and $b_1\cdots b_k$ for each $1\le i\le k$. 
+\end{definition}\todo{I changed this definition... take a look and see if you agree with it}
 
 \begin{remark}
-An equivalent definition is that two permutations in $S_k$ have the same relative order if the elements in each position of the sequence satisfy the same set of inequalities. 
+Equivalently, two finite sequences of distinct positive integers have the same relative order if the elements in each position of the sequence satisfy the same set of inequalities.
 \end{remark}
 
 \begin{definition}
-A permutation $a_1a_2\cdots a_n$ avoids a permutation $b_1\cdots b_k$ with $n\ge k$ if no subsequence $a_{i_1}a_{i_2}\cdots a_{i_k}$ of $a_1a_2\cdots a_n$ has its terms in the same relative order as $b_1\cdots b_k$. 
+A finite sequence of distinct positive integers $a_1a_2\cdots a_n$ avoids another finite sequence of distinct positive integers $b_1\cdots b_k$ with $n\ge k$ if no subsequence $a_{i_1}a_{i_2}\cdots a_{i_k}$ of $a_1a_2\cdots a_n$ has its terms in the same relative order as $b_1\cdots b_k$. 
 \end{definition}
-
-
 
 %\begin{remark}
 %Let $S_n$ be the set of permutations of $\{1,\cdots, n\}$. There are two conventions commonly used to write elements of $S_n$. The first is $\emph{one-line}$ notation where permutations in $S_n$ are written explicitly, e.g. 43215 is a permutation of $\{1,2,3,4,5\}$ in $S_5$. 
@@ -181,63 +180,56 @@ Another notion that we will use in this paper is the concept of `flipping'. We d
 \section{Terms in the sequence $s_n(312)$}
 \label{S3}
 
-We claim that the sequence of numbers $s_n(312)$ is in fact the sequence of Catalan numbers. We state this result formally as the following theorem,
-
-\begin{theorem}
-The total number of permutations of $\{1,2,3,...,n\}$ that avoid the order $312$ as a subsequence is $C_n$ where $C_n$ is the $n^{th}$ Catalan number.
-\end{theorem}
-
-Before proving the theorem, we state and prove the following lemma, that will be used in our proof of the theorem.
+We claim that the sequence of numbers $s_n(312)$ is in fact the sequence of Catalan numbers. Before formally stating and proving the result, however, we prove the following useful lemma.
 \begin{lemma}
 \label{lemma1}
-All permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid the order $312$ as a sub-sequence must be of the form,
+The permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid the pattern $312$ are precisely those of the form,
 $$\pi_1 \pi_2 i$$
-where $\pi_1$ is a permutation of $\{1,2,\ldots,(i-1)\}$ that avoids the order $312$ as a sub-sequence and $\pi_2$ is a permutation of $\{(i+1),\ldots,(k+1)\}$ that avoids the order $312$ as a sub-sequence.
-\end{lemma}
+the concatenation of $\pi_1, \pi_2$, and $i$, where $\pi_1$ is a permutation of $\{1,2,\ldots,i-1\}$ that avoids the pattern $312$ and $\pi_2$ is a permutation of $\{i+1,\ldots,k+1\}$ that avoids the pattern $312$.
+\end{lemma}\todo{Explained the notation for concatenation}
 
 \begin{proof}
-It is clear that any subsequences of the permutation $\pi = \pi_1 \pi_2 i$ must avoid $312$ if the entire permutation $\pi$ is to avoid $312$ as well; this implies that the permutations $\pi_1$ and $\pi_2$ must avoid $312$ as well.
 
-We proceed with a proof by contradiction.
+It is easy to see that such a permutation is sufficient for avoiding $312$ and ending in $i$. We will prove that the condition is necessary as well.
 
-Before proceeding, we define the sets $A$ and $B$ to be $\{1,2,\ldots,(i-1)\}$ and $\{(i+1),(i+2),\ldots,(k+1)\}$ respectively. For the sake of contradiction, let us assume that there exists some permutation $\pi$ of $\{1,2,...,k,k+1\}$ that ends with value $i$ such that some integer $x < i$ (that is, $x \in A$) is to the right of some integer $y > i$ ($y \in B$). Clearly, this permutation is not of the form described above. It is also easy to see that $\pi$ does \emph{not} avoid the order $312$ since the triple $(y, x, i)$ satisfies the condition $y > x > i$ and is in the order $312$.
+First, we define the sets $A=\{1,2,\ldots,i-1\}$ and $B=\{i+1,i+2,\ldots,k+1\}$. For the sake of contradiction, let us assume that there exists some permutation $\pi$ of $\{1,2,...,k,k+1\}$ that ends with value $i$ such that some integer $x < i$ (that is, $x \in A$) is to the right of some integer $y > i$ ($y \in B$). Clearly, this permutation is not of the form described above, and the subsequence $(y, x, i)$ is of the same relative order as 312; as a consequence, $\pi$ does not avoid 312.
 
-From this we conclude that all $x < i$ must be to the left of all $y > i$. This information coupled with the fact that we are only considering permutations that end with $i$ complete the claim that only permutations of the form described above can avoid $312$.
-
+It follows that for any permutation $\pi\in S_{k+1}$ avoiding $312$ and ending in $i$, all $x < i$ must be to the left of all $y > i$. Hence $\pi$ must be the concatenation of three subsequences $\pi_1 \pi_2 i$, where $\pi_1$ is a permutation of $\{1, 2, \ldots, i-1\}$ and $\pi_2$ is a permutation of $\{i+1, i+2, \ldots, k+1\}$. Furthermore, it is clear that any subsequences of the permutation $\pi = \pi_1 \pi_2 i$ must avoid $312$ if the entire permutation $\pi$ is to avoid $312$ as well; this implies that the permutations $\pi_1$ and $\pi_2$ must avoid $312$ as well.
 \end{proof}
 
-With this lemma proven, we move on to the proof of our theorem.
+With this lemma proven, we move on to the proof of our main theorem for this section.
+
+\begin{theorem}
+$s_n(312)$, the total number of permutations of $\{1,2,3,...,n\}$ that avoid the pattern $312$, is equal to $C_n$, the $n^{th}$ Catalan number.
+\end{theorem}\todo{should we define $C_n$ separately?}
 
 \begin{proof}
 The inductive hypothesis holds for our base case of $\{1\}$, since the only permutation of $\{1\}$ trivially avoids $312$.
 
-Now, we need to prove the inductive case. Let us first assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid the order $312$ as a subsequence is $C_i$.
+We need to prove the inductive case. Let us first assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid the order $312$ as a subsequence is $C_i$.
 
-Now, we want to prove the inductive hypothesis for $\{1,2,...,k,k+1\}$ as well, that is the number of permutations of $\{1,2,...,k,k+1\}$ that avoid the order $312$ as a subsequence is $C_{k+1}$.
+Now, we want to prove the inductive hypothesis for $\{1,2,...,k,k+1\}$ as well. That is, we want to prove that the number of permutations of $\{1,2,...,k,k+1\}$ that avoid the order $312$ as a subsequence is $C_{k+1}$.
 
-We count the number of permutations of $\{1,2,...,k,k+1\}$ that avoid $312$ by enumerating through all possible values of the last term of a valid permutation.
-If the last term of the permutation is $i$ (where $i \in \{1,2,...,k,k+1\}$), then let us define the subsets $A$ and $B$ of the  set $\{1,2,...,k+1\} \setminus \{i\}$ as the set of integers less than $i$ and the set of integers greater than $i$ respectively. It is clear from the definition of $A$ and $B$ that $A$ and $B$ are disjoint from each other.
+Using our lemma, we count the number of permutations of $\{1,2,...,k,k+1\}$ that avoid $312$ by enumerating through all possible values of the last term of a valid permutation. Consider $\pi$ a permutation of $\{1,2,\ldots, k, k+1\}$ ending in $i$.Let us define the subsets $A$ and $B$ of the  set $\{1,2,...,k+1\} \setminus \{i\}$ as the set of integers less than $i$ and the set of integers greater than $i$ respectively. It is clear from the definition of $A$ and $B$ that $A$ and $B$ are disjoint from each other.
 
-Now, from the above lemma, we know that all permutations of $\{1,2,...,k,k+1\}$ ending in $i$ that avoid $312$ must be of the form,
-
+From the above lemma, we know that all permutations of $\{1,2,...,k,k+1\}$ ending in $i$ that avoid $312$ are precisely those of the form
 $$\pi = \pi_1 \pi_2 i$$
+where $\pi_1$ is a permutation of $A$ that avoids $312$ and $\pi_2$ is a permutation of $B$ that avoids $312$.
 
-where $\pi_1$ is a permutation of $A$ that avoids the order $312$ as a sub-sequence and $\pi_2$ is a permutation of $B$ that avoids the order $312$ as a sub-sequence. It is clear that the above permutation contains all integers between $1$ and $k+1$, from the definitions of the subsets $A$ and $B$, which implies that $\pi_1\pi_2i$ is permutation of the set $\{1,2,...,k,k+1\}$.
-
-Now, the total number of permutations $\pi$ is,
-$$n_{\pi_1} \cdot n_{\pi_2} = C_{i-1} \cdot C_{k-i+1}$$
-since the total number of valid permuations $\pi_1$ is simply going to be $C_{i-1}$ (total number of valid permutations of length $i-1$ that avoid the order $312$ as a sub-sequence is $C_{i-1}$; similarly $n_{\pi_2} = C_{k-1+1}$)
+It follows that the total number of permutations $\pi$ avoiding $312$ and ending in $i$ is
+$$C_{i-1} \cdot C_{k-i+1},$$
+since by our induction hypothesis the total number of valid choices for $\pi_1$ is simply $C_{i-1}$, and similarly the total number of valid choices for $\pi_2$ is $C_{k-1+1}$.
 
 Now, summing over all possible values of $i$, we see that the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
-$$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ which is in fact $C_{k+1}$, and we are done.
+$$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ which is well-known to equal $C_{k+1}$, the $n+1$st Catalan number. The proof  therefore follows by induction.
 
 \end{proof}
 
-It is easy to see that the above proof can be modified slightly to prove that the sequences $s_n(132)$, $s_n(213)$ and $s_n(231)$ are in fact the sequence of catalan numbers as well. In fact, we claim that if $\sigma$ and $\pi$ are both permutations in $S_k$ for some arbitrary $k$, then if $\sigma = flip(\pi)$, $s_n(\pi) = s_n(\sigma)$. This is easy to see since if $a$ is a permutation that avoids $\sigma$, then $flip(a)$ is a permutation that avoids $\pi$ -- since this can be done both ways, it is bijective and we can conclude that the cardinalities of the two sets are equal, or $s_n(\sigma) = s_n(\pi)$.
+It is easy to see that the above proof can be modified slightly to prove that the sequences $s_n(132)$, $s_n(213)$ and $s_n(231)$ are in fact the sequence of catalan numbers as well. In fact, we claim that if $\sigma$ and $\pi$ are both permutations in $S_k$ for some arbitrary $k$, then if $\sigma = flip(\pi)$, $s_n(\pi) = s_n(\sigma)$. This is easy to see since if $a$ is a permutation that avoids $\sigma$, then $flip(a)$ is a permutation that avoids $\pi$ -- since this can be done both ways, it is bijective and we can conclude that the cardinalities of the two sets are equal, or $s_n(\sigma) = s_n(\pi)$.\todo{we should move this up and make it clear from the beginning that this stuff generalizes}
 
 \section{Terms in the sequence $s_n(321)$}
 
-Unfortunately, there is no clear way to reformulate Lemma \ref{lemma1} for the case of avoiding the permutation 321 or 123. As a consequence, the proof in the previous section simply does not hold. Fortunately, however, we still have a closed form expression for $s_n(321)$ (recall that $s_n(321)=s_n(123)$ by our flipping principle). Surprisingly, in fact, the sequence remains the same: $s_n(321)=C_n$, the $n^{th}$ Catalan number. In order to prove this result, however, we will need the machinery of Young tableaux. What follows is a brief exposition of the key results, adapted from Stanley's \emph{Algebraic Combinatorics}.
+Unfortunately, there is no clear way to reformulate Lemma \ref{lemma1} for the case of avoiding the permutation 321 or 123. As a consequence, the proof in the previous section simply does not hold. Fortunately, however, we still have a closed form expression for $s_n(321)$ (recall that $s_n(321)=s_n(123)$ by our flipping principle). Surprisingly, in fact, the sequence remains the same: $s_n(321)=C_n$, the $n^{th}$ Catalan number. In order to prove this result, we need the machinery of Young tableaux. What follows is a brief exposition of the key results, adapted from Stanley's \emph{Algebraic Combinatorics}.
 
 \begin{definition}
 A Young diagram of a partition $\lambda=\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of the integer $\sum_{i=1}^n \lambda_i$ is a left-justified array of squares, with $\lambda_i$ squares in the $i$th row.
@@ -330,7 +322,7 @@ We need only one more result before we are ready to prove our central result.
 
 \begin{theorem}
 There exists an algorithm (called the \emph{RSK algorithm}) which defines a bijection between the set of permutations in $S(n)$ avoiding a decreasing subsequence of length 3 and the set of pairs of size-$n$ SYT of the same shape and at most two rows. 
-\end{theorem}
+\end{theorem}\todo{give a citation for this}
 Using all this machinery and all these results, we are finally able to prove the closed-form expression for $s_n(321)$.
 \begin{theorem}
 The total number of permutations of $\{1,2,3,\ldots, n\}$ that avoid the order 321 as a subsequence is $C_n$, where $C_n$ is the $n^{th}$ Catalan number.
@@ -368,15 +360,15 @@ Finally, rotating the second Young tableau and fitting it into the first gives u
 \end{ytableau},\]
 a valid Young tableau of shape $(6, 6)$. 
 
-Beginning with a pair of size $n$ Young tableaux of shape $\lambda$ and at most two parts, it is easy to see that this process always yields a valid Young tableau of shape $(n, n)$. Indeed, we can also define the inverse: given any Young tableau for the partition $(n, n)$, we can find the shape formed by all numbers greater than $n$: split it off from the original tableau, rotate it, and invert the numbers to get a pair of size $n$ Young tableau of the same shape and at most two parts. These processes can be easily checked to be inverses: hence the two sets are of the same size, and the proof follows.
+Beginning with a pair of size $n$ Young tableaux of shape $\lambda$ and at most two parts, it is easy to see that this process always yields a valid Young tableau of shape $(n, n)$. Indeed, we can define its inverse: given any Young tableau for the partition $(n, n)$, we can find the shape formed by all numbers greater than $n$: split it off from the original tableau, rotate it, and invert the numbers to get a pair of size $n$ Young tableau of the same shape and at most two parts. These processes can be easily checked to be inverses: hence the two sets are of the same size, and the proof follows.
 \end{proof}
 
 \section{Conjectures on $s_n(\pi)$ for $\pi\in S_4$}
 \label{S4}
 
-In this section we will present our findings and conjectures about sequences $s_n(\pi)$ for $\pi\in S_4$. We computed values up to $s_{10}$. It appears that there are three sequences that appear, and we have sorted the permutations according to which sequence they produce and paired them with their flips.  
+In this section we present our findings and conjectures about sequences $s_n(\pi)$ for $\pi\in S_4$. We computed values up to $s_{9}$. It appears that there are three sequences that appear, and we have sorted the permutations according to which sequence they produce and paired them with their flips.  
 
-We define the following sequences based on the first 8 terms:
+We define the following sequences based on the first nine terms:
 $$
 A:=1,2,6,23,103,512,2740,15485,91245\ldots
 $$
