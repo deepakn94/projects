@@ -78,28 +78,45 @@
 
 \section{Introduction}
 
-In this paper we will investigate pattern avoidance in permutations of finite sets of the first $n$ positive integers for arbitrary $n$.
+In this paper we will investigate pattern avoidance in finite sequences of natural numbers. Let us start by consider the ordered sequences 123 and 1324. We can describe the relationships between elements of the sequence 123 as follows: the first element in the sequence is the smallest element of the sequence, the second element of the sequence is the second smallest element of the sequence, and the third element of the sequence is the largest element of the sequence. Now notice that there is an ordered subsequence of 1324 that follows the same general pattern, namely 124. The relationships between elements of the sequence 124 is the same as the relationships we described for 123. In this situation we say that the sequence 1324 \emph{does not avoid} 123. If we examine the sequence 1432 we see that there are no ordered subsequences of 1432 that have the same relations between elements as 123. We say that 1432 \emph{avoids} 123. 
 
-Before beginning our discussion, we present the following definitions.
+With an example of a four element sequence that avoids 123 and a four element sequence that does not avoid 123, it is natural to ask the question, how many four element sequences avoid 123? As we will see below, the answer to this question is simply 5, but this leads to a more general question, how many $n$-element sequences avoid 123? If we define $s_n(123)$ to be the number of $n$ element sequences that avoid 123, then the question above is equivalent to identifying the sequence $(s_n(123))_n$. In this paper we consider specific cases of a very general avoidance problem, describing the sequence $(s_n(\sigma))_n$ where $\sigma$ is any permutation of the elements of the set $\{1,2,\cdots, k\}\subset\mathbb{N}$ for some $k$. 
+
+In section \ref{S3} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation on the set $\{1,2,3\}$, and prove that the sequence $s_n(\pi)$ for all such $\pi$ is in fact the sequence of Catalan numbers. In section \ref{S4} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation of $\{1,2,3,4\}$. In section \ref{Tn} we consider a variation of the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of the permutations of $n$ elements. Before proceeding, we will formally introduce the notation that will be used throughout this paper. 
+
+
+\subsection{Notation}
 
 \begin{definition}
-Two finite sequences $a_1,\cdots a_k$ and $b_1,\cdots b_k$ have the same relative order if the $i^\text{th}$ largest entry of each unordered set $\{a_1,\cdots,a_k\}$ and $\{b_1,\cdots, b_k\}$ appears in the same position in $a_1\cdots a_k$ and $b_1\cdots b_k$ for each $1\le i\le k$. 
-\end{definition}
-
-\begin{definition}
-A finite sequence of numbers $a_1a_2\cdots a_n$ avoids a sequence $b_1\cdots b_k$ with $n\ge k$ if no subsequence $a_{i_1}a_{i_2}\cdots a_{i_k}$ of $a_1a_2\cdots a_n$ has its terms in the same relative order as $b_1\cdots b_k$. 
+The set $S_n$ is the collection of permutations of the set $\{1,2,\cdots, n\}$. 
 \end{definition}
 
 \begin{example}
-The sequence 15432 avoids 123 while the sequence 13425 does not. The latter example fails because 134 appears in 15342 with the same relative order as 123. 
+$S_3=\{123,132,213,231,312,321\}$. 
 \end{example}
 
+\begin{remark}
+The notation used to describe the elements of $S_n$ above is `one-line' notation. Thus far we have ignored the fact that $S_n$ has a group structure. When discussing this group structure it is convenient to use a different notation known as `cycle' notation. This alternative notation will be used in Section\ref{S4} and an introduction to cycle notation can be found in Appendix []. 
+\end{remark}
+
+\begin{definition}
+Two finite permutations $a_1,\cdots a_k$ and $b_1,\cdots b_k$ in $S_k$ have the same relative order if the $i^\text{th}$ largest entry of each unordered set $\{a_1,\cdots,a_k\}$ and $\{b_1,\cdots, b_k\}$ appears in the same position in $a_1\cdots a_k$ and $b_1\cdots b_k$ for each $1\le i\le k$. 
+\end{definition}
 
 \begin{remark}
-Let $S_n$ be the set of permutations of $\{1,\cdots, n\}$. There are two conventions commonly used to write elements of $S_n$. The first is $\emph{one-line}$ notation where permutations in $S_n$ are written explicitly, e.g. 43215 is a permutation of $\{1,2,3,4,5\}$ in $S_5$. 
-
-The second is \emph{cycle notation}, where a cycle $(a_1\cdots a_n)\in S_n$ with $1\le a_i\le n$ acts on a sequence by sending $a_1\mapsto a_2$, $a_2\mapsto a_3$, $\cdots$, $a_n\mapsto a_1$. For example, the cycle $(14)(23)$ sends $12345$ to $43215$. Unless otherwise stated, we will refer to permutations in one-line notation. 
+An equivalent definition is that two permutations in $S_k$ have the same relative order if the elements in each position of the sequence satisfy the same set of inequalities. 
 \end{remark}
+
+\begin{definition}
+A permutation $a_1a_2\cdots a_n$ avoids a permutation $b_1\cdots b_k$ with $n\ge k$ if no subsequence $a_{i_1}a_{i_2}\cdots a_{i_k}$ of $a_1a_2\cdots a_n$ has its terms in the same relative order as $b_1\cdots b_k$. 
+\end{definition}
+
+
+
+%\begin{remark}
+%Let $S_n$ be the set of permutations of $\{1,\cdots, n\}$. There are two conventions commonly used to write elements of $S_n$. The first is $\emph{one-line}$ notation where permutations in $S_n$ are written explicitly, e.g. 43215 is a permutation of $\{1,2,3,4,5\}$ in $S_5$. 
+%The second is \emph{cycle notation}, where a cycle $(a_1\cdots a_n)\in S_n$ with $1\le a_i\le n$ acts on a sequence by sending $a_1\mapsto a_2$, $a_2\mapsto a_3$, $\cdots$, $a_n\mapsto a_1$. For example, the cycle $(14)(23)$ sends $12345$ to $43215$. Unless otherwise stated, we will refer to permutations in one-line notation. 
+%\end{remark}
 
 \begin{definition} 
 A permutation $\sigma\in S_n$ avoids a permutation $\pi\in S_k$ if the sequence of numbers for the one-line notation for $\sigma$ avoids the sequence of numbers for the one-line notation for $\pi$.
@@ -109,7 +126,8 @@ A permutation $\sigma\in S_n$ avoids a permutation $\pi\in S_k$ if the sequence 
 For a permutation $\pi\in S_k$, $s_n(\pi)$ represents the number of permutations in $S_n$ that avoid $\pi$. 
 \end{definition}
 
-In this paper we concern ourselves with the sequence of numbers $s_n(\pi)$ for various $\pi$. In section \ref{S3} we will consider sequence $s_n(\pi)$ for $\pi\in S_3$, and prove that the sequence $s_n(\pi)$ for all such $\pi$ is in fact the sequence of Catalan numbers. In section \ref{S4} we will consider sequence $s_n(\pi)$ for $\pi\in S_4$. In section \ref{Tn} we consider a variation on the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of $S_n$. 
+
+\section{Flipping and Reversing}
 
 \subsection{Generating Trees}
 
@@ -156,7 +174,9 @@ Before continuing we introduce generating trees, a tool we can use to study patt
 \end{figure}
 
 \subsection{Flipping}
-Another notion that we will use in this paper is the concept of `flipping'. We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with the largest element swapped with the smallest element, the second largest element swapped with the second smallest element, etc. For example, the flip of 1324 is 4321. We will discuss the flip as it becomes useful.
+Another notion that we will use in this paper is the concept of `flipping'. We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with the largest element swapped with the smallest element, the second largest element swapped with the second smallest element, etc. For example, the flip of 1324 is 4231. We will discuss the flip as it becomes useful.
+
+\subsection{Reversing}
 
 \section{Terms in the sequence $s_n(312)$}
 \label{S3}
@@ -373,9 +393,9 @@ The table below lists the elements of $S_4$ generate sequences $A,B,C$ for the f
 \begin{tabular}{|c|c|c|}
 B &A&C\\
 \hline
-1234, 4321&4132, 1423&4231,1324\\
+1234, 4321&4132, 1423&4231, 1324\\
 1243, 4312&4213, 1342&\\
-1432, 4123&2431,3124&\\
+1432, 4123&2431, 3124&\\
 2134, 3421&2413, 3142&\\
 2143, 3412&2314, 3241&\\
 2341, 3214&&\\

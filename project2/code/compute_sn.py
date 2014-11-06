@@ -57,7 +57,7 @@ def compute_sn(n, order):
 
 if __name__ == '__main__':
     n = int(sys.argv[1])
-    order = [1, 2, 3, 4]
+    order = [1, 2, 3]
     k = len(order)
     for i in xrange(k, n):
         print compute_sn(i, order)
