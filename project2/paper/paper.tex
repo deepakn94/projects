@@ -561,7 +561,44 @@ Since there exists a bijective mapping between permutations in $T_n$ that avoid 
 
 \end{proof}
 
-Unfortunately, it turns out that proving the equivalence between $231$ and $213$ is not as straightforward as above, partially due to the fact that the element corresponding to $2$ and $3$ in the above sub-sequences can be either even or odd, which means we now also have to account for the positions of odd elements too. Proving this equivalence remains future work.
+Unfortunately, it turns out that proving the equivalence between $231$ and $213$ is not as straightforward as above, however we do prove that both the sequences $(t_n(231))$ and $(t_n(213)$ are equal to the sequence $1, 2, 4, 8, \ldots$ below.
+
+\begin{theorem}
+$t_n(231) = 1, 2, 4, 8, \ldots$
+\end{theorem}
+
+\begin{proof}
+Proving the above theorem is equivalent to proving that the $m^{th}$ term of $t_n(231)$ is equal to $2^{m-1}$, or that the number of permutations in $T_{2m}$ that avoid $231$ is equal to $2^{m-1}$.
+
+Consider a permutation $\sigma$ in $T_{2m}$ that avoids $231$. Consider an arbitrary even element $2i$ in $\sigma$. For this element $2i$, define $A$ to be the set of numbers greater than $2i$ and to the left of $2i$ in the permutation $\sigma$. First off, note that the set $A$ cannot contain any even numbers, because if it did, then the permutation $\sigma$ would contain a three-element sub-sequence in the relative ordering $231$ -- if $a$ is an even number in the set $A$, then $(a-1, a, 2i)$ would be a three-element sub-sequence of $\sigma$ in the relative ordering $231$ (Note that $a-1$ must be to the left of $a$ in the permutation $\sigma$ because of the way the set $T_{2m}$ was constructed.
+
+Furthermore, the set $A$ cannot contain any odd elements greater than $2i+1$, because if it did, then again the permutation $\sigma$ would contain a three-element subsequence in the relative ordering $231$ -- if $a > 2i+1$ is an odd number in $A$, then $(2i+1, a, 2i)$ is a three-element sub-sequence of $\sigma$ in the relative ordering $231$ Therefore, we conclude that the set $A$ either only contains the element $2i+1$, or is empty.
+
+From this we can conclude that the element $2i$ can be inserted into exactly two valid positions in a permutation of length $2m$ -- at index $2i$ and at index $2i+1$. It follows from the above result that when element $2i$ is at index $2i$, element $2i+1$ is at index $2i+1$ in the permutation, and when element $2i$ is at index $2i+1$, element $2i+1$ is at index $2i$. Note that the element $1$ must always be the first element in the permutation, and the element $2m$ must always be the last element.
+
+Combining all these facts together, we see that the number of permutations $\sigma$ in $T_n$ that avoid $231$ must be equal to $2^{(2m-2)/2} = 2^{m-1}$, as desired.
+
+\end{proof}
+
+\begin{theorem}
+$t_n(213) = 1, 2, 4, 8, \ldots$
+\end{theorem}
+
+\begin{proof}
+As before, proving the above theorem is equivalent to proving that the $m^{th}$ term of $t_n(213)$ is equal to $2^{m-1}$, or that the number of permutations in $T_{2m}$ that avoid $213$ is equal to $2^{m-1}$.
+
+First, let us define $A_m$ as the set of all permutations in $T_{2m}$ that avoid $213$. It is easy to see that the $m^{th}$ term of $t_n(213)$ is $|A_m|$.
+
+We now claim that for every permutation $\sigma$ in $A_m$, the numbers $2m-1$ and $2m$ must be consecutive in the permutation $\sigma$. We argue that this must be true by contradiction. If this were not the case, then it is easy to see that the permutation $\sigma$ would have a sub-sequence in the relative ordering $213$ -- let $j$ be an element that's between $2m-1$ and $2m$ in $\sigma$. Clearly, $j < 2m -1 < 2m$ (since every element in $\sigma$ other than $2m$ is less than $2m-1$), which means $(2m - 1, j, 2m)$ are in the relative ordering $213$. We conclude that $2m-1$ and $2m$ must be consecutive.
+
+Furthermore, we see that we can construct $A_m$ from $A_{m-1}$ by inserting the consecutive elements $2m-1, 2m$ into a permutation $\sigma'$ in $A_{m-1}$. Furthermore, we claim that we get a valid permutation $\sigma$ in $A_m$ from $\sigma'$ only if we insert the consecutive elements $2m-1, 2m$ right after either $2m-3$ or $2m-2$ in $\sigma'$ (which themselves are consecutive in $\sigma'$ from the above claim).
+
+First, note that $2m-1, 2m$ must be inserted to the right of both $2m-3$ and $2m-2$, because of the way $T_{2m}$ is defined. Furthermore, if we insert $2m-1, 2m$ right after some $a$ in $\sigma$ not equal to $2m-3$ and $2m-2$, then we see that the produced permutation $\sigma$ has a three-element sub-sequence in the relative ordering $213$ -- $(2m-2, a, 2m-1)$. Hence we conclude that $2m-1, 2m$ must be inserted to the right of either $2m-3$ or $2m-2$; since we can do this for every permutation $\sigma'$ in $A_{m-1}$, we conclude that $|A_m| = 2|A_{m-1}|$.
+
+Given that $|A_1|$ is trivially equal to $1$, we conclude that $|A_m|$, or the $m^{th}$ term of $t_n(213)$ is indeed equal to $2^{m-1}$, as desired.
+\end{proof}
+
+Note that even though we proved that the sequences $t_n(231)$ and $t_n(213)$ are both equivalent, the methods used to prove that each sequence is equal to the sequence $1, 2, 4, 8, \ldots$ are vastly different.
 
 
 \section{Appendix A}
