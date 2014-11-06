@@ -96,7 +96,7 @@ $S_3=\{123,132,213,231,312,321\}$.
 \end{example}
 
 \begin{remark}
-The notation used to describe the elements of $S_n$ above is `one-line' notation. Thus far we have ignored the fact that $S_n$ has a group structure. When discussing this group structure it is convenient to use a different notation known as `cycle' notation. This alternative notation will be used in Section\ref{S4} and an introduction to cycle notation can be found in Appendix []. 
+The notation used to describe the elements of $S_n$ above is `one-line' notation. Thus far we have ignored the fact that $S_n$ has a group structure. When discussing this group structure it is convenient to use a different notation known as `cycle' notation. This alternative notation will be used in Section \ref{S4} and an introduction to cycle notation can be found in Appendix []. 
 \end{remark}
 
 \begin{definition}
@@ -113,11 +113,6 @@ A permutation $a_1a_2\cdots a_n$ avoids a permutation $b_1\cdots b_k$ with $n\ge
 
 
 
-%\begin{remark}
-%Let $S_n$ be the set of permutations of $\{1,\cdots, n\}$. There are two conventions commonly used to write elements of $S_n$. The first is $\emph{one-line}$ notation where permutations in $S_n$ are written explicitly, e.g. 43215 is a permutation of $\{1,2,3,4,5\}$ in $S_5$. 
-%The second is \emph{cycle notation}, where a cycle $(a_1\cdots a_n)\in S_n$ with $1\le a_i\le n$ acts on a sequence by sending $a_1\mapsto a_2$, $a_2\mapsto a_3$, $\cdots$, $a_n\mapsto a_1$. For example, the cycle $(14)(23)$ sends $12345$ to $43215$. Unless otherwise stated, we will refer to permutations in one-line notation. 
-%\end{remark}
-
 \begin{definition} 
 A permutation $\sigma\in S_n$ avoids a permutation $\pi\in S_k$ if the sequence of numbers for the one-line notation for $\sigma$ avoids the sequence of numbers for the one-line notation for $\pi$.
 \end{definition}
@@ -127,11 +122,14 @@ For a permutation $\pi\in S_k$, $s_n(\pi)$ represents the number of permutations
 \end{definition}
 
 
+
 \section{Flipping and Reversing}
+
+In this section we will identify operations that preserve avoidance. Explicitly, we say that an operator $\mathcal{O}$ preserves avoidance if a permutation $\sigma$ avoids $\pi$ if and only if $\mathcal{O}(\sigma)$ avoids $\mathcal{O}(\pi)$. If $\mathcal{O}$ is an avoidance preserving operator then for any $\sigma\in S_k$, $s_n(\sigma)=s_n(\mathcal{O}(\sigma))$ for all $n$ and $k$. Two such operators that we will identify are the `flipping' and `reversing' operators.  Before discussing these operators, we will introduce generating trees, a tool which we use to study pattern avoidance and particularly to prove the avoidance preserving nature of these operators. 
 
 \subsection{Generating Trees}
 
-Before continuing we introduce generating trees, a tool we can use to study pattern avoidance. The generating tree for the sequence $s_n(\pi)$ is the infinite tree whose vertices are elements of $S_n$ that avoid $\pi$. To construct the tree, we define the children of an arbitrary node. Let $\omega\in S_k$ be a node of the generating tree of $s_n(\pi)$. Then the children of $\omega$ are elements of $S_{k+1}$ that avoid $\pi$ and that can be obtained by inserting the integer $k+1$ between integers in $\omega$. Figure \ref{fig:M1} is an example of the generating tree of $s_n(312)$. 
+The generating tree for the sequence $s_n(\pi)$ is the infinite tree whose vertices are elements of $S_n$ that avoid $\pi$. The first node in the tree is always 1. To construct the tree, we define the children of an arbitrary node. Let $\omega\in S_k$ be a node of the generating tree of $s_n(\pi)$. Then the children of $\omega$ are elements of $S_{k+1}$ that avoid $\pi$ and that can be obtained by inserting the integer $k+1$ between integers in $\omega$. Figure \ref{fig:M1} is an example of the generating tree of $s_n(312)$. 
 
 \begin{figure}[h!]
 \begin{tikzpicture}[level distance=0.5cm, growth parent anchor={south}, nodes={anchor=north}]
@@ -174,10 +172,43 @@ Before continuing we introduce generating trees, a tool we can use to study patt
 \end{figure}
 
 \subsection{Flipping}
-Another notion that we will use in this paper is the concept of `flipping'. We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with the largest element swapped with the smallest element, the second largest element swapped with the second smallest element, etc. For example, the flip of 1324 is 4231. We will discuss the flip as it becomes useful.
+In this section we introduce the concept of flipping and use generating trees to prove the `Flipping Lemma.'
+\begin{definition}
+We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with the largest element swapped with the smallest element, the second largest element swapped with the second smallest element, etc.  The flipping operator will be denoted by $\mathcal{F}$.  
+\end{definition}
 
+\begin{example}
+$\mathcal{F}(1324)=4231$.
+\end{example}
+
+\begin{lemma}[Flipping Lemma]
+The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$. I.e. $\mathcal{F}$ is an avoidance preserving operator. 
+\end{lemma}
+\begin{proof}
+Notice that we only need to proof one direction of this statement. The opposite direction will follow since applying $\mathcal{F}$ twice returns the original permutation. We show that if ${\sigma}$ avoids $\pi$ then $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$. Let $\pi=b_1\cdots b_k$. We proceed by induction. Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Let $\sigma\in S_n$. If ${\sigma}$ does avoids $\pi$ then $\sigma$ appears in the generating tree of $\pi$.  Then $\sigma=a_1\cdots a_n$ where $a_i\in\{1,\cdots, n\}$. Without loss of generality, let $a_\ell=n$. Then the parent node of $\sigma$ is $\sigma_p=a_1\cdots a_{\ell-1} a_{\ell+1}\cdots a_n$. The induction hypothesis allows us to conclude that $\mathcal{F}(\sigma_p)$ avoids $\mathcal{F}(\pi)$. Now suppose that $\mathcal{F}(\sigma)$ is not a child of $\mathcal{F}(\sigma_p)$. Let $\mathcal{F}(\sigma)=a'_1\cdots a'_{\gamma-1} a_{\gamma}a'_{\gamma+1}\cdots a'_n$ and $\mathcal{F}(\sigma_p)=a'_1\cdots a'_{\gamma-1} a'_{\gamma+1}\cdots a'_n$ with $a'_\gamma=n$. Then $\mathcal{F}(\sigma_p)$ avoids $\pi$ while $\mathcal{F}(\sigma)$ does not. That means that there is a subsequence $\omega$ of $\mathcal{F}(\sigma)$ that has the same relative order as $\mathcal{F}(\pi)$. Let $\mathcal{F}(\pi)= b'_1\cdots b'_k$ with $b'_i=1$ and $b'_j=k$. So $\omega$ contains $a'_\gamma$, and $a'_\gamma$ occupies the same position as $b'_j$. Now if we remove 1 and $n$ from $\mathcal{F}(\sigma)$, then the result does not avoid $\mathcal{F}(\pi)$ with $b'_i=1$ and $b'_j=k$ omitted. Then if we apply a flip, by the induction hypothesis we see that the result of flipping $\mathcal{F}(\sigma)$ with $1$ and $n$ omitted does not avoid $\pi$ with $1$ and $k$ omitted. If we add in 1 and $n$ in the appropriate places to reconstruct $\mathcal{F}(\mathcal{F}(\sigma))=\sigma$ and if we reconstruct $\sigma$ similarly, then $\sigma$ does not avoid $\pi$, a contradiction. 
+\end{proof}
+
+\begin{corollary} 
+For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{F}(\pi))$. 
+\end{corollary}
+\begin{proof}
+This result follows because the flipping lemma gives a bijection between permutations that avoid $\pi$ and permutations that avoid $\mathcal{F}(\pi)$. 
+\end{proof}
 \subsection{Reversing}
 
+\begin{lemma}[Reversing Lemma]
+The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$. I.e. $\mathcal{R}$ is an avoidance preserving operator. 
+\end{lemma}
+\begin{proof}
+Again we use the generating tree. Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Suppose that $\sigma\in S_n$ avoids $\pi$. Then if $\sigma_p$ is the parent of $\sigma$, $\mathcal{R}(\sigma_p)$ avoids $\mathcal{R}(\pi)$. Now if we add $n$ to the permutation $\mathcal{R}(\sigma_p)$ to construct $\mathcal{F}(\sigma)$, we see that $\mathcal{F}(\sigma)$ must avoid $\mathcal{F}(\pi)$, for if it did not, we could reverse one more time and see obtain notice that $\sigma\in S_n$ does not avoid $\pi$, a contradiction. The other direction follows because $\mathcal{R}^2=1$. 
+\end{proof}
+
+\begin{corollary} 
+For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{R}(\pi))$. 
+\end{corollary}
+\begin{proof}
+This result follows because the reversing lemma gives a bijection between permutations that avoid $\pi$ and permutations that avoid $\mathcal{F}(\pi)$. 
+\end{proof}
 \section{Terms in the sequence $s_n(312)$}
 \label{S3}
 
@@ -510,9 +541,11 @@ $t_n(312) = t_n(321)$
 \begin{proof}
 First observe from Lemma \ref{tn_avoidance} that if $x, y, z$ is a subsequence of three elements of a permutation in $T_n$ in the relative order $312$ or $321$, then both $y$ and $z$ must be even.
 
-Before proving that there exists a bijective mapping between all permutations in $T_n$ that avoid $312$ (call this set $A$) and all permutations in $T_n$ that avoid $321$ (call this set $B$), we establish a chain of transformation moves that can be used to transform an element $a \in A$ to an element $b \in B$.
+We now construct a bijective mapping between all permutations in $T_n$ that avoid $312$ and all permutations in $T_n$ that avoid $321$.
 
 Consider a permutation $\pi$ in $T_n$ that avoids $312$. For each permutation $\pi \in T_n$ that avoids $312$, we want to show that there exists a sequence of transformation moves that transforms $\pi$ to a unique permutation $\pi'$ that avoids $321$.
+
+\textbf{May want to skip the transformation stuff, and directly talk about the bijection being established.}
 
 If the original permutation $\pi$ avoids $321$ already, then clearly $\pi' = \pi$ avoids $321$.
 
@@ -522,16 +555,20 @@ Where the last permutation in the chain $\pi_k$ does not have a single three-ele
 
 This process is completely invertible, since we can take a permutation $\pi'$ in $T_n$ that avoids $321$, and traverse through the above chain in reverse order to obtain a permutation that avoids $312$.
 
-We now prove that there exists a bijection between the sets $A$ and $B$. 
-
-Let $a$ be an arbitrary permutation in $A$. Clearly, by the definition of $A$, $a$ must avoid $312$. Now, we claim that for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in decreasing order; if this were not the case, then we would have a subsequence in the relative ordering $312$, which would be a contradiction. It is easy to see that we can make a corresponding claim about permutation $b$, that is for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in increasing order.
-
-The above two claims shows there's actually an easy way to transform an arbitrary permutation $a \in A$ to a $b \in B$, and similarly, to transform an arbitrary permutation $b \in B$ to a $a \in A$ -- to obtain a permutation in $B$ from a permutation $a \in A$, for every element $i$ in the permutation $a$, all even elements in $a$ to the right of $i$ less than $i$ should be reversed (that is reordered to in increasing order); similarly to obtain a permutation in $A$ from a permutation $b \in B$, for every element $i$ in the permutation $b$, all even elements in $b$ to the right of $i$, less than $i$ should be reversed (that is reordered to in decreasing order). Since the mapping from $A$ to $B$ is clearly reversible, and hence invertible, we conclude that the mapping we just established between $A$ and $B$ is bijective.
+What remains to be proven is that the order of swapping operations in the chain of transformations does not matter -- that is, any valid transformation chain starting with some permutation $\pi \in T_n$ that avoids $312$, will always produce the same permutation $\pi' \in T_n$ that avoids $321$. Note that since we're only swapping even elements, the odd elements are in exactly the same position in both $\pi$ and $\pi'$. In addition, for every element $i \in \pi$, all even numbers in $\pi$ to the right of $i$ and less than $i$ must be in decreasing order; in $\pi'$, for every element $i \in \pi'$, all even numbers in $\pi'$ to the right of $i$ and less than $i$ must be in increasing order.
 
 Since there exists a bijective mapping between permutations in $T_n$ that avoid $312$ and permutations in $T_n$ that avoid $321$, we can conclude that $t_n(312) = t_n(321)$.
 
 \end{proof}
 
 Unfortunately, it turns out that proving the equivalence between $231$ and $213$ is not as straightforward as above, partially due to the fact that the element corresponding to $2$ and $3$ in the above sub-sequences can be either even or odd, which means we now also have to account for the positions of odd elements too. Proving this equivalence remains future work.
+
+
+\section{Appendix A}
+
+Let $S_n$ be the set of permutations of $\{1,\cdots, n\}$. There are two conventions commonly used to write elements of $S_n$. The first is $\emph{one-line}$ notation where permutations in $S_n$ are written explicitly, e.g. 43215 is a permutation of $\{1,2,3,4,5\}$ in $S_5$. 
+
+The second is \emph{cycle notation}, where a cycle $(a_1\cdots a_n)\in S_n$ with $1\le a_i\le n$ acts on a sequence by sending $a_1\mapsto a_2$, $a_2\mapsto a_3$, $\cdots$, $a_n\mapsto a_1$. For example, the cycle $(14)(23)$ sends $12345$ to $43215$. 
+
 
 \end{document}
