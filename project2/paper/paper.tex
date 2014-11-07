@@ -172,49 +172,64 @@ For a permutation $\pi\in S_k$, $s_n(\pi)$ represents the number of permutations
 
 In this section we will identify operations that preserve avoidance. Explicitly, we say that an operator $\mathcal{O}$ preserves avoidance if a permutation $\sigma$ avoids $\pi$ if and only if $\mathcal{O}(\sigma)$ avoids $\mathcal{O}(\pi)$. If $\mathcal{O}$ is an avoidance preserving operator then for any $\sigma\in S_k$, $s_n(\sigma)=s_n(\mathcal{O}(\sigma))$ for all $n$ and $k$. Two such operators that we will identify are the `flipping' and `reversing' operators.  Before discussing these operators, we will introduce generating trees, a tool which we use to study pattern avoidance and particularly to prove the avoidance preserving nature of these operators. 
 
-\subsection{Generating Trees}
+%\subsection{Generating Trees}
+%
+%The generating tree for the sequence $s_n(\pi)$ is the infinite tree whose vertices are elements of $S_n$ that avoid $\pi$. The first node in the tree is always 1. To construct the tree, we define the children of an arbitrary node. Let $\omega\in S_k$ be a node of the generating tree of $s_n(\pi)$. Then the children of $\omega$ are elements of $S_{k+1}$ that avoid $\pi$ and that can be obtained by inserting the integer $k+1$ between integers in $\omega$. Figure \ref{fig:M1} is an example of the generating tree of $s_n(312)$. 
+%
+%\begin{figure}[h!]
+%\begin{tikzpicture}[level distance=0.5cm, growth parent anchor={south}, nodes={anchor=north}]
+%\tikzstyle{hollow node}=[circle,draw,inner sep=0.1mm, text width=1.36cm,align=center]
+%\tikzstyle{level 1}=[sibling distance=6cm] 
+%\tikzstyle{level 2}=[sibling distance=3cm] 
+%\tikzstyle{level 3}=[sibling distance=1.8cm]
+%\tikzstyle{level 4}=[sibling distance=0.9cm]
+%\node [hollow node]{1}
+%	child {
+%		node[hollow node] {12}
+%		child{
+%			node[hollow node]{123}
+%			child{node[hollow node]{1234}}
+%			child{node[hollow node]{1243}}
+%		}
+%		child{
+%			node[hollow node]{132}
+%			child{node{\vdots}}
+%		}
+%	}
+%    	child {
+%		node[hollow node] {21}
+%    		child {
+%			node[hollow node] {213}
+%			child{node{\vdots}}
+%		}
+%      		child {
+%			node[hollow node] {231}
+%			child{node{\vdots}}
+%		}
+%		child {
+%			node[hollow node] {321}
+%			child{node{\vdots}}
+%		}
+%    	};
+%
+%\end{tikzpicture}
+%\caption{Generating tree of the sequence $s_n(312)$} \label{fig:M1}
+%\end{figure}
+\subsection{Reversing}
 
-The generating tree for the sequence $s_n(\pi)$ is the infinite tree whose vertices are elements of $S_n$ that avoid $\pi$. The first node in the tree is always 1. To construct the tree, we define the children of an arbitrary node. Let $\omega\in S_k$ be a node of the generating tree of $s_n(\pi)$. Then the children of $\omega$ are elements of $S_{k+1}$ that avoid $\pi$ and that can be obtained by inserting the integer $k+1$ between integers in $\omega$. Figure \ref{fig:M1} is an example of the generating tree of $s_n(312)$. 
+\begin{lemma}[Reversing Lemma]
+The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$. I.e. $\mathcal{R}$ is an avoidance preserving operator. 
+\end{lemma}
+\begin{proof}
+Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Suppose that $\sigma\in S_n$ avoids $\pi$. Then if $\sigma_p$ is the parent of $\sigma$, $\mathcal{R}(\sigma_p)$ avoids $\mathcal{R}(\pi)$. Now if we add $n$ to the permutation $\mathcal{R}(\sigma_p)$ to construct $\mathcal{F}(\sigma)$, we see that $\mathcal{F}(\sigma)$ must avoid $\mathcal{F}(\pi)$, for if it did not, we could reverse one more time and obtain the result that $\sigma\in S_n$ does not avoid $\pi$, a contradiction. The other direction follows because $\mathcal{R}^2=1$. 
+\end{proof}
 
-\begin{figure}[h!]
-\begin{tikzpicture}[level distance=0.5cm, growth parent anchor={south}, nodes={anchor=north}]
-\tikzstyle{hollow node}=[circle,draw,inner sep=0.1mm, text width=1.36cm,align=center]
-\tikzstyle{level 1}=[sibling distance=6cm] 
-\tikzstyle{level 2}=[sibling distance=3cm] 
-\tikzstyle{level 3}=[sibling distance=1.8cm]
-\tikzstyle{level 4}=[sibling distance=0.9cm]
-\node [hollow node]{1}
-	child {
-		node[hollow node] {12}
-		child{
-			node[hollow node]{123}
-			child{node[hollow node]{1234}}
-			child{node[hollow node]{1243}}
-		}
-		child{
-			node[hollow node]{132}
-			child{node{\vdots}}
-		}
-	}
-    	child {
-		node[hollow node] {21}
-    		child {
-			node[hollow node] {213}
-			child{node{\vdots}}
-		}
-      		child {
-			node[hollow node] {231}
-			child{node{\vdots}}
-		}
-		child {
-			node[hollow node] {321}
-			child{node{\vdots}}
-		}
-    	};
-
-\end{tikzpicture}
-\caption{Generating tree of the sequence $s_n(312)$} \label{fig:M1}
-\end{figure}
+\begin{corollary} 
+For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{R}(\pi))$. 
+\end{corollary}
+\begin{proof}
+This result follows because the reversing lemma gives a bijection between permutations that avoid $\pi$ and permutations that avoid $\mathcal{F}(\pi)$. 
+\end{proof}
 
 \subsection{Flipping}
 In this section we introduce the concept of flipping and use generating trees to prove the `Flipping Lemma.'
@@ -226,15 +241,18 @@ We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same el
 $\mathcal{F}(1324)=4231$.
 \end{example}
 
+
 \begin{lemma}[Flipping Lemma]
 The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$. I.e. $\mathcal{F}$ is an avoidance preserving operator. 
 \end{lemma}
 \begin{proof}
-Notice that we only need to prove one direction of this statement. The opposite direction will follow since applying $\mathcal{F}$ twice returns the original permutation. We show that if ${\sigma}$ avoids $\pi$ then $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$. Let $\pi=b_1\cdots b_k$. We proceed by induction.
+Notice that we only need to prove one direction of this statement. The opposite direction will follow since applying $\mathcal{F}$ twice returns the original permutation. We show that if ${\sigma}\in S_n$ does not avoid $\pi$ then $\mathcal{F}(\sigma)$ does not avoid $\mathcal{F}(\pi)$. Well, if ${\sigma}$ does not avoid $\pi$ then there is some subsequence of $\sigma$ that obeys the same set of inequalities as $\pi$. Now since $\sigma\in S_n$, $\mathcal{F}(\sigma)$ is the same as the sequence obtained by subtracting every entry of $\sigma$ from $n+1$. If we take the collection of inequalities that that the 
 
 
+Let $\pi=b_1\cdots b_k$. We proceed by induction. Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. If ${\sigma}$ does avoids $\pi$ then $\sigma$ appears in the generating tree of $\pi$. Let $\sigma_P$ be the parent of $\sigma$ in the generating tree of $\pi$. Then by the induction hypothesis, $\mathcal{F}(\sigma_P)$ appears in the generating tree of $\mathcal{F}(\pi)$. Now suppose that $\mathcal{F}(\sigma)$ is not a child of $\mathcal{F}(\sigma_P)$  in the generating tree of $\mathcal{F}(\pi)$
 
-Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Let $\sigma\in S_n$. If ${\sigma}$ does avoids $\pi$ then $\sigma$ appears in the generating tree of $\pi$.  Then $\sigma=a_1\cdots a_n$ where $a_i\in\{1,\cdots, n\}$. Without loss of generality, let $a_\ell=n$. Then the parent node of $\sigma$ is $\sigma_p=a_1\cdots a_{\ell-1} a_{\ell+1}\cdots a_n$. The induction hypothesis allows us to conclude that $\mathcal{F}(\sigma_p)$ avoids $\mathcal{F}(\pi)$. Now suppose that $\mathcal{F}(\sigma)$ is not a child of $\mathcal{F}(\sigma_p)$. Let $\mathcal{F}(\sigma)=a'_1\cdots a'_{\gamma-1} a_{\gamma}a'_{\gamma+1}\cdots a'_n$ and $\mathcal{F}(\sigma_p)=a'_1\cdots a'_{\gamma-1} a'_{\gamma+1}\cdots a'_n$ with $a'_\gamma=n$. Then $\mathcal{F}(\sigma_p)$ avoids $\pi$ while $\mathcal{F}(\sigma)$ does not. That means that there is a subsequence $\omega$ of $\mathcal{F}(\sigma)$ that has the same relative order as $\mathcal{F}(\pi)$. Let $\mathcal{F}(\pi)= b'_1\cdots b'_k$ with $b'_i=1$ and $b'_j=k$. So $\omega$ contains $a'_\gamma$, and $a'_\gamma$ occupies the same position as $b'_j$. Now if we remove 1 and $n$ from $\mathcal{F}(\sigma)$, then the result does not avoid $\mathcal{F}(\pi)$ with $b'_i=1$ and $b'_j=k$ omitted. Then if we apply a flip, by the induction hypothesis we see that the result of flipping $\mathcal{F}(\sigma)$ with $1$ and $n$ omitted does not avoid $\pi$ with $1$ and $k$ omitted. If we add in 1 and $n$ in the appropriate places to reconstruct $\mathcal{F}(\mathcal{F}(\sigma))=\sigma$ and if we reconstruct $\sigma$ similarly, then $\sigma$ does not avoid $\pi$, a contradiction. 
+
+%Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Let $\sigma\in S_n$. If ${\sigma}$ does avoids $\pi$ then $\sigma$ appears in the generating tree of $\pi$.  Then $\sigma=a_1\cdots a_n$ where $a_i\in\{1,\cdots, n\}$. Without loss of generality, let $a_\ell=n$. Then the parent node of $\sigma$ is $\sigma_p=a_1\cdots a_{\ell-1} a_{\ell+1}\cdots a_n$. The induction hypothesis allows us to conclude that $\mathcal{F}(\sigma_p)$ avoids $\mathcal{F}(\pi)$. Now suppose that $\mathcal{F}(\sigma)$ is not a child of $\mathcal{F}(\sigma_p)$. Let $\mathcal{F}(\sigma)=a'_1\cdots a'_{\gamma-1} a_{\gamma}a'_{\gamma+1}\cdots a'_n$ and $\mathcal{F}(\sigma_p)=a'_1\cdots a'_{\gamma-1} a'_{\gamma+1}\cdots a'_n$ with $a'_\gamma=n$. Then $\mathcal{F}(\sigma_p)$ avoids $\pi$ while $\mathcal{F}(\sigma)$ does not. That means that there is a subsequence $\omega$ of $\mathcal{F}(\sigma)$ that has the same relative order as $\mathcal{F}(\pi)$. Let $\mathcal{F}(\pi)= b'_1\cdots b'_k$ with $b'_i=1$ and $b'_j=k$. So $\omega$ contains $a'_\gamma$, and $a'_\gamma$ occupies the same position as $b'_j$. Now if we remove 1 and $n$ from $\mathcal{F}(\sigma)$, then the result does not avoid $\mathcal{F}(\pi)$ with $b'_i=1$ and $b'_j=k$ omitted. Then if we apply a flip, by the induction hypothesis we see that the result of flipping $\mathcal{F}(\sigma)$ with $1$ and $n$ omitted does not avoid $\pi$ with $1$ and $k$ omitted. If we add in 1 and $n$ in the appropriate places to reconstruct $\mathcal{F}(\mathcal{F}(\sigma))=\sigma$ and if we reconstruct $\sigma$ similarly, then $\sigma$ does not avoid $\pi$, a contradiction. 
 \end{proof}
 
 \begin{corollary} 
@@ -242,21 +260,6 @@ For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{F}(\pi))$.
 \end{corollary}
 \begin{proof}
 This result follows because the flipping lemma gives a bijection between permutations that avoid $\pi$ and permutations that avoid $\mathcal{F}(\pi)$. 
-\end{proof}
-\subsection{Reversing}
-
-\begin{lemma}[Reversing Lemma]
-The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$. I.e. $\mathcal{R}$ is an avoidance preserving operator. 
-\end{lemma}
-\begin{proof}
-Again we use the generating tree. Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Suppose that $\sigma\in S_n$ avoids $\pi$. Then if $\sigma_p$ is the parent of $\sigma$, $\mathcal{R}(\sigma_p)$ avoids $\mathcal{R}(\pi)$. Now if we add $n$ to the permutation $\mathcal{R}(\sigma_p)$ to construct $\mathcal{F}(\sigma)$, we see that $\mathcal{F}(\sigma)$ must avoid $\mathcal{F}(\pi)$, for if it did not, we could reverse one more time and obtain the result that $\sigma\in S_n$ does not avoid $\pi$, a contradiction. The other direction follows because $\mathcal{R}^2=1$. 
-\end{proof}
-
-\begin{corollary} 
-For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{R}(\pi))$. 
-\end{corollary}
-\begin{proof}
-This result follows because the reversing lemma gives a bijection between permutations that avoid $\pi$ and permutations that avoid $\mathcal{F}(\pi)$. 
 \end{proof}
 \section{Terms in the sequence $s_n(312)$}
 \label{312}
@@ -662,7 +665,9 @@ First, note that $2m-1, 2m$ must be inserted to the right of both $2m-3$ and $2m
 Given that $|A_1|$ is trivially equal to $1$, we conclude that $|A_m|$, or the $m^{th}$ term of $t_n(213)$ is indeed equal to $2^{m-1}$, as desired.
 \end{proof}
 
-Note that even though we proved that the sequences $t_n(231)$ and $t_n(213)$ are both equivalent, the methods used to prove that each sequence is equal to the sequence $1, 2, 4, 8, \ldots$ are vastly different -- this is an interesting topic of research that we would like to pursue as future work.\todo{is this necessary? it seems frantic. Maybe if we're going to do this, we should also go back to the point about the $s_n$ proofs being different and say a little more}
+Note that even though we proved that the sequences $t_n(231)$ and $t_n(213)$ are both equivalent, the methods used to prove that each sequence is equal to the sequence $(2^n)$ are vastly different -- this is an interesting topic of research that we would like to pursue as future work.
+
+This observation parallels the fact that two different methods of proof were needed for $(s_n(312))$ and $(s_n(123))$, even though both sequences were identical to the Catalan numbers. This begs the question, is there are proof technique that works across the board for these types of permutation avoidance problems? 
 
 
 
