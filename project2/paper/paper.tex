@@ -35,7 +35,7 @@
 
 \newtheoremstyle{theorem}{1em}{1em}{\slshape}{0pt}{\bfseries}{.}{ }{}
 \theoremstyle{theorem}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -46,12 +46,12 @@
 \newtheorem*{claim*}{Claim}
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}[theorem]{Remark}
 \newtheorem*{remark*}{Remark}
 \newtheorem{algorithm}{Algorithm}
 \newtheorem*{question*}{Question}
 \newtheorem{question}{Question}
-\newtheorem{example}{Example}
+\newtheorem{example}[theorem]{Example}
 
 \providecommand{\setN}{\mathbb{N}}
 \providecommand{\setZ}{\mathbb{Z}}
