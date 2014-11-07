@@ -546,7 +546,7 @@ Next let us insert $(2m-2)$ into the sequence. $(2m-2)$ can be inserted into $3$
 We want to next insert $(2m-4)$ into this incompletely formed sequence; we see that there are $5$ possible locations. Continuing this for all even numbers up to $2$, we observe that the total number of ways such a sequence can  be created is equal to $1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2m-1)$, as desired.
 \end{proof}
 
-Studying avoidance of permutations in $T_n$ seems an interesting exercise. In this section, we consider the sequence of numbers $t_n(\pi)$, defined as 
+We will now study avoidance of permutations in $T_n$. In this section, we consider the sequence of numbers $t_n(\pi)$, defined as 
 \[t_n(\pi)=\#\{\sigma\in T_n|\sigma \text{ avoids } \pi\},\]
 with $\pi\in S_3$.
 
@@ -630,7 +630,7 @@ We now prove that there exists a bijection between the sets $A$ and $B$.
 
 Let $a$ be an arbitrary permutation in $A$. Clearly, by the definition of $A$, $a$ must avoid $312$. Now, we claim that for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in decreasing order; if this were not the case, then we would have a subsequence in the relative ordering $312$, which would be a contradiction. It is easy to see that we can make a corresponding claim about permutation $b$, that is for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in increasing order.
 
-The above two claims shows there's actually an easy way to transform an arbitrary permutation $a \in A$ to a $b \in B$, and similarly, to transform an arbitrary permutation $b \in B$ to a $a \in A$ -- to obtain a permutation in $B$ from a permutation $a \in A$, for every element $i$ in the permutation $a$, all even elements in $a$ to the right of $i$ less than $i$ should be reversed (that is reordered to in increasing order); similarly to obtain a permutation in $A$ from a permutation $b \in B$, for every element $i$ in the permutation $b$, all even elements in $b$ to the right of $i$, less than $i$ should be reversed (that is reordered to in decreasing order). \todo{should have some justification here that reversing reordering these elements doesn't 'step on each other'... that is, you can always do it for some $i_1$ and then some $i_2$ afterward}
+\todo{this is a really long sentence}The above two claims show that there is actually an easy way to transform an arbitrary permutation $a \in A$ to a $b \in B$, and similarly, to transform an arbitrary permutation $b \in B$ to a $a \in A$ -- to obtain a permutation in $B$ from a permutation $a \in A$, for every element $i$ in the permutation $a$, all even elements in $a$ to the right of $i$ less than $i$ should be reversed (that is reordered to in increasing order); similarly to obtain a permutation in $A$ from a permutation $b \in B$, for every element $i$ in the permutation $b$, all even elements in $b$ to the right of $i$, less than $i$ should be reversed (that is reordered to in decreasing order). \todo{should have some justification here that reversing reordering these elements doesn't 'step on each other'... that is, you can always do it for some $i_1$ and then some $i_2$ afterward}
 Since the mapping from $A$ to $B$ is clearly reversible, and hence invertible, we conclude that the mapping we just established between $A$ and $B$ is bijective.
 
 Since there exists a bijective mapping between permutations in $T_n$ that avoid $312$ and permutations in $T_n$ that avoid $321$, we can conclude that $t_n(312) = t_n(321)$.
@@ -661,7 +661,7 @@ $t_n(213) = 1, 2, 4, 8, \ldots$
 \end{theorem}
 
 \begin{proof}
-As before, proving the above theorem is equivalent to proving that the $m^{th}$ term of $t_n(213)$ is equal to $2^{m-1}$, or that the number of permutations in $T_{2m}$ that avoid $213$ is equal to $2^{m-1}$.
+As before, proving the theorem is equivalent to proving that the $m^{th}$ term of $t_n(213)$ is equal to $2^{m-1}$, or that the number of permutations in $T_{2m}$ that avoid $213$ is equal to $2^{m-1}$.
 
 First, let us define $A_m$ as the set of all permutations in $T_{2m}$ that avoid $213$. It is easy to see that the $m^{th}$ term of $t_n(213)$ is $|A_m|$.
 
@@ -674,7 +674,7 @@ First, note that $2m-1, 2m$ must be inserted to the right of both $2m-3$ and $2m
 Given that $|A_1|$ is trivially equal to $1$, we conclude that $|A_m|$, or the $m^{th}$ term of $t_n(213)$ is indeed equal to $2^{m-1}$, as desired.
 \end{proof}
 
-Note that even though we proved that the sequences $t_n(231)$ and $t_n(213)$ are both equivalent, the methods used to prove that each sequence is equal to the sequence $1, 2, 4, 8, \ldots$ are vastly different -- this is an interesting topic of research that we would like to pursue as future work.
+Note that even though we proved that the sequences $t_n(231)$ and $t_n(213)$ are both equivalent, the methods used to prove that each sequence is equal to the sequence $1, 2, 4, 8, \ldots$ are vastly different -- this is an interesting topic of research that we would like to pursue as future work.\todo{is this necessary? it seems frantic. Maybe if we're going to do this, we should also go back to the point about the $s_n$ proofs being different and say a little more}
 
 
 
