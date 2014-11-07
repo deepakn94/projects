@@ -620,48 +620,39 @@ Then the bijection between $A$ and $B$ is as follows: given a permutation $a\in 
 Indeed, it is easy to see that this process is invertible: for each element $j$, beginning with the leftmost element and moving right, we reverse sort the elements less than $j$ and to the right of $j$. Since the process is invertible, this map in fact defines a bijection, as desired.
 \end{proof}
 
-Unfortunately, it turns out that proving the equivalence between $231$ and $213$ is not as straightforward as above, however we do prove that both the sequences $(t_n(231))$ and $(t_n(213)$ are equal to the sequence $1, 2, 4, 8, \ldots$, and hence equivalent, below.
+Unfortunately, it turns out that proving the equivalence between $231$ and $213$ is not as straightforward as above. In fact, however, we can prove a stronger result: both $t_n(231)$ and $t_n(213)$ are equal to $2^{n-1}$, and hence the sequences we obtain are equivalent.
 
 \begin{theorem}
-$t_n(231) = 1, 2, 4, 8, \ldots$
+$t_n(231)$, the number of permutations in $T_n$ avoiding the pattern 231, is equal to $2^{n-1}$.
 \end{theorem}
 
 \begin{proof}
-Proving the above theorem is equivalent to proving that the $m^{th}$ term of $t_n(231)$ is equal to $2^{m-1}$, or that the number of permutations in $T_{2m}$ that avoid $231$ is equal to $2^{m-1}$.
+Let $n=2m$. Consider a permutation $\sigma$ in $T_{n}$ that avoids $231$, and consider an arbitrary even element $2i$ in $\sigma$. For this element $2i$, define $A$ to be the set of numbers greater than $2i$ and to its left in the permutation $\sigma$. First off, we claim that the set $A$ cannot contain any even numbers. To see why, suppose for the sake of contradiction that there existed such an even number $a$. Then $a-1$ would be to the left of $a$, because $\sigma\in T_{2m}$, and $a-1>2i$, so that $a-1, a, 2i$ is a subsequence with pattern 231: a contradiction.
 
-Consider a permutation $\sigma$ in $T_{2m}$ that avoids $231$. Consider an arbitrary even element $2i$ in $\sigma$. For this element $2i$, define $A$ to be the set of numbers greater than $2i$ and to its left in the permutation $\sigma$. First off, note that the set $A$ cannot contain any even numbers, because if it did, then the permutation $\sigma$ would contain a three-element sub-sequence in the relative ordering $231$ -- if $a$ is an even number in the set $A$, then $(a-1, a, 2i)$ would be a three-element sub-sequence of $\sigma$ in the relative ordering $231$ (Note that $a-1$ must be to the left of $a$ in the permutation $\sigma$ because of the way the set $T_{2m}$ was constructed)
+Furthermore, the set $A$ cannot contain any odd elements greater than $2i+1$. To see why, again suppose such an element $2j+1$ existed. Then $2i+1$ would appear to the left of $2j+1$, since our permutation $\sigma\in T_{2m}$, and so $2i+1, 2j+1, 2i$ would be a subsequence with pattern 231: again a contradiction.
 
-Furthermore, the set $A$ cannot contain any odd elements greater than $2i+1$, because if it did, then again the permutation $\sigma$ would contain a three-element subsequence in the relative ordering $231$ -- if $2j+1 > 2i+1$ is an odd number in $A$, then $(2i+1, 2j+1, 2i)$ is a three-element sub-sequence of $\sigma$ in the relative ordering $231$ Therefore, we conclude that the set $A$ either only contains the element $2i+1$, or is empty.
+It follows from these two results that the only elements to the left of $2i$ must be either less than $2i$ or $2i+1$. We claim that each even $2i$ can appear only in the $2i$ or $2i+1$st index, and that $2i+1$ appears in the other index. To prove this, we induct on $i$. First, we address the base case: $i=1$. Since the first entry must be 1, and the only elements which can appear to the left of 2 are 1 and 3, 2 must either be in the second or third entry; furthermore, it is clear that 3 must appear in the other entry. The base case therefore follows.
 
-From this we can conclude that the element $2i$ can be inserted into exactly two valid positions in a permutation of length $2m$ -- at index $2i$ and at index $2i+1$. It follows from the above result that when element $2i$ is at index $2i$, element $2i+1$ is at index $2i+1$ in the permutation, and when element $2i$ is at index $2i+1$, element $2i+1$ is at index $2i$. Note that the element $1$ must always be the first element in the permutation, and the element $2m$ must always be the last element.
+Now suppose the claim holds up to some general $i-1$. We want to show that it holds for $i$ as well. By the argument at the beginning of the proof, there are only $2i$ elements which can appear to the left of $2i$, so that the largest index in which $2i$ can appear is $2i+1$. By the induction hypothesis, however, the earliest index in which $2i$ can appear is $2i$: all the earlier indices have already been occupied. As in the base case, it is easy to see that if $2i$ is in the $2i$th position, then $2i+1$ must be in the $2i+1$st position, and if $2i$ is in the $2i+1$st position, then $2i+1$ must be in the $2i$th index. The claim follows by induction
 
-Combining all these facts together, we see that the number of permutations $\sigma$ in $T_{2m}$ that avoid $231$ must be equal to $2 \cdot 2 \cdot \ldots \cdot 2 = 2^{m-1}$, since every even element can be inserted in exactly two positions in $\sigma$.
+Combining all these facts together, we see that the number of permutations $\sigma$ in $T_{2m}$ that avoid $231$ must be equal to $ 2^{m-1}$, since every even element can be inserted in exactly two positions in $\sigma$.
 
 \end{proof}
 
 \begin{theorem}
-$t_n(213) = 1, 2, 4, 8, \ldots$
+$t_n(213)$, the number of permutations in $T_n$ avoiding the pattern 213, is equal to $2^{n-1}$.
 \end{theorem}
 
 \begin{proof}
-As before, proving the theorem is equivalent to proving that the $m^{th}$ term of $t_n(213)$ is equal to $2^{m-1}$, or that the number of permutations in $T_{2m}$ that avoid $213$ is equal to $2^{m-1}$.
+Let $n=2m$. We first define $A_m$ as the set of all permutations in $T_{2m}$ that avoid $213$. It is easy to see that $t_m(213)$ is simply the size of $A_m$.
 
-First, let us define $A_m$ as the set of all permutations in $T_{2m}$ that avoid $213$. It is easy to see that the $m^{th}$ term of $t_n(213)$ is $|A_m|$.
+We claim that for every permutation $\sigma$ in $A_m$, the numbers $2m-1$ and $2m$ must be consecutive in the permutation $\sigma$. We prove the claim by contradiction: suppose otherwise, i.e. that $2m-1$ and $2m$ are not consecutive in our arbitrary choice of $\sigma$. Then there must exist some $j$ between them, and $2m-1, j, 2m$ is clearly a subsequence following the pattern 213, a contradiction. Hence $2m-1$ and $2m$ must be consecutive.
 
-We now claim that for every permutation $\sigma$ in $A_m$, the numbers $2m-1$ and $2m$ must be consecutive in the permutation $\sigma$. We argue that this must be true by contradiction. If this were not the case, then it is easy to see that the permutation $\sigma$ would have a sub-sequence in the relative ordering $213$ -- let $j$ be an element that's between $2m-1$ and $2m$ in $\sigma$. Clearly, $j < 2m -1 < 2m$ (since every element in $\sigma$ other than $2m$ is less than $2m-1$), which means $(2m - 1, j, 2m)$ are in the relative ordering $213$. We conclude that $2m-1$ and $2m$ must be consecutive in $\sigma$.
+We prove the theorem by induction on $m$. That is, we prove that the size of $A_m$ is precisely $2^{m-1}$. First, we easily see that $A_1$ has only one element, so that the base case holds.
 
-Furthermore, we see that we can construct $A_m$ from $A_{m-1}$ by inserting the consecutive elements $2m-1, 2m$ into a permutation $\sigma'$ in $A_{m-1}$. We claim that we get a valid permutation $\sigma$ in $A_m$ from $\sigma'$ only if we insert the consecutive elements $2m-1, 2m$ right after either $2m-3$ or $2m-2$ in $\sigma'$ (which themselves are consecutive in $\sigma'$ from the above claim).
+Suppose the induction hypothesis holds up to some general $m-1$, i.e. that $A_{m-1}$ has size $2^{m-2}$. We see that we can construct $A_m$ from $A_{m-1}$ by inserting the consecutive elements $2m-1, 2m$ into a permutation $\sigma'$ in $A_{m-1}$. We claim that we get a valid permutation $\sigma$ in $A_m$ from $\sigma'$ only if we insert the consecutive elements $2m-1, 2m$ right after either $2m-3$ or $2m-2$ in $\sigma'$ (which themselves are consecutive in $\sigma'$ from the above claim).
 
-First, note that $2m-1, 2m$ must be inserted to the right of both $2m-3$ and $2m-2$, because of the way $T_{2m}$ is defined. Furthermore, if we insert $2m-1, 2m$ right after some $a$ in $\sigma$ not equal to $2m-3$ or $2m-2$, then we see that the produced permutation $\sigma$ has a three-element sub-sequence in the relative ordering $213$ -- $(2m-2, a, 2m-1)$. Hence we conclude that $2m-1, 2m$ must be inserted to the right of either $2m-3$ or $2m-2$; since we can do this for every permutation $\sigma'$ in $A_{m-1}$, we conclude that $|A_m| = 2|A_{m-1}|$.
-
-Given that $|A_1|$ is trivially equal to $1$, we conclude that $|A_m|$, or the $m^{th}$ term of $t_n(213)$ is indeed equal to $2^{m-1}$, as desired.
+First, note that $2m-1, 2m$ must be inserted to the right of  $2m-3$, because of the way $T_{2m}$ is defined. Furthermore, if we insert $2m-1, 2m$ right after some $a$ in $\sigma$ not equal to $2m-3$ or $2m-2$, then we see that the produced permutation $\sigma$ has a three-element sub-sequence in the relative ordering $213$ -- $(2m-2, a, 2m-1)$. Hence we conclude that $2m-1, 2m$ must be inserted to the right of either $2m-3$ or $2m-2$; since we can do this for every permutation $\sigma'$ in $A_{m-1}$, we conclude that $|A_m| = 2|A_{m-1}|$. By the induction hypothesis, we have that $|A_{m-1}|=2^{m-2}$: so $A_m$ has size $2^{m-1}$, as desired, and the result follows by induction.
 \end{proof}
-
-Note that even though we proved that the sequences $t_n(231)$ and $t_n(213)$ are both equivalent, the methods used to prove that each sequence is equal to the sequence $(2^n)$ are vastly different -- this is an interesting topic of research that we would like to pursue as future work.
-
-This observation parallels the fact that two different methods of proof were needed for $(s_n(312))$ and $(s_n(123))$, even though both sequences were identical to the Catalan numbers. This begs the question, is there are proof technique that works across the board for these types of permutation avoidance problems? 
-
-
-
 
 \end{document}
