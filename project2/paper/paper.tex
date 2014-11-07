@@ -615,9 +615,7 @@ There exists a bijection between the set of permutations in $T_n$ avoiding 312 a
 \begin{proof}
 Let $A$ be the set of permutations in $T_n$ avoiding 312, and $B$ the set of permutations in $T_n$ avoiding 321. We will prove the theorem by constructing a bijection between $A$ and $B$.
 
-Note by Lemma \ref{tn_avoidance} that if $x, y, z$ is a subsequence of three elements of a permutation in $T_n$ in the relative order $312$ or $321$, then both $y$ and $z$ must be even.
-
-We now prove that there exists a bijection between the sets $A$ and $B$. 
+Let $a$ be an arbitrary permutation in $A$, and $b$ an arbitrary permutation in $B$. By the definition of $A$, $a$ avoids 312. Pick any positive integer $i\leq n$. We note that all even integers to the right of $i$ and less than $i$ in $a$ must be in decreasing order; otherwise, we would obtain a subsequence with pattern 312. Similarly, all even integers to the right of $i$ and less than $i$ in $b$ must be in increasing order.
 
 Let $a$ be an arbitrary permutation in $A$. Clearly, by the definition of $A$, $a$ must avoid $312$. Now, we claim that for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in decreasing order; if this were not the case, then we would have a subsequence in the relative ordering $312$ (the element $i$ followed  by the two increasing even numbers less than $i$), which would be a contradiction. It is easy to see that we can make a corresponding claim about permutation $b$, that is for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in increasing order.
 
