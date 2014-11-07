@@ -500,13 +500,13 @@ So we conjecture that sequence $A$ is characterized by elements of $S_4$ that ar
 
 \section{Avoidance of permutations of $T_n$}
 \label{Tn}
-We now impose further restrictions on the set of permutations $S_n$. This new set of permutations, $T_n$ is defined follows.
+We now impose further restrictions on the set of permutations $S_n$. This new set of permutations, $T_n$ is defined as follows.
 
 \begin{definition}
-For even $n$, $T_n$ is defined as the set of all permutations $\sigma \in S_n$ for which $1,3,5,\ldots,2n-1$ appear in increasing order, and $2i$ always appears to the right of $2i-1$.
+Let $n$ be an even integer. The set $T_n$ is defined as the set of all permutations $\sigma \in S_n$ in which $1,3,5,\ldots,2n-1$ appear in increasing order, and $2i$ always appears to the right of $2i-1$.
 \end{definition}
 
-Since $T_n$ is only defined for even $n$, henceforth we shall refer to $T_n$ as $T_{2m}$ where $m$ is any integer greater than or equal to $0$.
+Since $T_n$ is only defined for even $n$, henceforth we shall refer to $T_n$ as $T_{2m}$ where $m$ is any integer greater than or equal to $0$.\todo{0 or 1 here?}
 
 Given the above definition of $T_{2m}$, we prove the following result about the cardinality of $T_{2m}$.
 
@@ -515,16 +515,18 @@ $|T_{2m}| = 1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2m-1)$
 \end{theorem}
 
 \begin{proof}
-Observe that since $1,3,5,\ldots,2m-1$ must appear in increasing order in $T_{2m}$, our problem is now reduced to determining the relative order of $2,4,6,\ldots,2m$ with respect to each other, as well as with respect to $1,3,5,\ldots,2m-1$.
+Because $1,3,5,\ldots,2m-1$ must appear in increasing order in $T_{2m}$, the size of $T_{2m}$ is given by the number of ways in which $2, 4, 6, \ldots, 2m$ can be ordered relative to each other and to $1, 3, \ldots, 2m-1$.
 
-Let us first try to insert $2m$ into the sequence $1,3,5,\ldots,2m-1$. Clearly, the way $T_{2m}$ is defined, $2m$ can be inserted into only $1$ slot, the one following $2m-1$. (Here we define a slot as a gap between two existing elements of the sequence, or the gap that follows the last element of the sequence or the gap that precedes the first element of the sequence)
+Let us first insert $2m$ into the sequence $1,3,5,\ldots,2m-1$. Because $2m$ must appear to the right of $2m-1$, it can be inserted into only a single slot, the one following $2m-1$. (By ``slot'' we mean a gap between two existing elements of the sequence, or the gap that follows the last element of the sequence, or the gap that precedes the first element of the sequence.)
 
-Now, let us try to insert $(2m-2)$ into the sequence. $(2m-2)$ can be inserted into $3$ slots in the sequence -- the one between $2m-3$ and $2m-1$, the one between $2m-1$ and $2m$ or the one following $2m$.
+Next let us insert $(2m-2)$ into the sequence. $(2m-2)$ can be inserted into $3$ slots in the sequence -- the one between $2m-3$ and $2m-1$, the one between $2m-1$ and $2m$ or the one following $2m$.
 
-Now, if we try to insert $(2m-4)$ into this incompletely formed sequence, we will see that there are $5$ possible locations into which this number can be inserted. Continuing this for all even numbers upto $2$, we observe that the total number of ways such a sequence can  be created is equal to $1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2m-1)$, as desired.
+We want to next insert $(2m-4)$ into this incompletely formed sequence; we see that there are $5$ possible locations. Continuing this for all even numbers up to $2$, we observe that the total number of ways such a sequence can  be created is equal to $1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2m-1)$, as desired.
 \end{proof}
 
-Studying avoidance of permutations in $T_n$ seems an interesting exercise. In the following section, we consider the sequence of numbers $t_n(\pi)$, defined as the number of permutations in $T_n$ that avoid the permutation $\pi$. In particular, we consider permutations $\pi \in S_3$.
+Studying avoidance of permutations in $T_n$ seems an interesting exercise. In this section, we consider the sequence of numbers $t_n(\pi)$, defined as 
+\[t_n(\pi)=\#\{\sigma\in T_n|\sigma \text{ avoids } \pi\},\]
+with $\pi\in S_3$.
 
 Before stating our conjectures, we present the computed sequences. Note that since the sequence $T_n$ is defined only for even $n$, we only present the even terms of the sequence $t_n$.
 
@@ -537,58 +539,60 @@ $$t_n(321) = 1, 3, 12, 55, 273, \ldots$$
 
 It is easy to see why $t_n(123)$ and $t_n(132)$ behave the way they do -- since all odd numbers in $T_n$ are increasing, it is impossible to have a permutation in $T_n$ that avoids $123$ and the permutation consisting of all increasing integers is the only permutation of $T_n$ that avoids $132$.
 
-More interesting is the equivalences between $213$ and $231$, and $312$ and $321$. We will prove the equivalence between $312$ and $321$ below, but before doing so, we first state and prove the following lemmas which will be useful in our proof.
+More interesting are the equivalences between $213$ and $231$, and $312$ and $321$. We  prove the equivalence between $312$ and $321$ below, but before doing so, we first state and prove the following useful lemmas.
 
 \begin{lemma}
 \label{tn_avoidance}
-If $a$ and $b$ are two elements that appear in a permutation in $T_n$ such that $a$ is to the left of $b$, then if $a > b$, $b$ must be even.
+Let $a$ and $b$ be two elements that appear in a permutation in $T_n$ such that $a$ is to the left of $b$. If $a > b$, then $b$ must be even.
 \end{lemma}
 
 \begin{proof}
-For the sake of contradiction, let us assume that $b$ is odd. Then there exist two possibilities that need to be considered -- one, that $a$ is odd, and two, that $a$ is even.
+For the sake of contradiction, let us assume that $b$ is odd. Then there exist two possibilities that need to be considered -- either $a$ is odd or $a$ is even.
 
 \begin{itemize}
 \item \textbf{Case 1:} $a$ is odd.
 
-Note that all permutations in $T_n$ must have odd elements monotonically increasing. So if $a$ appears to the left of $b$, and both $a$ and $b$ are odd, then $a$ must be less than $b$ -- a contradiction. Hence, we conclude that $a$ can't be odd.
+Note that all permutations in $T_n$ must have odd elements monotonically increasing. So if $a$ appears to the left of $b$, and both $a$ and $b$ are odd, then $a$ must be less than $b$ -- a contradiction. Hence $a$ cannot be odd.
 
 \item \textbf{Case 2:} $a$ is even.
 
-For all permutations $\sigma$ in $T_n$, every even element $j$ must be to the right of all odd elements less than $j$. From this, we conclude that since $a$ is even, it must be to the right of all odd numbers less than it. But $b$ is an odd number less than $a$ -- we conclude that $a$ can't be even either.
+For all permutations $\sigma$ in $T_n$, every even element $j$ must be to the right of all odd elements less than $j$. Since $a$ is even, therefore, it must be to the right of all odd numbers less than it. But $b$ is an odd number less than $a$, and $a$ is to the left of $b$ -- another contradiction. Hence $a$ cannot be even, either.
 \end{itemize}
 
-Since $a$ can't be odd or even if $b$ is odd, we conclude that $b$ must be even, as desired.
+We conclude that $b$ must be even, as desired.
 \end{proof}
 
 \begin{lemma}
 \label{swapping_lemma}
-If $x, y, z$ is a three-element subsequence of a permutation $\pi$ in $T_n$ such that $x > y > z$ or $x > z > y$, then swapping $y$ and $z$ in the permutation $\pi$ yields a permutation $\pi'$ that also belongs to $T_n$.
+If $x, y, z$ is a three-element subsequence of a permutation $\pi$ in $T_n$ such that $x > y > z$ or $x > z > y$, then swapping $y$ and $z$ in the permutation $\pi$ yields a permutation that also belongs to $T_n$.
 \end{lemma}
 
 \begin{proof}
-From Lemma \ref{tn_avoidance} we see that both $y$ and $z$ must be even. Then there exist two cases that need to be covered.
+Since $x$ is to the left of $y$ and $z$, and $x>y$ and $x>z$, it follows by Lemma \ref{tn_avoidance} that both $y$ and $z$ must be even. Let $\pi'$ be the permutation obtained by swapping $y$ and $z$ in the permutation $\pi$. We divide our analysis into two cases:
 \begin{itemize}
 \item \textbf{Case 1:} $x$ is odd.
 
-If $x$ is odd, then it is clear that the permutation $\pi'$ obtained from swapping $y$ and $z$ is still valid, since both $y$ and $z$ are to the right of the odd numbers $y-1$ and $z-1$ (since $y-1$ and $z-1$ are themselves to the left of $x$ since they are strictly less than $x$)
+Then it suffices to check that $y$ is to the right of $y-1$ and that $z$ is still to the right of $z-1$. This is easy: since $y-1$ and $z-1$ are odd numbers less than $x$ another odd number, they must be to the left of $x$, and hence to the left of $y$ and $z$.
 
 \item \textbf{Case 2:} $x$ is even.
 
-If $x$ is even, then $x-1$ which is an odd number greater than both $y-1$ and $z-1$, must be to the left of $x$. Since $y-1$ and $z-1$ are already to the left of $x-1$, we conclude that swapping $y$ and $z$ still ensures that $y$ and $z$ are both to the right of $y-1$ and $z-1$.
+Since $\pi\in T_n$, $x-1$ must be to the left of $x$. Because $x>y$ and $x>z$, we must have that $x-1>y-1$ and $x-1>z-1$. It follows that $y-1$ and $z-1$ are to the left of $x-1$, and hence $x$, in $\pi$. We conclude that $y$ and $z$ are to the right of $y-1$ and $z-1$ in $\pi'$, since $y-1$ and $z-1$ are to the left of $x$ and $y$ and $z$ remain to the right of $x$.
 \end{itemize}
-Hence, we see that regardless of whether $x$ is even or odd, swapping $y$ and $z$ in a permutation $\pi \in T_n$ if $x > y > z$ or $x > z > y$ yields a permutation $\pi'$ that also belongs to $T_n$.
+Hence, regardless of the parity of $x$, swapping $y$ and $z$ yields a permutation $\pi'$ that also belongs to $T_n$, as desired.
 \end{proof}
 
-Given these lemmas, we now present a proof for $t_n(312) = t_n(321)$.
+With these lemmas in hand, we now present a proof that $t_n(312) = t_n(321)$.
 
 \begin{theorem}
-$t_n(312) = t_n(321)$
+$t_n(312)$, the set of permutations in $T_n$ avoiding 312, is precisely the same size as $t_n(321)$, the set of permutations in $T_n$ avoiding 321.
 \end{theorem}
 
 \begin{proof}
-First observe from Lemma \ref{tn_avoidance} that if $x, y, z$ is a subsequence of three elements of a permutation in $T_n$ in the relative order $312$ or $321$, then both $y$ and $z$ must be even.
+Let $A$ be the set of permutations in $T_n$ avoiding 312, and $B$ the set of permutations in $T_n$ avoiding 321. We will prove the theorem by constructing a bijection between $A$ and $B$.
 
-Before proving that there exists a bijective mapping between the set of permutations in $T_n$ that avoid $312$ (call this set $A$) and the set of permutations in $T_n$ that avoid $321$ (call this set $B$), we establish a chain of transformation moves that can be used to transform an element $a \in A$ to an element $b \in B$.
+Note by Lemma \ref{tn_avoidance} that if $x, y, z$ is a subsequence of three elements of a permutation in $T_n$ in the relative order $312$ or $321$, then both $y$ and $z$ must be even.
+
+Before we do so, however, we establish a process to transform an element $a \in A$ to an element $b \in B$.
 
 Consider a permutation $\pi$ in $T_n$ that avoids $312$. For each permutation $\pi \in T_n$ that avoids $312$, we want to show that there exists a sequence of transformation moves that transforms $\pi$ to a unique permutation $\pi'$ that avoids $321$.
 
