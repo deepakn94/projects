@@ -87,7 +87,13 @@ $$
 
 If we define $s_n(123)$ to be the number of $n$ element sequences that avoid 123, then the question above is equivalent to identifying the sequence $(s_n(123))_n$. In this paper we consider specific cases of a very general avoidance problem, describing the sequence $(s_n(\sigma))_n$ where $\sigma$ is any permutation of the elements of the set $\{1,2,\cdots, k\}\subset\mathbb{N}$ for some $k$.
 
-In Sections \ref{S3} and \ref{S4} we consider sequences $s_n(\pi)$ for $\pi$ a permutation on the set $\{1,2,3\}$, and prove that the sequence $s_n(\pi)$ for all such $\pi$ is in fact the sequence of Catalan numbers. In Section \ref{S4} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation of $\{1,2,3,4\}$. In Section \ref{Tn} we consider a variation of the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of the permutations of $n$ elements. Before proceeding, however, we formally introduce the notation that will be used throughout this paper.  
+In Sections \ref{312} and \ref{321} we consider sequences $s_n(\pi)$ for $\pi$ an element of  \\ $\{123,132,213,231,312,321\}$, and prove the following theorem.
+
+\begin{theorem*}
+For $\pi$ an element of $\{123,132,213,231,312,321\}$, the sequence $(s_n(\pi))$ is the Catalan numbers.
+\end{theorem*}
+
+Of particular interest is the fact that two entirely distinct methods of proof had to be used to prove this theorem for all six permutations. In Section \ref{S4} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation of $\{1,2,3,4\}$ and state a conjecture concerning $(s_n(\pi))$. In Section \ref{Tn} we consider a variation of the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of the permutations of $n$ elements. Before proceeding, however, we formally introduce the notation that will be used throughout this paper.  
 
 
 \subsection{Notation}
@@ -96,30 +102,31 @@ In Sections \ref{S3} and \ref{S4} we consider sequences $s_n(\pi)$ for $\pi$ a p
 A permutation of a set $D$ is a bijective map from $D$ to itself. 
 \end{definition}
 
-\begin{example}
-Let $\pi$ be a function so that $\pi(1)=5$, $\pi(2)=2$, $\pi(3)=4$, $\pi(4)=1$, and $\pi(5)=3$. Then $\pi$ is a permutation of the set $D=\{1,2,3,4,5\}$. 
-\end{example}
 
 \begin{remark}
-There are two notations for permutations, `one-line' notation and `cycle' notation. We give definitions of both below. Unless stated otherwise, we will use one-line notation in this paper.
+There are two notations for permutations, `one-line' notation and `cycle' notation. We define both below. Unless stated otherwise, we will use one-line notation in this paper.
 \end{remark}
+
+\begin{example}
+Let $\pi$ be a function so that $\pi(1)=5$, $\pi(2)=4$, $\pi(3)=1$, $\pi(4)=2$, $\pi(5)=3$, and $\pi(6)=6$. Then $\pi$ is a permutation of the set $D=\{1,2,3,4,5\}$. 
+\end{example}
 
 \begin{definition}
 Let $\pi$ be the permutation on elements of $\{1,2,\cdots, n\}$ so that $\pi(1)=a_1, \pi(2)=a_2,\cdots, \pi(n)=a_n$. Then in one-line notation $\pi$ is written as $\pi(1)\pi(2)\cdots\pi(n)$, or equivalently, $a_1a_2,\cdots a_n$. 
 \end{definition}
 
+\begin{example}
+Using $\pi$ from the previous example, in one-line notation $\pi=541236$.
+\end{example}
 
 \begin{definition}
-In cycle notation we identify cycles in the permutation and write them as such. Let $\pi$ be the permutation on elements of $\{1,2,\cdots, n\}$ so that $\pi(1)=a_1, \pi(2)=a_2,\cdots, \pi(n)=a_n$. Then the cycle notation for $\pi$ is $$(1 \ \pi(1) \ \pi(\pi(1)) \cdots \pi^{k-1}(1))(\alpha_1 \ \pi(\alpha_1) \ \pi(\pi(\alpha_1)) \cdots)\cdots(\alpha_\ell \ \pi(\alpha_\ell) \ \pi(\pi(\alpha_\ell)) \cdots).$$ Let $k$ be the smallest natural number for which $\pi^k(1)=1$. Then $\pi^{k-1}(1)$ is the last entry in the cycle before it is closed. If there are elements of $\{1,2,\cdots, n\}$ that are not in the cycle then let $\alpha_1$ be the smallest such element and continue the process until all elements are accounted for. 
+A cycle $(a_1\cdots a_n)$ with $1\le a_i\le n$ acts as a permutation on a sequence by sending $a_1\mapsto a_2$, $a_2\mapsto a_3$, $\cdots$, $a_n\mapsto a_1$.
 \end{definition}
 
-\begin{remark}
-Note, cycle notation is not unique. 
-\end{remark}
+A more formal definition of cycle notation is especially cumbersome, so we proceed with the example above, a permutation $\pi$ with $\pi(1)=5$, $\pi(2)=4$, $\pi(3)=1$, $\pi(4)=2$, $\pi(5)=3$, and $\pi(6)=6$. To write $\pi$ in cycle notation we start with 1 and identify the cycle $1\mapsto 5\mapsto 3\mapsto 1$. Once we come back to 1 we close the cycle and write $(135)$. We keep identifying cycles until every number is accounted for. So $2\mapsto 4\mapsto 2$ gives us $(24)$ and $6\mapsto 6$ gives us $(6)$. Finally we can write $\pi$ as the composition of functions $(135)(24)(6)$. Note, cycle notation is not necessarily unique. 
 
-\begin{example}
-Let $\pi$ be a function so that $\pi(1)=5$, $\pi(2)=4$, $\pi(3)=1$, $\pi(4)=2$, and $\pi(5)=3$. Then in one-line notation $\pi=54123$. In cycle notation $\pi=(153)(24)$. 
-\end{example}
+
+
 
 
 \begin{definition}
@@ -137,10 +144,6 @@ $S_3=\{123,132,213,231,312,321\}$.
 
 
 
-%Let $S_n$ be the set of permutations of $\{1,\cdots, n\}$. There are two conventions commonly used to write elements of $S_n$. The first is $\emph{one-line}$ notation where permutations in $S_n$ are written explicitly, e.g. 43215 is a permutation of $\{1,2,3,4,5\}$ in $S_5$. 
-
-%The second is \emph{cycle notation}, where a cycle $(a_1\cdots a_n)\in S_n$ with $1\le a_i\le n$ acts on a sequence by sending $a_1\mapsto a_2$, $a_2\mapsto a_3$, $\cdots$, $a_n\mapsto a_1$. For example, the cycle $(14)(23)$ sends $12345$ to $43215$. 
-
 
 \begin{definition}
 Two finite sequences of distinct positive integers $a_1,\cdots a_k$ and $b_1,\cdots b_k$ have the same relative order if the $i^\text{th}$ largest entry of each unordered set $\{a_1,\cdots,a_k\}$ and $\{b_1,\cdots, b_k\}$ appears in the same position in $a_1\cdots a_k$ and $b_1\cdots b_k$ for each $1\le i\le k$. 
@@ -154,10 +157,6 @@ Equivalently, two finite sequences of distinct positive integers have the same r
 A finite sequence of distinct positive integers $a_1a_2\cdots a_n$ avoids another finite sequence of distinct positive integers $b_1\cdots b_k$ with $n\ge k$ if no subsequence $a_{i_1}a_{i_2}\cdots a_{i_k}$ of $a_1a_2\cdots a_n$ has its terms in the same relative order as $b_1\cdots b_k$. 
 \end{definition}
 
-%\begin{remark}
-%Let $S_n$ be the set of permutations of $\{1,\cdots, n\}$. There are two conventions commonly used to write elements of $S_n$. The first is $\emph{one-line}$ notation where permutations in $S_n$ are written explicitly, e.g. 43215 is a permutation of $\{1,2,3,4,5\}$ in $S_5$. 
-%The second is \emph{cycle notation}, where a cycle $(a_1\cdots a_n)\in S_n$ with $1\le a_i\le n$ acts on a sequence by sending $a_1\mapsto a_2$, $a_2\mapsto a_3$, $\cdots$, $a_n\mapsto a_1$. For example, the cycle $(14)(23)$ sends $12345$ to $43215$. Unless otherwise stated, we will refer to permutations in one-line notation. 
-%\end{remark}
 
 \begin{definition} 
 A permutation $\sigma\in S_n$ avoids a permutation $\pi\in S_k$ if the sequence of numbers for the one-line notation for $\sigma$ avoids the sequence of numbers for the one-line notation for $\pi$.
@@ -233,6 +232,8 @@ The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{F
 \begin{proof}
 Notice that we only need to prove one direction of this statement. The opposite direction will follow since applying $\mathcal{F}$ twice returns the original permutation. We show that if ${\sigma}$ avoids $\pi$ then $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$. Let $\pi=b_1\cdots b_k$. We proceed by induction.
 
+
+
 Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Let $\sigma\in S_n$. If ${\sigma}$ does avoids $\pi$ then $\sigma$ appears in the generating tree of $\pi$.  Then $\sigma=a_1\cdots a_n$ where $a_i\in\{1,\cdots, n\}$. Without loss of generality, let $a_\ell=n$. Then the parent node of $\sigma$ is $\sigma_p=a_1\cdots a_{\ell-1} a_{\ell+1}\cdots a_n$. The induction hypothesis allows us to conclude that $\mathcal{F}(\sigma_p)$ avoids $\mathcal{F}(\pi)$. Now suppose that $\mathcal{F}(\sigma)$ is not a child of $\mathcal{F}(\sigma_p)$. Let $\mathcal{F}(\sigma)=a'_1\cdots a'_{\gamma-1} a_{\gamma}a'_{\gamma+1}\cdots a'_n$ and $\mathcal{F}(\sigma_p)=a'_1\cdots a'_{\gamma-1} a'_{\gamma+1}\cdots a'_n$ with $a'_\gamma=n$. Then $\mathcal{F}(\sigma_p)$ avoids $\pi$ while $\mathcal{F}(\sigma)$ does not. That means that there is a subsequence $\omega$ of $\mathcal{F}(\sigma)$ that has the same relative order as $\mathcal{F}(\pi)$. Let $\mathcal{F}(\pi)= b'_1\cdots b'_k$ with $b'_i=1$ and $b'_j=k$. So $\omega$ contains $a'_\gamma$, and $a'_\gamma$ occupies the same position as $b'_j$. Now if we remove 1 and $n$ from $\mathcal{F}(\sigma)$, then the result does not avoid $\mathcal{F}(\pi)$ with $b'_i=1$ and $b'_j=k$ omitted. Then if we apply a flip, by the induction hypothesis we see that the result of flipping $\mathcal{F}(\sigma)$ with $1$ and $n$ omitted does not avoid $\pi$ with $1$ and $k$ omitted. If we add in 1 and $n$ in the appropriate places to reconstruct $\mathcal{F}(\mathcal{F}(\sigma))=\sigma$ and if we reconstruct $\sigma$ similarly, then $\sigma$ does not avoid $\pi$, a contradiction. 
 \end{proof}
 
@@ -258,7 +259,7 @@ For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{R}(\pi))$.
 This result follows because the reversing lemma gives a bijection between permutations that avoid $\pi$ and permutations that avoid $\mathcal{F}(\pi)$. 
 \end{proof}
 \section{Terms in the sequence $s_n(312)$}
-\label{S3}
+\label{312}
 
 We claim that the sequence of numbers $s_n(312)$ is in fact the sequence of Catalan numbers. Before formally stating and proving the result, however, we prove the following useful lemma.
 \begin{lemma}
@@ -313,7 +314,7 @@ $$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ wh
 It is easy to see that the above proof can be modified slightly to prove that the sequences $s_n(132)$, $s_n(213)$ and $s_n(231)$ are in fact the sequence of catalan numbers as well. In fact, we claim that if $\sigma$ and $\pi$ are both permutations in $S_k$ for some arbitrary $k$, then if $\sigma = flip(\pi)$, $s_n(\pi) = s_n(\sigma)$. This is easy to see since if $a$ is a permutation that avoids $\sigma$, then $flip(a)$ is a permutation that avoids $\pi$ -- since this can be done both ways, it is bijective and we can conclude that the cardinalities of the two sets are equal, or $s_n(\sigma) = s_n(\pi)$.\todo{we should move this up and make it clear from the beginning that this stuff generalizes}
 
 \section{Terms in the sequence $s_n(321)$}
-
+\label{321}
 Unfortunately, there is no clear way to reformulate Lemma \ref{lemma1} for the case of avoiding the permutation 321 or 123. As a consequence, the proof in the previous section simply does not hold. Fortunately, however, we still have a closed form expression for $s_n(321)$ (recall that $s_n(321)=s_n(123)$ by our flipping principle). Surprisingly, in fact, the sequence remains the same: $s_n(321)=C_n$, the $n^{th}$ Catalan number. In order to prove this result, we need the machinery of Young tableaux. What follows is a brief exposition of the key results, adapted from Stanley's \emph{Algebraic Combinatorics}.
 
 \begin{definition}
