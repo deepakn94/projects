@@ -402,12 +402,14 @@ The diagram above for the hook lengths of $\lambda=(4, 2, 2)$ tells us that the 
 It is an easy application of the hook-length formula to prove the following theorem:
 
 \begin{theorem}
+\label{catalan_2}
 The number of SYT of shape $(n, n)$ is given by $C_n$, the $n^{th}$ Catalan number.
 \end{theorem}
 
 We need only one more result before we are ready to prove our central result.
 
 \begin{theorem}
+\label{rsk}
 There exists an algorithm (called the \emph{RSK algorithm}) which defines a bijection between the set of permutations in $S(n)$ avoiding a decreasing subsequence of length 3 and the set of pairs of size-$n$ SYT of the same shape and at most two rows. 
 \end{theorem}\todo{give a citation for this}
 Using all this machinery and all these results, we are finally able to prove the closed-form expression for $s_n(321)$.
@@ -415,7 +417,7 @@ Using all this machinery and all these results, we are finally able to prove the
 The total number of permutations of $\{1,2,3,\ldots, n\}$ that avoid the order 321 as a subsequence is $C_n$, where $C_n$ is the $n^{th}$ Catalan number.
 \end{theorem}
 \begin{proof}
-By the first part of Theorem 12, there are $s_n(321)$ elements in the set $A$ of pairs of size-$n$ SYT of the same shape and at most two rows. By Theorem 11, the set $B_n$ of SYT of shape $(n, n)$ has its size given by $C_n$. We will construct a bijection between the sets $A_n$ and $B_n$: because $|A_n|=s_n(321)$ and $|B_n|=C_n$, it will therefore follow that $s_n(321)=C_n$, as desired.
+By Theorem \ref{rsk}, there are $s_n(321)$ elements in the set $A$ of pairs of size-$n$ SYT of the same shape and at most two rows. By Theorem \ref{catalan_2}, the set $B_n$ of SYT of shape $(n, n)$ has its size given by $C_n$. We will construct a bijection between the sets $A_n$ and $B_n$: because $|A_n|=s_n(321)$ and $|B_n|=C_n$, it will therefore follow that $s_n(321)=C_n$, as desired.
 
 Given any pair of size $n$ Young tableaux of the same shape and at most two parts, take the second tableau and invert its numbers: that is, send $i$ to $2n+1-i$ for all $i$. Now rotate the Young tableau and `fit' it into the first tableau. We demonstrate this process for a pair of Young tableaux with $n=6$: we begin with
 \[\ytableausetup{aligntableaux=top}
@@ -604,7 +606,7 @@ Hence, regardless of the parity of $x$, swapping $y$ and $z$ yields a permutatio
 With these lemmas in hand, we now present a proof that $t_n(312) = t_n(321)$.
 
 \begin{theorem}
-$t_n(312)$, the set of permutations in $T_n$ avoiding 312, is precisely the same size as $t_n(321)$, the set of permutations in $T_n$ avoiding 321.
+There exists a bijection between the set of permutations in $T_n$ avoiding 312 and the set of permutations in $T_n$ avoiding 321. As a consequence, $t_n(312)=t_n(321)$.
 \end{theorem}
 
 \begin{proof}
@@ -620,7 +622,7 @@ If the original permutation $\pi$ avoids $321$ already, then clearly $\pi' = \pi
 
 Now if $\pi$ does not avoid $321$, there must exist some sub-sequence $x, y, z$ in $\pi$ in the relative ordering $321$. From Lemma \ref{swapping_lemma}, we see that swapping $y$ and $z$ in the permutation $\pi$ yields another valid permutation $\pi_1$ in $T_n$ -- note that the permutation produced after this swap has $x, y, z$ in the relative ordering $312$ instead of $321$. Note that $\pi_1$ may still have sub-sequences in the relative ordering $321$, so we may have to perform the above swapping operation again to get some permutation $\pi_2 \in T_n$ such that a sub-sequence $x_1, y_1, z_1$ in $\pi_1$ that has a relative ordering $321$ is in the relative ordering $312$ in $\pi_2$. Continuing this process produces the following chain of permutations,
 $$\pi \rightarrow \pi_1 \rightarrow \pi_2 \rightarrow \ldots \rightarrow \pi_k$$
-Where the last permutation in the chain $\pi_k$ does not have a single three-element sub-sequence in the relative ordering $321$, that is $\pi' = \pi_k$ is a permutation in $T_n$ that avoids $321$.
+Where the last permutation in the chain $\pi_k$ does not have a single three-element sub-sequence in the relative ordering $321$, that is $\pi' = \pi_k$ is a permutation in $T_n$ that avoids $321$.\todo{why does this terminate? also, why is this necessary?}
 
 This process is completely invertible, since we can take a permutation $\pi'$ in $T_n$ that avoids $321$, and traverse through the above chain in reverse order to obtain a permutation that avoids $312$.
 
@@ -628,7 +630,8 @@ We now prove that there exists a bijection between the sets $A$ and $B$.
 
 Let $a$ be an arbitrary permutation in $A$. Clearly, by the definition of $A$, $a$ must avoid $312$. Now, we claim that for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in decreasing order; if this were not the case, then we would have a subsequence in the relative ordering $312$, which would be a contradiction. It is easy to see that we can make a corresponding claim about permutation $b$, that is for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in increasing order.
 
-The above two claims shows there's actually an easy way to transform an arbitrary permutation $a \in A$ to a $b \in B$, and similarly, to transform an arbitrary permutation $b \in B$ to a $a \in A$ -- to obtain a permutation in $B$ from a permutation $a \in A$, for every element $i$ in the permutation $a$, all even elements in $a$ to the right of $i$ less than $i$ should be reversed (that is reordered to in increasing order); similarly to obtain a permutation in $A$ from a permutation $b \in B$, for every element $i$ in the permutation $b$, all even elements in $b$ to the right of $i$, less than $i$ should be reversed (that is reordered to in decreasing order). Since the mapping from $A$ to $B$ is clearly reversible, and hence invertible, we conclude that the mapping we just established between $A$ and $B$ is bijective.
+The above two claims shows there's actually an easy way to transform an arbitrary permutation $a \in A$ to a $b \in B$, and similarly, to transform an arbitrary permutation $b \in B$ to a $a \in A$ -- to obtain a permutation in $B$ from a permutation $a \in A$, for every element $i$ in the permutation $a$, all even elements in $a$ to the right of $i$ less than $i$ should be reversed (that is reordered to in increasing order); similarly to obtain a permutation in $A$ from a permutation $b \in B$, for every element $i$ in the permutation $b$, all even elements in $b$ to the right of $i$, less than $i$ should be reversed (that is reordered to in decreasing order). \todo{should have some justification here that reversing reordering these elements doesn't 'step on each other'... that is, you can always do it for some $i_1$ and then some $i_2$ afterward}
+Since the mapping from $A$ to $B$ is clearly reversible, and hence invertible, we conclude that the mapping we just established between $A$ and $B$ is bijective.
 
 Since there exists a bijective mapping between permutations in $T_n$ that avoid $312$ and permutations in $T_n$ that avoid $321$, we can conclude that $t_n(312) = t_n(321)$.
 
