@@ -87,7 +87,7 @@ $$
 
 If we define $s_n(123)$ to be the number of $n$ element sequences that avoid 123, then the question above is equivalent to identifying the sequence $(s_n(123))_n$. In this paper we consider specific cases of a very general avoidance problem, describing the sequence $(s_n(\sigma))_n$ where $\sigma$ is any permutation of the elements of the set $\{1,2,\cdots, k\}\subset\mathbb{N}$ for some $k$.
 
-In Sections \ref{S3} and \ref{S4} we consider sequences $s_n(\pi)$ for $\pi$ a permutation on the set $\{1,2,3\}$, and prove that the sequence $s_n(\pi)$ for all such $\pi$ is in fact the sequence of Catalan numbers. In Section \ref{S4} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation of $\{1,2,3,4\}$. In Section \ref{Tn} we consider a variation of the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of the permutations of $n$ elements. Before proceeding, however, we formally introduce the notation that will be used throughout this paper. 
+In Sections \ref{S3} and \ref{S4} we consider sequences $s_n(\pi)$ for $\pi$ a permutation on the set $\{1,2,3\}$, and prove that the sequence $s_n(\pi)$ for all such $\pi$ is in fact the sequence of Catalan numbers. In Section \ref{S4} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation of $\{1,2,3,4\}$. In Section \ref{Tn} we consider a variation of the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of the permutations of $n$ elements. Before proceeding, however, we formally introduce the notation that will be used throughout this paper.  
 
 
 \subsection{Notation}
@@ -144,7 +144,7 @@ $S_3=\{123,132,213,231,312,321\}$.
 
 \begin{definition}
 Two finite sequences of distinct positive integers $a_1,\cdots a_k$ and $b_1,\cdots b_k$ have the same relative order if the $i^\text{th}$ largest entry of each unordered set $\{a_1,\cdots,a_k\}$ and $\{b_1,\cdots, b_k\}$ appears in the same position in $a_1\cdots a_k$ and $b_1\cdots b_k$ for each $1\le i\le k$. 
-\end{definition}\todo{I changed this definition... take a look and see if you agree with it}
+\end{definition}
 
 \begin{remark}
 Equivalently, two finite sequences of distinct positive integers have the same relative order if the elements in each position of the sequence satisfy the same set of inequalities.
@@ -231,7 +231,9 @@ $\mathcal{F}(1324)=4231$.
 The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$. I.e. $\mathcal{F}$ is an avoidance preserving operator. 
 \end{lemma}
 \begin{proof}
-Notice that we only need to proof one direction of this statement. The opposite direction will follow since applying $\mathcal{F}$ twice returns the original permutation. We show that if ${\sigma}$ avoids $\pi$ then $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$. Let $\pi=b_1\cdots b_k$. We proceed by induction. Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Let $\sigma\in S_n$. If ${\sigma}$ does avoids $\pi$ then $\sigma$ appears in the generating tree of $\pi$.  Then $\sigma=a_1\cdots a_n$ where $a_i\in\{1,\cdots, n\}$. Without loss of generality, let $a_\ell=n$. Then the parent node of $\sigma$ is $\sigma_p=a_1\cdots a_{\ell-1} a_{\ell+1}\cdots a_n$. The induction hypothesis allows us to conclude that $\mathcal{F}(\sigma_p)$ avoids $\mathcal{F}(\pi)$. Now suppose that $\mathcal{F}(\sigma)$ is not a child of $\mathcal{F}(\sigma_p)$. Let $\mathcal{F}(\sigma)=a'_1\cdots a'_{\gamma-1} a_{\gamma}a'_{\gamma+1}\cdots a'_n$ and $\mathcal{F}(\sigma_p)=a'_1\cdots a'_{\gamma-1} a'_{\gamma+1}\cdots a'_n$ with $a'_\gamma=n$. Then $\mathcal{F}(\sigma_p)$ avoids $\pi$ while $\mathcal{F}(\sigma)$ does not. That means that there is a subsequence $\omega$ of $\mathcal{F}(\sigma)$ that has the same relative order as $\mathcal{F}(\pi)$. Let $\mathcal{F}(\pi)= b'_1\cdots b'_k$ with $b'_i=1$ and $b'_j=k$. So $\omega$ contains $a'_\gamma$, and $a'_\gamma$ occupies the same position as $b'_j$. Now if we remove 1 and $n$ from $\mathcal{F}(\sigma)$, then the result does not avoid $\mathcal{F}(\pi)$ with $b'_i=1$ and $b'_j=k$ omitted. Then if we apply a flip, by the induction hypothesis we see that the result of flipping $\mathcal{F}(\sigma)$ with $1$ and $n$ omitted does not avoid $\pi$ with $1$ and $k$ omitted. If we add in 1 and $n$ in the appropriate places to reconstruct $\mathcal{F}(\mathcal{F}(\sigma))=\sigma$ and if we reconstruct $\sigma$ similarly, then $\sigma$ does not avoid $\pi$, a contradiction. 
+Notice that we only need to prove one direction of this statement. The opposite direction will follow since applying $\mathcal{F}$ twice returns the original permutation. We show that if ${\sigma}$ avoids $\pi$ then $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$. Let $\pi=b_1\cdots b_k$. We proceed by induction.
+
+Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Let $\sigma\in S_n$. If ${\sigma}$ does avoids $\pi$ then $\sigma$ appears in the generating tree of $\pi$.  Then $\sigma=a_1\cdots a_n$ where $a_i\in\{1,\cdots, n\}$. Without loss of generality, let $a_\ell=n$. Then the parent node of $\sigma$ is $\sigma_p=a_1\cdots a_{\ell-1} a_{\ell+1}\cdots a_n$. The induction hypothesis allows us to conclude that $\mathcal{F}(\sigma_p)$ avoids $\mathcal{F}(\pi)$. Now suppose that $\mathcal{F}(\sigma)$ is not a child of $\mathcal{F}(\sigma_p)$. Let $\mathcal{F}(\sigma)=a'_1\cdots a'_{\gamma-1} a_{\gamma}a'_{\gamma+1}\cdots a'_n$ and $\mathcal{F}(\sigma_p)=a'_1\cdots a'_{\gamma-1} a'_{\gamma+1}\cdots a'_n$ with $a'_\gamma=n$. Then $\mathcal{F}(\sigma_p)$ avoids $\pi$ while $\mathcal{F}(\sigma)$ does not. That means that there is a subsequence $\omega$ of $\mathcal{F}(\sigma)$ that has the same relative order as $\mathcal{F}(\pi)$. Let $\mathcal{F}(\pi)= b'_1\cdots b'_k$ with $b'_i=1$ and $b'_j=k$. So $\omega$ contains $a'_\gamma$, and $a'_\gamma$ occupies the same position as $b'_j$. Now if we remove 1 and $n$ from $\mathcal{F}(\sigma)$, then the result does not avoid $\mathcal{F}(\pi)$ with $b'_i=1$ and $b'_j=k$ omitted. Then if we apply a flip, by the induction hypothesis we see that the result of flipping $\mathcal{F}(\sigma)$ with $1$ and $n$ omitted does not avoid $\pi$ with $1$ and $k$ omitted. If we add in 1 and $n$ in the appropriate places to reconstruct $\mathcal{F}(\mathcal{F}(\sigma))=\sigma$ and if we reconstruct $\sigma$ similarly, then $\sigma$ does not avoid $\pi$, a contradiction. 
 \end{proof}
 
 \begin{corollary} 
@@ -246,7 +248,7 @@ This result follows because the flipping lemma gives a bijection between permuta
 The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$. I.e. $\mathcal{R}$ is an avoidance preserving operator. 
 \end{lemma}
 \begin{proof}
-Again we use the generating tree. Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Suppose that $\sigma\in S_n$ avoids $\pi$. Then if $\sigma_p$ is the parent of $\sigma$, $\mathcal{R}(\sigma_p)$ avoids $\mathcal{R}(\pi)$. Now if we add $n$ to the permutation $\mathcal{R}(\sigma_p)$ to construct $\mathcal{F}(\sigma)$, we see that $\mathcal{F}(\sigma)$ must avoid $\mathcal{F}(\pi)$, for if it did not, we could reverse one more time and see obtain notice that $\sigma\in S_n$ does not avoid $\pi$, a contradiction. The other direction follows because $\mathcal{R}^2=1$. 
+Again we use the generating tree. Certainly the statement is true for elements of $S_1$. Suppose it is true for elements of $S_{n-1}$. Suppose that $\sigma\in S_n$ avoids $\pi$. Then if $\sigma_p$ is the parent of $\sigma$, $\mathcal{R}(\sigma_p)$ avoids $\mathcal{R}(\pi)$. Now if we add $n$ to the permutation $\mathcal{R}(\sigma_p)$ to construct $\mathcal{F}(\sigma)$, we see that $\mathcal{F}(\sigma)$ must avoid $\mathcal{F}(\pi)$, for if it did not, we could reverse one more time and obtain the result that $\sigma\in S_n$ does not avoid $\pi$, a contradiction. The other direction follows because $\mathcal{R}^2=1$. 
 \end{proof}
 
 \begin{corollary} 
@@ -264,7 +266,7 @@ We claim that the sequence of numbers $s_n(312)$ is in fact the sequence of Cata
 The permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid the pattern $312$ are precisely those of the form,
 $$\pi_1 \pi_2 i$$
 the concatenation of $\pi_1, \pi_2$, and $i$, where $\pi_1$ is a permutation of $\{1,2,\ldots,i-1\}$ that avoids the pattern $312$ and $\pi_2$ is a permutation of $\{i+1,\ldots,k+1\}$ that avoids the pattern $312$.
-\end{lemma}\todo{Explained the notation for concatenation}
+\end{lemma}
 
 \begin{proof}
 
@@ -275,11 +277,16 @@ First, we define the sets $A=\{1,2,\ldots,i-1\}$ and $B=\{i+1,i+2,\ldots,k+1\}$.
 It follows that for any permutation $\pi\in S_{k+1}$ avoiding $312$ and ending in $i$, all $x < i$ must be to the left of all $y > i$. Hence $\pi$ must be the concatenation of three subsequences $\pi_1 \pi_2 i$, where $\pi_1$ is a permutation of $\{1, 2, \ldots, i-1\}$ and $\pi_2$ is a permutation of $\{i+1, i+2, \ldots, k+1\}$. Furthermore, it is clear that any subsequences of the permutation $\pi = \pi_1 \pi_2 i$ must avoid $312$ if the entire permutation $\pi$ is to avoid $312$ as well; this implies that the permutations $\pi_1$ and $\pi_2$ must avoid $312$ as well.
 \end{proof}
 
-With this lemma proven, we move on to the proof of our main theorem for this section.
+Before we move on to the proof of our main theorem for this section, we look at the sequence of Catalan numbers.
+
+\begin{definition}
+The Catalan numbers are the sequence of positive integers $C_i$ defined as follows,
+$$C_0=1, \, C_{n+1}=\sum_{i=1}^n C_iC_{n-i} \, \text{for} \; n \geq 0$$
+\end{definition}
 
 \begin{theorem}
 $s_n(312)$, the total number of permutations of $\{1,2,3,...,n\}$ that avoid the pattern $312$, is equal to $C_n$, the $n^{th}$ Catalan number.
-\end{theorem}\todo{should we define $C_n$ separately?}
+\end{theorem}
 
 \begin{proof}
 The inductive hypothesis holds for our base case of $\{1\}$, since the only permutation of $\{1\}$ trivially avoids $312$.
@@ -288,7 +295,7 @@ We need to prove the inductive case. Let us first assume that for all $i$ from $
 
 Now, we want to prove the inductive hypothesis for $\{1,2,...,k,k+1\}$ as well. That is, we want to prove that the number of permutations of $\{1,2,...,k,k+1\}$ that avoid the order $312$ as a subsequence is $C_{k+1}$.
 
-Using our lemma, we count the number of permutations of $\{1,2,...,k,k+1\}$ that avoid $312$ by enumerating through all possible values of the last term of a valid permutation. Consider $\pi$ a permutation of $\{1,2,\ldots, k, k+1\}$ ending in $i$.Let us define the subsets $A$ and $B$ of the  set $\{1,2,...,k+1\} \setminus \{i\}$ as the set of integers less than $i$ and the set of integers greater than $i$ respectively. It is clear from the definition of $A$ and $B$ that $A$ and $B$ are disjoint from each other.
+Using our lemma, we count the number of permutations of $\{1,2,...,k,k+1\}$ that avoid $312$ by enumerating through all possible values of the last term of a valid permutation. Consider $\pi$ a permutation of $\{1,2,\ldots, k, k+1\}$ ending in $i$. Let us define the subsets $A$ and $B$ of the  set $\{1,2,...,k+1\} \setminus \{i\}$ as the set of integers less than $i$ and the set of integers greater than $i$ respectively. It is clear from the definition of $A$ and $B$ that $A$ and $B$ are disjoint from each other.
 
 From the above lemma, we know that all permutations of $\{1,2,...,k,k+1\}$ ending in $i$ that avoid $312$ are precisely those of the form
 $$\pi = \pi_1 \pi_2 i$$
@@ -580,7 +587,7 @@ $t_n(312) = t_n(321)$
 \begin{proof}
 First observe from Lemma \ref{tn_avoidance} that if $x, y, z$ is a subsequence of three elements of a permutation in $T_n$ in the relative order $312$ or $321$, then both $y$ and $z$ must be even.
 
-Before proving that there exists a bijective mapping between all permutations in $T_n$ that avoid $312$ (call this set $A$) and all permutations in $T_n$ that avoid $321$ (call this set $B$), we establish a chain of transformation moves that can be used to transform an element $a \in A$ to an element $b \in B$.
+Before proving that there exists a bijective mapping between the set of permutations in $T_n$ that avoid $312$ (call this set $A$) and the set of permutations in $T_n$ that avoid $321$ (call this set $B$), we establish a chain of transformation moves that can be used to transform an element $a \in A$ to an element $b \in B$.
 
 Consider a permutation $\pi$ in $T_n$ that avoids $312$. For each permutation $\pi \in T_n$ that avoids $312$, we want to show that there exists a sequence of transformation moves that transforms $\pi$ to a unique permutation $\pi'$ that avoids $321$.
 
@@ -602,7 +609,7 @@ Since there exists a bijective mapping between permutations in $T_n$ that avoid 
 
 \end{proof}
 
-Unfortunately, it turns out that proving the equivalence between $231$ and $213$ is not as straightforward as above, however we do prove that both the sequences $(t_n(231))$ and $(t_n(213)$ are equal to the sequence $1, 2, 4, 8, \ldots$ below.
+Unfortunately, it turns out that proving the equivalence between $231$ and $213$ is not as straightforward as above, however we do prove that both the sequences $(t_n(231))$ and $(t_n(213)$ are equal to the sequence $1, 2, 4, 8, \ldots$, and hence equivalent, below.
 
 \begin{theorem}
 $t_n(231) = 1, 2, 4, 8, \ldots$
@@ -611,13 +618,13 @@ $t_n(231) = 1, 2, 4, 8, \ldots$
 \begin{proof}
 Proving the above theorem is equivalent to proving that the $m^{th}$ term of $t_n(231)$ is equal to $2^{m-1}$, or that the number of permutations in $T_{2m}$ that avoid $231$ is equal to $2^{m-1}$.
 
-Consider a permutation $\sigma$ in $T_{2m}$ that avoids $231$. Consider an arbitrary even element $2i$ in $\sigma$. For this element $2i$, define $A$ to be the set of numbers greater than $2i$ and to the left of $2i$ in the permutation $\sigma$. First off, note that the set $A$ cannot contain any even numbers, because if it did, then the permutation $\sigma$ would contain a three-element sub-sequence in the relative ordering $231$ -- if $a$ is an even number in the set $A$, then $(a-1, a, 2i)$ would be a three-element sub-sequence of $\sigma$ in the relative ordering $231$ (Note that $a-1$ must be to the left of $a$ in the permutation $\sigma$ because of the way the set $T_{2m}$ was constructed.
+Consider a permutation $\sigma$ in $T_{2m}$ that avoids $231$. Consider an arbitrary even element $2i$ in $\sigma$. For this element $2i$, define $A$ to be the set of numbers greater than $2i$ and to its left in the permutation $\sigma$. First off, note that the set $A$ cannot contain any even numbers, because if it did, then the permutation $\sigma$ would contain a three-element sub-sequence in the relative ordering $231$ -- if $a$ is an even number in the set $A$, then $(a-1, a, 2i)$ would be a three-element sub-sequence of $\sigma$ in the relative ordering $231$ (Note that $a-1$ must be to the left of $a$ in the permutation $\sigma$ because of the way the set $T_{2m}$ was constructed)
 
-Furthermore, the set $A$ cannot contain any odd elements greater than $2i+1$, because if it did, then again the permutation $\sigma$ would contain a three-element subsequence in the relative ordering $231$ -- if $a > 2i+1$ is an odd number in $A$, then $(2i+1, a, 2i)$ is a three-element sub-sequence of $\sigma$ in the relative ordering $231$ Therefore, we conclude that the set $A$ either only contains the element $2i+1$, or is empty.
+Furthermore, the set $A$ cannot contain any odd elements greater than $2i+1$, because if it did, then again the permutation $\sigma$ would contain a three-element subsequence in the relative ordering $231$ -- if $2j+1 > 2i+1$ is an odd number in $A$, then $(2i+1, 2j+1, 2i)$ is a three-element sub-sequence of $\sigma$ in the relative ordering $231$ Therefore, we conclude that the set $A$ either only contains the element $2i+1$, or is empty.
 
 From this we can conclude that the element $2i$ can be inserted into exactly two valid positions in a permutation of length $2m$ -- at index $2i$ and at index $2i+1$. It follows from the above result that when element $2i$ is at index $2i$, element $2i+1$ is at index $2i+1$ in the permutation, and when element $2i$ is at index $2i+1$, element $2i+1$ is at index $2i$. Note that the element $1$ must always be the first element in the permutation, and the element $2m$ must always be the last element.
 
-Combining all these facts together, we see that the number of permutations $\sigma$ in $T_n$ that avoid $231$ must be equal to $2^{(2m-2)/2} = 2^{m-1}$, as desired.
+Combining all these facts together, we see that the number of permutations $\sigma$ in $T_{2m}$ that avoid $231$ must be equal to $2 \cdot 2 \cdot \ldots \cdot 2 = 2^{m-1}$, since every even element can be inserted in exactly two positions in $\sigma$.
 
 \end{proof}
 
@@ -630,16 +637,16 @@ As before, proving the above theorem is equivalent to proving that the $m^{th}$ 
 
 First, let us define $A_m$ as the set of all permutations in $T_{2m}$ that avoid $213$. It is easy to see that the $m^{th}$ term of $t_n(213)$ is $|A_m|$.
 
-We now claim that for every permutation $\sigma$ in $A_m$, the numbers $2m-1$ and $2m$ must be consecutive in the permutation $\sigma$. We argue that this must be true by contradiction. If this were not the case, then it is easy to see that the permutation $\sigma$ would have a sub-sequence in the relative ordering $213$ -- let $j$ be an element that's between $2m-1$ and $2m$ in $\sigma$. Clearly, $j < 2m -1 < 2m$ (since every element in $\sigma$ other than $2m$ is less than $2m-1$), which means $(2m - 1, j, 2m)$ are in the relative ordering $213$. We conclude that $2m-1$ and $2m$ must be consecutive.
+We now claim that for every permutation $\sigma$ in $A_m$, the numbers $2m-1$ and $2m$ must be consecutive in the permutation $\sigma$. We argue that this must be true by contradiction. If this were not the case, then it is easy to see that the permutation $\sigma$ would have a sub-sequence in the relative ordering $213$ -- let $j$ be an element that's between $2m-1$ and $2m$ in $\sigma$. Clearly, $j < 2m -1 < 2m$ (since every element in $\sigma$ other than $2m$ is less than $2m-1$), which means $(2m - 1, j, 2m)$ are in the relative ordering $213$. We conclude that $2m-1$ and $2m$ must be consecutive in $\sigma$.
 
-Furthermore, we see that we can construct $A_m$ from $A_{m-1}$ by inserting the consecutive elements $2m-1, 2m$ into a permutation $\sigma'$ in $A_{m-1}$. Furthermore, we claim that we get a valid permutation $\sigma$ in $A_m$ from $\sigma'$ only if we insert the consecutive elements $2m-1, 2m$ right after either $2m-3$ or $2m-2$ in $\sigma'$ (which themselves are consecutive in $\sigma'$ from the above claim).
+Furthermore, we see that we can construct $A_m$ from $A_{m-1}$ by inserting the consecutive elements $2m-1, 2m$ into a permutation $\sigma'$ in $A_{m-1}$. We claim that we get a valid permutation $\sigma$ in $A_m$ from $\sigma'$ only if we insert the consecutive elements $2m-1, 2m$ right after either $2m-3$ or $2m-2$ in $\sigma'$ (which themselves are consecutive in $\sigma'$ from the above claim).
 
-First, note that $2m-1, 2m$ must be inserted to the right of both $2m-3$ and $2m-2$, because of the way $T_{2m}$ is defined. Furthermore, if we insert $2m-1, 2m$ right after some $a$ in $\sigma$ not equal to $2m-3$ and $2m-2$, then we see that the produced permutation $\sigma$ has a three-element sub-sequence in the relative ordering $213$ -- $(2m-2, a, 2m-1)$. Hence we conclude that $2m-1, 2m$ must be inserted to the right of either $2m-3$ or $2m-2$; since we can do this for every permutation $\sigma'$ in $A_{m-1}$, we conclude that $|A_m| = 2|A_{m-1}|$.
+First, note that $2m-1, 2m$ must be inserted to the right of both $2m-3$ and $2m-2$, because of the way $T_{2m}$ is defined. Furthermore, if we insert $2m-1, 2m$ right after some $a$ in $\sigma$ not equal to $2m-3$ or $2m-2$, then we see that the produced permutation $\sigma$ has a three-element sub-sequence in the relative ordering $213$ -- $(2m-2, a, 2m-1)$. Hence we conclude that $2m-1, 2m$ must be inserted to the right of either $2m-3$ or $2m-2$; since we can do this for every permutation $\sigma'$ in $A_{m-1}$, we conclude that $|A_m| = 2|A_{m-1}|$.
 
 Given that $|A_1|$ is trivially equal to $1$, we conclude that $|A_m|$, or the $m^{th}$ term of $t_n(213)$ is indeed equal to $2^{m-1}$, as desired.
 \end{proof}
 
-Note that even though we proved that the sequences $t_n(231)$ and $t_n(213)$ are both equivalent, the methods used to prove that each sequence is equal to the sequence $1, 2, 4, 8, \ldots$ are vastly different.
+Note that even though we proved that the sequences $t_n(231)$ and $t_n(213)$ are both equivalent, the methods used to prove that each sequence is equal to the sequence $1, 2, 4, 8, \ldots$ are vastly different -- this is an interesting topic of research that we would like to pursue as future work.
 
 
 
