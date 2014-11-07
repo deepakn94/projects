@@ -165,6 +165,7 @@ A permutation $\sigma\in S_n$ avoids a permutation $\pi\in S_k$ if the sequence 
 For a permutation $\pi\in S_k$, $s_n(\pi)$ represents the number of permutations in $S_n$ that avoid $\pi$. 
 \end{definition}
 
+\emph{Yajit wrote this section. }
 
 
 \section{Flipping and Reversing}
@@ -255,6 +256,10 @@ For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{F}(\pi))$.
 \begin{proof}
 This result follows because the flipping lemma gives a bijection between permutations that avoid $\pi$ and permutations that avoid $\mathcal{F}(\pi)$. 
 \end{proof}
+
+\emph{Yajit wrote this section.}
+
+
 \section{Avoiding Permutations of Length Three Part I}
 \label{312}
 
@@ -309,7 +314,7 @@ $$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ wh
 By the flipping lemma and reversing lemma we see that  $s_n(132)$, $s_n(213)$ and $s_n(231)$ are the sequence of Catalan numbers as well. 
 \end{proof}
 
-
+\emph{Deepak wrote this section.}
 
 %It is easy to see that the above proof can be modified slightly to prove that the sequences $s_n(132)$, $s_n(213)$ and $s_n(231)$ are in fact the sequence of catalan numbers as well. In fact, we claim that if $\sigma$ and $\pi$ are both permutations in $S_k$ for some arbitrary $k$, then if $\sigma = flip(\pi)$, $s_n(\pi) = s_n(\sigma)$. This is easy to see since if $a$ is a permutation that avoids $\sigma$, then $flip(a)$ is a permutation that avoids $\pi$ -- since this can be done both ways, it is bijective and we can conclude that the cardinalities of the two sets are equal, or $s_n(\sigma) = s_n(\pi)$.\todo{we should move this up and make it clear from the beginning that this stuff generalizes}
 
@@ -452,6 +457,8 @@ a valid Young tableau of shape $(6, 6)$.
 Beginning with a pair of size $n$ Young tableaux of shape $\lambda$ and at most two parts, it is easy to see that this process always yields a valid Young tableau of shape $(n, n)$. Indeed, we can define its inverse: given any Young tableau for the partition $(n, n)$, we can find the shape formed by all numbers greater than $n$: split it off from the original tableau, rotate it, and invert the numbers to get a pair of size $n$ Young tableau of the same shape and at most two parts. These processes can be easily checked to be inverses: hence the two sets are of the same size, and the proof follows.
 \end{proof}
 
+\emph{Leon wrote this section. Yajit edited this section.}
+
 \section{Conjectures on $s_n(\pi)$ for $\pi\in S_4$}
 \label{S4}
 
@@ -519,6 +526,9 @@ B &A&C\\
 
 So we conjecture that sequence $A$ is characterized by elements of $S_4$ that are three cycles or four cycles when written in cycle notation. Sequence $B$ seems to be characterized by either a pair of disjoint two cycles paired with a flip that is a pair of disjoint 2-cycles, or a single 4-cycle paired with a flip that is a 2-cycle. Sequence $C$ appears to be characterized by a 2-cycle paired with a 2-cycle as a flip. 
 
+\
+
+\emph{Yajit wrote this section.}
 
 \section{Avoidance of Permutations of $T_n$}
 \label{Tn}
@@ -660,7 +670,9 @@ Note that even though we proved that the sequences $t_n(231)$ and $t_n(213)$ are
 
 This observation parallels the fact that two different methods of proof were needed for $(s_n(312))$ and $(s_n(123))$, even though both sequences were identical to the Catalan numbers. This begs the question, is there are proof technique that works across the board for these types of permutation avoidance problems? 
 
+\
 
+\emph{Deepak wrote this section. Leon and Yajit closely edited this section.}
 
 
 \end{document}
