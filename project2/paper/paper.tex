@@ -255,7 +255,7 @@ For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{F}(\pi))$.
 \begin{proof}
 This result follows because the flipping lemma gives a bijection between permutations that avoid $\pi$ and permutations that avoid $\mathcal{F}(\pi)$. 
 \end{proof}
-\section{Terms in the sequence $s_n(312)$}
+\section{Avoiding Permutations of Length Three Part I}
 \label{312}
 
 We claim that the sequence of numbers $s_n(312)$ is in fact the sequence of Catalan numbers. Before formally stating and proving the result, however, we prove the following useful lemma.
@@ -283,13 +283,13 @@ $$C_0=1, \, C_{n+1}=\sum_{i=1}^n C_iC_{n-i} \, \text{for} \; n \geq 0$$
 \end{definition}
 
 \begin{theorem}
-$s_n(312)$, the total number of permutations of $\{1,2,3,...,n\}$ that avoid the pattern $312$, is equal to $C_n$, the $n^{th}$ Catalan number.
+$s_n(312), s_n(132), s_n(213)$, and $s_n(231)$ are equal to $C_n$, the $n^{th}$ Catalan number.
 \end{theorem}
 
 \begin{proof}
-The inductive hypothesis holds for our base case of $\{1\}$, since the only permutation of $\{1\}$ trivially avoids $312$.
+We prove this result for $(s_n(312))$ by induction and then use the flipping and reversing lemmas for the other three sequences. The inductive hypothesis holds for our base case of $\{1\}$, since the only permutation of $\{1\}$ trivially avoids $312$.
 
-We need to prove the inductive case. Let us first assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid the order $312$ as a subsequence is $C_i$.
+Let us assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid the order $312$ as a subsequence is $C_i$.
 
 Now, we want to prove the inductive hypothesis for $\{1,2,...,k,k+1\}$ as well. That is, we want to prove that the number of permutations of $\{1,2,...,k,k+1\}$ that avoid the order $312$ as a subsequence is $C_{k+1}$.
 
@@ -306,18 +306,17 @@ since by our induction hypothesis the total number of valid choices for $\pi_1$ 
 Now, summing over all possible values of $i$, we see that the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
 $$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ which is well-known to equal $C_{k+1}$, the $n+1$st Catalan number. The proof  therefore follows by induction.
 
-
+By the flipping lemma and reversing lemma we see that  $s_n(132)$, $s_n(213)$ and $s_n(231)$ are the sequence of Catalan numbers as well. 
 \end{proof}
 
-By the flipping lemma and reversing lemmas we see that  $s_n(132)$, $s_n(213)$ and $s_n(231)$ are the sequence of Catalan numbers as well. 
 
 
 %It is easy to see that the above proof can be modified slightly to prove that the sequences $s_n(132)$, $s_n(213)$ and $s_n(231)$ are in fact the sequence of catalan numbers as well. In fact, we claim that if $\sigma$ and $\pi$ are both permutations in $S_k$ for some arbitrary $k$, then if $\sigma = flip(\pi)$, $s_n(\pi) = s_n(\sigma)$. This is easy to see since if $a$ is a permutation that avoids $\sigma$, then $flip(a)$ is a permutation that avoids $\pi$ -- since this can be done both ways, it is bijective and we can conclude that the cardinalities of the two sets are equal, or $s_n(\sigma) = s_n(\pi)$.\todo{we should move this up and make it clear from the beginning that this stuff generalizes}
 
-\section{Terms in the sequence $s_n(321)$}
+\section{Avoiding Permutations of Length Three Part II}
 
 \label{321}
-Unfortunately, there is no clear way to reformulate Lemma \ref{lemma1} for the case of avoiding the permutation 321 or 123. As a consequence, the proof in the previous section simply does not hold. Fortunately, however, we still have a closed form expression for $s_n(321)$ (recall that $s_n(321)=s_n(123)$ by our flipping principle). Surprisingly, in fact, the sequence remains the same: $s_n(321)=C_n$, the $n^{th}$ Catalan number. In order to prove this result, we need the machinery of Young tableaux. What follows is a brief exposition of the key results, adapted from Stanley's \emph{Algebraic Combinatorics}.
+Unfortunately, there is no clear way to reformulate Lemma \ref{lemma1} for the case of avoiding the permutation 321 or 123. As a consequence, the proof in the previous section simply does not hold. Fortunately, however, we still have a closed form expression for $s_n(321)$ (recall that $s_n(321)=s_n(123)$ by our flipping lemma). Surprisingly, in fact, the sequence remains the same: $s_n(321)=C_n$, the $n^{th}$ Catalan number. In order to prove this result, we need the machinery of Young tableaux. What follows is a brief exposition of the key results, adapted from Stanley's \emph{Algebraic Combinatorics}.
 
 \begin{definition}
 A Young diagram of a partition $\lambda=\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of the integer $\sum_{i=1}^n \lambda_i$ is a left-justified array of squares, with $\lambda_i$ squares in the $i$th row.
@@ -415,10 +414,10 @@ There exists an algorithm (called the \emph{RSK algorithm}) which defines a bije
 \end{theorem}\todo{give a citation for this}
 Using all this machinery and all these results, we are finally able to prove the closed-form expression for $s_n(321)$.
 \begin{theorem}
-The total number of permutations of $\{1,2,3,\ldots, n\}$ that avoid the order 321 as a subsequence is $C_n$, where $C_n$ is the $n^{th}$ Catalan number.
+$s_n(321)$ and $s_n(123)$ are equal to $C_n$, the $n^{th}$ Catalan number.
 \end{theorem}
 \begin{proof}
-By Theorem \ref{rsk}, there are $s_n(321)$ elements in the set $A$ of pairs of size-$n$ SYT of the same shape and at most two rows. By Theorem \ref{catalan_2}, the set $B_n$ of SYT of shape $(n, n)$ has its size given by $C_n$. We will construct a bijection between the sets $A_n$ and $B_n$: because $|A_n|=s_n(321)$ and $|B_n|=C_n$, it will therefore follow that $s_n(321)=C_n$, as desired.
+By the reversing lemma we only need to prove this result for $s_n(321)$. By Theorem \ref{rsk}, there are $s_n(321)$ elements in the set $A$ of pairs of size-$n$ SYT of the same shape and at most two rows. By Theorem \ref{catalan_2}, the set $B_n$ of SYT of shape $(n, n)$ has its size given by $C_n$. We will construct a bijection between the sets $A_n$ and $B_n$: because $|A_n|=s_n(321)$ and $|B_n|=C_n$, it will therefore follow that $s_n(321)=C_n$, as desired.
 
 Given any pair of size $n$ Young tableaux of the same shape and at most two parts, take the second tableau and invert its numbers: that is, send $i$ to $2n+1-i$ for all $i$. Now rotate the Young tableau and `fit' it into the first tableau. We demonstrate this process for a pair of Young tableaux with $n=6$: we begin with
 \[\ytableausetup{aligntableaux=top}
