@@ -165,7 +165,7 @@ A permutation $\sigma\in S_n$ avoids a permutation $\pi\in S_k$ if the sequence 
 For a permutation $\pi\in S_k$, $s_n(\pi)$ represents the number of permutations in $S_n$ that avoid $\pi$. 
 \end{definition}
 
-\emph{Yajit wrote this section. }
+\emph{Yajit wrote this section. Leon closely edited this section.}
 
 
 \section{Flipping and Reversing}
@@ -233,7 +233,7 @@ This result follows because the reversing lemma gives a bijection between permut
 \end{proof}
 
 \subsection{Flipping}
-In this section we introduce the concept of flipping and use generating trees to prove the `Flipping Lemma.'
+In this section we introduce the concept of flipping to prove the `Flipping Lemma.'
 \begin{definition}
 We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with the largest element swapped with the smallest element, the second largest element swapped with the second smallest element, etc.  The flipping operator will be denoted by $\mathcal{F}$.  
 \end{definition}
@@ -257,7 +257,7 @@ For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{F}(\pi))$.
 This result follows because the flipping lemma gives a bijection between permutations that avoid $\pi$ and permutations that avoid $\mathcal{F}(\pi)$. 
 \end{proof}
 
-\emph{Yajit wrote this section.}
+\emph{Yajit wrote this section. Leon edited this section.}
 
 
 \section{Avoiding Permutations of Length Three Part I}
@@ -314,7 +314,8 @@ $$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ wh
 By the flipping lemma and reversing lemma we see that  $s_n(132)$, $s_n(213)$ and $s_n(231)$ are the sequence of Catalan numbers as well. 
 \end{proof}
 
-\emph{Deepak wrote this section. Yajit made minor revisions.}
+
+\emph{Deepak wrote this section. Leon closely edited this section. Yajit made minor revisions.}
 
 %It is easy to see that the above proof can be modified slightly to prove that the sequences $s_n(132)$, $s_n(213)$ and $s_n(231)$ are in fact the sequence of catalan numbers as well. In fact, we claim that if $\sigma$ and $\pi$ are both permutations in $S_k$ for some arbitrary $k$, then if $\sigma = flip(\pi)$, $s_n(\pi) = s_n(\sigma)$. This is easy to see since if $a$ is a permutation that avoids $\sigma$, then $flip(a)$ is a permutation that avoids $\pi$ -- since this can be done both ways, it is bijective and we can conclude that the cardinalities of the two sets are equal, or $s_n(\sigma) = s_n(\pi)$.\todo{we should move this up and make it clear from the beginning that this stuff generalizes}
 
@@ -413,13 +414,13 @@ The number of SYT of shape $(n, n)$ is given by $C_n$, the $n^{th}$ Catalan numb
 
 We need only one more result before we are ready to prove our central result.
 
-\begin{theorem}
+\begin{theorem}\footnote{A more detailed exposition of this result can be found at http://math.mit.edu/~jnovak/d.18.312/lecture16.pdf. The result itself appears on page 9.}
 \label{rsk}
 There exists an algorithm (called the \emph{RSK algorithm}) which defines a bijection between the set of permutations in $S(n)$ avoiding a decreasing subsequence of length 3 and the set of pairs of size-$n$ SYT of the same shape and at most two rows. 
-\end{theorem}\todo{give a citation for this}
+\end{theorem}
 Using all this machinery and all these results, we are finally able to prove the closed-form expression for $s_n(321)$.
 \begin{theorem}
-$s_n(321)$ and $s_n(123)$ are equal to $C_n$, the $n^{th}$ Catalan number.
+$s_n(321)$ and $s_n(123)$, the number of permutations on $n$ elements which avoid 321 and 123 respectively, are equal to $C_n$, the $n^{th}$ Catalan number.
 \end{theorem}
 \begin{proof}
 By the reversing lemma we only need to prove this result for $s_n(321)$. By Theorem \ref{rsk}, there are $s_n(321)$ elements in the set $A$ of pairs of size-$n$ SYT of the same shape and at most two rows. By Theorem \ref{catalan_2}, the set $B_n$ of SYT of shape $(n, n)$ has its size given by $C_n$. We will construct a bijection between the sets $A_n$ and $B_n$: because $|A_n|=s_n(321)$ and $|B_n|=C_n$, it will therefore follow that $s_n(321)=C_n$, as desired.
@@ -528,7 +529,7 @@ So we conjecture that sequence $A$ is characterized by elements of $S_4$ that ar
 
 \
 
-\emph{Yajit wrote this section.}
+\emph{Yajit wrote this section. Leon edited this section.}
 
 \section{Avoidance of Permutations of $T_n$}
 \label{Tn}
@@ -666,6 +667,6 @@ First, note that $2m-1, 2m$ must be inserted to the right of  $2m-3$, because of
 
 \
 
-\emph{Deepak wrote this section. Leon and Yajit closely edited this section.}
+\emph{Deepak wrote this section. Leon rewrote parts of it. Yajit closely edited this section.}
 
 \end{document}
