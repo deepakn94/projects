@@ -79,12 +79,48 @@
 \section{Introduction}
 In this paper we investigate pattern avoidance in finite sequences of natural numbers. We begin with an example: consider the sequences 123 and 1324. Note the order relationships of the elements of 123: we have $1< 2 < 3$. Notice in addition that there is an ordered subsequence of 1324 that follows the same general pattern, namely 124. In this situation we say that the sequence 1324 \emph{does not avoid the pattern 123}. We can also examine the sequence 1432, and observe that none of its subsequences have the same order relationships as 123. We say that 1432 \emph{avoids} 123.
 
-With examples of a four element sequence that avoids 123 and a four element sequence that does not avoid 123, it is natural to ask the question: how many four element sequences avoid 123? And more generally, how many $n$-element sequences avoid 123? If we define $s_n(123)$ to be the number of $n$ element sequences that avoid 123, then the question above is equivalent to identifying the sequence $(s_n(123))_n$. In this paper we consider specific cases of a very general avoidance problem, describing the sequence $(s_n(\sigma))_n$ where $\sigma$ is any permutation of the elements of the set $\{1,2,\cdots, k\}\subset\mathbb{N}$ for some $k$.
+With examples of a four element sequence that avoids 123 and a four element sequence that does not avoid 123, it is natural to ask the question: how many four element sequences avoid 123? And more generally, how many $n$-element sequences avoid 123? For a sequence $\pi$ that is a permutation of the elements of $\{1,\cdots,k\}$, we define
+$$
+s_n(\pi)=\#\{\text{the set of permutations of $\{1,\cdots, n\}$ that avoid $\pi$}\}.
+$$
 
-In Section \ref{S3} we consider sequences $s_n(\pi)$ for $\pi$ a permutation on the set $\{1,2,3\}$, and prove that the sequence $s_n(\pi)$ for all such $\pi$ is in fact the sequence of Catalan numbers. In Section \ref{S4} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation of $\{1,2,3,4\}$. In Section \ref{Tn} we consider a variation of the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of the permutations of $n$ elements. Before proceeding, however, we formally introduce the notation that will be used throughout this paper. 
+
+If we define $s_n(123)$ to be the number of $n$ element sequences that avoid 123, then the question above is equivalent to identifying the sequence $(s_n(123))_n$. In this paper we consider specific cases of a very general avoidance problem, describing the sequence $(s_n(\sigma))_n$ where $\sigma$ is any permutation of the elements of the set $\{1,2,\cdots, k\}\subset\mathbb{N}$ for some $k$.
+
+In Sections \ref{S3} and \ref{S4} we consider sequences $s_n(\pi)$ for $\pi$ a permutation on the set $\{1,2,3\}$, and prove that the sequence $s_n(\pi)$ for all such $\pi$ is in fact the sequence of Catalan numbers. In Section \ref{S4} we will consider sequences $s_n(\pi)$ for $\pi$ a permutation of $\{1,2,3,4\}$. In Section \ref{Tn} we consider a variation of the avoidance problem that considers the problem of avoiding sequences in a subset $T_n$ of the permutations of $n$ elements. Before proceeding, however, we formally introduce the notation that will be used throughout this paper. 
 
 
 \subsection{Notation}
+
+\begin{definition}
+A permutation of a set $D$ is a bijective map from $D$ to itself. 
+\end{definition}
+
+\begin{example}
+Let $\pi$ be a function so that $\pi(1)=5$, $\pi(2)=2$, $\pi(3)=4$, $\pi(4)=1$, and $\pi(5)=3$. Then $\pi$ is a permutation of the set $D=\{1,2,3,4,5\}$. 
+\end{example}
+
+\begin{remark}
+There are two notations for permutations, `one-line' notation and `cycle' notation. We give definitions of both below. Unless stated otherwise, we will use one-line notation in this paper.
+\end{remark}
+
+\begin{definition}
+Let $\pi$ be the permutation on elements of $\{1,2,\cdots, n\}$ so that $\pi(1)=a_1, \pi(2)=a_2,\cdots, \pi(n)=a_n$. Then in one-line notation $\pi$ is written as $\pi(1)\pi(2)\cdots\pi(n)$, or equivalently, $a_1a_2,\cdots a_n$. 
+\end{definition}
+
+
+\begin{definition}
+In cycle notation we identify cycles in the permutation and write them as such. Let $\pi$ be the permutation on elements of $\{1,2,\cdots, n\}$ so that $\pi(1)=a_1, \pi(2)=a_2,\cdots, \pi(n)=a_n$. Then the cycle notation for $\pi$ is $$(1 \ \pi(1) \ \pi(\pi(1)) \cdots \pi^{k-1}(1))(\alpha_1 \ \pi(\alpha_1) \ \pi(\pi(\alpha_1)) \cdots)\cdots(\alpha_\ell \ \pi(\alpha_\ell) \ \pi(\pi(\alpha_\ell)) \cdots).$$ Let $k$ be the smallest natural number for which $\pi^k(1)=1$. Then $\pi^{k-1}(1)$ is the last entry in the cycle before it is closed. If there are elements of $\{1,2,\cdots, n\}$ that are not in the cycle then let $\alpha_1$ be the smallest such element and continue the process until all elements are accounted for. 
+\end{definition}
+
+\begin{remark}
+Note, cycle notation is not unique. 
+\end{remark}
+
+\begin{example}
+Let $\pi$ be a function so that $\pi(1)=5$, $\pi(2)=4$, $\pi(3)=1$, $\pi(4)=2$, and $\pi(5)=3$. Then in one-line notation $\pi=54123$. In cycle notation $\pi=(153)(24)$. 
+\end{example}
+
 
 \begin{definition}
 The set $S_n$ is the collection of permutations of the set $\{1,2,\cdots, n\}$. 
@@ -96,11 +132,15 @@ $S_3=\{123,132,213,231,312,321\}$.
 
 \todo{We never define what a pattern is. Either scrub the paper of mentions or define it here}
 
-\begin{remark}
-The notation used to describe the elements of $S_n$ above is `one-line' notation.\todo{Jerison wanted us to define this formally, I think} Thus far we have ignored the fact that $S_n$ has a group structure. When discussing this group structure it is convenient to use a different notation known as `cycle' notation.\todo{Also should define this formally} This alternative notation will be used in Section \ref{S4} and an introduction to cycle notation can be found in Appendix []. 
 
-The notation used to describe the elements of $S_n$ above is `one-line' notation. Thus far we have ignored the fact that $S_n$ has a group structure. When discussing this group structure it is convenient to use a different notation known as `cycle' notation. This alternative notation will be used in Section \ref{S4} and an introduction to cycle notation can be found in Appendix []. 
-\end{remark}
+
+
+
+
+%Let $S_n$ be the set of permutations of $\{1,\cdots, n\}$. There are two conventions commonly used to write elements of $S_n$. The first is $\emph{one-line}$ notation where permutations in $S_n$ are written explicitly, e.g. 43215 is a permutation of $\{1,2,3,4,5\}$ in $S_5$. 
+
+%The second is \emph{cycle notation}, where a cycle $(a_1\cdots a_n)\in S_n$ with $1\le a_i\le n$ acts on a sequence by sending $a_1\mapsto a_2$, $a_2\mapsto a_3$, $\cdots$, $a_n\mapsto a_1$. For example, the cycle $(14)(23)$ sends $12345$ to $43215$. 
+
 
 \begin{definition}
 Two finite sequences of distinct positive integers $a_1,\cdots a_k$ and $b_1,\cdots b_k$ have the same relative order if the $i^\text{th}$ largest entry of each unordered set $\{a_1,\cdots,a_k\}$ and $\{b_1,\cdots, b_k\}$ appears in the same position in $a_1\cdots a_k$ and $b_1\cdots b_k$ for each $1\le i\le k$. 
@@ -602,11 +642,6 @@ Given that $|A_1|$ is trivially equal to $1$, we conclude that $|A_m|$, or the $
 Note that even though we proved that the sequences $t_n(231)$ and $t_n(213)$ are both equivalent, the methods used to prove that each sequence is equal to the sequence $1, 2, 4, 8, \ldots$ are vastly different.
 
 
-\section{Appendix A}
-
-Let $S_n$ be the set of permutations of $\{1,\cdots, n\}$. There are two conventions commonly used to write elements of $S_n$. The first is $\emph{one-line}$ notation where permutations in $S_n$ are written explicitly, e.g. 43215 is a permutation of $\{1,2,3,4,5\}$ in $S_5$. 
-
-The second is \emph{cycle notation}, where a cycle $(a_1\cdots a_n)\in S_n$ with $1\le a_i\le n$ acts on a sequence by sending $a_1\mapsto a_2$, $a_2\mapsto a_3$, $\cdots$, $a_n\mapsto a_1$. For example, the cycle $(14)(23)$ sends $12345$ to $43215$. 
 
 
 \end{document}
