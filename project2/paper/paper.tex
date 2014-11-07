@@ -528,7 +528,7 @@ We now impose further restrictions on the set of permutations $S_n$. This new se
 Let $n$ be an even integer. The set $T_n$ is defined as the set of all permutations $\sigma \in S_n$ in which $1,3,5,\ldots,2n-1$ appear in increasing order, and $2i$ always appears to the right of $2i-1$.
 \end{definition}
 
-Since $T_n$ is only defined for even $n$, henceforth we shall refer to $T_n$ as $T_{2m}$ where $m$ is any integer greater than or equal to $0$.\todo{0 or 1 here?}
+Since $T_n$ is only defined for even $n$, henceforth we shall refer to $T_n$ as $T_{2m}$ where $m$ is any integer greater than or equal to $1$.
 
 Given the above definition of $T_{2m}$, we prove the following result about the cardinality of $T_{2m}$.
 
@@ -594,7 +594,7 @@ Since $x$ is to the left of $y$ and $z$, and $x>y$ and $x>z$, it follows by Lemm
 \begin{itemize}
 \item \textbf{Case 1:} $x$ is odd.
 
-Then it suffices to check that $y$ is to the right of $y-1$ and that $z$ is still to the right of $z-1$. This is easy: since $y-1$ and $z-1$ are odd numbers less than $x$ another odd number, they must be to the left of $x$, and hence to the left of $y$ and $z$.
+Then it suffices to check that $y$ is to the right of $y-1$ and that $z$ is still to the right of $z-1$. This is easy: since $y-1$ and $z-1$ are odd numbers less than $x$ (another odd number, by assumption), they must be to the left of $x$, and hence to the left of $y$ and $z$.
 
 \item \textbf{Case 2:} $x$ is even.
 
@@ -614,23 +614,11 @@ Let $A$ be the set of permutations in $T_n$ avoiding 312, and $B$ the set of per
 
 Note by Lemma \ref{tn_avoidance} that if $x, y, z$ is a subsequence of three elements of a permutation in $T_n$ in the relative order $312$ or $321$, then both $y$ and $z$ must be even.
 
-Before we do so, however, we establish a process to transform an element $a \in A$ to an element $b \in B$.
-
-Consider a permutation $\pi$ in $T_n$ that avoids $312$. For each permutation $\pi \in T_n$ that avoids $312$, we want to show that there exists a sequence of transformation moves that transforms $\pi$ to a unique permutation $\pi'$ that avoids $321$.
-
-If the original permutation $\pi$ avoids $321$ already, then clearly $\pi' = \pi$ avoids $321$.
-
-Now if $\pi$ does not avoid $321$, there must exist some sub-sequence $x, y, z$ in $\pi$ in the relative ordering $321$. From Lemma \ref{swapping_lemma}, we see that swapping $y$ and $z$ in the permutation $\pi$ yields another valid permutation $\pi_1$ in $T_n$ -- note that the permutation produced after this swap has $x, y, z$ in the relative ordering $312$ instead of $321$. Note that $\pi_1$ may still have sub-sequences in the relative ordering $321$, so we may have to perform the above swapping operation again to get some permutation $\pi_2 \in T_n$ such that a sub-sequence $x_1, y_1, z_1$ in $\pi_1$ that has a relative ordering $321$ is in the relative ordering $312$ in $\pi_2$. Continuing this process produces the following chain of permutations,
-$$\pi \rightarrow \pi_1 \rightarrow \pi_2 \rightarrow \ldots \rightarrow \pi_k$$
-Where the last permutation in the chain $\pi_k$ does not have a single three-element sub-sequence in the relative ordering $321$, that is $\pi' = \pi_k$ is a permutation in $T_n$ that avoids $321$.\todo{why does this terminate? also, why is this necessary?}
-
-This process is completely invertible, since we can take a permutation $\pi'$ in $T_n$ that avoids $321$, and traverse through the above chain in reverse order to obtain a permutation that avoids $312$.
-
 We now prove that there exists a bijection between the sets $A$ and $B$. 
 
-Let $a$ be an arbitrary permutation in $A$. Clearly, by the definition of $A$, $a$ must avoid $312$. Now, we claim that for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in decreasing order; if this were not the case, then we would have a subsequence in the relative ordering $312$, which would be a contradiction. It is easy to see that we can make a corresponding claim about permutation $b$, that is for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in increasing order.
+Let $a$ be an arbitrary permutation in $A$. Clearly, by the definition of $A$, $a$ must avoid $312$. Now, we claim that for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in decreasing order; if this were not the case, then we would have a subsequence in the relative ordering $312$ (the element $i$ followed  by the two increasing even numbers less than $i$), which would be a contradiction. It is easy to see that we can make a corresponding claim about permutation $b$, that is for every element $i$ in the permutation $a$, all even numbers in $a$ to the right of $i$ and less than $i$ must be in increasing order.
 
-\todo{this is a really long sentence}The above two claims show that there is actually an easy way to transform an arbitrary permutation $a \in A$ to a $b \in B$, and similarly, to transform an arbitrary permutation $b \in B$ to a $a \in A$ -- to obtain a permutation in $B$ from a permutation $a \in A$, for every element $i$ in the permutation $a$, all even elements in $a$ to the right of $i$ less than $i$ should be reversed (that is reordered to in increasing order); similarly to obtain a permutation in $A$ from a permutation $b \in B$, for every element $i$ in the permutation $b$, all even elements in $b$ to the right of $i$, less than $i$ should be reversed (that is reordered to in decreasing order). \todo{should have some justification here that reversing reordering these elements doesn't 'step on each other'... that is, you can always do it for some $i_1$ and then some $i_2$ afterward}
+The above two claims show that there is actually an easy way to transform an arbitrary permutation $a \in A$ to a $b \in B$, and similarly, to transform an arbitrary permutation $b \in B$ to a $a \in A$. To obtain a permutation in $B$ from a permutation $a \in A$, for every element $i$ in the permutation $a$, all even elements in $a$ to the right of $i$ less than $i$ should be reversed (that is reordered to in increasing order). Similarly to obtain a permutation in $A$ from a permutation $b \in B$, for every element $i$ in the permutation $b$, all even elements in $b$ to the right of $i$, less than $i$ should be reversed (that is reordered to in decreasing order). Note that these transformations can be expressed as multiple swaps (as described in Lemma \ref{swapping_lemma}). \todo{should have some justification here that reversing reordering these elements doesn't 'step on each other'... that is, you can always do it for some $i_1$ and then some $i_2$ afterward}
 Since the mapping from $A$ to $B$ is clearly reversible, and hence invertible, we conclude that the mapping we just established between $A$ and $B$ is bijective.
 
 Since there exists a bijective mapping between permutations in $T_n$ that avoid $312$ and permutations in $T_n$ that avoid $321$, we can conclude that $t_n(312) = t_n(321)$.
