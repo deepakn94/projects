@@ -61,3 +61,6 @@ target/
 *.aux
 *.synctex.gz
 *.out
+*.nav
+*.snm
+*.toc
