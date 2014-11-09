@@ -6,7 +6,15 @@
 \usepackage{verbatim}
 \usetikzlibrary{arrows,shapes}
 
-\title[Avoidance in permutations]{Avoidance in permutations}
+\makeatletter
+\newenvironment<>{proofwithoutbox}[1][\proofname]{%
+    \par
+    \def\insertproofname{#1\@addpunct{.}}%
+    \usebeamertemplate{proof begin}#2}
+  {\usebeamertemplate{proof end}}
+\makeatother
+
+\title[Avoidance in permutations]{Pattern avoidance}
 \subtitle{An explanation and proof}
 \author[Jain, Narayanan and Zhang]{Yajit Jain, Deepak Narayanan and Leon Zhang}
 \date[November 2014]{November 14, 2014}
@@ -47,8 +55,60 @@
 \end{frame}
 
 
-\begin{frame}{Avoidance in $S_n$}
+\begin{frame}
+\begin{lemma}
+\label{lemma1}
+The permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid the pattern $312$ are precisely those of the form,
+$$\pi_1 \pi_2 i$$
+the concatenation of $\pi_1, \pi_2$, and $i$, where $\pi_1$ is a permutation of $\{1,2,\ldots,i-1\}$ that avoids the pattern $312$ and $\pi_2$ is a permutation of $\{i+1,\ldots,k+1\}$ that avoids the pattern $312$.
+\end{lemma}
+\end{frame}
 
+\begin{frame}
+\begin{proof}
+
+For the sake of contradiction, assume that there exists some permutation $\pi$ of $\{1,2,...,k,k+1\}$ that avoids $312$, ending with value $i$ such that some integer $x < i$ is to the right of some integer $y > i$. Clearly, $\pi$ does not avoid 312. (why?)
+
+It follows that for any permutation $\pi\in S_{k+1}$ avoiding $312$ and ending in $i$, all $x < i$ must be to the left of all $y > i$. Hence, $\pi$ can be written as $\pi_1 \pi_2 i$ where $\pi_1$ is a permutation of $\{1,2,\ldots,i-1\}$ and $\pi_2$ is a permutation of $\{i+1, i+2,\ldots,k+1\}$. Furthermore, it is clear that any subsequences of the permutation $\pi$ must avoid $312$ if the entire permutation $\pi$ is to avoid $312$ as well; this implies that the permutations $\pi_1$ and $\pi_2$ must avoid $312$ as well.
+\end{proof}
+
+\end{frame}
+
+\begin{frame}
+\begin{definition}
+The Catalan numbers are the sequence of positive integers $C_i$ defined as follows,
+$$C_0=1, \, C_{n+1}=\sum_{i=1}^n C_iC_{n-i} \, \text{for} \; n \geq 0$$
+\end{definition}
+
+\begin{theorem}
+$s_n(312), s_n(132), s_n(213)$, and $s_n(231)$ are equal to $C_n$, the $n^{th}$ Catalan number.
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\begin{proofwithoutbox}
+Assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid the order $312$ as a subsequence is $C_i$.
+
+Want to prove that the number of permutations of $\{1,2,...,k,k+1\}$ that avoid the order $312$ as a subsequence is $C_{k+1}$.
+
+The number of permutations of $\{1,2,...,k,k+1\}$ that avoid $312$ can be counted by enumerating through all possible values of the last term of a valid permutation. 
+
+From the above lemma, all permutations of $\{1,2,...,k,k+1\}$ ending in $i$ that avoid $312$ are precisely those of the form
+$$\pi = \pi_1 \pi_2 i$$
+where $\pi_1$ is a permutation of $\{1,2,\dots,i-1\}$ that avoids $312$ and $\pi_2$ is a permutation of $\{i+1,i+2,\ldots,k+1\}$ that avoids $312$.
+\end{proofwithoutbox}
+\end{frame}
+
+\begin{frame}
+\begin{proof}[\proofname\ (contd.)]
+It follows that the total number of permutations $\pi$ avoiding $312$ and ending in $i$ is
+$$C_{i-1} \cdot C_{k-i+1}$$ (by our induction hypothesis)
+
+Now, summing over all possible values of $i$, the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
+$$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ which equals $C_{k+1}$
+
+By the flipping lemma and reversing lemma,  $s_n(132)$, $s_n(213)$ and $s_n(231)$ are the sequence of Catalan numbers as well. 
+\end{proof}
 \end{frame}
 
 
