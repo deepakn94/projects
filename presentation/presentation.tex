@@ -56,8 +56,64 @@
 
 
 \begin{frame}
+
+\begin{lemma}[Reversing Lemma]
+The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$.
+\end{lemma}
+\begin{proof}
+Need to only prove one direction (why?).
+
+Suppose that $\mathcal{R}(\sigma)$ does not avoid $\mathcal{R}(\pi)$ if $\sigma$ avoids $\pi$.
+
+Then if $\mathcal{R}(\sigma)$ is reversed again again, the subsequence of $\mathcal{R}(\sigma)$ that follows the same pattern as $\mathcal{R}(\pi)$ will reverse to a subsequence that follows the same pattern as $\pi$ -- a contradiction. Therefore $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$. 
+
+\end{proof}
+
+\begin{corollary} 
+For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{R}(\pi))$. 
+\end{corollary}
+
+\end{frame}
+
+
+\begin{frame}
+\begin{definition}
+We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with the largest element swapped with the smallest element, the second largest element swapped with the second smallest element, etc.  The flipping operator will be denoted by $\mathcal{F}$.  
+\end{definition}
+
+\begin{example}
+$\mathcal{F}(1324)=4231$.
+\end{example}
+
+\begin{example}
+$\mathcal{F}(1243)=4312$.
+\end{example}
+
+\end{frame}
+
+\begin{frame}
+\begin{lemma}[Flipping Lemma]
+The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$.
+\end{lemma}
+
+\begin{proof}
+Need to only prove one direction (why?).
+
+Suppose $\mathcal{F}(\sigma)$ does not avoid $\mathcal{F}(\pi)$ if $\sigma$ avoids $\pi$. (Here, $\sigma \in S_n$ and $\pi \in S_k$)
+
+Let $\mathcal{F}(\sigma)=a_1\cdots a_n$ and let $\mathcal{F}(\pi)=b_1\cdots  b_k$. Then there is some subsequence $a_{i_1}\cdots a_{i_k}$ so that $a_{i_c}<a_{i_d}$ if and only if $b_c<b_d$.
+
+But then, $n+1-a_{i_c}>n+1-a_{i_d}$ if and only if $k+1-b_c>k+1-b_d$. This implies that $\sigma$ does not avoid $\pi$, a contradiction (why?). 
+\end{proof}
+
+\begin{corollary} 
+For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{F}(\pi))$. 
+\end{corollary}
+
+\end{frame}
+
+\begin{frame}
 \begin{lemma}
-\label{lemma1}
 The permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid the pattern $312$ are precisely those of the form,
 $$\pi_1 \pi_2 i$$
 the concatenation of $\pi_1, \pi_2$, and $i$, where $\pi_1$ is a permutation of $\{1,2,\ldots,i-1\}$ that avoids the pattern $312$ and $\pi_2$ is a permutation of $\{i+1,\ldots,k+1\}$ that avoids the pattern $312$.
@@ -77,7 +133,7 @@ It follows that for any permutation $\pi\in S_{k+1}$ avoiding $312$ and ending i
 \begin{frame}
 \begin{definition}
 The Catalan numbers are the sequence of positive integers $C_i$ defined as follows,
-$$C_0=1, \, C_{n+1}=\sum_{i=1}^n C_iC_{n-i} \, \text{for} \; n \geq 0$$
+$$C_0=1, \, C_{n+1}=\sum_{i=0}^n C_iC_{n-i} \, \text{for} \; n \geq 0$$
 \end{definition}
 
 \begin{theorem}
