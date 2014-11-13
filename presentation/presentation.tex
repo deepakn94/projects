@@ -58,14 +58,14 @@
 \begin{frame}
 
 \begin{lemma}[Reversing Lemma]
-The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$.
+The permutation $\sigma$ avoids the permutation $\pi$ iff $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$.
 \end{lemma}
 \begin{proof}
 Need to only prove one direction (why?).
 
 Suppose that $\mathcal{R}(\sigma)$ does not avoid $\mathcal{R}(\pi)$ if $\sigma$ avoids $\pi$.
 
-Then if $\mathcal{R}(\sigma)$ is reversed again again, the subsequence of $\mathcal{R}(\sigma)$ that follows the same pattern as $\mathcal{R}(\pi)$ will reverse to a subsequence that follows the same pattern as $\pi$ -- a contradiction. Therefore $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$. 
+Reversing $\mathcal{R}(\sigma)$ again produces a contradiction (why?), which implies that $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$ if $\sigma$ avoids $\pi$.
 
 \end{proof}
 
@@ -78,7 +78,7 @@ For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{R}(\pi))$.
 
 \begin{frame}
 \begin{definition}[Flip of a sequence]
-We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with the largest element swapped with the smallest element, the second largest element swapped with the second smallest element, etc.  The flipping operator will be denoted by $\mathcal{F}$.  
+We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with the largest element swapped with the smallest element, the second largest element swapped with the second smallest element, etc.  The flipping operator is denoted by $\mathcal{F}$.  
 \end{definition}
 
 \begin{example}
@@ -93,17 +93,17 @@ $\mathcal{F}(1243)=4312$.
 
 \begin{frame}
 \begin{lemma}[Flipping Lemma]
-The permutation $\sigma$ avoids the permutation $\pi$ if and only if $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$.
+The permutation $\sigma$ avoids the permutation $\pi$ iff $\mathcal{F}(\sigma)$ avoids $\mathcal{F}(\pi)$.
 \end{lemma}
 
 \begin{proof}
-Need to only prove one direction (why?).
+As before, need to only prove one direction.
 
 Suppose $\mathcal{F}(\sigma)$ does not avoid $\mathcal{F}(\pi)$ if $\sigma$ avoids $\pi$. (Here, $\sigma \in S_n$ and $\pi \in S_k$)
 
-Let $\mathcal{F}(\sigma)=a_1\cdots a_n$ and let $\mathcal{F}(\pi)=b_1\cdots  b_k$. Then there is some subsequence $a_{i_1}\cdots a_{i_k}$ so that $a_{i_c}<a_{i_d}$ if and only if $b_c<b_d$.
+Let $\mathcal{F}(\sigma)=a_1\cdots a_n$ and let $\mathcal{F}(\pi)=b_1\cdots  b_k$. Then there is some subsequence $a_{i_1}\cdots a_{i_k}$ such that $a_{i_c}<a_{i_d}$ iff $b_c<b_d$.
 
-But then, $n+1-a_{i_c}>n+1-a_{i_d}$ if and only if $k+1-b_c>k+1-b_d$. This implies that $\sigma$ does not avoid $\pi$, a contradiction (why?). 
+But then, $n+1-a_{i_c}>n+1-a_{i_d}$ iff $k+1-b_c>k+1-b_d$. This implies that $\sigma$ does not avoid $\pi$, a contradiction (why?). 
 \end{proof}
 
 \begin{corollary} 
@@ -123,9 +123,11 @@ the concatenation of $\pi_1, \pi_2$, and $i$, where $\pi_1$ is a permutation of 
 \begin{frame}
 \begin{proof}
 
-For the sake of contradiction, assume that there exists some permutation $\pi$ of $\{1,2,...,k,k+1\}$ that avoids $312$, ending with value $i$ such that some integer $x < i$ is to the right of some integer $y > i$. Clearly, $\pi$ does not avoid 312. (why?)
+Assume that $\exists$ some permutation $\pi$ of $\{1,2,...,k,k+1\}$ that avoids $312$, ending with value $i$ such that some integer $x < i$ is to the right of some integer $y > i$. Clearly, $\pi$ does not avoid 312. (why?)
 
-It follows that for any permutation $\pi\in S_{k+1}$ avoiding $312$ and ending in $i$, all $x < i$ must be to the left of all $y > i$. Hence, $\pi$ can be written as $\pi_1 \pi_2 i$ where $\pi_1$ is a permutation of $\{1,2,\ldots,i-1\}$ and $\pi_2$ is a permutation of $\{i+1, i+2,\ldots,k+1\}$. Furthermore, it is clear that any subsequences of the permutation $\pi$ must avoid $312$ if the entire permutation $\pi$ is to avoid $312$ as well; this implies that the permutations $\pi_1$ and $\pi_2$ must avoid $312$ as well.
+It follows that for any permutation $\pi$ avoiding $312$ and ending in $i$, all $x < i$ must be to the left of all $y > i$. Hence, $\pi$ can be written as $$\pi_1 \pi_2 i$$ where $\pi_1$ is a permutation of $\{1,2,\ldots,i-1\}$ and $\pi_2$ is a permutation of $\{i+1, i+2,\ldots,k+1\}$.
+
+Furthermore, it is clear that the permutations $\pi_1$ and $\pi_2$ must avoid $312$ as well. (why?)
 \end{proof}
 
 \end{frame}
@@ -158,7 +160,7 @@ where $\pi_1$ is a permutation of $\{1,2,\dots,i-1\}$ that avoids $312$ and $\pi
 It follows that the total number of permutations $\pi$ avoiding $312$ and ending in $i$ is
 $$C_{i-1} \cdot C_{k-i+1}$$
 
-Now, summing over all possible values of $i$, the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
+Summing over all possible values of $i$, the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
 $$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i} = C_{k+1}$$
 
 By the flipping lemma and reversing lemma,  $s_n(132)$, $s_n(213)$ and $s_n(231)$ are the sequence of Catalan numbers as well. 
