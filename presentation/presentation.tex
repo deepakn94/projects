@@ -14,7 +14,7 @@
   {\usebeamertemplate{proof end}}
 \makeatother
 
-\title[Avoidance in permutations]{Pattern avoidance}
+\title[Pattern avoidance]{Pattern avoidance}
 \subtitle{An explanation and proof}
 \author[Jain, Narayanan and Zhang]{Yajit Jain, Deepak Narayanan and Leon Zhang}
 \date[November 2014]{November 14, 2014}
@@ -77,7 +77,7 @@ For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{R}(\pi))$.
 
 
 \begin{frame}
-\begin{definition}
+\begin{definition}[Flip of a sequence]
 We define the \emph{flip} of a sequence $a$ as the sequence $b$ with the same elements as $a$, but with the largest element swapped with the smallest element, the second largest element swapped with the second smallest element, etc.  The flipping operator will be denoted by $\mathcal{F}$.  
 \end{definition}
 
@@ -145,8 +145,6 @@ $s_n(312), s_n(132), s_n(213)$, and $s_n(231)$ are equal to $C_n$, the $n^{th}$ 
 \begin{proofwithoutbox}
 Assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid the order $312$ as a subsequence is $C_i$.
 
-Want to prove that the number of permutations of $\{1,2,...,k,k+1\}$ that avoid the order $312$ as a subsequence is $C_{k+1}$.
-
 The number of permutations of $\{1,2,...,k,k+1\}$ that avoid $312$ can be counted by enumerating through all possible values of the last term of a valid permutation. 
 
 From the above lemma, all permutations of $\{1,2,...,k,k+1\}$ ending in $i$ that avoid $312$ are precisely those of the form
@@ -158,10 +156,10 @@ where $\pi_1$ is a permutation of $\{1,2,\dots,i-1\}$ that avoids $312$ and $\pi
 \begin{frame}
 \begin{proof}[\proofname\ (contd.)]
 It follows that the total number of permutations $\pi$ avoiding $312$ and ending in $i$ is
-$$C_{i-1} \cdot C_{k-i+1}$$ (by our induction hypothesis)
+$$C_{i-1} \cdot C_{k-i+1}$$
 
 Now, summing over all possible values of $i$, the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
-$$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i}$$ which equals $C_{k+1}$
+$$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i} = C_{k+1}$$
 
 By the flipping lemma and reversing lemma,  $s_n(132)$, $s_n(213)$ and $s_n(231)$ are the sequence of Catalan numbers as well. 
 \end{proof}
