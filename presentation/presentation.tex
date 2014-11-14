@@ -243,15 +243,68 @@ $$
 %%%%%%
 
 \begin{frame}{\color{red}Main Result}
+\begin{definition}[Recall]
+Let $\pi$ be a permutation of length $k$. Then
+$$
+s_n(\pi)=\#\{\text{the set of permutations in $S_n$ that avoid $\pi$}\}.
+$$
+\end{definition}
+
+\
+
+
 \begin{Theorem}
 For $\pi\in S_3$, $(s_n(\pi))$ is equal to the Catalan numbers:
 $$
-(s_n(\pi))=1,1,2,5,14,42,132,429...
+(s_n(\pi))=1,2,5,14,42,132,429...
 $$
 \end{Theorem}
 \end{frame}
 
 %%%%%%
+
+
+\begin{frame}{Conjectures for $\pi\in S_4$}
+$$
+(s_n(\pi))=\left\{
+	\begin{array}{ll}
+A:=1,2,6,23,103,512,2740,15485,91245\ldots\\
+B:=1,2,6,23,103,513,2761,15767,94359\ldots\\
+C:=1,2,6,23,103,513,2762,15793,94776\ldots
+	\end{array}
+\right\}
+$$
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+B &A&C\\
+\hline
+(1)(2)(3)(4),(14)(23)&(243),(142)&(23),(14)\\
+(34),(1423)&(234),(143)&\\
+(24),(1432)&(124),(132)&\\
+(12),(1324)&(123),(134)&\\
+(12)(34),(13)(24)&(1243),(1342)&\\
+(1234),(13)&&\\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+%%%%%%
+\begin{frame}
+\begin{definition}[Reversing]
+We define the \emph{reverse} of a sequence $a_1\cdots a_n$ to be the sequence $a_n\cdots a_1$.  The flipping operator is denoted by $\mathcal{R}$.  
+\end{definition}
+
+\begin{example}
+$\mathcal{R}(1324)=4231$.
+\end{example}
+
+\begin{example}
+$\mathcal{R}(1243)=3421$.
+\end{example}
+
+\end{frame}
 
 \begin{frame}
 
@@ -273,20 +326,6 @@ For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{R}(\pi))$.
 
 \end{frame}
 
-\begin{frame}
-\begin{definition}[Reversing]
-We define the \emph{reverse} of a sequence $a_1\cdots a_n$ to be the sequence $a_n\cdots a_1$.  The flipping operator is denoted by $\mathcal{R}$.  
-\end{definition}
-
-\begin{example}
-$\mathcal{R}(1324)=4231$.
-\end{example}
-
-\begin{example}
-$\mathcal{R}(1243)=3421$.
-\end{example}
-
-\end{frame}
 
 
 \begin{frame}
