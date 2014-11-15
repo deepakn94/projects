@@ -1,8 +1,9 @@
-\documentclass{beamer}
+\documentclass[14pt]{beamer}
 \usepackage{tkz-graph}
 \usepackage{fancyvrb}
 \usepackage{amsmath}
-\usetheme{Amsterdam}
+\usetheme{Hannover}
+\usecolortheme{whale}
 
 \usepackage{verbatim}
 \usetikzlibrary{arrows,shapes}
@@ -38,7 +39,7 @@
 \tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
 \tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
 
-\begin{frame}[plain]
+\begin{frame}
   \titlepage
 \end{frame}
 
@@ -291,9 +292,9 @@ B &A&C\\
 \end{frame}
 
 %%%%%%
-\begin{frame}
+\begin{frame}{The Reversing Lemma}
 \begin{definition}[Reversing]
-We define the \emph{reverse} of a sequence $a_1\cdots a_n$ to be the sequence $a_n\cdots a_1$.  The flipping operator is denoted by $\mathcal{R}$.  
+We define the \emph{reverse} of a permutation $a_1\cdots a_n$ to be the permutation $a_n\cdots a_1$.  The reversing operator is denoted by $\mathcal{R}$.  
 \end{definition}
 
 \begin{example}
@@ -306,19 +307,11 @@ $\mathcal{R}(1243)=3421$.
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}{The Reversing Lemma}
 
 \begin{lemma}[Reversing Lemma]
 The permutation $\sigma$ avoids the permutation $\pi$ iff $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$.
 \end{lemma}
-\begin{proof}
-Need to only prove one direction (why?).
-
-Suppose that $\mathcal{R}(\sigma)$ does not avoid $\mathcal{R}(\pi)$ if $\sigma$ avoids $\pi$.
-
-Reversing $\mathcal{R}(\sigma)$ again produces a contradiction (why?), which implies that $\mathcal{R}(\sigma)$ avoids $\mathcal{R}(\pi)$ if $\sigma$ avoids $\pi$.
-
-\end{proof}
 
 \begin{corollary} 
 For a permutation $\pi$, $s_n(\pi)=s_n(\mathcal{R}(\pi))$. 
