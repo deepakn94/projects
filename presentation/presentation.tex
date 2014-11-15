@@ -788,39 +788,6 @@ T_6=&\{
 \end{example}
 \end{frame}
 
-\begin{frame}
-\begin{theorem}
-Recall that $n=2m$. The set $T_n$ has size
-\[\# T_n=1\cdot 3 \cdot 5 \cdot \ldots \cdot 2m-1.\]
-\end{theorem}
-\begin{proof}
-\begin{enumerate}
-\item $\# T_n$ given by the number of valid ways to insert $2, 4, \ldots, 2m$ into the sequence $1, 3, \ldots, 2m-1$.
-\item Insert in reverse order: first $2m$, then $2m-2$, and so on.
-\item Only one way to insert $2m$. Then three ways to insert $2m-2$. Then five ways to insert $2m-4$. Repeat... there are $2m-1$ ways to insert $2$.
-\end{enumerate}
-\end{proof}
-\end{frame}
-
-\begin{frame}
-\begin{lemma}
-Let $\sigma\in T_n$, and let $a, b\in \{1, 2, \ldots, n\}$ with $a$ to the left of $b$ in $\sigma$. If $a>b$, then $b$ is even.
-\end{lemma}
-\begin{proof}
-Two possibilities for $a$:
-\begin{itemize}
-\item $a$ is odd. Then $b$ is not odd, as odd integers must appear in increasing order.
-\item $a$ is even. Then 
-\begin{itemize}
-\item$a-1$ is to the left of $a$, so to the left of $b$
-\item Since $a-1\geq b$, and $a-1\neq b$, we have $a-1> b.$
-\end{itemize}
-and we have reduced to the previous case.
-\end{itemize}
-\end{proof}
-\end{frame}
-
-
 \begin{frame}{Problem Statement}
 \begin{definition}
 Given a permutation $\pi\in S_k$, we define $t_n(\pi)$ as
@@ -862,47 +829,6 @@ We can run code to compute $t_n(\pi)$ for small $n$ and for each $\pi\in S_3$. W
 \end{itemize}
 \item What about the other permutations in $S_3$?
 \end{itemize}
-\end{frame}
-
-\begin{frame}
-\begin{theorem}
-Let $n=2m$. The total number of permutations in $T_n$ avoiding 231, $t_n(231)$, is equal to $2^{\frac{n}{2}-1}$.
-\end{theorem}
-\begin{proofwithoutbox}[Proof outline]
-Fix an arbitrary $\sigma\in T_n$. Consider an arbitrary $2i\in\{1, 2, \ldots, n\}$, and define
-\[A=\{a\in \{1, 2, \ldots, n\}\, | \ a > 2i \text{ and } a \text{ to the left of 2i}\}.\]
-Proof steps:
-\begin{itemize}
-\item The set $A$ contains no even numbers.
-\item The set $A$ contains no odd numbers greater than $2i+1$.
-\item Any integer to the left of $2i$ must be less than $2i$, unless it is $2i+1$.
-\end{itemize}
-\end{proofwithoutbox}
-\end{frame}
-
-\begin{frame}
-\begin{proof}[Proof outline (Continued).]
-\begin{itemize}
-\item Use induction to show that either 
-\begin{itemize}
-\item $2i$ is in the $2i$th position, with $2i+1$ in the $2i+1$st position, or
-\item $2i+1$ is in the $2i$th position, with $2i$ in the $2i+1$st position.
-\end{itemize}
-\item Conclude that there are $2^{\frac{n}{2}-1}$ options for $\sigma$.
-\end{itemize}
-\end{proof}
-\end{frame}
-
-\begin{frame}{Other results and conjectures}
-\begin{theorem}
-The total number of permutations in $T_n$ avoiding 213, $t_n(213)$, is equal to $2^{\frac n 2-1}$.
-\end{theorem}
-\begin{theorem}
-There exists a bijection between the set of permutations in $T_n$ avoiding 312 and the set of permutations in $T_n$ avoiding 321. As a consequence, $t_n(312)=t_n(321)$.
-\end{theorem}
-\begin{proofwithoutbox}[Conjecture]
-The total number of permutations in $T_n$ avoiding 312 or 321, $t_n(312)$ and $t_n(321)$ respectively, is given by the formula $\binom{3n/2}{n/2}/(n+1)$.
-\end{proofwithoutbox}
 \end{frame}
 
 \end{document}
