@@ -1,4 +1,4 @@
-\documentclass[10pt]{beamer}
+\documentclass[12pt]{beamer}
 \usepackage{tkz-graph}
 \usepackage{fancyvrb}
 \usepackage{amsmath}
@@ -20,7 +20,7 @@
 \title[Pattern avoidance]{Pattern avoidance}
 \subtitle{An explanation and proof}
 \author[Jain, Narayanan and Zhang]{Yajit Jain, Deepak Narayanan and Leon Zhang}
-\date[November 2014]{November 14, 2014}
+\date[November 2014]{November 19, 2014}
 
 \RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
 {fontsize=\tiny,
@@ -46,245 +46,180 @@
 
 \section{Introduction}
 
+\begin{frame}
+\setbeamercovered{transparent}
+\uncover<1,2>{
+A permutation of a finite set $\{1,\cdots,n\}$ is some \emph{ordering} of the elements.
+}
 
-\begin{frame}{}
-\begin{definition}
-A finite sequence of distinct positive integers $a_1a_2\cdots a_n$ avoids another finite sequence of distinct positive integers $b_1\cdots b_k$ with $n\ge k$ if no subsequence $a_{i_1}a_{i_2}\cdots a_{i_k}$ of $a_1a_2\cdots a_n$ has its terms in the same relative order as $b_1\cdots b_k$. 
-\end{definition}
+\uncover<2>{
+\begin{center}
+54123 is a permutation of $\{1,2,3,4,5\}$. 
+\end{center}
+}
 
 \
 
-\
+\uncover<3,4>{
+$\color{red} S_n$ is the set of permutations on $\{1,\cdots,n\}$.
+}
 
-\
-
-Examples!
+\uncover<4>{
+$$54123\in S_5$$
+}
 \end{frame}
 
 \begin{frame}
-Given $k$ and $n$, how many permutations of the set $\{1,\cdots, n\}$ avoid a given permutation of the set $\{1,\cdots, k\}$?\
 
-\
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\center\LARGE
+54123
+\end{column}
 
+\begin{column}{0.7\textwidth}
+\begin{column}{\columnwidth}
+\begin{column}{0.3\columnwidth}
+\centering
+includes
+\end{column}
+\begin{column}{0.7\columnwidth}
+$$
+\left\{
+	\begin{array}{ll}
+123 \\
+312\\
+4312
+
+	\end{array}
+\right.
+$$
+\end{column}
+\end{column}
+
+\vspace{0.5cm}
+
+\hrule
+
+\vspace{0.5cm}
+
+\begin{column}{\columnwidth}
+\begin{column}{0.3\columnwidth}
+\centering
+avoids
+\end{column}
+\begin{column}{0.7\columnwidth}
+$$
+\left\{
+	\begin{array}{ll}
+132 \\
+312\\
+213\\
+231\\
+	\end{array}
+\right.
+$$
+\end{column}
+\end{column}
+\end{column}
+
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+Let $\pi=312\in S_3$. 
+\begin{itemize}
+\item Question: How many permutations avoid $\pi$? {\color{red}  (a lot)}
+\item Better Question: How many permutations in $S_n$ avoid $\pi$? 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Let's count!}
+\setbeamercovered{transparent}
+\begin{itemize}
+\uncover<1>{\item How many permutations in $S_1$ avoid $\pi$?} \uncover<2->{{\color{red}1}}
+\item How many permutations in $S_2$ avoid $\pi$? {\color{red}2} 
+\item How many permutations in $S_3$ avoid $\pi$? {\color{red}5}
+\item How many permutations in $S_4$ avoid $\pi$? {\color{red}??????}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Permutations in {\color{red}$S_4$} that avoid $\pi=312$?}
+How many permutations in $S_4$ avoid $\pi$? {\color{red} 14}
+
+\begin{center}
+\begin{tabular}{c c c c c c}
+{\color{green}1234} & {\color{green}1243} & {\color{green}1324} & {\color{green}1342} & 1423 & {\color{green}1432}\\[10pt]
+{\color{green}2134} & {\color{green}2143} & {\color{green}2314} & {\color{green}1341} & 2413 & {\color{green}2431}\\[10pt]
+3124 & 3142 & {\color{green}3214} & {\color{green}3241} & 3412 & {\color{green}3421}\\[10pt]
+4123 & 4132 & 4213 & 4231 & 4312 & {\color{green}4321}
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\uncover<1->{
 \begin{definition}
-Let $\pi$ be a permutation of length $k$. Then
-$$
-s_n(\pi)=\#\{\text{the set of permutations of $\{1,\cdots, n\}$ that avoid $\pi$}\}.
-$$
+Let $a_n(\pi)$ be the number of permutations in $S_n$ that avoid $\pi$. 
 \end{definition}
+}
 
 \
 
-{\color{blue} We are going to compute sequences $(s_n(\pi))$}.
-\end{frame}
-
-\begin{frame}{Formalities}
-\begin{definition}
-A permutation of a set $D$ is a bijective map from $D$ to itself. 
-\end{definition}
-\
+\uncover<2->{We want to compute the sequences $(a_n(\pi))$ for some $\pi\in S_k$. }
 
 \
 
-\
 
-\begin{definition}
-$S_n$ is the {\color{red}set} of permutations of $\{1,\cdots, n\}$. 
-\end{definition}
-\end{frame}
+\uncover<3->{Example: $(a_n(312))=1,2,5,14,$}\uncover<4->{ 42,132,429,...}
 
-\begin{frame}{Example}
-Take $\sigma\in S_5$ with
-$$
-\sigma=\begin{pmatrix}
-1&2&3&4&5\\
-\downarrow&\downarrow&\downarrow&\downarrow&\downarrow&\\
-4&5&2&1&3
-\end{pmatrix}
-$$
-
-\
-
-\
-
-\
-
-\begin{columns}
-\begin{column}{.5\textwidth}
-\centering{\underline{One-line Notation}}
-$$
-\sigma=45213
-$$
-\end{column}
-\vrule{}
-\begin{column}{.5\textwidth}
-\centering{\underline{Cycle Notation}}
-$$
-\sigma=(14)(253)
-$$
-\end{column}
-\end{columns}
 
 \end{frame}
-
-%%%%
-
-\begin{frame}{Example}
-Take $\sigma\in S_5$ with
-$$
-\sigma=\begin{pmatrix}
-1&2&3&4&5\\
-\downarrow&\downarrow&\downarrow&\downarrow&\downarrow&\\
-\color{red}4&\color{red}5&\color{red}2&\color{red}1&\color{red}3
-\end{pmatrix}
-$$
-
-\
-
-\
-
-\
-
-\begin{columns}
-\begin{column}{.5\textwidth}
-\centering{\underline{One-line Notation}}
-\color{red}$$
-\sigma=45213
-$$
-\end{column}
-\vrule{}
-\begin{column}{.5\textwidth}
-\centering{\underline{Cycle Notation}}
-$$
-\sigma=(14)(253)
-$$
-\end{column}
-\end{columns}
-
-\end{frame}
-
-%%%%%
-
-\begin{frame}{Example}
-Take $\sigma\in S_5$ with
-$$
-\sigma=\begin{pmatrix}
-1&2&3&4&5\\
-\color{red}\downarrow&\downarrow&\downarrow&\color{red}\downarrow&\downarrow&\\
-4&5&2&1&3
-\end{pmatrix}
-$$
-
-\
-
-\
-
-\
-
-\begin{columns}
-\begin{column}{.5\textwidth}
-\centering{\underline{One-line Notation}}
-$$
-\sigma=45213
-$$
-\end{column}
-\vrule{}
-\begin{column}{.5\textwidth}
-\centering{\underline{Cycle Notation}}
-$$
-\sigma={\color{red}(14)}(253)
-$$
-\end{column}
-\end{columns}
-
-\end{frame}
-
-
-%%%%%%
-
-\begin{frame}{Example}
-Take $\sigma\in S_5$ with
-$$
-\sigma=\begin{pmatrix}
-1&2&3&4&5\\
-\color{red}\downarrow&\color{green}\downarrow&\color{green}\downarrow&\color{red}\downarrow&\color{green}\downarrow&\\
-4&5&2&1&3
-\end{pmatrix}
-$$
-
-\
-
-\
-
-\
-
-\begin{columns}
-\begin{column}{.5\textwidth}
-\centering{\underline{One-line Notation}}
-$$
-\sigma=45213
-$$
-\end{column}
-\vrule{}
-\begin{column}{.5\textwidth}
-\centering{\underline{Cycle Notation}}
-$$
-\sigma={\color{red}(14)}{\color{green}(253)}
-$$
-\end{column}
-\end{columns}
-
-\end{frame}
-
-%%%%%%
 
 \begin{frame}{\color{red}Main Result}
-\begin{definition}[Recall]
-Let $\pi$ be a permutation of length $k$. Then
-$$
-s_n(\pi)=\#\{\text{the set of permutations in $S_n$ that avoid $\pi$}\}.
-$$
-\end{definition}
-
-\
-
-
 \begin{Theorem}
-For $\pi\in S_3$, $(s_n(\pi))$ is equal to the Catalan numbers:
+For $\pi\in S_3$, $(a_n(\pi))$ is equal to the Catalan numbers:
 $$
-(s_n(\pi))=1,2,5,14,42,132,429...
+(a_n(\pi))=1,2,5,14,42,132,429...
 $$
 \end{Theorem}
 \end{frame}
 
-%%%%%%
 
 
-\begin{frame}{Conjectures for $\pi\in S_4$}
+\begin{frame}{What if we take {\color{red}$\pi\in S_4$}?}
+
 $$
-(s_n(\pi))=\left\{
+(a_n(\pi))=\left\{
 	\begin{array}{ll}
-A:=1,2,6,23,103,512,2740,15485,91245\ldots\\
-B:=1,2,6,23,103,513,2761,15767,94359\ldots\\
-C:=1,2,6,23,103,513,2762,15793,94776\ldots
+\uncover<1->{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
+\uncover<2->{B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
+\uncover<3->{C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
 	\end{array}
 \right\}
 $$
-
+\uncover<4->{
 \begin{center}
-\begin{tabular}{|c|c|c|}
-B &A&C\\
-\hline
-(1)(2)(3)(4),(14)(23)&(243),(142)&(23),(14)\\
-(34),(1423)&(234),(143)&\\
-(24),(1432)&(124),(132)&\\
-(12),(1324)&(123),(134)&\\
-(12)(34),(13)(24)&(1243),(1342)&\\
-(1234),(13)&&\\
-\end{tabular}
+????
 \end{center}
-
+}
 \end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 %%%%%%
 

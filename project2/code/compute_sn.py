@@ -51,13 +51,14 @@ def compute_sn(n, order):
     tot_count = 0
     for permutation in all_permutations:
         if not is_order_in_permutation(permutation, order):
+            print permutation
             tot_count += 1
     return tot_count
 
 
 if __name__ == '__main__':
     n = int(sys.argv[1])
-    order = [1, 2, 3]
+    order = [5,4,1,2,3]
     k = len(order)
     for i in xrange(k, n):
         print compute_sn(i, order)
