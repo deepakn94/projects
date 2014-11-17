@@ -153,7 +153,7 @@ How many permutations in $S_4$ avoid $\pi$? {\color{red} 14}
 \begin{center}
 \begin{tabular}{c c c c c c}
 {\color{green}1234} & {\color{green}1243} & {\color{green}1324} & {\color{green}1342} & 1423 & {\color{green}1432}\\[10pt]
-{\color{green}2134} & {\color{green}2143} & {\color{green}2314} & {\color{green}1341} & 2413 & {\color{green}2431}\\[10pt]
+{\color{green}2134} & {\color{green}2143} & {\color{green}2314} & {\color{green}2341} & 2413 & {\color{green}2431}\\[10pt]
 3124 & 3142 & {\color{green}3214} & {\color{green}3241} & 3412 & {\color{green}3421}\\[10pt]
 4123 & 4132 & 4213 & 4231 & 4312 & {\color{green}4321}
 \end{tabular}
@@ -693,58 +693,291 @@ However, it is much harder to prove that the sequences $(s_n(123))$ and $(s_n(32
 \end{itemize}
 \end{frame}
 
+\section{Conjectures on $S_4$}
+
+\begin{frame}{Recall}
+
+\[
+(a_n(\pi))=\left\{
+	\begin{array}{ll}
+{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
+{B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
+{C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
+	\end{array}
+\right\}
+\]
+
+\end{frame}
+
+\begin{frame}{Permutations in $S_4$}
+\begin{center}
+\begin{tabular}{c c c c c c}
+{1234} & {1243} & {1324} & {1342} & 1423 & {1432}\\[10pt]
+{2134} & {2143} & {2314} & {2341} & 2413 & {2431}\\[10pt]
+3124 & 3142 & {3214} & {3241} & 3412 & {3421}\\[10pt]
+4123 & 4132 & 4213 & 4231 & 4312 & {4321}
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Flipping and reversing buckets}
+
+\[\{1243,4312,2134,3412\},\{2413,3142\},\]
+\[\{1432,4123,2341,3214\},\{1234,4321\},\]
+\[\{4132,1423,2314,3241\},\{2143,3412\},\]
+\[\{4213,1342,3124,2431\},\{4231,1324\}\]
+\end{frame}
+
+\begin{frame}{Decomposition}
+\[
+(a_n(\pi))=\left\{
+	\begin{array}{ll}
+{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
+{B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
+{C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
+	\end{array}
+\right\}
+\]
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+B &A&C\\
+\hline
+1234, 4321&4132, 1423&4231, 1324\\
+1243, 4312&4213, 1342&\\
+1432, 4123&2431, 3124&\\
+2134, 3421&2413, 3142&\\
+2143, 3412&2314, 3241&\\
+2341, 3214&&\\ %organize into orbits, move column A first
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Cycle notation}
+Take $\sigma\in S_5$ with
+$$
+\sigma=\begin{pmatrix}
+1&2&3&4&5\\
+\downarrow&\downarrow&\downarrow&\downarrow&\downarrow&\\
+4&5&2&1&3
+\end{pmatrix}
+$$
+
+\
+
+\
+
+\
+
+\begin{columns}
+\begin{column}{.5\textwidth}
+\centering{\underline{One-line Notation}}
+$$
+\sigma=45213
+$$
+\end{column}
+\vrule{}
+\begin{column}{.5\textwidth}
+\centering{\underline{Cycle Notation}}
+$$
+\sigma=(14)(253)
+$$
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+%%%%
+
+\begin{frame}{Cycle Notation}
+Take $\sigma\in S_5$ with
+$$
+\sigma=\begin{pmatrix}
+1&2&3&4&5\\
+\downarrow&\downarrow&\downarrow&\downarrow&\downarrow&\\
+\color{red}4&\color{red}5&\color{red}2&\color{red}1&\color{red}3
+\end{pmatrix}
+$$
+
+\
+
+\
+
+\
+
+\begin{columns}
+\begin{column}{.5\textwidth}
+\centering{\underline{One-line Notation}}
+\color{red}$$
+\sigma=45213
+$$
+\end{column}
+\vrule{}
+\begin{column}{.5\textwidth}
+\centering{\underline{Cycle Notation}}
+$$
+\sigma=(14)(253)
+$$
+\end{column}
+\end{columns}
+
+\end{frame}
+
+%%%%%
+
+\begin{frame}{Cycle Notation}
+Take $\sigma\in S_5$ with
+$$
+\sigma=\begin{pmatrix}
+1&2&3&4&5\\
+\color{red}\downarrow&\downarrow&\downarrow&\color{red}\downarrow&\downarrow&\\
+4&5&2&1&3
+\end{pmatrix}
+$$
+
+\
+
+\
+
+\
+
+\begin{columns}
+\begin{column}{.5\textwidth}
+\centering{\underline{One-line Notation}}
+$$
+\sigma=45213
+$$
+\end{column}
+\vrule{}
+\begin{column}{.5\textwidth}
+\centering{\underline{Cycle Notation}}
+$$
+\sigma={\color{red}(14)}(253)
+$$
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%
+
+\begin{frame}{Cycle Notation}
+Take $\sigma\in S_5$ with
+$$
+\sigma=\begin{pmatrix}
+1&2&3&4&5\\
+\color{red}\downarrow&\color{green}\downarrow&\color{green}\downarrow&\color{red}\downarrow&\color{green}\downarrow&\\
+4&5&2&1&3
+\end{pmatrix}
+$$
+
+\
+
+\
+
+\
+
+\begin{columns}
+\begin{column}{.5\textwidth}
+\centering{\underline{One-line Notation}}
+$$
+\sigma=45213
+$$
+\end{column}
+\vrule{}
+\begin{column}{.5\textwidth}
+\centering{\underline{Cycle Notation}}
+$$
+\sigma={\color{red}(14)}{\color{green}(253)}
+$$
+\end{column}
+\end{columns}
+
+\end{frame}
+
+%%%%%%
+
+
+\begin{frame}{Cycle decomposition}
+\[
+(a_n(\pi))=\left\{
+	\begin{array}{ll}
+{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
+{B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
+{C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
+	\end{array}
+\right\}
+\]
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+B &A&C\\
+\hline
+(1)(2)(3)(4),(14)(23)&(243),(142)&(23),(14)\\
+(34),(1423)&(234),(143)&\\
+(24),(1432)&(124),(132)&\\
+(12),(1324)&(123),(134)&\\
+(12)(34),(13)(24)&(1243),(1342)&\\
+(1234),(13)&&\\ %organize table into orbits
+\end{tabular}
+\end{center}
+\end{frame}
+
 \section{Avoidance in $T_n$}
 
 \begin{frame}{Avoidance in $T_n$}
 \begin{definition}
-Let $n=2m$. Then
-\begin{align*}T_n= &\{\sigma \in S_n\, |\ 1,3,5,\ldots, 2n-1\text{ appear in increasing}\\ \ & \text{ order, and }2i\text{ is always to the right of 2i-1}\}.
-\end{align*}
+Let $m$ be a positive integer. The set $T_{2m}$ is defined as all permutations in $S_{2m}$ such that
+\begin{itemize}
+\item the odd numbers appear in increasing order,
+\item each even number $2i$ appears to the right of $2i-1$.
+\end{itemize}
 \end{definition}
 \begin{example}
-The set $T_2\subset S_2$ consists of the single permutation $12$.
+The set $T_2\subset S_2$ consists of the single permutation $12$. The other permutation in $S_2$, 21, is not in $T_2$.
 \end{example}
 \end{frame}
 
-\begin{frame}
-\begin{example}
-The set $T_4\subset S_4$ consists of the permutations $1234, 1324,$ and $1342$.
-\end{example}
-\begin{example}
-The set $T_6\subset S_6$ consists of the following permutations:
-\begin{align*}
-T_6=&\{
-123564, 123456, 123546,
-132564, 132456, 132546,\\
-\ & 135264,  134256, 135246,
-135624, 134526, 135426,\\
-\ & 135642, 134562, 135462\}.
-\end{align*}
-\end{example}
+\begin{frame}{Permutations in $T_4$}
+\begin{center}
+\begin{tabular}{c c c c c c}
+{\color {green}1234} & {\color{red}1243} & {\color{green}1324} & {\color{green}1342} & {\color{red}1423} & {\color{red}1432}\\[10pt]
+{\color{red}2134} & {\color{red}2143} & {\color{red}2314} & {\color{red}2341} & {\color{red}2413} & {\color{red}2431}\\[10pt]
+{\color{red}3124} & {\color{red}3142} & {\color{red}3214} & {\color{red}3241} & {\color{red}3412} & {\color{red}3421}\\[10pt]
+{\color{red}4123} & {\color{red}4132} & {\color{red}4213} & {\color{red}4231} & {\color{red}4312} & {\color{red}4321}
+\end{tabular}
+\end{center}
 \end{frame}
 
 \begin{frame}{Problem Statement}
 \begin{definition}
-Given a permutation $\pi\in S_k$, we define $t_n(\pi)$ as
-\[t_n(\pi)=\#\{\sigma\in T_n\, | \ \sigma\text{ avoids } \pi\}.\]
+Given a permutation $\pi\in S_k$, we define $t_m(\pi)$ as
+\[t_m(\pi)=\#\{\sigma\in T_{2m}\, | \ \sigma\text{ avoids } \pi\}.\]
 \end{definition}
 \begin{problem}
-Let $\pi\in S_3$, and $n$ an arbitrary positive integer. Compute $t_n(\pi)$.
+Let $\pi\in S_3$, and $m$ an arbitrary positive integer. Compute $t_m(\pi)$.
 \end{problem}
 \end{frame}
 
 \begin{frame}
-We can run code to compute $t_n(\pi)$ for small $n$ and for each $\pi\in S_3$. We get
+We can run code to compute $t_m(\pi)$ for small $m$ and for each $\pi\in S_3$. We get
 \[\begin{tabular}{|c | c | c | c | c | c|}
-\hline$\pi$ & $n=2$ & $n=4$ & $n=6$ & $n=8$ & $n=10$\\
+\hline$\pi$ & $m=2$ & $m=4$ & $m=6$ & $m=8$ & $m=10$\\
+\hline
 \hline
 123 & 1 & 0 & 0 & 0 & 0\\
 \hline
+\hline
 132 & 1 & 1 & 1 & 1 & 1\\
+\hline
 \hline
 213 & 1 & 2 & 4 & 8 & 16\\
 \hline
 231 & 1 & 2 & 4 & 8 & 16\\
+\hline
 \hline
 312 & 1 & 3 & 12 & 55 & 273\\
 \hline
@@ -762,7 +995,6 @@ We can run code to compute $t_n(\pi)$ for small $n$ and for each $\pi\in S_3$. W
 \begin{itemize}
 \item The permutation $123\ldots (2n)$ is the only permutation in $T_n$ that avoids 132.
 \end{itemize}
-\item What about the other permutations in $S_3$?
 \end{itemize}
 \end{frame}
 
