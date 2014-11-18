@@ -47,12 +47,12 @@
 \section{Introduction}
 
 \begin{frame}
-\setbeamercovered{transparent}
-\uncover<1,2>{
+\setbeamercovered{invisible}
+\uncover<1->{
 A permutation of a finite set $\{1,\cdots,n\}$ is some \emph{ordering} of the elements.
 }
 
-\uncover<2>{
+\uncover<2->{
 \begin{center}
 54123 is a permutation of $\{1,2,3,4,5\}$. 
 \end{center}
@@ -60,11 +60,11 @@ A permutation of a finite set $\{1,\cdots,n\}$ is some \emph{ordering} of the el
 
 \
 
-\uncover<3,4>{
+\uncover<3->{
 $\color{red} S_n$ is the set of permutations on $\{1,\cdots,n\}$.
 }
 
-\uncover<4>{
+\uncover<4->{
 $$54123\in S_5$$
 }
 \end{frame}
@@ -138,7 +138,7 @@ Let $\pi=312\in S_3$.
 \end{frame}
 
 \begin{frame}{Let's count!}
-\setbeamercovered{transparent}
+\setbeamercovered{invisible}
 \begin{itemize}
 \onslide<1->{\item How many permutations in $S_1$ avoid $\pi$?} \onslide<2->{{\color{red}1}}
 \onslide<3->{\item How many permutations in $S_2$ avoid $\pi$?} \onslide<4->{{\color{red}2}}
@@ -148,8 +148,9 @@ Let $\pi=312\in S_3$.
 \end{frame}
 
 \begin{frame}{Permutations in {\color{red}$S_4$} that avoid $\pi=312$?}
-How many permutations in $S_4$ avoid $\pi$? {\color{red} 14}
+\uncover<1->{How many permutations in $S_4$ avoid $\pi$?} \uncover<3->{{\color{red} 14}}
 
+\uncover<2->{
 \begin{center}
 \begin{tabular}{c c c c c c}
 {\color{green}1234} & {\color{green}1243} & {\color{green}1324} & {\color{green}1342} & 1423 & {\color{green}1432}\\[10pt]
@@ -158,6 +159,7 @@ How many permutations in $S_4$ avoid $\pi$? {\color{red} 14}
 4123 & 4132 & 4213 & 4231 & 4312 & {\color{green}4321}
 \end{tabular}
 \end{center}
+}
 \end{frame}
 
 \begin{frame}
