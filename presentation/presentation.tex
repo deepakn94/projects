@@ -49,6 +49,11 @@
 
 \section{Introduction}
 
+
+\begin{frame}
+  \tableofcontents[currentsection]
+\end{frame}
+
 \begin{frame}{Permutations}
 \setbeamercovered{invisible}
 \uncover<1->{
@@ -413,6 +418,17 @@ $$
 
 \section{Avoidance in $S_n$}
 
+\begin{frame}
+  \tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{The Catalan numbers}
+\begin{definition}
+The Catalan numbers are the sequence of positive integers $C_i$ defined as follows,
+$$C_0=1, \, C_{n+1}=\sum_{i=0}^n C_iC_{n-i} \, \text{for} \; n \geq 0$$
+\end{definition}
+\end{frame}
+
 \subsection{Avoidance of $312$}
 
 \begin{frame}{Avoidance of $312$}
@@ -492,7 +508,7 @@ How about some permutations that do avoid $312$?
   \node at (3,0) (num5) {5};
   \node at (3.5,0) (num6) {4};}
 
-\onslide<3->{
+\onslide<2->{
   
   \draw[implies,implies-] (5,0) -- (4,0);
   \node at (6.8,0) (description) {\text{$123654$ \color{green}{avoids} \color{black}$312$}};}
@@ -500,13 +516,13 @@ How about some permutations that do avoid $312$?
 
 \end{example}
 
-\begin{example}<4->
+\begin{example}<3->
 \
 
 \begin{tikzpicture}[
     implies/.style={double,double equal sign distance,-implies},
 ]
-\onslide<4->{
+\onslide<3->{
   \node at (1,0) (num1) {2};
   \node at (1.5,0) (num2) {1};
   \node at (2,0) (num3) {4};
@@ -514,7 +530,7 @@ How about some permutations that do avoid $312$?
   \node at (3,0) (num5) {6};
   \node at (3.5,0) (num6) {3};}
 
-\onslide<5->{
+\onslide<3->{
   
   \draw[implies,implies-] (5,0) -- (4,0);
   \node at (6.8,0) (description) {\text{$214563$ \color{green}{avoids} \color{black}$312$}};}
@@ -527,8 +543,6 @@ How about some permutations that do avoid $312$?
 \textbf{Do the permutations that avoid $312$ have any special properties?}
 
 \
-
-\color{black}
 
 \begin{tikzpicture}[
     implies/.style={double,double equal sign distance,-implies},
@@ -637,18 +651,10 @@ How about some permutations that do avoid $312$?
 
 \begin{frame}{Avoidance of $312$}
 \begin{lemma}
-The permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid the pattern $312$ are precisely those of the form,
+The permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid $312$ are precisely those of the form,
 $$\pi_1 \pi_2 i$$
-the concatenation of $\pi_1, \pi_2$, and $i$, where $\pi_1$ is a permutation of $\{1,2,\ldots,i-1\}$ that avoids the pattern $312$ and $\pi_2$ is a permutation of $\{i+1,\ldots,k+1\}$ that avoids the pattern $312$.
+where $\pi_1$ and $\pi_2$ are permutations of $\{1,2,\ldots,i-1\}$ and $\{i+1,\ldots,k+1\}$ that avoid $312$.
 \end{lemma}
-\end{frame}
-
-
-\begin{frame}{Avoidance of $312$}
-\begin{definition}
-The Catalan numbers are the sequence of positive integers $C_i$ defined as follows,
-$$C_0=1, \, C_{n+1}=\sum_{i=0}^n C_iC_{n-i} \, \text{for} \; n \geq 0$$
-\end{definition}
 \end{frame}
 
 \begin{frame}{Avoidance of $312$}
@@ -659,13 +665,21 @@ The $n^{th}$ term of the sequence $a_n(312)$ is equal to $C_n$, the $n^{th}$ Cat
 
 \begin{frame}{Avoidance of $312$}
 \begin{proof}
-Assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid $312$ is $C_i$.
+\begin{itemize}
+\onslide<1->{
+\item Assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid $312$ is $C_i$.
+}
 
-It follows from the above lemma that the total number of permutations $\pi$ avoiding $312$ and ending in $i$ is
+\onslide<2->{
+\item It follows from the above lemma that the total number of permutations $\pi$ avoiding $312$ and ending in $i$ is
 $$C_{i-1} \cdot C_{k-i+1}$$
+}
 
-Summing over all possible values of $i$, the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
+\onslide<3->{
+\item Summing over all possible values of $i$, the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
 $$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i} = C_{k+1}$$
+}
+\end{itemize}
 \end{proof}
 \end{frame}
 
@@ -680,9 +694,7 @@ We define the \emph{reverse} of a permutation $b_1\cdots b_n$ to be the permutat
 \begin{example}
 $\mathcal{R}(1324)=4231$.
 \end{example}
-}
 
-\onslide<3->{
 \begin{example}
 $\mathcal{R}(1243)=3421$.
 \end{example}
@@ -923,15 +935,23 @@ For a permutation $\pi$, $a_n(\pi)=a_n(\mathcal{F}(\pi))$.
 
 \begin{frame}{Avoidance of other permutations in $S_3$}
 \begin{itemize}
-\item
-From the Flipping Lemma and Reversing Lemmas, the sequences $(a_n(213))$, $(a_n(132))$ and $(a_n(231))$ are the sequence of Catalan numbers as well.
+\onslide<1->{
+\item Since $213 = \mathcal{R}(312)$, $(a_n(213))$ is the sequence of Catalan numbers.}
 
+\onslide<2->{
+\item Since $132 = \mathcal{F}(312)$, $(a_n(132))$ is the sequence of Catalan numbers, and since $231 = \mathcal{R}(132)$, $(a_n(231))$ is the Sequence of Catalan numbers as well.}
+
+\onslide<3->{
 \item
-However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(321))$ are the sequence of Catalan numbers.
+However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(321))$ are the sequence of Catalan numbers.}
 \end{itemize}
 \end{frame}
 
 \section{Conjectures on $S_4$}
+
+\begin{frame}
+  \tableofcontents[currentsection]
+\end{frame}
 
 \begin{frame}{Recall}
 
@@ -1201,6 +1221,10 @@ $\{$(1)(2)(3)(4), (14)(23)$\}$&&\\
 \end{frame}
 
 \section{Avoidance in $T_n$}
+
+\begin{frame}
+  \tableofcontents[currentsection]
+\end{frame}
 
 \begin{frame}{Avoidance in $T_n$}
 \begin{definition}
