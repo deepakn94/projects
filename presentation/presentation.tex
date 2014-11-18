@@ -17,6 +17,9 @@
   {\usebeamertemplate{proof end}}
 \makeatother
 
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[1.5ex]{0pt}{0pt}}
+
 \title[Pattern avoidance]{Pattern avoidance}
 \subtitle{An explanation and proof}
 \author[Jain, Narayanan and Zhang]{Yajit Jain, Deepak Narayanan and Leon Zhang}
@@ -744,7 +747,7 @@ However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(32
 \end{frame}
 
 \section{Conjectures on $S_4$}
-
+\subsection{Flipping and reversing buckets}
 \begin{frame}{Recall}
 
 \[
@@ -766,6 +769,17 @@ However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(32
 {2134} & {2143} & {2314} & {2341} & 2413 & {2431}\\[10pt]
 3124 & 3142 & {3214} & {3241} & 3412 & {3421}\\[10pt]
 4123 & 4132 & 4213 & 4231 & 4312 & {4321}
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Permutations in $S_4$}
+\begin{center}
+\begin{tabular}{c c c c c c}
+{\color{blue} 1234} & {\color{blue}1243} & {\color{red}1324} & {\color{green}1342} & {\color{green}1423} & {\color{blue}1432}\\[10pt]
+{\color{blue}2134} & {\color{blue}2143} & {\color{green}2314} & {\color{blue}2341} & {\color{green}2413} & {\color{green}2431}\\[10pt]
+\color{green}3124 & \color{green}3142 & {\color{blue}3214} & {\color{green}3241} & \color{blue}3412 & {\color{blue}3421}\\[10pt]
+\color{blue}4123 & \color{green}4132 & \color{green}4213 & \color{red}4231 & \color{blue}4312 & {\color{blue}4321}
 \end{tabular}
 \end{center}
 \end{frame}
@@ -792,13 +806,13 @@ However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(32
 \uncover<2->{\begin{center}
 \begin{tabular}{|c|c|c|}
 B &A&C\\
-\hline
-$\{$1243, 4312,&$\{$4132, 1423,&$\{$4231, 1324$\}$\\
-2134, 3421$\}$,&2314, 3241$\}$,&\\
-$\{$1432, 4123,&$\{$4213, 1342,&\\
-2341, 3214$\}$,&3124, 2431$\}$,&\\
-$\{$2143, 3412$\}$,&$\{$2413, 3142$\}$&\\
-$\{$1234, 4321$\}$&&\\ %organize into orbits, move column A first
+\hline 
+1243, 4312,&4132, 1423,&4231, 1324\\
+2134, 3421&2314, 3241&\\\cline{1-2}
+1432, 4123,&4213, 1342,&\\
+2341, 3214,&3124, 2431&\\\cline{1-2}
+2143, 3412&2413, 3142&\\\cline{1-1}
+1234, 4321&&\\ %organize into orbits, move column A first
 \end{tabular}
 \end{center}}
 
@@ -808,9 +822,28 @@ $\{$1234, 4321$\}$&&\\ %organize into orbits, move column A first
 \end{center}}
 
 \end{frame}
-
+\subsection{Cycle notation}
 \begin{frame}{Cycle notation}
-Take $\sigma\in S_5$ with
+Take $\sigma=45213$. We can think of it as
+$$
+\sigma=\begin{pmatrix}
+1&2&3&4&5\\
+\downarrow&\downarrow&\downarrow&\downarrow&\downarrow&\\
+4&5&2&1&3
+\end{pmatrix}
+$$
+
+\
+
+\
+
+\end{frame}
+
+
+%%%%
+
+\begin{frame}{Cycle Notation}
+Take $\sigma=45213$. We can think of it as
 $$
 \sigma=\begin{pmatrix}
 1&2&3&4&5\\
@@ -827,50 +860,6 @@ $$
 
 \begin{columns}
 \begin{column}{.5\textwidth}
-\centering{\underline{One-line Notation}}
-$$
-\sigma=45213
-$$
-\end{column}
-\vrule{}
-\begin{column}{.5\textwidth}
-\centering{\underline{Cycle Notation}}
-$$
-\sigma=(14)(253)
-$$
-\end{column}
-\end{columns}
-
-\end{frame}
-
-
-%%%%
-
-\begin{frame}{Cycle Notation}
-Take $\sigma\in S_5$ with
-$$
-\sigma=\begin{pmatrix}
-1&2&3&4&5\\
-\downarrow&\downarrow&\downarrow&\downarrow&\downarrow&\\
-\color{red}4&\color{red}5&\color{red}2&\color{red}1&\color{red}3
-\end{pmatrix}
-$$
-
-\
-
-\
-
-\
-
-\begin{columns}
-\begin{column}{.5\textwidth}
-\centering{\underline{One-line Notation}}
-\color{red}$$
-\sigma=45213
-$$
-\end{column}
-\vrule{}
-\begin{column}{.5\textwidth}
 \centering{\underline{Cycle Notation}}
 $$
 \sigma=(14)(253)
@@ -883,7 +872,7 @@ $$
 %%%%%
 
 \begin{frame}{Cycle Notation}
-Take $\sigma\in S_5$ with
+Take $\sigma=45213$. We can think of it as
 $$
 \sigma=\begin{pmatrix}
 1&2&3&4&5\\
@@ -900,13 +889,6 @@ $$
 
 \begin{columns}
 \begin{column}{.5\textwidth}
-\centering{\underline{One-line Notation}}
-$$
-\sigma=45213
-$$
-\end{column}
-\vrule{}
-\begin{column}{.5\textwidth}
 \centering{\underline{Cycle Notation}}
 $$
 \sigma={\color{red}(14)}(253)
@@ -920,7 +902,7 @@ $$
 %%%%%%
 
 \begin{frame}{Cycle Notation}
-Take $\sigma\in S_5$ with
+Take $\sigma=45213$. We can think of it as
 $$
 \sigma=\begin{pmatrix}
 1&2&3&4&5\\
@@ -937,13 +919,6 @@ $$
 
 \begin{columns}
 \begin{column}{.5\textwidth}
-\centering{\underline{One-line Notation}}
-$$
-\sigma=45213
-$$
-\end{column}
-\vrule{}
-\begin{column}{.5\textwidth}
 \centering{\underline{Cycle Notation}}
 $$
 \sigma={\color{red}(14)}{\color{green}(253)}
@@ -955,11 +930,23 @@ $$
 
 %%%%%%
 
+\subsection{Buckets in cycle notation}
+
 \begin{frame}{Buckets in cycle notation}
-\[\{(34), (12), (1423), (1324)\},\{(1243),(1342)\},\]
-\[\{(24), (13), (1432), (1234)\},\{(1)(2)(3)(4), (14)(23)\},\]
-\[\{(142), (243), (123), (134)\},\{(12)(34), (13)(24)\},\]
-\[\{(143), (234), (132), (124)\},\{(14), (23)\}.\]
+\begin{center}
+\setlength{\tabcolsep}{12pt}
+\begin{tabular}{c c}
+(34),  (1423),&(24), (1432),\\
+(12), (1324) & (13), (1234) \\[15pt]
+(142), (243), &(143), (234),\\
+(123), (134) &  (132), (124)\\[15pt]
+ (1)(2)(3)(4), & (12)(34),\\
+  (14)(23) & (13)(24) \\[15pt]
+(14), &(1243),\\
+  (23) & (1342)
+\end{tabular}
+\end{center}
+
 \end{frame}
 
 \begin{frame}{Cycle decomposition}
@@ -977,12 +964,12 @@ $$
 \begin{tabular}{|c|c|c|}
 B &A&C\\
 \hline
-$\{$(34), (1423),&$\{$(142), (243),&$\{$(14), (23)$\}$\\
-(12), (1324)$\}$,&(123), (134)$\}$,&\\
-$\{$(24), (1432),&$\{$(143), (234),&\\
-(13), (1234)$\}$,&(132), (124)$\}$,&\\
-$\{$(12)(34), (13)(24)$\}$,&$\{$(1243), (1342)$\}$&\\
-$\{$(1)(2)(3)(4), (14)(23)$\}$&&\\ 
+(34), (1423),&(142), (243),&(14), (23)\Tstrut\\
+(12), (1324)&(123), (134)&\Bstrut\\\cline{1-2}
+(24), (1432),&(143), (234),&\Tstrut\\
+(13), (1234)&(132), (124)&\Bstrut\\\cline{1-2}
+(12)(34), (13)(24)&(1243), (1342)&\Tstrut \Bstrut\\\cline{1-1}
+(1)(2)(3)(4), (14)(23)&&\Tstrut\\ 
 \end{tabular}
 \end{center}}
 \end{frame}
@@ -990,29 +977,33 @@ $\{$(1)(2)(3)(4), (14)(23)$\}$&&\\
 \begin{frame}{Conjecture}
 \begin{proofwithoutbox}[Conjecture]
 \begin{itemize}
-\item There are three possible sequences for $(a_n(\pi))$. 
-\item Given two F\&R buckets that look the same up to the cycle decompositions of their elements, they generate the same sequence.
+\uncover<1->{\item There are three possible sequences for $(a_n(\pi))$.}
+\uncover<2->{\item Given two $\mathcal F\&\mathcal R$ buckets that look the same up to the cycle decompositions of their elements, they generate the same sequence.}
 \end{itemize}
 \end{proofwithoutbox}
 \end{frame}
 
+\subsection{Other observations}
+
 \begin{frame}{Other observations}
-\[(a_n(\pi))=\left\{
+\uncover<1->{\[(a_n(\pi))=\left\{
 	\begin{array}{ll}
 {A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
 {B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
 {C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
 	\end{array}
 \right\}
-\]
+\]}
 
 \begin{itemize}
-\item Many fewer buckets than expected
-\item Different growth rates?
+\uncover<2->{\item Many fewer buckets than expected}
+\uncover<3->{\item Buckets are different sizes}
+\uncover<4->{\item Different growth rates?}
 \end{itemize}
 \end{frame}
 
 \section{Avoidance in $T_n$}
+\subsection{Defining $T_n$}
 
 \begin{frame}{Avoidance in $T_n$}
 \begin{definition}
@@ -1047,6 +1038,8 @@ Given a permutation $\pi\in S_k$, we define $b_m(\pi)$ as
 Let $\pi\in S_3$, and $m$ an arbitrary positive integer. Compute $b_m(\pi)$.
 \end{problem}
 \end{frame}
+
+\subsection{Results and conjectures}
 
 \begin{frame}{Values of $b_m(\pi)$}
 \[\begin{tabular}{|c | c | c | c | c | c|}
@@ -1092,8 +1085,8 @@ Let $\pi\in S_3$, and $m$ an arbitrary positive integer. Compute $b_m(\pi)$.
 \end{tabular}\]
 Pick any $\sigma\in T_{2m}$ with $m\geq 2$. Then:
 \begin{itemize}
-\item 3 comes after 1
-\item 4 comes after 3
+\item 3 comes after 1,
+\item 4 comes after 3,
 \item So 134 is a subsequence of $\sigma$. 
 \end{itemize}
 \end{frame}
@@ -1120,9 +1113,9 @@ Pick any $\sigma\in T_{2m}$ with $m\geq 2$. Then:
 \end{tabular}\]
 Let $m\geq 2$, and pick any $\sigma\in T_{2m}$ avoiding 132. Then:
 \begin{itemize}
-\item 1 always comes first
-\item Each even integer $2i$ must come before $2i+1$
-\item So $\sigma$ must be $1234\ldots(2m)$.
+\item 1 first,
+\item An even integer $2i$ must come before $2i+1$,
+\item So $\sigma=1234\ldots(2m)$.
 \end{itemize}
 \end{frame}
 
@@ -1174,6 +1167,34 @@ $b_m(213)=2^{m-1}$, and $b_m(231)=2^{m-1}$.
 \begin{theorem}
 $b_m(312)=b_m(321).$
 \end{theorem}
+\begin{proofwithoutbox}[Conjecture]
+$b_m(312)=\binom{3m}{m}\cdot \frac{1}{2m+1}.$
+\end{proofwithoutbox}
+\end{frame}
+
+\begin{frame}{On $b_m(312)$ and $b_m(321)$}
+\[\begin{tabular}{|c | c | c | c | c | c|}
+\hline$\pi$ & $m=1$ & $m=2$ & $m=3$ & $m=4$ & $m=5$\\
+\hline
+\hline
+123 & 1 & 0 & 0 & 0 & 0\\
+\hline
+\hline
+132 & 1 & 1 & 1 & 1 & 1\\
+\hline
+\hline
+213 & 1 & 2 & 4 & 8 & 16\\
+\hline
+231 & 1 & 2 & 4 & 8 & 16\\
+\hline
+\hline
+{\color{blue}312} & \color{blue}1 & \color{blue}3 & \color{blue}12 & \color{blue}55 & \color{blue}273\\
+\hline
+\color{blue}321 & \color{blue}1 & \color{blue}3 & \color{blue}12 & \color{blue}55 & \color{blue}273\\\hline
+\end{tabular}\]
+\begin{proofwithoutbox}[Recall]
+Let $\sigma\in S_3$. Then $a_n(\sigma)=C_n=\binom{2n}{n}\cdot \frac{1}{n+1}$.
+\end{proofwithoutbox}
 \begin{proofwithoutbox}[Conjecture]
 $b_m(312)=\binom{3m}{m}\cdot \frac{1}{2m+1}.$
 \end{proofwithoutbox}
