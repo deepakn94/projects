@@ -22,13 +22,16 @@
 
 \title[Pattern avoidance]{Pattern avoidance}
 \subtitle{An explanation and proof}
-\author[Jain, Narayanan and Zhang]{Yajit Jain, Deepak Narayanan and Leon Zhang}
+\author[Jain, Narayanan and Zhang]{Yajit Jain, Deepak Narayanan, and Leon Zhang}
 \date[November 2014]{November 19, 2014}
 
 \RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
 {fontsize=\tiny,
  commentchar=*        % comment character
 }
+
+\definecolor{green}{RGB}{76,153,0}
+
 
 \begin{document}
 
@@ -49,50 +52,170 @@
 
 \section{Introduction}
 
+
 \begin{frame}
-\setbeamercovered{transparent}
-\uncover<1,2>{
+  \tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Permutations}
+\setbeamercovered{invisible}
+\uncover<1->{
 A permutation of a finite set $\{1,\cdots,n\}$ is some \emph{ordering} of the elements.
 }
 
-\uncover<2>{
+\uncover<2->{
 \begin{center}
-54123 is a permutation of $\{1,2,3,4,5\}$. 
+51243 is a permutation of $\{1,2,3,4,5\}$. 
 \end{center}
 }
 
 \
 
-\uncover<3,4>{
+\uncover<3->{
 $\color{red} S_n$ is the set of permutations on $\{1,\cdots,n\}$.
 }
 
-\uncover<4>{
-$$54123\in S_5$$
+\uncover<4->{
+$$51243\in S_5$$
 }
 \end{frame}
 
-\begin{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Includes and Avoids}
 
 \begin{columns}
-\begin{column}{0.3\textwidth}
-\center\LARGE
-54123
-\end{column}
 
-\begin{column}{0.7\textwidth}
+
+\only<1>{
+\begin{column}{0.3\textwidth}
+\LARGE\center
+$$
+\begin{matrix}
+5&1&2&4&3\\
+{\color{white}\uparrow}&{\color{white}\uparrow}&{\color{white}\uparrow}&{\color{white}\uparrow}&{\color{white}\uparrow}
+\end{matrix}
+$$
+\end{column}
+}
+
+\only<2>{
+\begin{column}{0.3\textwidth}
+\LARGE\center
+$$
+\begin{matrix}
+5&1&2&4&3\\
+{\color{white}\uparrow}&{\color{red}\uparrow}&{\color{red}\uparrow}&{\color{white}\uparrow}&{\color{red}\uparrow}
+\end{matrix}
+$$
+\end{column}
+}
+
+\only<3>{
+\begin{column}{0.3\textwidth}
+\LARGE\center
+$$
+\begin{matrix}
+5&1&2&4&3\\
+{\color{white}\uparrow}&{\color{red}\uparrow}&{\color{white}\uparrow}&{\color{red}\uparrow}&{\color{red}\uparrow}
+\end{matrix}
+$$
+\end{column}
+}
+
+
+\only<4>{
+\begin{column}{0.3\textwidth}
+\LARGE\center
+$$
+\begin{matrix}
+5&1&2&4&3\\
+{\color{red}\uparrow}&{\color{white}\uparrow}&{\color{red}\uparrow}&{\color{red}\uparrow}&{\color{white}\uparrow}
+\end{matrix}
+$$
+\end{column}
+}
+
+\only<5>{
+\begin{column}{0.3\textwidth}
+\LARGE\center
+$$
+\begin{matrix}
+5&1&2&4&3\\
+{\color{red}\uparrow}&{\color{white}\uparrow}&{\color{white}\uparrow}&{\color{red}\uparrow}&{\color{red}\uparrow}
+\end{matrix}
+$$
+\end{column}
+}
+
+\only<6>{
+\begin{column}{0.3\textwidth}
+\LARGE\center
+$$
+\begin{matrix}
+5&1&2&4&3\\
+{\color{red}\uparrow}&{\color{red}\uparrow}&{\color{red}\uparrow}&{\color{red}\uparrow}&{\color{white}\uparrow}
+\end{matrix}
+$$
+\end{column}
+}
+
+\only<7->{
+\begin{column}{0.3\textwidth}
+\LARGE\center
+$$
+\begin{matrix}
+5&1&2&4&3\\
+{\color{white}\uparrow}&{\color{white}\uparrow}&{\color{white}\uparrow}&{\color{white}\uparrow}&{\color{white}\uparrow}
+\end{matrix}
+$$
+\end{column}
+}
+
+
+
+
+
+
+
+\begin{column}{0.5\textwidth}
 \begin{column}{\columnwidth}
 \begin{column}{0.3\columnwidth}
 \centering
-includes
+\uncover<7->{\textcolor<7>{red}{includes}}
 \end{column}
 \begin{column}{0.7\columnwidth}
 $$
-\left\{
+\uncover<3->{\left\{}
 	\begin{array}{ll}
-123 \\
-312\\
-4312
+\uncover<2->{123} \\
+\uncover<3->{132}\\
+\uncover<4->{312}\\
+\uncover<5->{321}\\
+\uncover<6->{4123}
 
 	\end{array}
 \right.
@@ -102,23 +225,24 @@ $$
 
 \vspace{0.5cm}
 
-\hrule
+\uncover<9->{\hrule}
 
 \vspace{0.5cm}
 
 \begin{column}{\columnwidth}
 \begin{column}{0.3\columnwidth}
 \centering
-avoids
+\uncover<9->{\textcolor<9->{red}{avoids}}
 \end{column}
 \begin{column}{0.7\columnwidth}
 $$
-\left\{
+\uncover<11->{\left\{}
 	\begin{array}{ll}
-132 \\
-312\\
-213\\
-231\\
+\uncover<10->{213}\\
+\uncover<11->{231}\\
+\uncover<12->{1234}
+
+
 	\end{array}
 \right.
 $$
@@ -131,17 +255,84 @@ $$
 
 \end{frame}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{frame}
-Let $\pi=312\in S_3$. 
+Let $\pi=312\in S_3$. \vspace{0.5cm}
 \begin{itemize}
-\item Question: How many permutations avoid $\pi$? {\color{red}  (a lot)}
-\item Better Question: How many permutations in $S_n$ avoid $\pi$? 
+\uncover<1->{\item Question: How many permutations avoid $\pi=312$?} \uncover<2>{{\color{red}  \vspace*{.75cm} \hspace*{5cm}(a lot)}}
+\uncover<3->{\item Better Question: How many permutations in $S_n$ avoid $\pi$?}
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}{Let's count!}
-\setbeamercovered{transparent}
+\setbeamercovered{invisible}
 \begin{itemize}
 \onslide<1->{\item How many permutations in $S_1$ avoid $\pi$?} \onslide<2->{{\color{red}1}}
 \onslide<3->{\item How many permutations in $S_2$ avoid $\pi$?} \onslide<4->{{\color{red}2}}
@@ -150,17 +341,21 @@ Let $\pi=312\in S_3$.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Permutations in {\color{red}$S_4$} that avoid $\pi=312$?}
-How many permutations in $S_4$ avoid $\pi$? {\color{red} 14}
 
+
+\begin{frame}{Permutations in {\color{red}$S_4$} that avoid $\pi=312$?}
+\uncover<1->{How many permutations in $S_4$ avoid $\pi=312$?} \uncover<8->{{\color{red} 14}}
+
+\uncover<2->{
 \begin{center}
 \begin{tabular}{c c c c c c}
-{\color{green}1234} & {\color{green}1243} & {\color{green}1324} & {\color{green}1342} & 1423 & {\color{green}1432}\\[10pt]
-{\color{green}2134} & {\color{green}2143} & {\color{green}2314} & {\color{green}2341} & 2413 & {\color{green}2431}\\[10pt]
-3124 & 3142 & {\color{green}3214} & {\color{green}3241} & 3412 & {\color{green}3421}\\[10pt]
-4123 & 4132 & 4213 & 4231 & 4312 & {\color{green}4321}
+{\textcolor<3->{green}{1234}} & {\textcolor<4->{green}{1243}} & {\textcolor<5->{green}{1324}} & {\textcolor<6->{green}{1342}} & 1423 & {\textcolor<7->{green}{1432}}\\[10pt]
+{\textcolor<7->{green}{2134}} & {\textcolor<7->{green}{2143}} & {\textcolor<7->{green}{2314}} & {\textcolor<7->{green}{2341}} & 2413 & {\textcolor<7->{green}{2431}}\\[10pt]
+3124 & 3142 & {\textcolor<7->{green}{3214}} & {\textcolor<7->{green}{3241}} & 3412 & {\textcolor<7->{green}{3421}}\\[10pt]
+4123 & 4132 & 4213 & 4231 & 4312 & {\textcolor<7->{green}{4321}}
 \end{tabular}
 \end{center}
+}
 \end{frame}
 
 \begin{frame}
@@ -177,7 +372,7 @@ Let $a_n(\pi)$ be the number of permutations in $S_n$ that avoid $\pi$.
 \
 
 
-\uncover<3->{Example: $(a_n(312))=1,2,5,14,$}\uncover<4->{ 42,132,429,...}
+\uncover<3->{Example: $(a_n(312))=1,2,5,14,$}\uncover<4->{42,132,429,...}
 
 
 \end{frame}
@@ -196,13 +391,11 @@ $$
 \begin{frame}{What if we take {\color{red}$\pi\in S_4$}?}
 
 $$
-(a_n(\pi))=\left\{
 	\begin{array}{ll}
-\uncover<1->{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
-\uncover<2->{B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
-\uncover<3->{C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
+\uncover<1->{(a_n(2314)):={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\[10pt]
+\uncover<2->{(a_n(1243)):={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\[10pt]
+\uncover<3->{(a_n(4231)):={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
 	\end{array}
-\right\}
 $$
 \uncover<4->{
 \begin{center}
@@ -227,6 +420,17 @@ $$
 %%%%%%
 
 \section{Avoidance in $S_n$}
+
+\begin{frame}
+  \tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{The Catalan numbers}
+\begin{definition}
+The Catalan numbers are the sequence of positive integers $C_i$ defined as follows,
+$$C_0=1, \, C_{n+1}=\sum_{i=0}^n C_iC_{n-i} \, \text{for} \; n \geq 0$$
+\end{definition}
+\end{frame}
 
 \subsection{Avoidance of $312$}
 
@@ -307,7 +511,7 @@ How about some permutations that do avoid $312$?
   \node at (3,0) (num5) {5};
   \node at (3.5,0) (num6) {4};}
 
-\onslide<3->{
+\onslide<2->{
   
   \draw[implies,implies-] (5,0) -- (4,0);
   \node at (6.8,0) (description) {\text{$123654$ \color{green}{avoids} \color{black}$312$}};}
@@ -315,13 +519,13 @@ How about some permutations that do avoid $312$?
 
 \end{example}
 
-\begin{example}<4->
+\begin{example}<3->
 \
 
 \begin{tikzpicture}[
     implies/.style={double,double equal sign distance,-implies},
 ]
-\onslide<4->{
+\onslide<3->{
   \node at (1,0) (num1) {2};
   \node at (1.5,0) (num2) {1};
   \node at (2,0) (num3) {4};
@@ -329,7 +533,7 @@ How about some permutations that do avoid $312$?
   \node at (3,0) (num5) {6};
   \node at (3.5,0) (num6) {3};}
 
-\onslide<5->{
+\onslide<3->{
   
   \draw[implies,implies-] (5,0) -- (4,0);
   \node at (6.8,0) (description) {\text{$214563$ \color{green}{avoids} \color{black}$312$}};}
@@ -342,8 +546,6 @@ How about some permutations that do avoid $312$?
 \textbf{Do the permutations that avoid $312$ have any special properties?}
 
 \
-
-\color{black}
 
 \begin{tikzpicture}[
     implies/.style={double,double equal sign distance,-implies},
@@ -452,18 +654,10 @@ How about some permutations that do avoid $312$?
 
 \begin{frame}{Avoidance of $312$}
 \begin{lemma}
-The permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid the pattern $312$ are precisely those of the form,
+The permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid $312$ are precisely those of the form,
 $$\pi_1 \pi_2 i$$
-the concatenation of $\pi_1, \pi_2$, and $i$, where $\pi_1$ is a permutation of $\{1,2,\ldots,i-1\}$ that avoids the pattern $312$ and $\pi_2$ is a permutation of $\{i+1,\ldots,k+1\}$ that avoids the pattern $312$.
+where $\pi_1$ and $\pi_2$ are permutations of $\{1,2,\ldots,i-1\}$ and $\{i+1,\ldots,k+1\}$ that avoid $312$.
 \end{lemma}
-\end{frame}
-
-
-\begin{frame}{Avoidance of $312$}
-\begin{definition}
-The Catalan numbers are the sequence of positive integers $C_i$ defined as follows,
-$$C_0=1, \, C_{n+1}=\sum_{i=0}^n C_iC_{n-i} \, \text{for} \; n \geq 0$$
-\end{definition}
 \end{frame}
 
 \begin{frame}{Avoidance of $312$}
@@ -474,13 +668,21 @@ The $n^{th}$ term of the sequence $a_n(312)$ is equal to $C_n$, the $n^{th}$ Cat
 
 \begin{frame}{Avoidance of $312$}
 \begin{proof}
-Assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid $312$ is $C_i$.
+\begin{itemize}
+\onslide<1->{
+\item Assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid $312$ is $C_i$.
+}
 
-It follows from the above lemma that the total number of permutations $\pi$ avoiding $312$ and ending in $i$ is
+\onslide<2->{
+\item It follows from the above lemma that the total number of permutations $\pi$ avoiding $312$ and ending in $i$ is
 $$C_{i-1} \cdot C_{k-i+1}$$
+}
 
-Summing over all possible values of $i$, the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
+\onslide<3->{
+\item Summing over all possible values of $i$, the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
 $$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i} = C_{k+1}$$
+}
+\end{itemize}
 \end{proof}
 \end{frame}
 
@@ -495,9 +697,7 @@ We define the \emph{reverse} of a permutation $b_1\cdots b_n$ to be the permutat
 \begin{example}
 $\mathcal{R}(1324)=4231$.
 \end{example}
-}
 
-\onslide<3->{
 \begin{example}
 $\mathcal{R}(1243)=3421$.
 \end{example}
@@ -738,16 +938,25 @@ For a permutation $\pi$, $a_n(\pi)=a_n(\mathcal{F}(\pi))$.
 
 \begin{frame}{Avoidance of other permutations in $S_3$}
 \begin{itemize}
-\item
-From the Flipping Lemma and Reversing Lemmas, the sequences $(a_n(213))$, $(a_n(132))$ and $(a_n(231))$ are the sequence of Catalan numbers as well.
+\onslide<1->{
+\item Since $213 = \mathcal{R}(312)$, $(a_n(213))$ is the sequence of Catalan numbers.}
 
+\onslide<2->{
+\item Since $132 = \mathcal{F}(312)$, $(a_n(132))$ is the sequence of Catalan numbers, and since $231 = \mathcal{R}(132)$, $(a_n(231))$ is the Sequence of Catalan numbers as well.}
+
+\onslide<3->{
 \item
-However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(321))$ are the sequence of Catalan numbers.
+However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(321))$ are the sequence of Catalan numbers.}
 \end{itemize}
 \end{frame}
 
 \section{Conjectures on $S_4$}
 \subsection{Flipping and reversing buckets}
+
+\begin{frame}
+  \tableofcontents[currentsection]
+\end{frame}
+
 \begin{frame}{Recall}
 
 \[
@@ -1004,6 +1213,10 @@ B &A&C\\
 
 \section{Avoidance in $T_n$}
 \subsection{Defining $T_n$}
+
+\begin{frame}
+  \tableofcontents[currentsection]
+\end{frame}
 
 \begin{frame}{Avoidance in $T_n$}
 \begin{definition}
