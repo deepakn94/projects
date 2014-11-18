@@ -775,11 +775,11 @@ However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(32
 \[\{1243,4312,2134,3421\},\{2413,3142\},\]
 \[\{1432,4123,2341,3214\},\{1234,4321\},\]
 \[\{4132,1423,2314,3241\},\{2143,3412\},\]
-\[\{4213,1342,3124,2431\},\{4231,1324\}\]
+\[\{4213,1342,3124,2431\},\{4231,1324\}.\]
 \end{frame}
 
 \begin{frame}{Decomposition}
-\[
+\uncover<1->{\[
 (a_n(\pi))=\left\{
 	\begin{array}{ll}
 {A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
@@ -787,20 +787,25 @@ However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(32
 {C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
 	\end{array}
 \right\}
-\]
-
-\begin{center}
+\]}
+\vspace{-.2in}
+\uncover<2->{\begin{center}
 \begin{tabular}{|c|c|c|}
 B &A&C\\
 \hline
-1234, 4321&4132, 1423&4231, 1324\\
-1243, 4312&4213, 1342&\\
-1432, 4123&2431, 3124&\\
-2134, 3421&2413, 3142&\\
-2143, 3412&2314, 3241&\\
-2341, 3214&&\\ %organize into orbits, move column A first
+$\{$1243, 4312,&$\{$4132, 1423,&$\{$4231, 1324$\}$\\
+2134, 3421$\}$,&2314, 3241$\}$,&\\
+$\{$1432, 4123,&$\{$4213, 1342,&\\
+2341, 3214$\}$,&3124, 2431$\}$,&\\
+$\{$2143, 3412$\}$,&$\{$2413, 3142$\}$&\\
+$\{$1234, 4321$\}$&&\\ %organize into orbits, move column A first
 \end{tabular}
-\end{center}
+\end{center}}
+
+\uncover<3->{
+\begin{center}
+???
+\end{center}}
 
 \end{frame}
 
@@ -950,10 +955,49 @@ $$
 
 %%%%%%
 
+\begin{frame}{Buckets in cycle notation}
+\[\{(34), (12), (1423), (1324)\},\{(1243),(1342)\},\]
+\[\{(24), (13), (1432), (1234)\},\{(1)(2)(3)(4), (14)(23)\},\]
+\[\{(142), (243), (123), (134)\},\{(12)(34), (13)(24)\},\]
+\[\{(143), (234), (132), (124)\},\{(14), (23)\}.\]
+\end{frame}
 
 \begin{frame}{Cycle decomposition}
-\[
+\uncover<1->{\[
 (a_n(\pi))=\left\{
+	\begin{array}{ll}
+{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
+{B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
+{C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
+	\end{array}
+\right\}
+\]}
+\vspace{-.2in}
+\uncover<2->{\begin{center}
+\begin{tabular}{|c|c|c|}
+B &A&C\\
+\hline
+$\{$(34), (1423),&$\{$(142), (243),&$\{$(14), (23)$\}$\\
+(12), (1324)$\}$,&(123), (134)$\}$,&\\
+$\{$(24), (1432),&$\{$(143), (234),&\\
+(13), (1234)$\}$,&(132), (124)$\}$,&\\
+$\{$(12)(34), (13)(24)$\}$,&$\{$(1243), (1342)$\}$&\\
+$\{$(1)(2)(3)(4), (14)(23)$\}$&&\\ 
+\end{tabular}
+\end{center}}
+\end{frame}
+
+\begin{frame}{Conjecture}
+\begin{proofwithoutbox}[Conjecture]
+\begin{itemize}
+\item There are three possible sequences for $(a_n(\pi))$. 
+\item Given two F\&R buckets that look the same up to the cycle decompositions of their elements, they generate the same sequence.
+\end{itemize}
+\end{proofwithoutbox}
+\end{frame}
+
+\begin{frame}{Other observations}
+\[(a_n(\pi))=\left\{
 	\begin{array}{ll}
 {A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
 {B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
@@ -962,18 +1006,10 @@ $$
 \right\}
 \]
 
-\begin{center}
-\begin{tabular}{|c|c|c|}
-B &A&C\\
-\hline
-(1)(2)(3)(4),(14)(23)&(243),(142)&(23),(14)\\
-(34),(1423)&(234),(143)&\\
-(24),(1432)&(124),(132)&\\
-(12),(1324)&(123),(134)&\\
-(12)(34),(13)(24)&(1243),(1342)&\\
-(1234),(13)&&\\ %organize table into orbits
-\end{tabular}
-\end{center}
+\begin{itemize}
+\item Many fewer buckets than expected
+\item Different growth rates?
+\end{itemize}
 \end{frame}
 
 \section{Avoidance in $T_n$}
@@ -987,7 +1023,7 @@ Let $m$ be a positive integer. The set $T_{2m}$ is defined as all permutations i
 \end{itemize}
 \end{definition}
 \begin{example}
-The set $S_2$ equals $\{12, 21\}$. The set $T_2$ equals $\{12\}.$
+The set $S_2$ is $\{12, 21\}$. The set $T_2$ is just $\{12\}.$
 \end{example}
 \end{frame}
 
@@ -1004,18 +1040,17 @@ The set $S_2$ equals $\{12, 21\}$. The set $T_2$ equals $\{12\}.$
 
 \begin{frame}{Problem Statement}
 \begin{definition}
-Given a permutation $\pi\in S_k$, we define $t_m(\pi)$ as
-\[t_m(\pi)=\#\{\sigma\in T_{2m}\, | \ \sigma\text{ avoids } \pi\}.\]
+Given a permutation $\pi\in S_k$, we define $b_m(\pi)$ as
+\[b_m(\pi)=\#\{\sigma\in T_{2m}\, | \ \sigma\text{ avoids } \pi\}.\]
 \end{definition}
 \begin{problem}
-Let $\pi\in S_3$, and $m$ an arbitrary positive integer. Compute $t_m(\pi)$.
+Let $\pi\in S_3$, and $m$ an arbitrary positive integer. Compute $b_m(\pi)$.
 \end{problem}
 \end{frame}
 
-\begin{frame}
-We can run code to compute $t_m(\pi)$ for small $m$ and for each $\pi\in S_3$. We get
+\begin{frame}{Values of $b_m(\pi)$}
 \[\begin{tabular}{|c | c | c | c | c | c|}
-\hline$\pi$ & $m=2$ & $m=4$ & $m=6$ & $m=8$ & $m=10$\\
+\hline$\pi$ & $m=1$ & $m=2$ & $m=3$ & $m=4$ & $m=5$\\
 \hline
 \hline
 123 & 1 & 0 & 0 & 0 & 0\\
@@ -1035,17 +1070,112 @@ We can run code to compute $t_m(\pi)$ for small $m$ and for each $\pi\in S_3$. W
 \end{tabular}\]
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Computing $b_m(123)$}
+\[\begin{tabular}{|c | c | c | c | c | c|}
+\hline$\pi$ & $m=1$ & $m=2$ & $m=3$ & $m=4$ & $m=5$\\
+\hline
+\hline
+{\color{blue}123} & \color{blue}1 & \color{blue}0 & \color{blue}0 & \color{blue}0 & \color{blue}0\\
+\hline
+\hline
+132 & 1 & 1 & 1 & 1 & 1\\
+\hline
+\hline
+213 & 1 & 2 & 4 & 8 & 16\\
+\hline
+231 & 1 & 2 & 4 & 8 & 16\\
+\hline
+\hline
+312 & 1 & 3 & 12 & 55 & 273\\
+\hline
+321 & 1 & 3 & 12 & 55 & 273\\\hline
+\end{tabular}\]
+Pick any $\sigma\in T_{2m}$ with $m\geq 2$. Then:
 \begin{itemize}
-\item Easy to see that $t_n(123)=0$ when $n\geq 2$
-\begin{itemize}
-\item The subsequence 134 is always present in a permutation $\sigma\in t_n(123)$.
-\end{itemize}
-\item Also easy to see that $t_n(132)=1$. 
-\begin{itemize}
-\item The permutation $123\ldots (2n)$ is the only permutation in $T_n$ that avoids 132.
-\end{itemize}
+\item 3 comes after 1
+\item 4 comes after 3
+\item So 134 is a subsequence of $\sigma$. 
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Computing $b_m(132)$}
+\[\begin{tabular}{|c | c | c | c | c | c|}
+\hline$\pi$ & $m=1$ & $m=2$ & $m=3$ & $m=4$ & $m=5$\\
+\hline
+\hline
+123 & 1 & 0 & 0 & 0 & 0\\
+\hline
+\hline
+{\color{blue}132} & \color{blue}1 & \color{blue}1 & \color{blue}1 & \color{blue}1 & \color{blue}1\\
+\hline
+\hline
+213 & 1 & 2 & 4 & 8 & 16\\
+\hline
+231 & 1 & 2 & 4 & 8 & 16\\
+\hline
+\hline
+312 & 1 & 3 & 12 & 55 & 273\\
+\hline
+321 & 1 & 3 & 12 & 55 & 273\\\hline
+\end{tabular}\]
+Let $m\geq 2$, and pick any $\sigma\in T_{2m}$ avoiding 132. Then:
+\begin{itemize}
+\item 1 always comes first
+\item Each even integer $2i$ must come before $2i+1$
+\item So $\sigma$ must be $1234\ldots(2m)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{On $b_m(213)$ and $b_m(231)$}
+\[\begin{tabular}{|c | c | c | c | c | c|}
+\hline$\pi$ & $m=1$ & $m=2$ & $m=3$ & $m=4$ & $m=5$\\
+\hline
+\hline
+123 & 1 & 0 & 0 & 0 & 0\\
+\hline
+\hline
+132 & 1 & 1 & 1 & 1 & 1\\
+\hline
+\hline
+{\color{blue}213} & \color{blue}1 & \color{blue}2 & \color{blue}4 & \color{blue}8 & {\color{blue}16}\\
+\hline
+{\color{blue}231} & \color{blue}1 & \color{blue}2 & \color{blue}4 &\color{blue}8 & {\color{blue}16}\\
+\hline
+\hline
+312 & 1 & 3 & 12 & 55 & 273\\
+\hline
+321 & 1 & 3 & 12 & 55 & 273\\\hline
+\end{tabular}\]
+\begin{theorem}
+$b_m(213)=2^{m-1}$, and $b_m(231)=2^{m-1}$.
+\end{theorem}
+\end{frame}
+
+\begin{frame}{On $b_m(312)$ and $b_m(321)$}
+\[\begin{tabular}{|c | c | c | c | c | c|}
+\hline$\pi$ & $m=1$ & $m=2$ & $m=3$ & $m=4$ & $m=5$\\
+\hline
+\hline
+123 & 1 & 0 & 0 & 0 & 0\\
+\hline
+\hline
+132 & 1 & 1 & 1 & 1 & 1\\
+\hline
+\hline
+213 & 1 & 2 & 4 & 8 & 16\\
+\hline
+231 & 1 & 2 & 4 & 8 & 16\\
+\hline
+\hline
+{\color{blue}312} & \color{blue}1 & \color{blue}3 & \color{blue}12 & \color{blue}55 & \color{blue}273\\
+\hline
+\color{blue}321 & \color{blue}1 & \color{blue}3 & \color{blue}12 & \color{blue}55 & \color{blue}273\\\hline
+\end{tabular}\]
+\begin{theorem}
+$b_m(312)=b_m(321).$
+\end{theorem}
+\begin{proofwithoutbox}[Conjecture]
+$b_m(312)=\binom{3m}{m}\cdot \frac{1}{2m+1}.$
+\end{proofwithoutbox}
+\end{frame}
 \end{document}
