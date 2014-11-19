@@ -702,6 +702,10 @@ $\mathcal{R}(1243)=3421$.
 \end{example}
 }
 
+\onslide<3->{
+Note that $1243$ including $132$ implies that $\mathcal{R}(1243) = 3421$ includes $\mathcal{R}(132) = 231$.
+}
+
 \end{frame}
 
 \begin{frame}{The Reversing Lemma}
@@ -719,7 +723,14 @@ For a permutation $\pi$, $a_n(\pi)=a_n(\mathcal{R}(\pi))$.
 
 \begin{frame}{The Flipping Lemma}
 \begin{definition}[Flipping]
-We define the \emph{flip} of a sequence $b$ as the sequence $c$ with the same elements as $b$, but with the largest element swapped with the smallest element, the second largest element swapped with the second smallest element, etc.  The flipping operator is denoted by $\mathcal{F}$.  
+We define the \emph{flip} of a sequence $b$ as the sequence $c$ with the same elements as $b$, but with
+\begin{itemize}
+\item the largest element swapped with the smallest element
+\item the second largest element swapped with the second smallest element
+\end{itemize}
+and so on.
+
+The flipping operator is denoted by $\mathcal{F}$.  
 \end{definition}
 
 \end{frame}
@@ -937,10 +948,27 @@ For a permutation $\pi$, $a_n(\pi)=a_n(\mathcal{F}(\pi))$.
 \begin{frame}{Avoidance of other permutations in $S_3$}
 \begin{itemize}
 \onslide<1->{
-\item Since $213 = \mathcal{R}(312)$, $(a_n(213))$ is the sequence of Catalan numbers.}
+\item
 
+$$
+\left.
+	\begin{array}{ll}
+\onslide<1->{213 = \mathcal{R}(312)} \\
+\onslide<1->{132 = \mathcal{F}(312)}\\
+\onslide<1->{231 = \mathcal{R}(132)}
+
+	\end{array}
 \onslide<2->{
-\item Since $132 = \mathcal{F}(312)$, $(a_n(132))$ is the sequence of Catalan numbers, and since $231 = \mathcal{R}(132)$, $(a_n(231))$ is the Sequence of Catalan numbers as well.}
+\right\} \Rightarrow
+\begin{array}{ll}
+\text{$(a_n(213))$, $(a_n(132))$} \\
+\text{and $(a_n(231))$ are all the} \\
+\text{sequence of Catalan numbers}
+\end{array}
+}
+$$
+
+}
 
 \onslide<3->{
 \item
