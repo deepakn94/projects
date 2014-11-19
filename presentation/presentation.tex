@@ -432,7 +432,7 @@ What if we count the number of permutations that avoid $\pi$ in a subset of $S_n
 
 %%%%%%
 
-\section{Avoidance in $S_n$}
+\section{Avoidance in $S_3$}
 
 \begin{frame}
   \tableofcontents[currentsection]
@@ -667,7 +667,7 @@ How about some permutations that do avoid $312$?
 
 \begin{frame}{Avoidance of $312$}
 \begin{lemma}
-The permutations of $\{1,2,\dots,k,k+1\}$ ending in $i$ that avoid $312$ are precisely those of the form,
+The permutations in $S_{k+1}$ ending in $i$ that avoid $312$ are precisely those of the form,
 $$\pi_1 \pi_2 i$$
 where $\pi_1$ and $\pi_2$ are permutations of $\{1,2,\ldots,i-1\}$ and $\{i+1,\ldots,k+1\}$ that avoid $312$.
 \end{lemma}
@@ -683,17 +683,19 @@ The $n^{th}$ term of the sequence $a_n(312)$ is equal to $C_n$, the $n^{th}$ Cat
 \begin{proof}
 \begin{itemize}
 \onslide<1->{
-\item Assume that for all $i$ from $1$ to $k$, the number of permutations of $\{1,2,...,i\}$ that avoid $312$ is $C_i$.
+\item Assume that for all $i$ from $1$ to $k$, the number of permutations of $S_i$ that avoid $312$ is $C_i$.
 }
 
 \onslide<2->{
 \item It follows from the above lemma that the total number of permutations $\pi$ avoiding $312$ and ending in $i$ is
-$$C_{i-1} \cdot C_{k-i+1}$$
+\begin{center}
+$C_{i-1} \cdot C_{k-i+1}$
+\end{center}
 }
 
 \onslide<3->{
 \item Summing over all possible values of $i$, the total number of permutations of $\{1,2,...,k+1\}$ that avoid $312$ is equal to,
-$$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i} = C_{k+1}$$
+$$\sum_{i=1}^{k+1} C_{i-1} \cdot C_{k-i+1} = \sum_{i=0}^k C_i \cdot C_{k-i} \onslide<4->{= C_{k+1}}$$
 }
 \end{itemize}
 \end{proof}
