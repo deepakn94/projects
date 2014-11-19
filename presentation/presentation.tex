@@ -77,6 +77,10 @@ $\color{red} S_n$ is the set of permutations on $\{1,\cdots,n\}$.
 \uncover<4->{
 $$51243\in S_5$$
 }
+
+\uncover<5->{
+$\#S_n=n!$
+}
 \end{frame}
 
 
@@ -204,7 +208,7 @@ $$
 \begin{column}{\columnwidth}
 \begin{column}{0.3\columnwidth}
 \centering
-\uncover<7->{\textcolor<7>{red}{includes}}
+\uncover<2->{{includes}}
 \end{column}
 \begin{column}{0.7\columnwidth}
 $$
@@ -321,10 +325,10 @@ $$
 
 
 
-\begin{frame}
+\begin{frame}{Questions}
 Let $\pi=312\in S_3$. \vspace{0.5cm}
 \begin{itemize}
-\uncover<1->{\item Question: How many permutations avoid $\pi=312$?} \uncover<2>{{\color{red}  \vspace*{.75cm} \hspace*{5cm}(a lot)}}
+\uncover<1->{\item Question: How many permutations avoid $\pi$?} \uncover<2>{{\color{red}  \vspace*{.75cm} \hspace*{5cm}(a lot)}}
 \uncover<3->{\item Better Question: How many permutations in $S_n$ avoid $\pi$?}
 \end{itemize}
 
@@ -333,10 +337,10 @@ Let $\pi=312\in S_3$. \vspace{0.5cm}
 \begin{frame}{Let's count!}
 \setbeamercovered{invisible}
 \begin{itemize}
-\onslide<1->{\item How many permutations in $S_1$ avoid $\pi$?} \onslide<2->{{\color{red}1}}
-\onslide<3->{\item How many permutations in $S_2$ avoid $\pi$?} \onslide<4->{{\color{red}2}}
-\onslide<5->{\item How many permutations in $S_3$ avoid $\pi$?} \onslide<6->{{\color{red}5}}
-\onslide<7-> {\item How many permutations in $S_4$ avoid $\pi$?} \onslide<8->{{\color{red}??????}}
+\onslide<1->{\item How many permutations in $S_1$ avoid $\pi=312$?} \onslide<2->{{\color{red}1}}
+\onslide<3->{\item How many permutations in $S_2$ avoid $\pi=312$?} \onslide<4->{{\color{red}2}}
+\onslide<5->{\item How many permutations in $S_3$ avoid $\pi=312$?} \onslide<6->{{\color{red}5}}
+\onslide<7-> {\item How many permutations in $S_4$ avoid $\pi=312$?} \onslide<8->{{\color{red}??????}}
 \end{itemize}
 \end{frame}
 
@@ -371,7 +375,7 @@ Let $a_n(\pi)$ be the number of permutations in $S_n$ that avoid $\pi$.
 \
 
 
-\uncover<3->{Example: $(a_n(312))=1,2,5,14,$}\uncover<4->{42,132,429,...}
+\uncover<3->{Example: $(a_n(312))=1, 2, 5, 14,$}\uncover<4->{ 42, 132, 429,...}
 
 
 \end{frame}
@@ -391,16 +395,31 @@ $$
 
 $$
 	\begin{array}{ll}
-\uncover<1->{(a_n(2314)):={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\[10pt]
-\uncover<2->{(a_n(1243)):={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\[10pt]
-\uncover<3->{(a_n(4231)):={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
-	\end{array}
+\uncover<1->{(a_n(2314)):={\color{green} 1,2,6,23,103,} \ {\color{green}512, } \ {\color{green}2740,15485,91245\ldots}}\\[10pt]
+\uncover<2->{(a_n(1243)):={\color{green}1,2,6,23,103, } \ {\color{red} 513, } \ {\color{red} 2761,15767,94359\ldots}}\\[10pt]
+\uncover<3->{(a_n(4231)):={\color{green}1,2,6,23,103, } \ {\color{red} 513, } \ {\color{blue} 2762,15793,94776\ldots}}	\end{array}
 $$
 \uncover<4->{
 \begin{center}
 ????
 \end{center}
 }
+\end{frame}
+
+
+\begin{frame}{Variations}
+What if we count the number of permutations that avoid $\pi$ in a subset of $S_n$?
+
+\
+
+
+
+\
+
+ 
+\begin{center}
+\Huge $T_n$
+\end{center}
 \end{frame}
 
 
