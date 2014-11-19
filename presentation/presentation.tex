@@ -955,17 +955,11 @@ However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(32
   \tableofcontents[currentsection]
 \end{frame}
 
-\begin{frame}{Recall}
-
+\begin{frame}{Three sequences}
 \[
-(a_n(\pi))=\left\{
-	\begin{array}{ll}
-{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
-{B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
-{C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
-	\end{array}
-\right\}
-\]
+{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\]
+\[{B:={\color{green}1,2,6,23,103, } \text{ }{\color{red}513, 2761,15767,94359\ldots}}\]
+\[{C:={\color{green}1,2,6,23,103,} \text{ }{\color{red}513, } \text{ }{\color{blue}2762,15793,94776\ldots}}\]
 
 \end{frame}
 
@@ -1001,14 +995,10 @@ However, it is much harder to prove that the sequences $(a_n(123))$ and $(a_n(32
 
 \begin{frame}{Decomposition}
 \uncover<1->{\[
-(a_n(\pi))=\left\{
-	\begin{array}{ll}
-{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
-{B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
-{C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
-	\end{array}
-\right\}
-\]}
+{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\]
+\[{B:={\color{green}1,2,6,23,103, } \text{ }{\color{red}513, 2761,15767,94359\ldots}}\]
+\[{C:={\color{green}1,2,6,23,103,} \text{ }{\color{red}513, } \text{ }{\color{blue}2762,15793,94776\ldots}}\]
+}
 \vspace{-.2in}
 \uncover<2->{\begin{center}
 \begin{tabular}{|c|c|c|}
@@ -1158,14 +1148,10 @@ $$
 
 \begin{frame}{Cycle decomposition}
 \uncover<1->{\[
-(a_n(\pi))=\left\{
-	\begin{array}{ll}
-{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
-{B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
-{C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
-	\end{array}
-\right\}
-\]}
+{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\]
+\[{B:={\color{green}1,2,6,23,103, } \text{ }{\color{red}513, 2761,15767,94359\ldots}}\]
+\[{C:={\color{green}1,2,6,23,103,} \text{ }{\color{red}513, } \text{ }{\color{blue}2762,15793,94776\ldots}}\]
+}
 \vspace{-.2in}
 \uncover<2->{\begin{center}
 \begin{tabular}{|c|c|c|}
@@ -1181,11 +1167,11 @@ B &A&C\\
 \end{center}}
 \end{frame}
 
-\begin{frame}{Conjecture}
-\begin{proofwithoutbox}[Conjecture]
+\begin{frame}{Conjectures}
+\begin{proofwithoutbox}[Conjectures]
 \begin{itemize}
 \uncover<1->{\item There are three possible sequences for $(a_n(\pi))$.}
-\uncover<2->{\item Given two $\mathcal F\&\mathcal R$ buckets that look the same up to the cycle decompositions of their elements, they generate the same sequence.}
+\uncover<2->{\item Two $\mathcal F\&\mathcal R$ buckets that ``look the same'' generate the same sequence.}
 \end{itemize}
 \end{proofwithoutbox}
 \end{frame}
@@ -1193,18 +1179,15 @@ B &A&C\\
 \subsection{Other observations}
 
 \begin{frame}{Other observations}
-\uncover<1->{\[(a_n(\pi))=\left\{
-	\begin{array}{ll}
-{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\\
-{B:={\color{green}1,2,6,23,103,}{\color{red}513,2761,15767,94359\ldots}}\\
-{C:={\color{green}1,2,6,23,103,}{\color{red}513,}{\color{blue}2762,15793,94776\ldots}}
-	\end{array}
-\right\}
-\]}
+\uncover<1->{\[
+{A:={\color{green} 1,2,6,23,103,512,2740,15485,91245\ldots}}\]
+\[{B:={\color{green}1,2,6,23,103, } \text{ }{\color{red}513, 2761,15767,94359\ldots}}\]
+\[{C:={\color{green}1,2,6,23,103,} \text{ }{\color{red}513, } \text{ }{\color{blue}2762,15793,94776\ldots}}\]
+}
 
 \begin{itemize}
-\uncover<2->{\item Many fewer buckets than expected}
-\uncover<3->{\item Buckets are different sizes}
+\uncover<2->{\item Significantly fewer sequences than expected.}
+\uncover<3->{\item Uneven distribution of permutations generating the sequences.}
 \uncover<4->{\item Different growth rates?}
 \end{itemize}
 \end{frame}
@@ -1232,10 +1215,10 @@ The set $S_2$ is $\{12, 21\}$. The set $T_2$ is just $\{12\}.$
 \begin{frame}{Permutations in $T_4$}
 \begin{center}
 \begin{tabular}{c c c c c c}
-{\color {green}1234} & {\color{red}1243} & {\color{green}1324} & {\color{green}1342} & {\color{red}1423} & {\color{red}1432}\\[10pt]
-{\color{red}2134} & {\color{red}2143} & {\color{red}2314} & {\color{red}2341} & {\color{red}2413} & {\color{red}2431}\\[10pt]
-{\color{red}3124} & {\color{red}3142} & {\color{red}3214} & {\color{red}3241} & {\color{red}3412} & {\color{red}3421}\\[10pt]
-{\color{red}4123} & {\color{red}4132} & {\color{red}4213} & {\color{red}4231} & {\color{red}4312} & {\color{red}4321}
+{\textcolor<1->{green}{1234}} & {1243} & {\textcolor<2->{green}{1324}} & {\textcolor<3->{green}{1342}} & {1423} & {1432}\\[10pt]
+{2134} & {2143} & {2314} & {2341} & {2413} & {2431}\\[10pt]
+{3124} & {3142} & {3214} & {3241} & {3412} & {3421}\\[10pt]
+{4123} & {4132} & {4213} & {4231} & {4312} & {4321}
 \end{tabular}
 \end{center}
 \end{frame}
@@ -1251,7 +1234,7 @@ Let $\pi\in S_3$, and $m$ an arbitrary positive integer. Compute $b_m(\pi)$.
 \end{frame}
 
 \subsection{Results and conjectures}
-
+\setlength\doublerulesep{.15cm}
 \begin{frame}{Values of $b_m(\pi)$}
 \[\begin{tabular}{|c | c | c | c | c | c|}
 \hline$\pi$ & $m=1$ & $m=2$ & $m=3$ & $m=4$ & $m=5$\\
