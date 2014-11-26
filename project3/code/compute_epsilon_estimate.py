@@ -45,7 +45,5 @@ def get_min_epsilon(n, N, num_iter):
 
 
 if __name__ == '__main__':
-    for n in xrange(4,5): 
-        print n
-        get_min_epsilon(n, n+1, 100000000)
+    get_min_epsilon(3, 6, 1000000)
         
