@@ -54,6 +54,8 @@
 \newtheorem{question}{Question}
 \newtheorem{example}[theorem]{Example}
 
+\providecommand{\R}{\mathbb{R}}
+
 \providecommand{\setN}{\mathbb{N}}
 \providecommand{\setZ}{\mathbb{Z}}
 \providecommand{\setQ}{\mathbb{Q}}
@@ -240,5 +242,108 @@ Figure $2$ shows an optimum configuration for $n=2$ and $N=5$.
     \end{tikzpicture}
     \caption{A configuration of three unit vectors that produce the optimum $\epsilon$ for $n=2, N=3$}
 \end{figure}
+
+\section{The Parallelogram Law}
+
+First we give the definition of the norm on vectors in $\R^n$ in terms of the dot product:
+
+\begin{definition}
+For a vector $v\in\R^n$ the norm of $v$ is the positive value of $||v||$ given by the equation
+$$
+||v||^2=v\cdot v.
+$$
+\end{definition}
+\begin{theorem}[Parallelogram Law]
+For vectors $v_1,\cdots,v_n\in\R^n$, the following identity holds
+$$
+||v_1+\cdots+v_n||^2=\displaystyle\sum_{i=1}^n||v_i||^2+2\displaystyle\sum_{1\le i<j\le n}v_i\cdot v_j.
+$$
+\proof
+First consider the following identity from the definition of the norm for vectors $u,v\in\R^n$:
+$$
+||u+v||^2=(u+v)\cdot (u+v)=u\cdot u+u\cdot v+ v\cdot u + v\cdot v=||u||^2+||v||^2+2u\cdot v.
+$$
+Now if we let $u=v_1$ and $v= v_2+\cdots+v_n$ we get 
+$$
+||v_1+v+2+\cdots+v_n||^2=||v_1||^2+||v_2+\cdots +v_n||^2+2\sum_{i=2}^n v_1\cdot v_i.
+$$
+If we recurse on $||v_2+\cdots +v_n||^2$ using induction we get the desired result. 
+\end{theorem}
+
+
+\section{$(n,n+1)$}
+Let us consider the situation in which we try to minimize $\epsilon$ for $n+1$ vectors in an $n$ dimensional space. First we introduce the definition of a simplex, and then we will proceed to characterize $\epsilon$ in this case. 
+
+\begin{definition}
+An $n$-dimensional simplex is given by the convex hull of the $n+1$ points in $\R^{n+1}$ described as having a 1 in a single coordinate and zeros in every other coordinate. 
+\end{definition}
+
+Here are diagrams of a 2-dimensional simplex:
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[yscale=-1] 
+        % x-axis
+        \draw [thick,->] (-4.5, 0) -- (4.5, 0);
+        % y-axis
+        \draw [thick,->] (0, 4.5) -- (0, -4.5);
+        % origin label
+        \node at (-0.5, 0.3) {\text{$(0, 0)$}};
+        % x-axis label
+        \node at (4.5, 0.5) {\text{$x$}};
+        % y-axis label
+        \node at (0, -5) {\text{$y$}};
+        % circle
+        \draw (0,0) circle (3cm);
+        \draw (3,0)[blue,fill=blue] circle (0.1cm);
+        \draw (-1.5, 2.59)[blue,fill=blue] circle (0.1cm);
+        \draw (-1.5, -2.59)[blue,fill=blue] circle (0.1cm);
+        
+        \draw [thick,-,red,dashed] (3, 0) -- (-1.5, 2.59);
+        \draw [thick,-,red,dashed] (3, 0) -- (-1.5, -2.59);
+        \draw [thick,-,red,dashed] (-1.5, -2.59) -- (-1.5, 2.59);
+        
+        % \draw [thick,-,blue, dotted] (-3, 0) -- (0, 0);
+        % \draw [thick,-,blue, dotted] (1.5, -2.59) -- (0, 0);
+        % \draw [thick,-,blue, dotted] (1.5, 2.59) -- (0, 0);
+        \draw [thick,-,blue] (3, 0) -- (0, 0);
+        \draw [thick,-,blue] (-1.5, 2.59) -- (0, 0);
+        \draw [thick,-,blue] (-1.5, -2.59) -- (0, 0);
+    \end{tikzpicture}
+    \caption{A 2-dimensional simplex drawn in $\R^3$ on the left, and then centered at the origin in $\R^2$ on the right.}
+\end{figure}
+\todo{make left diagram}
+
+Before proceeding with the theorem, we notice that when $n=2$, the configuration of $N=3$ vectors that produced the minimum value of $\epsilon$ made up a simplex centered at the origin. 
+
+
+\begin{theorem}
+If $N=n+1$ and the vectors in question are denoted $v_1,\cdots, v_N$, then over all configurations of these vectors the maximum value of $v_i\cdot v_j$ for $i\neq j$ is $\frac{-1}{n}$. This is achieved when the vectors are arranged in an $n$ dimensional simplex centered at the origin, and in this configuration $\epsilon=\frac{1}{n^2}$.  
+\end{theorem}
+
+\proof
+Let $\delta=\max_{i\neq j}\{v_i\cdot v_j\}$. We first show that $\delta\le-\frac{1}{n}$ by showing that the origin-centered simplex configuration of the vectors $v_1,\cdots v_N$ produces a value $\delta=-\frac{1}{n}$. 
+
+We must first describe the vectors that make up the origin centered simplex. To center our simplex at the origin we take each vector in the original simplex, and subtract from it the centroid of the original simplex. The centroid of the original simplex takes the form $(\frac{1}{n},\frac{1}{n},\cdots,\frac{1}{n})$, so the points of the new simplex take the form
+$$
+\left(-\frac{1}{n},\cdots,-\frac{1}{n},\frac{n-1}{n},-\frac{1}{n},\cdots,-\frac{1}{n}\right).
+$$
+If we take the dot product of any two such vectors we get
+$$
+-2\cdot\frac{n-1}{n^2}+(n-2)\cdot\frac{1}{n^2}=-\frac{1}{n}.
+$$
+
+
+To see that $\delta\ge-\frac{1}{n}$ we use the parallelogram law. Recall that the parallelogram law states that 
+
+$$
+||v_1+\cdots+v_{n+1}||^2=\displaystyle\sum_{i=1}^{n+1}||v_i||^2+2\displaystyle\sum_{1\le i<j\le n+1}v_i\cdot v_j.
+$$
+In our case we know three things. First, since the vectors are arranged in a simplex, $v_1+\cdots+v_{n+1}=0$. Second, $v_i\cdot v_j\le\delta$ for any $i<j$. Third, $||v_i||=1$. Therefore 
+$$
+0\le n+1+n(n+1)\delta.
+$$
+This implies that $\delta\ge -\frac{1}{n}$ as desired. Now we see that $\delta=-\frac{1}{n}$, so $|\delta|=\frac{1}{n}$, and therefore $\epsilon=\frac{1}{n^2}$. 
+
 
 \end{document}

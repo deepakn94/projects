@@ -37,6 +37,7 @@ def compute_epsilon_random(n, N):
 def get_min_epsilon(n, N, num_iter):
     min_epsilon = 1.0
     for i in xrange(num_iter):
+        #if i%10000==0: print i
         epsilon = compute_epsilon_random(n, N)
         if epsilon < min_epsilon:
             min_epsilon = epsilon
@@ -44,6 +45,7 @@ def get_min_epsilon(n, N, num_iter):
 
 
 if __name__ == '__main__':
-    for i in xrange(10):
-        get_min_epsilon(4, 5, 1000000)
+    for n in xrange(4,5): 
+        print n
+        get_min_epsilon(n, n+1, 100000000)
         
