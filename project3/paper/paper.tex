@@ -350,7 +350,7 @@ Here are diagrams of a 2-dimensional simplex:
     \end{tikzpicture}
     \caption{A 2-dimensional simplex drawn in $\R^3$ on the left, and then centered at the origin in $\R^2$ on the right.}
 \end{figure}
-\todo{make left diagram}
+\missingfigure{Make a sketch of a 2d simplex in $\R^3$}
 
 Before proceeding with the theorem, we notice that when $n=2$, the configuration of $N=3$ vectors that produced the minimum value of $\epsilon$ made up a simplex centered at the origin. 
 
@@ -362,15 +362,19 @@ If $N=n+1$ and the vectors in question are denoted $v_1,\cdots, v_N$, then over 
 \proof
 Let $\delta=\max_{i\neq j}\{v_i\cdot v_j\}$. We first show that $\delta\le-\frac{1}{n}$ by showing that the origin-centered simplex configuration of the vectors $v_1,\cdots v_N$ produces a value $\delta=-\frac{1}{n}$. 
 
-We must first describe the vectors that make up the origin centered simplex. To center our simplex at the origin we take each vector in the original simplex, and subtract from it the centroid of the original simplex. The centroid of the original simplex takes the form $(\frac{1}{n},\frac{1}{n},\cdots,\frac{1}{n})$, so the points of the new simplex take the form
+We must first describe the vectors that make up the origin centered simplex. To center our simplex at the origin we take each vector in the original simplex, and subtract from it the centroid of the original simplex. The centroid of the original simplex takes the form $(\frac{1}{n},\frac{1}{n},\cdots,\frac{1}{N})$, so the points of the new simplex take the form
 $$
-\left(-\frac{1}{n},\cdots,-\frac{1}{n},\frac{n-1}{n},-\frac{1}{n},\cdots,-\frac{1}{n}\right).
+\left(-\frac{1}{N},\cdots,-\frac{1}{N},\frac{N-1}{N},-\frac{1}{N},\cdots,-\frac{1}{N}\right).
+$$
+If we renormalize these vectors we get 
+$$
+\sqrt{\frac{N}{N-1}}\left(-\frac{1}{N},\cdots,-\frac{1}{N},\frac{N-1}{N},-\frac{1}{N},\cdots,-\frac{1}{N}\right).
 $$
 If we take the dot product of any two such vectors we get
 $$
--2\cdot\frac{n-1}{n^2}+(n-2)\cdot\frac{1}{n^2}=-\frac{1}{n}.
+\frac{N}{N-1}\left(-2\cdot\frac{N-1}{N^2}+(N-2)\cdot\frac{1}{N^2}\right)=\frac{N}{N-1}\cdot-\frac{1}{N}=-\frac{1}{N-1}=-\frac{1}{n}.
 $$
-
+So an upper bound on the value of $\delta$ for all configurations of $n+1$ vectors in $n+1$ dimensional space is $\delta\le\frac{-1}{n}$. 
 
 To see that $\delta\ge-\frac{1}{n}$ we use the parallelogram law. Recall that the parallelogram law states that 
 
@@ -383,5 +387,11 @@ $$
 $$
 This implies that $\delta\ge -\frac{1}{n}$ as desired. Now we see that $\delta=-\frac{1}{n}$, so $|\delta|=\frac{1}{n}$, and therefore $\epsilon=\frac{1}{n^2}$. 
 
+\section{N>n+1}
+
+We conjecture that in cases where $N>n+1$ we can never have an arrangement of the vectors where all values of $|v_i\cdot v_j|^2$ are the same. 
+
+\section{Applications to sphere packing}
+We should be able to prove something about the radius of spheres you can pack in the case of $N=n+1$, taking as intuition square and hexagonal tilings of the plane and cubic and tetrahedral tilings of 3-space. 
 
 \end{document}
