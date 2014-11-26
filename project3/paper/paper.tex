@@ -72,7 +72,7 @@
 
 \makeatother
 
-\title{Almost Orthogonal vectors} 
+\title{Almost orthogonal vectors} 
 
 \author{Yajit Jain, Deepak Narayanan, Leon Zhang}
 
@@ -81,9 +81,19 @@
 \maketitle
 
 \section{Introduction}
-Given a dimension $n$ and a number $N > n$ of vectors, we want to find vectors $v_1, v_2, \ldots, v_N \in \mathbb{R}^n$ of unit length, such that
-$$\epsilon = \max_{i \neq j} \{ |v_i \cdot v_j|^2 \}$$
-is as small as possible.
+Consider a collection of $N$ unit vectors $v_1, \ldots, v_N$ in $\mathbb R^n$. Define $\epsilon$ as
+\[\epsilon=\max_{i\neq j}|v_i\cdot v_j|^2.\]
+For various $n$ and $N$, how do we minimize $\epsilon$?
+
+For $n=N$, it is clear that the minimum value of $\epsilon$ is zero, obtained by letting $v_1,\ldots, v_N$ be any orthonormal basis. For fixed $n$, it is also easy to see that the minimum value of $\epsilon$ is nondecreasing as $N$ increases: that is, if $\epsilon_1$ is the minimum value of $\epsilon$ for $N$ unit vectors in $\mathbb R^n$, and $\epsilon_2$ is the minimum value of $\epsilon$ for $N+1$ unit vectors in $\mathbb R^n$, we must have $\epsilon_1\leq \epsilon_2$. Otherwise, given a configuration of $N+1$ vectors in $\mathbb R^n$ with $\epsilon=\epsilon_2$, we could simply remove one vector and obtain a configuration of $N$ vectors whose $\epsilon$ would be less than or equal to $\epsilon_1$.
+
+Furthermore, given a configuration of $N$ vectors in $n$-space with corresponding $\epsilon$, we can obtain a collection of $N+1$ vectors in $\mathbb R^{n+1}$ with the same $\epsilon$: simply embed the first $N$ vectors in $\mathbb R^{n+1}$, then add any vector perpendicular to the hyperplane in which the $N$ vectors lie. Hence the minimum $\epsilon$ for collections of $N+1$ vectors in $\mathbb R^{n+1}$ is upper-bounded by the corresponding $\epsilon$ for $N$ vectors in $\mathbb R^n$.
+
+In this paper, we shall see that, for $n=2$, the minimum value of $\epsilon$ will be given by 
+\[\epsilon=\cos^2\pi/N.\] 
+We shall also see that, for $N=n+1$, the minimum value of $\epsilon$ will be 
+\[\epsilon=\frac{1}{n^2},\] 
+with the $n+1$ vectors pointing to the vertices of the $n$-simplex.
 
 \section{$n=2$, generic $N$}
 In this section, we consider the problem of almost orthogonal vectors of dimensionality $2$.
