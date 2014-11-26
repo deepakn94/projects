@@ -210,38 +210,6 @@ Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarro
 \end{proof}
 
 Figure $2$ shows an optimum configuration for $n=2$ and $N=5$.
-\begin{figure}
-    \centering
-    \begin{tikzpicture}[yscale=-1] 
-        % x-axis
-        \draw [thick,->] (-4.5, 0) -- (4.5, 0);
-        % y-axis
-        \draw [thick,->] (0, 4.5) -- (0, -4.5);
-        % origin label
-        \node at (-0.5, 0.3) {\text{$(0, 0)$}};
-        % x-axis label
-        \node at (4.5, 0.5) {\text{$x$}};
-        % y-axis label
-        \node at (0, -5) {\text{$y$}};
-        % circle
-        \draw (0,0) circle (3cm);
-        \draw (3,0)[blue,fill=blue] circle (0.1cm);
-        \draw (-1.5, 2.59)[blue,fill=blue] circle (0.1cm);
-        \draw (-1.5, -2.59)[blue,fill=blue] circle (0.1cm);
-        
-        \draw [thick,-,red,dashed] (3, 0) -- (-1.5, 2.59);
-        \draw [thick,-,red,dashed] (3, 0) -- (-1.5, -2.59);
-        \draw [thick,-,red,dashed] (-1.5, -2.59) -- (-1.5, 2.59);
-        
-        % \draw [thick,-,blue, dotted] (-3, 0) -- (0, 0);
-        % \draw [thick,-,blue, dotted] (1.5, -2.59) -- (0, 0);
-        % \draw [thick,-,blue, dotted] (1.5, 2.59) -- (0, 0);
-        \draw [thick,-,blue] (3, 0) -- (0, 0);
-        \draw [thick,-,blue] (-1.5, 2.59) -- (0, 0);
-        \draw [thick,-,blue] (-1.5, -2.59) -- (0, 0);
-    \end{tikzpicture}
-    \caption{A configuration of three unit vectors that produce the optimum $\epsilon$ for $n=2, N=3$}
-\end{figure}
 
 \section{The Parallelogram Law}
 
