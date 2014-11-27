@@ -83,7 +83,7 @@
 \section{Introduction}
 Consider a collection of $N$ unit vectors $v_1, \ldots, v_N$ in $\mathbb R^n$. Define $\epsilon$ as
 \[\epsilon=\max_{i\neq j}|v_i\cdot v_j|^2.\]
-For various $n$ and $N$, how do we minimize $\epsilon$?
+In this paper, we consider the problem of minimizing $\epsilon$ for various $n$ and $N$.
 
 For $n=N$, it is clear that the minimum value of $\epsilon$ is zero, obtained by letting $v_1,\ldots, v_N$ be any orthonormal basis. For fixed $n$, it is also easy to see that the minimum value of $\epsilon$ is nondecreasing as $N$ increases: that is, if $\epsilon_1$ is the minimum value of $\epsilon$ for $N$ unit vectors in $\mathbb R^n$, and $\epsilon_2$ is the minimum value of $\epsilon$ for $N+1$ unit vectors in $\mathbb R^n$, we must have $\epsilon_1\leq \epsilon_2$. Otherwise, given a configuration of $N+1$ vectors in $\mathbb R^n$ with $\epsilon=\epsilon_2$, we could simply remove one vector and obtain a configuration of $N$ vectors whose $\epsilon$ would be less than or equal to $\epsilon_1$.
 
@@ -91,6 +91,7 @@ Furthermore, given a configuration of $N$ vectors in $n$-space with correspondin
 
 In this paper, we shall see that, for $n=2$, the minimum value of $\epsilon$ will be given by 
 \[\epsilon=\cos^2\pi/N.\] 
+
 We shall also see that, for $N=n+1$, the minimum value of $\epsilon$ will be 
 \[\epsilon=\frac{1}{n^2},\] 
 with the $n+1$ vectors pointing to the vertices of the $n$-simplex.
@@ -107,10 +108,10 @@ It's clear that when $N=3$, the value of $\epsilon$ must be greater than $0$, si
 
 In addition, we see that for $N=3$, the quantity $\epsilon$ for three unit-length vectors $v_1, v_2, v_3 \in \mathbb{R}^2$ is given by $$\max \{ |v_1 \cdot v_2|^2, |v_1 \cdot v_3|^2, |v_2 \cdot v_3|^2 \}$$
 
-Since we don't care about the sign of the dot product between any two vectors, if we define the unit vectors $v_4, v_5, v_6 \in \mathbb{R}^2$ to be the reverses of $v_1, v_2, v_3$ respectively, then we see that $\epsilon$ can be equivalently expressed as $$\max_{i \neq j} \{|v_i \cdot v_j |^2 \}$$
-where $i, j \in \{1,2,\ldots,6\}$ -- the above result holds because if the vector $\mathcal{R}(v)$ is the reverse of the vector $v$, then $|v \cdot v'| = |\mathcal{R}(v) \cdot v'|$ for some arbitrary vector $v'$.
+Since we don't care about the sign of the dot product between any two vectors, if we define the unit vectors $v_4, v_5, v_6 \in \mathbb{R}^2$ to be $-v_1, -v_2, -v_3$ respectively, then we see that $\epsilon$ can be equivalently expressed as $$\max_{i \neq j} \{|v_i \cdot v_j |^2 \}$$
+where $i, j \in \{1,2,\ldots,6\}$ -- the above result holds because $|v \cdot v'| = |(-v) \cdot v'|$ for some arbitrary vector $v'$.
 
-Without loss of generality, let $x_1 = [1, 0]^T$; then since $x_4$ is the reverse of $x_1$, we see that $x_4 = [-1, 0]^T$. Also, without loss of generality assume that $x_2$ and $x_3$ are above the $x$-axis, and that $x_2$ is to the right of $x_3$.
+Now, without loss of generality, let $x_1 = [1, 0]^T$; then since $x_4$ is $-x_1$, we see that $x_4 = [-1, 0]^T$. Also, without loss of generality let us assume that $x_2$ and $x_3$ are above the $x$-axis, and that $x_2$ is to the right of $x_3$.
 
 \begin{figure}[!h]
     \centering
@@ -197,6 +198,8 @@ From the above lemma, we can conclude that if $j = \text{argmin } \theta_i$ and 
 
 Furthermore, we can obtain an upper bound on $\theta_j$ by observing that $\theta_ 1 + \theta_ 2 + \theta_3 \geq \theta_ j + \theta_j + \theta_j = 3 \theta_j \Rightarrow \theta_j \leq \pi/3$. Since we're interested in the smallest such $\epsilon$ and since the cosine function is a decreasing function in $\theta$ between $0$ and $\pi/2$, we conclude that the optimum value of $\epsilon$ for $n=2$ and $N=3$ is $\cos^2 \pi / 3$. Figure $1$ shows this optimum configuration.
 
+Given the above result for $N=3$, we attempt to generalize to any integer $N$ in the following theorem.
+
 \begin{theorem}
 For $n=2$ and arbitrary $N$, the optimum value of $\epsilon$ is given by $\cos^2 \pi/N$.
 \end{theorem}
@@ -204,11 +207,11 @@ For $n=2$ and arbitrary $N$, the optimum value of $\epsilon$ is given by $\cos^2
 \begin{proof}
 The proof of this theorem is similar to the proof for the specific case of $N=3$.
 
-Again without loss of generality, we can assume that the vectors $x_1, x_2, \ldots, x_N$ are on or above the $x$-axis, and that $x_1 = [1,0]^T$ and that $x_{N+1} = [-1,0]^T$ -- if any vector $x_i$ were not above the $x$-axis, then we could just consider its reverse.
+Again without loss of generality, we can assume that the vectors $x_1, x_2, \ldots, x_N$ are on or above the $x$-axis, and that $x_1 = [1,0]^T$ and that $x_{N+1} = [-1,0]^T$ -- if any vector $x_i$ were not above the $x$-axis, then we could just consider $-x_i$ instead.
 
-Let us define $\theta_i$ as the angle between the vectors $x_i$ and $x_{i+1}$. Then, we quickly see that $\theta_1 + \theta_2 + \ldots + \theta_N = \pi$. If $j = \text{argmin } \theta_i$, $\epsilon = \cos^2 \theta_j$.
+Let us define $\theta_i$ as the angle between the vectors $x_i$ and $x_{i+1}$. Then, we quickly see that $\theta_1 + \theta_2 + \ldots + \theta_N = \pi$. If $j = \text{argmin } \theta_i$, $\epsilon = \cos^2 \theta_j$ by the above Lemma.
 
-Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarrow \theta_j \leq \pi/N$, we conclude that the optimum $\epsilon$ value is in fact equal to $\cos^2 \pi/N$.
+Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarrow \theta_j \leq \pi/N$, we conclude that the optimum $\epsilon$ value is in fact equal to $\cos^2 \pi/N$ (again making use of the fact that the cosine function is decreasing).
 \end{proof}
 
 \begin{figure}[!h]
@@ -275,10 +278,10 @@ Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarro
         \draw [thick,-,blue] (0.93, 2.85) -- (0, 0);
         
         \node at (4, -0.3) {\text{$x_1 = [1,0]$}};
-        \node at (-4.5, 1.76) {\text{$x'_2 = [\cos \pi/5,\sin \pi/5]$}};
+        \node at (-4.5, 1.76) {\text{$x'_2 = [\cos 6\pi/5,\sin 6\pi/5]$}};
         \node at (3.43, -3) {\text{$x_3 = [\cos 2\pi/5,\sin 2\pi/5]$}};
          \node at (-4.5, -1.76) {\text{$x_5 = [\cos 4\pi/5,\sin 4\pi/5]$}};
-        \node at (3.43, 3) {\text{$x'_4 = [\cos 3\pi/5,\sin 3\pi/5]$}};
+        \node at (3.43, 3) {\text{$x'_4 = [\cos 8\pi/5,\sin 8\pi/5]$}};
         
         \draw [thick,-,red,dashed] (3, 0) -- (0.93, 2.85);
         \draw [thick,-,red,dashed] (3, 0) -- (0.93, -2.85);
@@ -289,7 +292,7 @@ Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarro
     \caption{A configuration of five unit vectors that produce the optimum $\epsilon$ for $n=2, N=5$ with $x_2$ and $x_4$ from the previous figure reversed}
 \end{figure}
 
-Figure $3$ shows an optimum configuration for $n=2$ and $N=5$. Note by taking reflections of $x_2$ and $x_4$ instead, we get five vectors that form a regular $5$-gon -- this can be seen in Figure $4$. This can be done for all odd $N$; unfortunately, even $N$ do not produce such nice polygons.
+Figure $3$ shows an optimum configuration for $n=2$ and $N=5$. Note by taking reflections of $x_2$ and $x_4$ in Figure $3$, we get five vectors that form a regular $5$-gon -- this can be seen in Figure $4$. A similar transformation can be done for all odd $N$; unfortunately, even $N$ cannot produce regular polygons.
 
 \section{The Parallelogram Law}
 
@@ -319,7 +322,7 @@ If we recurse on $||v_2+\cdots +v_n||^2$ using induction we get the desired resu
 \end{theorem}
 
 
-\section{$(n,n+1)$}
+\section{$N = n+1$}
 Let us consider the situation in which we try to minimize $\epsilon$ for $n+1$ vectors in an $n$ dimensional space. First we introduce the definition of a simplex, and then we will proceed to characterize $\epsilon$ in this case. 
 
 \begin{definition}
@@ -404,7 +407,7 @@ We must first describe the vectors that make up the origin centered simplex. To 
 $$
 \left(-\frac{1}{N},\cdots,-\frac{1}{N},\frac{N-1}{N},-\frac{1}{N},\cdots,-\frac{1}{N}\right).
 $$
-If we renormalize these vectors we get 
+If we renormalize these vectors so that each vector has unit length, we get 
 $$
 \sqrt{\frac{N}{N-1}}\left(-\frac{1}{N},\cdots,-\frac{1}{N},\frac{N-1}{N},-\frac{1}{N},\cdots,-\frac{1}{N}\right).
 $$
@@ -419,15 +422,15 @@ To see that $\delta\ge-\frac{1}{n}$ we use the parallelogram law. Recall that th
 $$
 ||v_1+\cdots+v_{n+1}||^2=\displaystyle\sum_{i=1}^{n+1}||v_i||^2+2\displaystyle\sum_{1\le i<j\le n+1}v_i\cdot v_j.
 $$
-In our case we know three things. First, since the vectors are arranged in a simplex, $v_1+\cdots+v_{n+1}=0$. Second, $v_i\cdot v_j\le\delta$ for any $i<j$. Third, $||v_i||=1$. Therefore 
+In our case we know three things. First, since the vectors are arranged in a simplex with centroid as the origin, $v_1+\cdots+v_{n+1}=0$. Second, $v_i\cdot v_j\le\delta$ for any $i<j$. Third, $||v_i||=1$. Therefore 
 $$
 0\le n+1+n(n+1)\delta.
 $$
 This implies that $\delta\ge -\frac{1}{n}$ as desired. Now we see that $\delta=-\frac{1}{n}$, so $|\delta|=\frac{1}{n}$, and therefore $\epsilon=\frac{1}{n^2}$. 
 
-\section{N>n+1}
+\section{$N>n+1$}
 
-We conjecture that in cases where $N>n+1$ we can never have an arrangement of the vectors where all values of $|v_i\cdot v_j|^2$ are the same. 
+We conjecture that in cases where $N>n+1$ we can never have an arrangement of the vectors where all values of $|v_i\cdot v_j|^2$ are the same. Proving this remains an object of future study.
 
 \section{Applications to sphere packing}
 We should be able to prove something about the radius of spheres you can pack in the case of $N=n+1$, taking as intuition square and hexagonal tilings of the plane and cubic and tetrahedral tilings of 3-space. 
