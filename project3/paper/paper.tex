@@ -87,14 +87,14 @@ In this paper, we consider the problem of minimizing $\epsilon$ for various $n$ 
 
 For $n=N$, it is clear that the minimum value of $\epsilon$ is zero, obtained by letting $v_1,\ldots, v_N$ be any orthonormal basis. For fixed $n$, it is also easy to see that the minimum value of $\epsilon$ is nondecreasing as $N$ increases: that is, if $\epsilon_1$ is the minimum value of $\epsilon$ for $N$ unit vectors in $\mathbb R^n$, and $\epsilon_2$ is the minimum value of $\epsilon$ for $N+1$ unit vectors in $\mathbb R^n$, we must have $\epsilon_1\leq \epsilon_2$. Otherwise, given a configuration of $N+1$ vectors in $\mathbb R^n$ with $\epsilon=\epsilon_2$, we could simply remove one vector and obtain a configuration of $N$ vectors whose $\epsilon$ would be less than or equal to $\epsilon_1$.
 
-Furthermore, given a configuration of $N$ vectors in $n$-space with corresponding $\epsilon$, we can obtain a collection of $N+1$ vectors in $\mathbb R^{n+1}$ with the same $\epsilon$: simply embed the first $N$ vectors in $\mathbb R^{n+1}$, then add any vector perpendicular to the hyperplane in which the $N$ vectors lie. Hence the minimum $\epsilon$ for collections of $N+1$ vectors in $\mathbb R^{n+1}$ is upper-bounded by the corresponding $\epsilon$ for $N$ vectors in $\mathbb R^n$.
+Furthermore, given a configuration of $N$ vectors in $n$-space with corresponding $\epsilon$, we can obtain a collection of $N+1$ vectors in $\mathbb R^{n+1}$ with the same $\epsilon$: simply embed the first $N$ vectors in $\mathbb R^{n}$, then add any vector perpendicular to the hyperplane in which the $N$ vectors lie. Hence the minimum $\epsilon$ for collections of $N+1$ vectors in $\mathbb R^{n+1}$ is upper-bounded by the corresponding $\epsilon$ for $N$ vectors in $\mathbb R^n$.
 
 In this paper, we shall see that, for $n=2$, the minimum value of $\epsilon$ will be given by 
 \[\epsilon=\cos^2\pi/N.\] 
 
-We shall also see that, for $N=n+1$, the minimum value of $\epsilon$ will be 
-\[\epsilon=\frac{1}{n^2},\] 
-with the $n+1$ vectors pointing to the vertices of the $n$-simplex.
+We shall also see that, for $N=n+1$, the minimum value of $\epsilon$ will be upper bounded by
+\[\frac{1}{n^2},\] 
+and this configuration is produced when the $n+1$ vectors point to the vertices of the $n$-simplex.
 
 \section{$n=2$, generic $N$}
 In this section, we consider the problem of almost orthogonal vectors of dimensionality $2$.
@@ -109,9 +109,9 @@ It's clear that when $N=3$, the value of $\epsilon$ must be greater than $0$, si
 In addition, we see that for $N=3$, the quantity $\epsilon$ for three unit-length vectors $v_1, v_2, v_3 \in \mathbb{R}^2$ is given by $$\max \{ |v_1 \cdot v_2|^2, |v_1 \cdot v_3|^2, |v_2 \cdot v_3|^2 \}$$
 
 Since we don't care about the sign of the dot product between any two vectors, if we define the unit vectors $v_4, v_5, v_6 \in \mathbb{R}^2$ to be $-v_1, -v_2, -v_3$ respectively, then we see that $\epsilon$ can be equivalently expressed as $$\max_{i \neq j} \{|v_i \cdot v_j |^2 \}$$
-where $i, j \in \{1,2,\ldots,6\}$ -- the above result holds because $|v \cdot v'| = |(-v) \cdot v'|$ for some arbitrary vector $v'$.
+where $i, j \in \{1,2,\ldots,6\}$ -- the above result holds because $$|v \cdot v'| = |(-v) \cdot v'| = |(-v) \cdot (-v')| = |v \cdot (-v')|$$ for some arbitrary vector $v'$. Furthermore, we see that there now exists an axis of symmetry -- one of the diagonals passing through either $v_1$ and $v_4 = -v_1$ or $v_2$ and $v_5 = -v_2$ or $v_3$ and $v_6 = -v_3$ -- so we don't need to look at the entire unit circle anymore, and instead can focus on the four vectors contained in a semi-circle resting on one of these three diameters.
 
-Now, without loss of generality, let $x_1 = [1, 0]^T$; then since $x_4$ is $-x_1$, we see that $x_4 = [-1, 0]^T$. Also, without loss of generality let us assume that $x_2$ and $x_3$ are above the $x$-axis, and that $x_2$ is to the right of $x_3$.
+Without loss of generality, let $x_1 = [1, 0]^T$; then since $x_4$ is $-x_1$, we see that $x_4 = [-1, 0]^T$. Also, without loss of generality let us assume that $x_2$ and $x_3$ are above the $x$-axis, and that $x_2$ is to the right of $x_3$.
 
 \begin{figure}[!h]
     \centering
@@ -144,7 +144,7 @@ Now, without loss of generality, let $x_1 = [1, 0]^T$; then since $x_4$ is $-x_1
 \end{figure}
 
 
-Let $\theta_1$ be the angle between $x_1$ and $x_2$, $\theta_2$ be the angle between $x_2$ and $x_3$ and $\theta_3$ be the angle between $x_3$ and $x_4$. Now, it is easy to see that $\theta_1 + \theta_2 + \theta_3 = \pi$ and that $$\epsilon = \max_{i \in \{1,2,3\}} \cos ^2 \theta_i$$
+Let $\theta_1$ be the angle between $x_1$ and $x_2$, $\theta_2$ be the angle between $x_2$ and $x_3$ and $\theta_3$ be the angle between $x_3$ and $x_4$. Now, we see that $\theta_1 + \theta_2 + \theta_3 = \pi$ (since vectors $v_1$ and $v_4 = -v_1$ are anti-parallel) and that $$\epsilon = \max_{i \in \{1,2,3\}} \cos ^2 \theta_i$$, since $|x_i \cdot x_j| = \cos \theta$ where $\theta$ is the angle between the two vectors $x_i$ and $x_j$.
 
 Before proceeding, we state and prove the following lemma.
 \begin{lemma}
@@ -179,7 +179,7 @@ Consider $n$ angles $\theta_1, \theta_2, \ldots, \theta_n \in [0, \pi]$ s.t. $\t
 	\caption{Plot of $\cos \theta$ versus $\theta$}
 \end{figure}
 
-Our arguments will hinge on the fact that for all $\theta \in [0, \pi/2]$, the function $\cos \theta$ is decreasing -- this is easy to see from Figure $2$. Without loss of generality, let us assume that $\theta_1 \geq \theta_2 \geq \ldots \geq\theta_n$. Hence we want to prove that $\epsilon$ is equal to $\cos^2 \theta_n$.
+Our arguments will hinge on the fact that for all $\theta \in [0, \pi/2]$, the function $\cos \theta$ is decreasing -- this is easy to see from Figure $2$. Without loss of generality, let us assume that $\theta_1 \geq \theta_2 \geq \ldots \geq\theta_n$. Hence our theorem statement is equivalent to proving that $\epsilon$ is equal to $\cos^2 \theta_n$.
 
 We split our proof into two cases,
 \begin{itemize}
@@ -323,13 +323,13 @@ If we recurse on $||v_2+\cdots +v_n||^2$ using induction we get the desired resu
 
 
 \section{$N = n+1$}
-Let us consider the situation in which we try to minimize $\epsilon$ for $n+1$ vectors in an $n$ dimensional space. First we introduce the definition of a simplex, and then we will proceed to characterize $\epsilon$ in this case. 
+Let us consider the situation in which we try to minimize $\epsilon$ for $n+1$ vectors in an $n$ dimensional space. First we introduce the definition of a simplex, and then we will proceed to characterize $\epsilon$. 
 
 \begin{definition}
 An $n$-dimensional simplex is given by the convex hull of the $n+1$ points in $\R^{n+1}$ described as having a 1 in a single coordinate and zeros in every other coordinate. 
 \end{definition}
 
-Here are diagrams of a 2-dimensional simplex:
+Figure $5$ shows diagrams of a 2-dimensional simplex.
 
 \begin{figure}[!h]
     \centering
@@ -401,9 +401,9 @@ If $N=n+1$ and the vectors in question are denoted $v_1,\cdots, v_N$, then over 
 \end{theorem}
 
 \proof
-Let $\delta=\max_{i\neq j}\{v_i\cdot v_j\}$. We first show that $\delta\le-\frac{1}{n}$ by showing that the origin-centered simplex configuration of the vectors $v_1,\cdots v_N$ produces a value $\delta=-\frac{1}{n}$. 
+Let $\delta= \max_{i\neq j}\{v_i\cdot v_j\}$ for a given set of unit vectors $v_1, v_2, \ldots, v_{n+1}$, and let $\delta_{min}$ be the minimum possible $\delta$ obtained across all unit vectors $v_1, v_2, \ldots, v_{n+1}$. We first show that $\delta_{min} \le-\frac{1}{n}$ by showing that the origin-centered simplex configuration of the vectors $v_1,\cdots v_{n+1}$ produces a value $\delta=-\frac{1}{n}$, and then will later show that $\delta_{min} \geq -\frac{1}{n}$ as well. 
 
-We must first describe the vectors that make up the origin centered simplex. To center our simplex at the origin we take each vector in the original simplex, and subtract from it the centroid of the original simplex. The centroid of the original simplex takes the form $(\frac{1}{n},\frac{1}{n},\cdots,\frac{1}{N})$, so the points of the new simplex take the form
+We must first describe the vectors that make up the origin centered simplex. To center our simplex at the origin we take each vector in the original simplex, and subtract from it the vector representing the centroid of the original simplex. The centroid of the original simplex takes the form $(\frac{1}{N},\frac{1}{N},\ldots,\frac{1}{N})$, so the points of the new simplex take the form
 $$
 \left(-\frac{1}{N},\cdots,-\frac{1}{N},\frac{N-1}{N},-\frac{1}{N},\cdots,-\frac{1}{N}\right).
 $$
@@ -411,23 +411,26 @@ If we renormalize these vectors so that each vector has unit length, we get
 $$
 \sqrt{\frac{N}{N-1}}\left(-\frac{1}{N},\cdots,-\frac{1}{N},\frac{N-1}{N},-\frac{1}{N},\cdots,-\frac{1}{N}\right).
 $$
-If we take the dot product of any two such vectors we get
+Now, taking the dot product between any two such vectors gives us
 $$
 \frac{N}{N-1}\left(-2\cdot\frac{N-1}{N^2}+(N-2)\cdot\frac{1}{N^2}\right)=\frac{N}{N-1}\cdot-\frac{1}{N}=-\frac{1}{N-1}=-\frac{1}{n}.
 $$
-So an upper bound on the value of $\delta$ for all configurations of $n+1$ vectors in $n+1$ dimensional space is $\delta\le\frac{-1}{n}$. 
+So an upper bound on the value of $\delta_{min}$ for all configurations of $n+1$ vectors in $n+1$ dimensional space is $\frac{-1}{n}$. 
 
-To see that $\delta\ge-\frac{1}{n}$ we use the parallelogram law. Recall that the parallelogram law states that 
+To see that $\delta_{min} \ge-\frac{1}{n}$ we use the parallelogram law.
+
+Recall that the parallelogram law states that 
 
 $$
 ||v_1+\cdots+v_{n+1}||^2=\displaystyle\sum_{i=1}^{n+1}||v_i||^2+2\displaystyle\sum_{1\le i<j\le n+1}v_i\cdot v_j.
 $$
-In our case we know three things. First, since the vectors are arranged in a simplex with centroid as the origin, $v_1+\cdots+v_{n+1}=0$. Second, $v_i\cdot v_j\le\delta$ for any $i<j$. Third, $||v_i||=1$. Therefore 
+In our case we know three things. First, since the norm of any vector is greater than or equal to $0$, we can conclude that $||v_1 + \cdots + v_{n+1}||^2 \geq 0$. Second, $v_i\cdot v_j\le\delta$ for any $i<j$. Third, $||v_i||=1$. Therefore 
 $$
 0\le n+1+n(n+1)\delta.
 $$
-This implies that $\delta\ge -\frac{1}{n}$ as desired. Now we see that $\delta=-\frac{1}{n}$, so $|\delta|=\frac{1}{n}$, and therefore $\epsilon=\frac{1}{n^2}$. 
+This implies that $\delta\ge -\frac{1}{n}$ for any set of unit vectors $v_1, v_2, \ldots, v_{n+1}$, from which we can conclude that $\delta_{min} \ge -\frac{1}{n}$ as well.
 
+Since $\delta_{min} \le -\frac{1}{n}$ and $\delta_{min} \ge -\frac{1}{n}$, we can conclude that $\delta_{min}=-\frac{1}{n}$. From this, we can see that a $\epsilon = \frac{1}{n^2}$ is achievable for the general case of when $N=n+1$ -- this leads us to conclude that the minimum possible $\epsilon$ value for $N=n+1$ is at most $\frac{1}{n^2}$.
 \section{$N>n+1$}
 
 We conjecture that in cases where $N>n+1$ we can never have an arrangement of the vectors where all values of $|v_i\cdot v_j|^2$ are the same. Proving this remains an object of future study.
