@@ -18,6 +18,20 @@ def get_random_vectors(n, N):
     return random_vectors
 
 
+def normalize_vector(vector):
+    norm = 0.0
+    for i in xrange(len(vector)):
+        norm += (vector[i] ** 2)
+    norm = norm ** 0.5
+    for i in xrange(len(vector)):
+        vector[i] /= norm
+
+
+def normalize_vectors(vectors):
+    for vector in vectors:
+        normalize_vector(vector)
+
+
 def compute_dp(vector1, vector2):
     dp = 0.0
     for i in xrange(len(vector1)):
@@ -27,14 +41,12 @@ def compute_dp(vector1, vector2):
 
 def compute_epsilon(vectors):
     max_dp = 0.0
-    print vectors
     for i in xrange(len(vectors)):
         for j in xrange(i+1, len(vectors)):
             dp = compute_dp(vectors[i], vectors[j])
             if max_dp < abs(dp):
                 max_dp = abs(dp)
-    print max_dp
-    return max_dp
+    return max_dp ** 2
 
 
 def compute_epsilon_random(n, N):
@@ -83,8 +95,6 @@ def construct_constraints(n, N):
 def find_optimal_vectors(x0):
     constraints = construct_constraints(3, 6)
     res = minimize(obj, x0, method='SLSQP', constraints=constraints)
-    print res.message
-    print res.success
     return res.x
 
 
@@ -101,12 +111,43 @@ def get_min_epsilon(n, N, num_iter):
         if epsilon < min_epsilon:
             min_epsilon = epsilon
             best_vectors = random_vectors
-    print min_epsilon ** 2
+
+
+def get_min_epsilon_with_annealing(n, N, num_iter, start_vectors):
+    min_epsilon = 1.0
+    current_vectors = start_vectors
+    i = 0
+    while (i < num_iter):
+        temperature = 1.0 / float(i + 1)
+        
+        # Get perturbing vectors
+        random_vectors = get_random_vectors(n, N)
+        # Now perturb current_vectors
+        new_vectors = list()
+        for j in xrange(N):
+            new_vector = list()
+            for k in xrange(n):
+                new_vector.append(current_vectors[j][k] + (temperature * random_vectors[j][k]))
+            new_vectors.append(new_vector)
+        normalize_vectors(new_vectors)
+        epsilon = compute_epsilon(new_vectors)
+        if epsilon < min_epsilon:
+            min_epsilon = epsilon
+            current_vectors = new_vectors
+            i += 1
+    return min_epsilon, current_vectors
 
 
 if __name__ == '__main__':
-    a = 0.53
-    b = 0.85
-    # print find_optimal_vectors([[a, b, 0.0], [a, -b, 0], [b, 0, a], [b, 0.0, -a], [0, a, b], [0, -a, b]])
-    print find_optimal_vectors(get_random_vectors(3, 6)) 
-
+    min_epsilon = 1.0
+    best_vectors = None
+    n, N = 4, 12
+    for i in xrange(100):    
+        epsilon, vectors = get_min_epsilon_with_annealing(n, N, 21, get_random_vectors(n, N))
+        if (epsilon < min_epsilon):
+            min_epsilon = epsilon
+            best_vectors = vectors
+    print
+    print "Min epsilon = %.4f..." % min_epsilon
+    print "Best vectors:", best_vectors
+    print
