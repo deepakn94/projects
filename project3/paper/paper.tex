@@ -400,7 +400,7 @@ Before proceeding with the theorem, we notice that when $n=2$, the configuration
 If $N=n+1$ and the vectors in question are denoted $v_1,\cdots, v_N$, then over all configurations of these vectors the maximum value of $v_i\cdot v_j$ for $i\neq j$ is $\frac{-1}{n}$. This is achieved when the vectors are arranged in an $n$ dimensional simplex centered at the origin, and in this configuration $\epsilon=\frac{1}{n^2}$.  
 \end{theorem}
 
-\proof
+\begin{proof}
 Let $\delta= \max_{i\neq j}\{v_i\cdot v_j\}$ for a given set of unit vectors $v_1, v_2, \ldots, v_{n+1}$, and let $\delta_{min}$ be the minimum possible $\delta$ obtained across all unit vectors $v_1, v_2, \ldots, v_{n+1}$. We first show that $\delta_{min} \le-\frac{1}{n}$ by showing that the origin-centered simplex configuration of the vectors $v_1,\cdots v_{n+1}$ produces a value $\delta=-\frac{1}{n}$, and then will later show that $\delta_{min} \geq -\frac{1}{n}$ as well. 
 
 We must first describe the vectors that make up the origin centered simplex. To center our simplex at the origin we take each vector in the original simplex, and subtract from it the vector representing the centroid of the original simplex. The centroid of the original simplex takes the form $(\frac{1}{N},\frac{1}{N},\ldots,\frac{1}{N})$, so the points of the new simplex take the form
@@ -431,10 +431,45 @@ $$
 This implies that $\delta\ge -\frac{1}{n}$ for any set of unit vectors $v_1, v_2, \ldots, v_{n+1}$, from which we can conclude that $\delta_{min} \ge -\frac{1}{n}$ as well.
 
 Since $\delta_{min} \le -\frac{1}{n}$ and $\delta_{min} \ge -\frac{1}{n}$, we can conclude that $\delta_{min}=-\frac{1}{n}$. From this, we can see that a $\epsilon = \frac{1}{n^2}$ is achievable for the general case of when $N=n+1$ -- this leads us to conclude that the minimum possible $\epsilon$ value for $N=n+1$ is at most $\frac{1}{n^2}$.
-\section{$N>n+1$}
+\end{proof}
 
-We conjecture that in cases where $N>n+1$ we can never have an arrangement of the vectors where all values of $|v_i\cdot v_j|^2$ are the same. Proving this remains an object of future study.
+Note that proving that the minimum possible epsilon for the case of $N = n+1$ is equal to $1/n^2$ is much harder, and we leave this for future work.
 
+\section{Simulated annealing and associated conjectures}
+Since visualizing in spaces of dimensionality greater than $3$ is extremely hard, we used an annealing approach to compute near-optimal epsilon values for different $(n, N)$ pairs. We describe this method in greater detail below.
+
+Our general intuition tells us that perturbing a set of nearly optimal vectors slightly could give us a new set of vectors that produce even a smaller epsilon value. Given this, we start off with a set of random vectors, and try to move these vectors in order to produce smaller epsilon values.
+
+At every iteration, we maintain the set of vectors (called cur\_vectors) that have produced the optimal epsilon value so far. Then we compute a set new\_vectors defined as follows,
+$$\text{new\_vector} = \text{old\_vector} + (1/i \cdot \text{random\_vector})$$
+
+We update cur\_vectors to the set new\_vectors if the epsilon value produced by new\_vectors is less than the epsilon value produced by cur\_vectors. $i$ is incremented whenever cur\_vectors is updated -- having the $1/i$ factor in the above expression ensures that as we move closer to an optimal value, we perturb the set of vectors by a smaller amount.
+
+Even though this approach seems simple, it actually produces remarkably precise values -- this can be verified by cross-checking with results we've already proven / conjectured in this paper.
+
+To make this more concrete, consider Table $1$.
+\begin{table}
+   \centering
+    \begin{tabular}{ | c | c | c | c |}
+    \hline
+      & $n=2$ & $n=3$ & $n=4$ \\ \hline
+    $N=2$ & $0.0$ & $-$ & $-$ \\ \hline
+    $N=3$ & $0.25$ & $0.0$ & $-$ \\ \hline
+    $N=4$ & $0.5$ & $0.11$ & $0.0$ \\ \hline
+    $N=5$ & $0.66$ & $0.21$ & $0.07$ \\ \hline
+    $N=6$ & $0.75$ & $0.22$ & $0.14$ \\ \hline
+    $N=7$ & $0.82$ & $0.36$ & $0.18$ \\ \hline
+    $N=8$ &  $0.86$ & $0.44$ & $0.24$ \\ \hline
+    $N=9$ &  $0.89$ & $0.49$ & $0.26$ \\ \hline
+    $N=10$ & $0.91$ & $0.51$ & $0.32$ \\ \hline
+    $N=11$ & $0.93$  & $0.55$ & $0.35$ \\ \hline
+    $N=12$ & $0.94$ & $0.64$ & $0.41$ \\
+    \hline
+    \end{tabular}
+    \caption {Minimum values of $\epsilon$ for different values of $(n, N)$, as computed by our annealing method}
+\end{table}
+
+The accuracy of our method can be noted by looking at the computed values for $n=2$ -- the computed values for different values of $N$ are very close to the expected value of $\cos^2 \pi/N$.
 \section{Applications to sphere packing}
 We should be able to prove something about the radius of spheres you can pack in the case of $N=n+1$, taking as intuition square and hexagonal tilings of the plane and cubic and tetrahedral tilings of 3-space. 
 
