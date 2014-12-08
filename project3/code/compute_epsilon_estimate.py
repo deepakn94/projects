@@ -1,6 +1,4 @@
 import random
-from scipy.optimize import minimize
-import numpy as np
 
 
 def get_random_vectors(n, N):
@@ -59,45 +57,6 @@ def compute_epsilon_random(n, N):
     epsilon = compute_epsilon(random_vectors)
     return epsilon, random_vectors
 
-# Here assume we're given 6 vectors of dimension 3
-def obj(x):
-    x1 = x[0:3]
-    x2 = x[3:6]
-    x3 = x[6:9]
-    x4 = x[9:12]
-    x5 = x[12:15]
-    x6 = x[15:]
-    return compute_epsilon([x1, x2, x3, x4, x5, x6])
-
-
-def jac(x, start, end, n, N):
-    jac = []
-    for i in xrange(n*N):
-        if (i >= start and i < end):
-            jac.append(2 * x[i])
-        else:
-            jac.append(0.0)
-    return np.array(jac)
-
-
-def construct_constraints(n, N):
-    constraints = []
-    start = 0
-    for i in xrange(N):
-        end = start + n
-        constraints.append({'type':'eq',
-            'fun': lambda x: compute_dp(x[start:end], x[start:end]) - 1,
-            'jac': lambda x: jac(x, start, end, n, N)})
-        start += n
-    return constraints
-
-
-def find_optimal_vectors(x0):
-    constraints = construct_constraints(3, 6)
-    res = minimize(obj, x0, method='SLSQP', constraints=constraints)
-    return res.x
-
-
 def get_min_epsilon(n, N, num_iter):
     min_epsilon = 1.0
     best_vectors = None
@@ -117,7 +76,10 @@ def get_min_epsilon_with_annealing(n, N, num_iter, start_vectors):
     min_epsilon = 1.0
     current_vectors = start_vectors
     i = 0
+    l = 0
     while (i < num_iter):
+        if (l > 5000):
+            break
         temperature = 1.0 / float(i + 1)
         
         # Get perturbing vectors
@@ -135,19 +97,21 @@ def get_min_epsilon_with_annealing(n, N, num_iter, start_vectors):
             min_epsilon = epsilon
             current_vectors = new_vectors
             i += 1
+        l += 1
     return min_epsilon, current_vectors
 
 
 if __name__ == '__main__':
-    min_epsilon = 1.0
-    best_vectors = None
-    n, N = 4, 12
-    for i in xrange(100):    
-        epsilon, vectors = get_min_epsilon_with_annealing(n, N, 21, get_random_vectors(n, N))
-        if (epsilon < min_epsilon):
-            min_epsilon = epsilon
-            best_vectors = vectors
-    print
-    print "Min epsilon = %.4f..." % min_epsilon
-    print "Best vectors:", best_vectors
-    print
+    values = [(2, 2), (2, 3), (2, 4), (2, 5), (2, 6), (3, 3), (3, 4), (3, 5), (3, 6), (4, 4), (4, 5), (4, 6), (4, 7), (4, 8), (4, 9), (4, 10), (4, 11), (4, 12), (16, 144)]
+    for (n, N) in values:
+        min_epsilon = 1.0
+        best_vectors = None
+        for i in xrange(100):    
+            epsilon, vectors = get_min_epsilon_with_annealing(n, N, 21, get_random_vectors(n, N))
+            if (epsilon < min_epsilon):
+                min_epsilon = epsilon
+                best_vectors = vectors
+        print
+        print "Min epsilon for (%d, %d) = %.4f..." % (n, N, min_epsilon)
+        print "Best vectors:", best_vectors
+        print
