@@ -326,7 +326,76 @@ Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarro
     \caption{A configuration of five unit vectors that produce the optimum $\epsilon$ for $n=2, N=5$ with $x_2$ and $x_4$ from the previous figure reversed}
 \end{figure}
 
-Figure $3$ shows an optimum configuration for $n=2$ and $N=5$. Note by taking reflections of $x_2$ and $x_4$ in Figure $3$, we get five vectors that form a regular $5$-gon -- this can be seen in Figure $4$. A similar transformation can be done for all odd $N$; unfortunately, even $N$ cannot produce regular polygons.
+Figure $3$ shows an optimum configuration for $n=2$ and $N=5$. Note by taking reflections of $x_2$ and $x_4$ in Figure $3$, we get five vectors that form a regular $5$-gon -- this can be seen in Figure $4$. A similar transformation can be done for all odd $N$; unfortunately, even $N$ do not produce regular polygons.
+
+\section{A lower bound}
+
+We can use a well-known lemma to provide a useful lower bound on $\epsilon$. Our proof of the lemma follows that of a paper by Noga Alon\footnote{Lemma 2.2, \emph{Perturbed identity matrices have high rank: proof and applications}, Noga Alon.}.
+
+\begin{lemma}
+Let $A=(a_{i,j})$ be an $n$-by-$n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
+\[\epsilon\geq \frac{n-d}{d(n-1)}.\]
+\end{lemma}
+\begin{proof}
+We define $\lambda_1,\ldots, \lambda_n$ to be the eigenvalues of $A$; write $k$ as the number of nonzero eigenvalues. Their sum is the trace of $A$, equal to $n$. We know that the number of nonzero eigenvalues of a complex matrix is less than or equal to the rank of the matrix: so we have that $d\geq k$.
+
+Recall the Cauchy-Schwarz for $\mathbb R^n$: given $(x_1,\ldots, x_n)$ and $(y_1,\ldots, y_n)\in \mathbb R^n$, we have
+\[\left(\sum_{i=1}^nx_iy_i\right)^2\leq \left(\sum_{i=1}^n x_i^2\right)\left(\sum_{i=1}^ny_i^2\right).\]
+In our case, let the $x_i$ equal $\lambda_i$, and let each $y_i$ equal 1 when $\lambda_i$ is nonzero and zero when $\lambda_i$ is zero. We get
+\[n^2=\left(\sum_{i=1}^n \lambda_i\right)^2\leq \left(\sum_{i=1}^n \lambda_i^2\right) k\]
+so that
+\[\sum_{i=1}^n \lambda_i^2\geq\frac{n^2}{k}\geq \frac{n^2}{d}.\]
+In fact, the sum $\sum_{i=1}^n \lambda_i^2$ is equal to the trace of $A^TA$, which we can compute explicitly to be $\sum_{i,j}a_{i,j}^2$. Hence we have that
+\[\sum_{i,j}a_{i,j}^2\geq \frac{n^2}{d}.\]
+But because $|a_{i,j}|\leq \sqrt\epsilon$ for $i\neq j$, we can bound the left hand side:
+\[n+n(n-1)\epsilon\geq \left(\sum_{i=1}^j a_{i,i}^2\right)+\left(\sum_{i\neq j}a_{i,j}^2\right)=\sum_{i,j}a_{i,j}^2.\]
+We obtain, therefore, that
+\[n+n(n-1)\epsilon\geq \frac{n^2}{d},\]
+and it clearly follows that
+\[\epsilon\geq \frac{n-d}{d(n-1)}.\]
+\end{proof}
+Using this lemma, we can now prove our lower bound on $\epsilon$.
+\begin{theorem}
+\label{lower_bound}
+For any choice of $n$ and $N$, the minimum value of $\epsilon$ satisfies
+\[\epsilon\geq \frac{N-n}{n(N-1)}.\]
+\end{theorem}
+\begin{proof}
+Pick any collection of $N$ unit vectors $v_1,\ldots, v_N$ in $\mathbb R^n$, and define $\epsilon$ as usual. Let us define the $n$-by-$N$ matrix
+\[A=\left(\begin{matrix}
+| & | & \cdots & | & |\\
+v_1 & v_2 & \cdots & v_{N-1} & v_N\\
+| & | & \cdots & | & | \end{matrix}\right).\] 
+Now consider the $N$-by-$N$ Gram matrix:
+\[G(v_1,\ldots, v_N)=A^TA=\left(\begin{matrix}
+v_1\cdot v_1 & v_1\cdot v_2 & \ldots & v_1\cdot v_n\\
+v_2\cdot v_2 & v_2\cdot v_2 & \ldots & v_2\cdot v_n\\
+\vdots & \vdots & \ddots & \vdots\\
+v_n\cdot v_1 & v_n\cdot v_2 & \ldots & v_n\cdot v_n\end{matrix}\right).\]
+Let $d$ be the rank of $G$; since $A$ has rank at most $n$, we have that $d\leq n$. Note that $G$ is real and symmetric, with $1$s along the diagonal and all other entries with absolute value bounded by $\sqrt \epsilon$. We can apply the lemma to conclude
+\[\epsilon\geq \frac{N-d}{d(N-1)}.\]
+Since $d\leq n$, we have as desired
+\[\epsilon\geq \frac{N-n}{n(N-1)}.\]
+\end{proof}
+We present now a table of the bounds the theorem gives to us for varying $n$ and $N$:
+\begin{table}[h]
+   \centering
+    \begin{tabular}{ | c | c | c | c |}
+    \hline
+      & $n=2$ & $n=3$ & $n=4$ \\ \hline
+    $N=2$ & $0$ & $-$ & $-$ \\ \hline
+    $N=3$ & $1/4$ & $0$ & $-$ \\ \hline
+    $N=4$ & $1/3$ & $1/9$ & $0$ \\ \hline
+    $N=5$ & $3/8$ & $1/6$ & $1/16$ \\ \hline
+    $N=6$ & $2/5$ & $1/5$ & $1/10$ \\ \hline
+    $N=8$ &  $3/7$ & $5/21$ & $1/7$ \\ \hline
+    $N=12$ & $5/11$ & $3/11$ & $2/11$ \\
+    \hline
+    \end{tabular}
+    \caption {Lower bounds on $\epsilon$ for different values of $(n, N)$, given by Theorem \ref{lower_bound}.}
+    \end{table}
+
+Note that the bounds for $n=2$ are not tight, as we proved in Section 2 that the minimum $\epsilon$ was given by $\cos^2(\pi/N)$. We shall see, however, that the bounds for $\epsilon$ are in fact tight in the cases where $N=n+1$ and where $n=3, N=6$. One direction for further research might be checking whether the bounds provided by Theorem \ref{lower_bound} are indeed attainable for other combinations of $n$ and $N$.
 
 \section{$N = n+1$}
 
@@ -521,79 +590,6 @@ Even though this approach seems simple, it actually produces remarkably precise 
 To make this more concrete, consider Table $1$.
 
 The accuracy of our method can be noted by looking at the computed values for $n=2$ -- the computed values for different values of $N$ are very close to the expected value of $\cos^2 \pi/N$, that we already proved in Section $2$, which makes us confident about the accuracy of this numeric method.
-
-\section{A lower bound}
-
-We can use a well-known lemma to provide a useful lower bound on $\epsilon$. Our presentation of the result follows that of a paper by Noga Alon\footnote{Lemma 2.2, \emph{Perturbed identity matrices have high rank: proof and applications}, Noga Alon.}.
-
-\begin{lemma}
-Let $A=(a_{i,j})$ be an $n$-by-$n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
-\[\epsilon\geq \frac{n-d}{d(n-1)}.\]
-\end{lemma}
-\begin{proof}
-We define $\lambda_1,\ldots, \lambda_n$ to be the eigenvalues of $A$; write $k$ as the number of nonzero eigenvalues. Their sum is the trace of $A$, equal to $n$. Recall that the number of nonzero eigenvalues of a complex matrix is less than or equal to the rank of the matrix: so we have that $d\geq k$.
-
-Recall the Cauchy-Schwarz for $\mathbb R^n$: given $(x_1,\ldots, x_n)$ and $(y_1,\ldots, y_n)\in \mathbb R^n$, we have
-\[\left(\sum_{i=1}^nx_iy_i\right)^2\leq \left(\sum_{i=1}^n x_i^2\right)\left(\sum_{i=1}^ny_i^2\right).\]
-In our case, let the $x_i$ equal $\lambda_i$, and let each $y_i$ equal 1 when $\lambda_i$ is nonzero and zero when $\lambda_i$ is zero. We get
-\[n^2=\left(\sum_{i=1}^n \lambda_i\right)^2\leq \left(\sum_{i=1}^n \lambda_i^2\right) k\]
-so that
-\[\sum_{i=1}^n \lambda_i^2\geq\frac{n^2}{k}\geq \frac{n^2}{d}.\]
-In fact, the sum $\sum_{i=1}^n \lambda_i^2$ is equal to the trace of $A^TA$, which we can compute explicitly to be $\sum_{i,j}a_{i,j}^2$. Hence we have that
-\[\sum_{i,j}a_{i,j}^2\geq \frac{n^2}{d}.\]
-But because $|a_{i,j}|\leq \sqrt\epsilon$ for $i\neq j$, we can bound the left hand side:
-\[n+n(n-1)\epsilon\geq \left(\sum_{i=1}^j a_{i,i}^2\right)+\left(\sum_{i\neq j}a_{i,j}^2\right)=\sum_{i,j}a_{i,j}^2.\]
-We obtain, therefore, that
-\[n+n(n-1)\epsilon\geq \frac{n^2}{d},\]
-and it clearly follows that
-\[\epsilon\geq \frac{n-d}{d(n-1)}.\]
-\end{proof}
-We can now prove our lower bound. 
-\begin{theorem}
-\label{lower_bound}
-For any choice of $n$ and $N$, the minimum value of $\epsilon$ satisfies
-\[\epsilon\geq \frac{N-n}{n(N-1)}.\]
-\end{theorem}
-\begin{proof}
-Pick any collection of $N$ unit vectors $v_1,\ldots, v_N$ in $\mathbb R^n$, and define $\epsilon$ as usual. Let us define the $n$-by-$N$ matrix
-\[A=\left(\begin{matrix}
-| & | & \cdots & | & |\\
-v_1 & v_2 & \cdots & v_{N-1} & v_N\\
-| & | & \cdots & | & | \end{matrix}\right).\] 
-Now consider the $N$-by-$N$ Gram matrix:
-\[G(v_1,\ldots, v_N)=A^TA=\left(\begin{matrix}
-v_1\cdot v_1 & v_1\cdot v_2 & \ldots & v_1\cdot v_n\\
-v_2\cdot v_2 & v_2\cdot v_2 & \ldots & v_2\cdot v_n\\
-\vdots & \vdots & \ddots & \vdots\\
-v_n\cdot v_1 & v_n\cdot v_2 & \ldots & v_n\cdot v_n\end{matrix}\right).\]
-Let $d$ be the rank of $G$; since $A$ has rank at most $n$, we have that $d\leq n$. Note that $G$ is real and symmetric, with $1$s along the diagonal and all other entries with absolute value bounded by $\sqrt \epsilon$. We can apply the lemma to conclude
-\[\epsilon\geq \frac{N-d}{d(N-1)}.\]
-Since $d\leq n$, we have as desired
-\[\epsilon\geq \frac{N-n}{n(N-1)}.\]
-\end{proof}
-For $N=n+1$, for instance, the theorem provides us a bound of 
-\[\epsilon\geq \frac{(n+1)-n}{n(n+1-1)}=\frac 1{n^2}\]
-implying that the $n$-simplex is indeed an optimal configuration. Similarly, for $n=3, N=6$, the theorem gives us
-\[\epsilon\geq \frac{6-3}{3(6-1)}=\frac{1}{5}.\]
-Again, the configuration we obtained was optimal. We present now a table of the bounds the theorem gives to us for varying $n$ and $N$:
-\begin{table}[h]
-   \centering
-    \begin{tabular}{ | c | c | c | c |}
-    \hline
-      & $n=2$ & $n=3$ & $n=4$ \\ \hline
-    $N=2$ & $0$ & $-$ & $-$ \\ \hline
-    $N=3$ & $1/4$ & $0$ & $-$ \\ \hline
-    $N=4$ & $1/3$ & $1/9$ & $0$ \\ \hline
-    $N=5$ & $3/8$ & $1/6$ & $1/16$ \\ \hline
-    $N=6$ & $2/5$ & $1/5$ & $1/10$ \\ \hline
-    $N=8$ &  $3/7$ & $5/21$ & $1/7$ \\ \hline
-    $N=12$ & $5/11$ & $3/11$ & $2/11$ \\
-    \hline
-    \end{tabular}
-    \caption {Lower bounds on $\epsilon$ for different values of $(n, N)$, given by Theorem \ref{lower_bound}.}
-    \end{table}
-
-Note that the bounds for $n=2$ are not tight, as we proved in Section 2 that the minimum $\epsilon$ was given by $\cos^2(\pi/N)$. One direction for further research would be checking whether the bounds provided by Theorem \ref{lower_bound} are indeed tight for other combinations of $n$ and $N$.
 
 \section{Applications to sphere packing}
 We should be able to prove something about the radius of spheres you can pack in the case of $N=n+1$, taking as intuition square and hexagonal tilings of the plane and cubic and tetrahedral tilings of 3-space. 
