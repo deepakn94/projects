@@ -104,16 +104,18 @@ Consider a collection of $N$ unit vectors $v_1, \ldots, v_N$ in $\mathbb R^n$. D
 \[\epsilon=\max_{i\neq j}|v_i\cdot v_j|^2.\]
 In this paper, we consider the problem of minimizing $\epsilon$ for various $n$ and $N$.
 
-For $n=N$, it is clear that the minimum value of $\epsilon$ is zero, obtained by letting $v_1,\ldots, v_N$ be any orthonormal basis. For fixed $n$, it is also easy to see that the minimum value of $\epsilon$ is nondecreasing as $N$ increases: that is, if $\epsilon_1$ is the minimum value of $\epsilon$ for $N$ unit vectors in $\mathbb R^n$, and $\epsilon_2$ is the minimum value of $\epsilon$ for $N+1$ unit vectors in $\mathbb R^n$, we must have $\epsilon_1\leq \epsilon_2$. Otherwise, given a configuration of $N+1$ vectors in $\mathbb R^n$ with $\epsilon=\epsilon_2$, we could simply remove one vector and obtain a configuration of $N$ vectors whose $\epsilon$ would be less than or equal to $\epsilon_1$.
+For $n=N$, it is clear that the minimum value of $\epsilon$ is zero, obtained by letting $v_1,\ldots, v_N$ be any orthonormal basis. For fixed $n$, it is also easy to see that the minimum value of $\epsilon$ is nondecreasing as $N$ increases: that is, if $\epsilon_1$ is the minimum value of $\epsilon$ for $N$ unit vectors in $\mathbb R^n$, and $\epsilon_2$ is the minimum value of $\epsilon$ for $N+1$ unit vectors in $\mathbb R^n$, we must have 
+\[\epsilon_1\leq \epsilon_2.\] 
+Otherwise, given a configuration of $N+1$ vectors in $\mathbb R^n$ with $\epsilon=\epsilon_2$, we could simply remove one vector and obtain a configuration of $N$ vectors whose $\epsilon$ would be less than or equal to $\epsilon_1$.
 
-Furthermore, given a configuration of $N$ vectors in $n$-space with corresponding $\epsilon$, we can obtain a collection of $N+1$ vectors in $\mathbb R^{n+1}$ with the same $\epsilon$: simply embed the first $N$ vectors in $\mathbb R^{n}$, then add any vector perpendicular to the hyperplane in which the $N$ vectors lie. Hence the minimum $\epsilon$ for collections of $N+1$ vectors in $\mathbb R^{n+1}$ is upper-bounded by the corresponding $\epsilon$ for $N$ vectors in $\mathbb R^n$.
+Along the same lines, given a configuration of $N$ vectors in $n$-space with corresponding $\epsilon$, we can obtain a collection of $N+1$ vectors in $\mathbb R^{n+1}$ with the same $\epsilon$: simply embed the first $N$ vectors in $\mathbb R^{n}$, then add any vector perpendicular to the hyperplane in which the $N$ vectors lie. Hence the minimum $\epsilon_3$ for collections of $N+1$ vectors in $\mathbb R^{n+1}$ is upper-bounded by the corresponding $\epsilon$ for $N$ vectors in $\mathbb R^n$.
 
-In this paper, we shall see that, for $n=2$, the minimum value of $\epsilon$ will be given by 
+In this paper, we shall see that for $n=2$, the minimum value of $\epsilon$ will be given by 
 \[\epsilon=\cos^2\pi/N.\] 
-
-We shall also see that, for $N=n+1$, the minimum value of $\epsilon$ is upper bounded by
-\[\frac{1}{n^2},\] 
-and this configuration is produced when the $n+1$ vectors point to the vertices of the $n$-simplex.
+We will also derive a lower bound on $\epsilon$ for any choice of $n$ and $N$. In addition, we shall see that, for $N=n+1$, the minimum value of $\epsilon$ is given by
+\[\epsilon=\frac{1}{n^2},\] 
+and this configuration is produced when the $n+1$ vectors point to the vertices of the $n$-simplex. We shall also exhibit an optimal configuration of six vectors in $\mathbb R^3$, with corresponding $\epsilon$ given by
+\[\epsilon=\frac 1 5.\]
 
 \section{$n=2$, generic $N$}
 In this section, we consider the problem of almost orthogonal vectors of dimensionality $2$.
