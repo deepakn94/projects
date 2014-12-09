@@ -13,6 +13,19 @@
 \usepackage[american]{babel}
 \usepackage[T1]{fontenc} 
 \usepackage{tikz}
+\usepackage[scaled]{beramono}
+\usepackage{listings}
+
+\lstset{
+  language=Python,
+  showstringspaces=false,
+  formfeed=\newpage,
+  tabsize=4,
+  commentstyle=\itshape,
+  basicstyle=\ttfamily,
+  morekeywords={while, if}
+  captionpos=b,
+}
 
 \usepackage{titling} % allows posttitle command
 
@@ -33,7 +46,13 @@
 \usepackage{bbm}
 \usepackage{pgfplots}
 
+\renewcommand{\lstlistingname}{Algorithm}
+
 \usepackage{todonotes}
+\usepackage{caption}
+\DeclareCaptionFormat{myformat}{#1#2#3\hrulefill}
+\captionsetup{format=myformat}
+\captionsetup[lstlisting]{position=bottom,format=myformat}
 
 \newtheoremstyle{theorem}{1em}{1em}{\slshape}{0pt}{\bfseries}{.}{ }{}
 \theoremstyle{theorem}
@@ -92,7 +111,7 @@ Furthermore, given a configuration of $N$ vectors in $n$-space with correspondin
 In this paper, we shall see that, for $n=2$, the minimum value of $\epsilon$ will be given by 
 \[\epsilon=\cos^2\pi/N.\] 
 
-We shall also see that, for $N=n+1$, the minimum value of $\epsilon$ will be upper bounded by
+We shall also see that, for $N=n+1$, the minimum value of $\epsilon$ is upper bounded by
 \[\frac{1}{n^2},\] 
 and this configuration is produced when the $n+1$ vectors point to the vertices of the $n$-simplex.
 
@@ -104,51 +123,16 @@ It is obvious that for $N=2$, we can find an $\epsilon$ equal to $0$, since it e
 However, we see that the problem gets harder for larger $N$. Let us first consider the specific case of $N=3$; once we build some intuition for the problem, we will try to generalize to generic $N$.
 \\
 
-It's clear that when $N=3$, the value of $\epsilon$ must be greater than $0$, since there is no way three dimensionality-$2$ vectors can be orthogonal to each other.
+It's clear that when $N=3$, the value of $\epsilon$ must be greater than $0$, since there is no way three dimensionality-$2$ vectors can be orthogonal to each other. We make this more concrete in the following theorem.
 
-In addition, we see that for $N=3$, the quantity $\epsilon$ for three unit-length vectors $v_1, v_2, v_3 \in \mathbb{R}^2$ is given by $$\max \{ |v_1 \cdot v_2|^2, |v_1 \cdot v_3|^2, |v_2 \cdot v_3|^2 \}$$
+\begin{theorem}
+For $n=2$ and $N=3$, the minimum possible $\epsilon$ is equal to $1/4$.
+\end{theorem}
 
-Since we don't care about the sign of the dot product between any two vectors, if we define the unit vectors $v_4, v_5, v_6 \in \mathbb{R}^2$ to be $-v_1, -v_2, -v_3$ respectively, then we see that $\epsilon$ can be equivalently expressed as $$\max_{i \neq j} \{|v_i \cdot v_j |^2 \}$$
-where $i, j \in \{1,2,\ldots,6\}$ -- the above result holds because $$|v \cdot v'| = |(-v) \cdot v'| = |(-v) \cdot (-v')| = |v \cdot (-v')|$$ for some arbitrary vector $v'$. Furthermore, we see that there now exists an axis of symmetry -- one of the diagonals passing through either $v_1$ and $v_4 = -v_1$ or $v_2$ and $v_5 = -v_2$ or $v_3$ and $v_6 = -v_3$ -- so we don't need to look at the entire unit circle anymore, and instead can focus on the four vectors contained in a semi-circle resting on one of these three diameters.
+Before proving the above theorem, we state and prove the following lemma.
 
-Without loss of generality, let $x_1 = [1, 0]^T$; then since $x_4$ is $-x_1$, we see that $x_4 = [-1, 0]^T$. Also, without loss of generality let us assume that $x_2$ and $x_3$ are above the $x$-axis, and that $x_2$ is to the right of $x_3$.
-
-\begin{figure}[!h]
-    \centering
-    \begin{tikzpicture}[yscale=-1] 
-        % x-axis
-        \draw [thick,->] (-4.5, 0) -- (4.5, 0);
-        % y-axis
-        \draw [thick,->] (0, 4.5) -- (0, -4.5);
-        % origin label
-        \node at (-0.5, 0.3) {\text{$(0, 0)$}};
-        % x-axis label
-        \node at (4.5, 0.5) {\text{$x$}};
-        % y-axis label
-        \node at (0, -5) {\text{$y$}};
-        % circle
-        \draw (0,0) circle (3cm);
-        \draw (3,0)[blue,fill=blue] circle (0.1cm);
-        \draw (1.5, -2.59)[blue,fill=blue] circle (0.1cm);
-        \draw (-1.5, -2.59)[blue,fill=blue] circle (0.1cm);
-        
-        \draw [thick,-,blue] (3, 0) -- (0, 0);
-        \draw [thick,-,blue] (1.5, -2.59) -- (0, 0);
-        \draw [thick,-,blue] (-1.5, -2.59) -- (0, 0);
-        
-        \node at (4, -0.3) {\text{$x_1 = [1,0]$}};
-        \node at (2.8, -3.1) {\text{$x_2 = [\cos \pi/3,\sin \pi/3]$}};
-        \node at (-2.8, -3.1) {\text{$x_3 = [\cos 2\pi/3,\sin 2\pi/3]$}};
-    \end{tikzpicture}
-    \caption{A configuration of three unit vectors that produce the optimum $\epsilon$ for $n=2, N=3$}
-\end{figure}
-
-
-Let $\theta_1$ be the angle between $x_1$ and $x_2$, $\theta_2$ be the angle between $x_2$ and $x_3$ and $\theta_3$ be the angle between $x_3$ and $x_4$. Now, we see that $\theta_1 + \theta_2 + \theta_3 = \pi$ (since vectors $v_1$ and $v_4 = -v_1$ are anti-parallel) and that $$\epsilon = \max_{i \in \{1,2,3\}} \cos ^2 \theta_i$$, since $|x_i \cdot x_j| = \cos \theta$ where $\theta$ is the angle between the two vectors $x_i$ and $x_j$.
-
-Before proceeding, we state and prove the following lemma.
 \begin{lemma}
-Consider $n$ angles $\theta_1, \theta_2, \ldots, \theta_n \in [0, \pi]$ s.t. $\theta_1 + \theta_2 + \ldots + \theta_n = \pi$. Then $\epsilon = \max_i \cos^2 \theta_i$ must equal $\cos^2 \theta_j$ where $j = \text{argmin }\theta_i$.
+Consider $n$ angles $\theta_1, \theta_2, \ldots, \theta_n \in [0, \pi]$ s.t. $\theta_1 + \theta_2 + \ldots + \theta_n = \pi$. Then $\alpha = \max_i \cos^2 \theta_i$ must equal $\cos^2 \theta_j$ where $j = \text{argmin }\theta_i$.
 \end{lemma}
 
 \begin{proof}
@@ -179,24 +163,70 @@ Consider $n$ angles $\theta_1, \theta_2, \ldots, \theta_n \in [0, \pi]$ s.t. $\t
 	\caption{Plot of $\cos \theta$ versus $\theta$}
 \end{figure}
 
-Our arguments will hinge on the fact that for all $\theta \in [0, \pi/2]$, the function $\cos \theta$ is decreasing -- this is easy to see from Figure $2$. Without loss of generality, let us assume that $\theta_1 \geq \theta_2 \geq \ldots \geq\theta_n$. Hence our theorem statement is equivalent to proving that $\epsilon$ is equal to $\cos^2 \theta_n$.
+Our arguments will hinge on the fact that for all $\theta \in [0, \pi/2]$, the function $\cos \theta$ is decreasing -- this is easy to see from Figure $1$. Without loss of generality, let us assume that $\theta_1 \geq \theta_2 \geq \ldots \geq\theta_n$. Hence our theorem statement is equivalent to proving that $\alpha$ is equal to $\cos^2 \theta_n$.
 
 We split our proof into two cases,
 \begin{itemize}
-\item $\theta_1, \theta_2, \ldots, \theta_n \in [0, \pi/2]$: In this case, it is easy to see that $\epsilon = \cos^2 \theta_n$ from the fact that $\cos \theta$ is a decreasing function in $\theta$ if $\theta \in [0, \pi/2]$.
+\item $\theta_1, \theta_2, \ldots, \theta_n \in [0, \pi/2]$: In this case, it is easy to see that $\alpha = \cos^2 \theta_n$ from the fact that $\cos \theta$ is a decreasing function in $\theta$ if $\theta \in [0, \pi/2]$.
 
 \item One of $\theta_1, \theta_2, \dots, \theta_n$ is greater than $\pi/2$:
 
 Then, if $\theta_1 > \pi/2$ we see that $\cos^2 \theta_1 = \cos^2 (\pi - \theta_1)$ is equal to $\cos^2 (\theta_2 + \theta_3 + \ldots + \theta_n)$. Furthermore, $\pi - \theta_1 = \theta_2 + \theta_3 + \ldots + \theta_n < \pi/2$, which means $\cos^2 \theta_1 = \cos^2 (\theta_2 + \theta_3 + \ldots + \theta_n) < \cos^2 \theta_n$. (since $\theta_n < \theta_2 + \theta_3 + \ldots + \theta_n$)
 
-In addition, we see that for all $i \in \{2, 3, \ldots, n-1\}$, $\cos^2 \theta_i < \cos^2 \theta_n$, from which we can conclude that in this case too, $\epsilon$ is equal to $\cos^2 \theta_n$.
+In addition, we see that for all $i \in \{2, 3, \ldots, n-1\}$, $\cos^2 \theta_i < \cos^2 \theta_n$, from which we can conclude that in this case too, $\alpha$ is equal to $\cos^2 \theta_n$.
 
 \end{itemize}
 \end{proof}
 
+Given this lemma, we now prove the above theorem.
+
+\begin{proof}
+Observe that for $N=3$, the quantity $\epsilon$ for three unit-length vectors $v_1, v_2, v_3 \in \mathbb{R}^2$ is given by $$\max \{ |v_1 \cdot v_2|^2, |v_1 \cdot v_3|^2, |v_2 \cdot v_3|^2 \}$$
+
+Since we don't care about the sign of the dot products between any two vectors (we're looking at the squares of the dot products in the above equation), and since $$|v \cdot v'| = |v \cdot (-v')|$$ for some arbitrary vector $v'$, we see that it's easy to transform the three vectors $v_1$, $v_2$ and $v_3$ so that they all lie in the same semi-circle -- to accomplish this, at most one vector needs to be reflected about the origin.
+
+Without loss of generality, let $v_1 = [1, 0]^T$. Also, without loss of generality let us assume that $v_2$ and $v_3$ are above the $x$-axis, and that $v_1$, $v_2$ and $v_3$ are in anti-clockwise order.
+
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[yscale=-1] 
+        % x-axis
+        \draw [thick,->] (-4.5, 0) -- (4.5, 0);
+        % y-axis
+        \draw [thick,->] (0, 4.5) -- (0, -4.5);
+        % origin label
+        \node at (-0.5, 0.3) {\text{$(0, 0)$}};
+        % x-axis label
+        \node at (4.5, 0.5) {\text{$x$}};
+        % y-axis label
+        \node at (0, -5) {\text{$y$}};
+        % circle
+        \draw (0,0) circle (3cm);
+        \draw (3,0)[blue,fill=blue] circle (0.1cm);
+        \draw (1.5, -2.59)[blue,fill=blue] circle (0.1cm);
+        \draw (-1.5, -2.59)[blue,fill=blue] circle (0.1cm);
+        
+        \draw [thick,-,blue] (3, 0) -- (0, 0);
+        \draw [thick,-,blue] (1.5, -2.59) -- (0, 0);
+        \draw [thick,-,blue] (-1.5, -2.59) -- (0, 0);
+        
+        \node at (4, -0.3) {\text{$v_1 = [1,0]$}};
+        \node at (2.8, -3.1) {\text{$v_2 = [\cos \pi/3,\sin \pi/3]$}};
+        \node at (-2.8, -3.1) {\text{$v_3 = [\cos 2\pi/3,\sin 2\pi/3]$}};
+    \end{tikzpicture}
+    \caption{A configuration of three unit vectors that produce the optimum $\epsilon$ for $n=2, N=3$}
+\end{figure}
+
+
+Let $\theta_1$ be the angle between $v_1$ and $v_2$ and $\theta_2$ be the angle between $v_2$ and $v_3$. Let us now define $\theta_3$ such that $\theta_1 + \theta_2 + \theta_3 = \pi$. Observe that $|v_1 \cdot v_3|^2 = \cos^2(\theta_1 + \theta_2) = \cos^2 (\pi - \theta_3) = \cos^2 \theta_3$, hence we can conclude that
+
+$$\epsilon = \max_{i \in \{1,2,3\}} \cos ^2 \theta_i$$
+
 From the above lemma, we can conclude that if $j = \text{argmin } \theta_i$ and $\theta_1 + \theta_2 + \theta_3 = \pi$, then $\epsilon = \cos^2 \theta_j$.
 
 Furthermore, we can obtain an upper bound on $\theta_j$ by observing that $\theta_ 1 + \theta_ 2 + \theta_3 \geq \theta_ j + \theta_j + \theta_j = 3 \theta_j \Rightarrow \theta_j \leq \pi/3$. Since we're interested in the smallest such $\epsilon$ and since the cosine function is a decreasing function in $\theta$ between $0$ and $\pi/2$, we conclude that the optimum value of $\epsilon$ for $n=2$ and $N=3$ is $\cos^2 \pi / 3$. Figure $1$ shows this optimum configuration.
+
+\end{proof}
 
 Given the above result for $N=3$, we attempt to generalize to any integer $N$ in the following theorem.
 
@@ -207,11 +237,15 @@ For $n=2$ and arbitrary $N$, the optimum value of $\epsilon$ is given by $\cos^2
 \begin{proof}
 The proof of this theorem is similar to the proof for the specific case of $N=3$.
 
-Again without loss of generality, we can assume that the vectors $x_1, x_2, \ldots, x_N$ are on or above the $x$-axis, and that $x_1 = [1,0]^T$ and that $x_{N+1} = [-1,0]^T$ -- if any vector $x_i$ were not above the $x$-axis, then we could just consider $-x_i$ instead.
+Again without loss of generality, we can assume that the vectors $v_1, v_2, \ldots, v_N$ are on or above the $x$-axis, and that $v_1 = [1,0]^T$ -- if any vector $v_i$ were not above the $x$-axis, then we could just consider $-v_i$ (the reflection of $v_i$ about the $x$-axis) instead.
 
-Let us define $\theta_i$ as the angle between the vectors $x_i$ and $x_{i+1}$. Then, we quickly see that $\theta_1 + \theta_2 + \ldots + \theta_N = \pi$. If $j = \text{argmin } \theta_i$, $\epsilon = \cos^2 \theta_j$ by the above Lemma.
+Let us define $\theta_i$ as the angle between the vectors $v_i$ and $v_{i+1}$ for $i \in \{1, 2, \ldots, N-1\}$, and let $\theta_N$ be the angle such that $\theta_1 + \theta_2 + \ldots + \theta_N = \pi$.
 
-Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarrow \theta_j \leq \pi/N$, we conclude that the optimum $\epsilon$ value is in fact equal to $\cos^2 \pi/N$ (again making use of the fact that the cosine function is decreasing).
+Observe that as before, we are interested in maximizing the square of the cosine of the angle between any two vectors in $v_1, v_2, \ldots, v_N$. Note that here, the angle between any two vectors in $v_j$ and $v_k$ in $v_1, v_2, \ldots, v_N$ can be expressed as $\cos^2 (\sum_{i=j} ^{k-1} \theta_i)$. Note that, however, if $\sum_{i=j}^{k-1} \theta_i \leq \pi/2$, then $\cos^2 \theta_j \geq \cos^2(\sum_{i=j}^{k-1} \theta_i)$ and that if $\sum_{i=j}^{k-1} \theta_i > \pi/2$, then $\cos^2 (\sum_{i=j}^{k-1} \theta_i) = \cos^2 (\pi - \sum_{i=j}^{k-1} \theta_i)$ which is less than $\cos^2 \theta_i$ for any $i$ not in $\{j, j+1, \ldots, k-1\}$.
+
+From this we can conclude that $\epsilon$ is equal to $\max_i \cos^2 \theta_i$. Then, if $j = \text{argmin } \theta_i$, then we see that $\epsilon = \cos^2 \theta_j$ by the above Lemma.
+
+Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarrow \theta_j \leq \pi/N$, we conclude that the optimum $\epsilon$ value is in fact equal to $\cos^2 \pi/N$ (again making use of the fact that the cosine function is decreasing between $0$ and $\pi/2$).
 \end{proof}
 
 \begin{figure}[!h]
@@ -294,7 +328,11 @@ Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarro
 
 Figure $3$ shows an optimum configuration for $n=2$ and $N=5$. Note by taking reflections of $x_2$ and $x_4$ in Figure $3$, we get five vectors that form a regular $5$-gon -- this can be seen in Figure $4$. A similar transformation can be done for all odd $N$; unfortunately, even $N$ cannot produce regular polygons.
 
-\section{The Parallelogram Law}
+\section{$N = n+1$}
+
+We now look to calculate the optimum value of $\epsilon$ for the specific case of $N = n+1$. Before proving an upper bound on what the optimum value of $\epsilon$ can be, we look at the parallelogram law.
+
+\subsection{The Parallelogram Law}
 
 First we give the definition of the norm on vectors in $\R^n$ in terms of the dot product:
 
@@ -322,7 +360,7 @@ If we recurse on $||v_2+\cdots +v_n||^2$ using induction we get the desired resu
 \end{theorem}
 
 
-\section{$N = n+1$}
+\subsection{Upper bound on minimum possible $\epsilon$}
 Let us consider the situation in which we try to minimize $\epsilon$ for $n+1$ vectors in an $n$ dimensional space. First we introduce the definition of a simplex, and then we will proceed to characterize $\epsilon$. 
 
 \begin{definition}
@@ -436,18 +474,56 @@ Since $\delta_{min} \le -\frac{1}{n}$ and $\delta_{min} \ge -\frac{1}{n}$, we ca
 Note that proving that the minimum possible epsilon for the case of $N = n+1$ is equal to $1/n^2$ is much harder, and we leave this for future work.
 
 \section{Simulated annealing and associated conjectures}
+
 Since visualizing in spaces of dimensionality greater than $3$ is extremely hard, we used an annealing approach to compute near-optimal epsilon values for different $(n, N)$ pairs. We describe this method in greater detail below.
 
-Our general intuition tells us that perturbing a set of nearly optimal vectors slightly could give us a new set of vectors that produce even a smaller epsilon value. Given this, we start off with a set of random vectors, and try to move these vectors in order to produce smaller epsilon values.
+Our general intuition tells us that perturbing a set of nearly optimal vectors slightly could give us a new set of vectors that produce even a smaller epsilon value. Given this, we start off with a set of random vectors, and try to move these vectors towards smaller epsilon values.
 
-At every iteration, we maintain the set of vectors (called cur\_vectors) that have produced the optimal epsilon value so far. Then we compute a set new\_vectors defined as follows,
-$$\text{new\_vector} = \text{old\_vector} + (1/i \cdot \text{random\_vector})$$
+At every iteration, we try adding a vector whose norm becomes smaller with every passing iteration, to the already computed optimal vector.
 
-We update cur\_vectors to the set new\_vectors if the epsilon value produced by new\_vectors is less than the epsilon value produced by cur\_vectors. $i$ is incremented whenever cur\_vectors is updated -- having the $1/i$ factor in the above expression ensures that as we move closer to an optimal value, we perturb the set of vectors by a smaller amount.
+\begin{lstlisting}
+def get_min_epsilon_annealing(n, N, num_iter, start_vectors):
+    min_epsilon = 1.0  # Start off with the worst possible epsilon
+    current_vectors = start_vectors
+    i = 0
+    while (i < num_iter):
+        temperature = 1.0 / float(i + 1)
+
+        # Get perturbing vectors
+        random_vectors = get_random_vectors(n, N)
+
+        # Now perturb current_vectors
+        new_vectors = list()
+        for j in xrange(N):
+            new_vector = list()
+            for k in xrange(n):
+                new_vector.append(
+                    current_vectors[j][k] + (
+                    	temperature * random_vectors[j][k]))
+            new_vectors.append(new_vector)
+        normalize_vectors(new_vectors)
+        
+        # Accept change only if new_vectors produces a better epsilon
+        epsilon = compute_epsilon(new_vectors)
+        if epsilon < min_epsilon:
+            min_epsilon = epsilon
+            current_vectors = new_vectors
+            i += 1
+
+    return min_epsilon, current_vectors
+\end{lstlisting}
+\captionof{lstlisting}{The annealing algorithm used to generate optimum epsilon values}
+
+To make this more precise, we present Python code for the algorithm above.
 
 Even though this approach seems simple, it actually produces remarkably precise values -- this can be verified by cross-checking with results we've already proven / conjectured in this paper.
 
 To make this more concrete, consider Table $1$.
+
+The accuracy of our method can be noted by looking at the computed values for $n=2$ -- the computed values for different values of $N$ are very close to the expected value of $\cos^2 \pi/N$, that we already proved in Section $2$, which makes us confident about the accuracy of this numeric method.
+\section{Applications to sphere packing}
+We should be able to prove something about the radius of spheres you can pack in the case of $N=n+1$, taking as intuition square and hexagonal tilings of the plane and cubic and tetrahedral tilings of 3-space. 
+
 \begin{table}
    \centering
     \begin{tabular}{ | c | c | c | c |}
@@ -469,8 +545,5 @@ To make this more concrete, consider Table $1$.
     \caption {Minimum values of $\epsilon$ for different values of $(n, N)$, as computed by our annealing method}
 \end{table}
 
-The accuracy of our method can be noted by looking at the computed values for $n=2$ -- the computed values for different values of $N$ are very close to the expected value of $\cos^2 \pi/N$.
-\section{Applications to sphere packing}
-We should be able to prove something about the radius of spheres you can pack in the case of $N=n+1$, taking as intuition square and hexagonal tilings of the plane and cubic and tetrahedral tilings of 3-space. 
 
 \end{document}
