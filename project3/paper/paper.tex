@@ -108,7 +108,7 @@ For $n=N$, it is clear that the minimum value of $\epsilon$ is zero, obtained by
 \[\epsilon_1\leq \epsilon_2.\] 
 Otherwise, given a configuration of $N+1$ vectors in $\mathbb R^n$ with $\epsilon=\epsilon_2$, we could simply remove one vector and obtain a configuration of $N$ vectors whose $\epsilon$ would be less than or equal to $\epsilon_1$.
 
-Along the same lines, given a configuration of $N$ vectors in $n$-space with corresponding $\epsilon$, we can obtain a collection of $N+1$ vectors in $\mathbb R^{n+1}$ with the same $\epsilon$: simply embed the first $N$ vectors in $\mathbb R^{n}$, then add any vector perpendicular to the hyperplane in which the $N$ vectors lie. Hence the minimum $\epsilon_3$ for collections of $N+1$ vectors in $\mathbb R^{n+1}$ is upper-bounded by the corresponding $\epsilon$ for $N$ vectors in $\mathbb R^n$.
+Along the same lines, given a configuration of $N$ vectors in $n$-space with corresponding $\epsilon$, we can obtain a collection of $N+1$ vectors in $\mathbb R^{n+1}$ with the same $\epsilon$: simply embed the first $N$ vectors in $\mathbb R^{n}$, then add any vector perpendicular to the hyperplane in which the $N$ vectors lie. Hence the minimum $\epsilon$ for collections of $N+1$ vectors in $\mathbb R^{n+1}$ is upper-bounded by the corresponding $\epsilon$ for $N$ vectors in $\mathbb R^n$.
 
 In this paper, we shall see that for $n=2$, the minimum value of $\epsilon$ will be given by 
 \[\epsilon=\cos^2\pi/N.\] 
@@ -243,7 +243,7 @@ Again without loss of generality, we can assume that the vectors $v_1, v_2, \ldo
 
 Let us define $\theta_i$ as the angle between the vectors $v_i$ and $v_{i+1}$ for $i \in \{1, 2, \ldots, N-1\}$, and let $\theta_N$ be the angle such that $\theta_1 + \theta_2 + \ldots + \theta_N = \pi$.
 
-Observe that as before, we are interested in maximizing the square of the cosine of the angle between any two vectors in $v_1, v_2, \ldots, v_N$. Note that here, the angle between any two vectors in $v_j$ and $v_k$ in $v_1, v_2, \ldots, v_N$ can be expressed as $\cos^2 (\sum_{i=j} ^{k-1} \theta_i)$. Note that, however, if $\sum_{i=j}^{k-1} \theta_i \leq \pi/2$, then $\cos^2 \theta_j \geq \cos^2(\sum_{i=j}^{k-1} \theta_i)$ and that if $\sum_{i=j}^{k-1} \theta_i > \pi/2$, then $\cos^2 (\sum_{i=j}^{k-1} \theta_i) = \cos^2 (\pi - \sum_{i=j}^{k-1} \theta_i)$ which is less than $\cos^2 \theta_i$ for any $i$ not in $\{j, j+1, \ldots, k-1\}$.
+Observe that as before, we are interested in maximizing the square of the cosine of the angle between any two vectors in $v_1, v_2, \ldots, v_N$. Note that here, the angle between any two vectors in $v_j$ and $v_k$ in $v_1, v_2, \ldots, v_N$ can be expressed as $\sum_{i=j} ^{k-1} \theta_i$. Note that, however, if $\sum_{i=j}^{k-1} \theta_i \leq \pi/2$, then $\cos^2 \theta_j \geq \cos^2(\sum_{i=j}^{k-1} \theta_i)$ and that if $\sum_{i=j}^{k-1} \theta_i > \pi/2$, then $\cos^2 (\sum_{i=j}^{k-1} \theta_i) = \cos^2 (\pi - \sum_{i=j}^{k-1} \theta_i)$ which is less than $\cos^2 \theta_i$ for any $i$ not in $\{j, j+1, \ldots, k-1\}$.
 
 From this we can conclude that $\epsilon$ is equal to $\max_i \cos^2 \theta_i$. Then, if $j = \text{argmin } \theta_i$, then we see that $\epsilon = \cos^2 \theta_j$ by the above Lemma.
 
@@ -328,7 +328,7 @@ Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarro
     \caption{A configuration of five unit vectors that produce the optimum $\epsilon$ for $n=2, N=5$ with $x_2$ and $x_4$ from the previous figure reversed}
 \end{figure}
 
-Figure $3$ shows an optimum configuration for $n=2$ and $N=5$. Note by taking reflections of $x_2$ and $x_4$ in Figure $3$, we get five vectors that form a regular $5$-gon -- this can be seen in Figure $4$. A similar transformation can be done for all odd $N$; unfortunately, even $N$ do not produce regular polygons.
+Figure $3$ shows an optimum configuration for $n=2$ and $N=5$. Note by taking reflections of $x_2$ and $x_4$ in Figure $3$, we get five vectors that form a regular $5$-gon -- this can be seen in Figure $4$. A similar transformation can be done for all odd $N$.
 
 \section{A lower bound}
 
@@ -544,16 +544,12 @@ Since $\delta_{min} \le -\frac{1}{n}$ and $\delta_{min} \ge -\frac{1}{n}$, we ca
 
 Note that proving that the minimum possible epsilon for the case of $N = n+1$ is equal to $1/n^2$ is much harder, and we leave this for future work.
 
-\section{Simulated annealing and associated conjectures}
+\section{Numerical analysis and associated conjectures}
 
-Since visualizing in spaces of dimensionality greater than $3$ is extremely hard, we used an annealing approach to compute near-optimal epsilon values for different $(n, N)$ pairs. We describe this method in greater detail below.
-
-Our general intuition tells us that perturbing a set of nearly optimal vectors slightly could give us a new set of vectors that produce even a smaller epsilon value. Given this, we start off with a set of random vectors, and try to move these vectors towards smaller epsilon values.
-
-At every iteration, we try adding a vector whose norm becomes smaller with every passing iteration, to the already computed optimal vector.
+Since visualizing in spaces of dimensionality greater than $3$ is extremely hard, we used a computational approach to compute near-optimal epsilon values for different $(n, N)$ pairs. We describe this method in greater detail below.
 
 \begin{lstlisting}
-def get_min_epsilon_annealing(n, N, num_iter, start_vectors):
+def get_min_epsilon(n, N, num_iter, start_vectors):
     min_epsilon = 1.0  # Start off with the worst possible epsilon
     current_vectors = start_vectors
     i = 0
@@ -583,15 +579,17 @@ def get_min_epsilon_annealing(n, N, num_iter, start_vectors):
 
     return min_epsilon, current_vectors
 \end{lstlisting}
-\captionof{lstlisting}{The annealing algorithm used to generate optimum epsilon values}
+\captionof{lstlisting}{The numerical method used to generate optimum epsilon values -- note that we call this method multiple times with different start\_vectors to obtain a reasonable epsilon estimate}
+
+Our general intuition tells us that perturbing a set of nearly optimal vectors slightly could give us a new set of vectors that produce even a smaller epsilon value. Given this, we start off with a set of random vectors, and try to move these vectors towards smaller epsilon values.
+
+At every iteration, we try adding a vector whose norm becomes smaller with every passing iteration, to the already computed optimal vector.
 
 To make this more precise, we present Python code for the algorithm above.
 
-Even though this approach seems simple, it actually produces remarkably precise values -- this can be verified by cross-checking with results we've already proven / conjectured in this paper.
+Even though this approach seems simple, it actually produces remarkably precise values -- this can be verified by cross-checking with results we've already proven / conjectured in this paper, this can be seen from values in Table $2$.
 
-To make this more concrete, consider Table $1$.
-
-The accuracy of our method can be noted by looking at the computed values for $n=2$ -- the computed values for different values of $N$ are very close to the expected value of $\cos^2 \pi/N$, that we already proved in Section $2$, which makes us confident about the accuracy of this numeric method.
+In particular, the computed values for $n=2$ are pretty accurate -- the computed values for different values of $N$ are very close to the expected value of $\cos^2 \pi/N$, that we already proved in Section $2$, which makes us confident about the accuracy of this numeric method.
 
 \section{Applications to sphere packing}
 We should be able to prove something about the radius of spheres you can pack in the case of $N=n+1$, taking as intuition square and hexagonal tilings of the plane and cubic and tetrahedral tilings of 3-space. 
