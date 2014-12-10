@@ -98,6 +98,7 @@
 \begin{document}
 
 \maketitle
+\tableofcontents
 
 \section{Introduction}
 Consider a collection of $N$ unit vectors $v_1, \ldots, v_N$ in $\mathbb R^n$. Define $\epsilon$ as
@@ -399,40 +400,23 @@ We present now a table of the bounds the theorem gives to us for varying $n$ and
 
 Note that the bounds for $n=2$ are not tight, as we proved in Section 2 that the minimum $\epsilon$ was given by $\cos^2(\pi/N)$. We shall see, however, that the bounds for $\epsilon$ are in fact tight in the cases where $N=n+1$ and where $n=3, N=6$. One direction for further research might be checking whether the bounds provided by Theorem \ref{lower_bound} are indeed attainable for other combinations of $n$ and $N$.
 
-\section{$N = n+1$}
-
-We now look to calculate the optimum value of $\epsilon$ for the specific case of $N = n+1$. Before proving an upper bound on what the optimum value of $\epsilon$ can be, we look at the parallelogram law.
-
-\subsection{The Parallelogram Law}
-
-First we give the definition of the norm on vectors in $\R^n$ in terms of the dot product:
-
-\begin{definition}
-For a vector $v\in\R^n$ the norm of $v$ is the positive value of $||v||$ given by the equation
+\section{Some Optimal Configurations}
+Below we provide choices of $n$ and $N$ for which we can achieve the lower bound given by Theorem ~\ref{lower_bound}.
+\subsection{n=3,N=6}
+In this situation we have a lower bound of $\epsilon\ge\frac{1}{5}$. Consider the following 6 vectors on the unit sphere in $\R^3$ with variables $a$ and $b$. 
 $$
-||v||^2=v\cdot v.
+(a,b,0),(a,0,b),(b,0,a)
 $$
-\end{definition}
-\begin{theorem}[Parallelogram Law]
-For vectors $v_1,\cdots,v_n\in\R^n$, the following identity holds
 $$
-||v_1+\cdots+v_n||^2=\displaystyle\sum_{i=1}^n||v_i||^2+2\displaystyle\sum_{1\le i<j\le n}v_i\cdot v_j.
+(a,-b,0),(a,0,-b),(-b,0,a)
 $$
-\proof
-First consider the following identity from the definition of the norm for vectors $u,v\in\R^n$:
+There are four possible dot products we get from these six vectors: $1,ab,-ab,a^2-b^2$. This gives us three possible values of $\epsilon$: $1,(a^2-b^2)^2,(ab)^2$. Let us consider the solution we get when $a^2-b^2=ab$. If we solve the resulting system according to the constraint $a^2+b^2=1$, we get
 $$
-||u+v||^2=(u+v)\cdot (u+v)=u\cdot u+u\cdot v+ v\cdot u + v\cdot v=||u||^2+||v||^2+2u\cdot v.
+a=\sqrt{\frac{1}{10}(5-\sqrt{5}}, b=-\frac{1+\sqrt{5}}{2}\sqrt{\frac{1}{10}(5-\sqrt{5}}. 
 $$
-Now if we let $u=v_1$ and $v= v_2+\cdots+v_n$ we get 
-$$
-||v_1+v_2+\cdots+v_n||^2=||v_1||^2+||v_2+\cdots +v_n||^2+2\sum_{i=2}^n v_1\cdot v_i.
-$$
-If we recurse on $||v_2+\cdots +v_n||^2$ using induction we get the desired result. 
-\end{theorem}
-
-
-\subsection{Upper bound on minimum possible $\epsilon$}
-Let us consider the situation in which we try to minimize $\epsilon$ for $n+1$ vectors in an $n$ dimensional space. First we introduce the definition of a simplex, and then we will proceed to characterize $\epsilon$. 
+If we compute $\epsilon=(a^2-b^2)^2=(ab)^2$, we have that $\epsilon=\frac{1}{5}$, implying that these six points give us an optimal configuration.
+\subsection{N=n+1}
+Let us consider the situation in which we try to minimize $\epsilon$ for $n+1$ vectors in an $n$ dimensional space. From Theorem ~\ref{lower_bound} we know that $\epsilon\ge \frac{1}{n^2}$, so we will find a configuration of vectors that achieves this lower bound. First we introduce the definition of a simplex, and then we will proceed to characterize $\epsilon$. 
 
 \begin{definition}
 An $n$-dimensional simplex is given by the convex hull of the $n+1$ points in $\R^{n+1}$ described as having a 1 in a single coordinate and zeros in every other coordinate. 
@@ -506,11 +490,12 @@ Before proceeding with the theorem, we notice that when $n=2$, the configuration
 
 
 \begin{theorem}
-If $N=n+1$ and the vectors in question are denoted $v_1,\cdots, v_N$, then over all configurations of these vectors the maximum value of $v_i\cdot v_j$ for $i\neq j$ is $\frac{-1}{n}$. This is achieved when the vectors are arranged in an $n$ dimensional simplex centered at the origin, and in this configuration $\epsilon=\frac{1}{n^2}$.  
+If $N=n+1$ and the vectors in question are denoted $v_1,\cdots, v_N$, then over all configurations of these vectors the minimum value of $\epsilon$ for $i\neq j$ is $\frac{1}{^2n}$. This is achieved when the vectors are arranged in an $n$ dimensional simplex centered at the origin.
+\label{simplex}
 \end{theorem}
 
 \begin{proof}
-Let $\delta= \max_{i\neq j}\{v_i\cdot v_j\}$ for a given set of unit vectors $v_1, v_2, \ldots, v_{n+1}$, and let $\delta_{min}$ be the minimum possible $\delta$ obtained across all unit vectors $v_1, v_2, \ldots, v_{n+1}$. We first show that $\delta_{min} \le-\frac{1}{n}$ by showing that the origin-centered simplex configuration of the vectors $v_1,\cdots v_{n+1}$ produces a value $\delta=-\frac{1}{n}$, and then will later show that $\delta_{min} \geq -\frac{1}{n}$ as well. 
+Let $\epsilon$ be as before for a given set of unit vectors $v_1, v_2, \ldots, v_{n+1}$. We show that the origin-centered simplex configuration of the vectors $v_1,\cdots v_{n+1}$ produces a value $\epsilon=\frac{1}{n^2}$. 
 
 We must first describe the vectors that make up the origin centered simplex. To center our simplex at the origin we take each vector in the original simplex, and subtract from it the vector representing the centroid of the original simplex. The centroid of the original simplex takes the form $(\frac{1}{N},\frac{1}{N},\ldots,\frac{1}{N})$, so the points of the new simplex take the form
 $$
@@ -524,26 +509,8 @@ Now, taking the dot product between any two such vectors gives us
 $$
 \frac{N}{N-1}\left(-2\cdot\frac{N-1}{N^2}+(N-2)\cdot\frac{1}{N^2}\right)=\frac{N}{N-1}\cdot-\frac{1}{N}=-\frac{1}{N-1}=-\frac{1}{n}.
 $$
-So an upper bound on the value of $\delta_{min}$ for all configurations of $n+1$ vectors in $n+1$ dimensional space is $\frac{-1}{n}$. 
-
-To see that $\delta_{min} \ge-\frac{1}{n}$ we use the parallelogram law.
-
-Recall that the parallelogram law states that 
-
-$$
-||v_1+\cdots+v_{n+1}||^2=\displaystyle\sum_{i=1}^{n+1}||v_i||^2+2\displaystyle\sum_{1\le i<j\le n+1}v_i\cdot v_j.
-$$
-In our case we know three things. First, since the norm of any vector is greater than or equal to $0$, we can conclude that $||v_1 + \cdots + v_{n+1}||^2 \geq 0$. Second, $v_i\cdot v_j\le\delta$ for any $i<j$. Third, $||v_i||=1$. Therefore 
-$$
-0\le n+1+n(n+1)\delta.
-$$
-This implies that $\delta\ge -\frac{1}{n}$ for any set of unit vectors $v_1, v_2, \ldots, v_{n+1}$, from which we can conclude that $\delta_{min} \ge -\frac{1}{n}$ as well.
-
-Since $\delta_{min} \le -\frac{1}{n}$ and $\delta_{min} \ge -\frac{1}{n}$, we can conclude that $\delta_{min}=-\frac{1}{n}$. From this, we can see that a $\epsilon = \frac{1}{n^2}$ is achievable for the general case of when $N=n+1$ -- this leads us to conclude that the minimum possible $\epsilon$ value for $N=n+1$ is at most $\frac{1}{n^2}$.
+So for this configuration $\epsilon=\frac{1}{n^2}$. By Theorem ~\ref{lower_bound} we know that $\epsilon\ge \frac{1}{n^2}$, so we have achieved the lower bound. 
 \end{proof}
-
-Note that proving that the minimum possible epsilon for the case of $N = n+1$ is equal to $1/n^2$ is much harder, and we leave this for future work.
-
 \section{Numerical analysis and associated conjectures}
 
 Since visualizing in spaces of dimensionality greater than $3$ is extremely hard, we used a computational approach to compute near-optimal epsilon values for different $(n, N)$ pairs. We describe this method in greater detail below.
@@ -591,8 +558,6 @@ Even though this approach seems simple, it actually produces remarkably precise 
 
 In particular, the computed values for $n=2$ are pretty accurate -- the computed values for different values of $N$ are very close to the expected value of $\cos^2 \pi/N$, that we already proved in Section $2$, which makes us confident about the accuracy of this numeric method.
 
-\section{Applications to sphere packing}
-We should be able to prove something about the radius of spheres you can pack in the case of $N=n+1$, taking as intuition square and hexagonal tilings of the plane and cubic and tetrahedral tilings of 3-space. 
 
 \begin{table}
    \centering
@@ -614,6 +579,71 @@ We should be able to prove something about the radius of spheres you can pack in
     \end{tabular}
     \caption {Minimum values of $\epsilon$ for different values of $(n, N)$, as computed by our annealing method}
 \end{table}
+
+
+
+\section{Variations}
+
+We now look to calculate the optimum value of $\epsilon$ for the specific case of $N = n+1$. Before proving an upper bound on what the optimum value of $\epsilon$ can be, we introduce the parallelogram law.
+
+\subsection{The Parallelogram Law}
+
+First we give the definition of the norm on vectors in $\R^n$ in terms of the dot product:
+
+\begin{definition}
+For a vector $v\in\R^n$ the norm of $v$ is the positive value of $||v||$ given by the equation
+$$
+||v||^2=v\cdot v.
+$$
+\end{definition}
+\begin{theorem}[Parallelogram Law]
+For vectors $v_1,\cdots,v_n\in\R^n$, the following identity holds
+$$
+||v_1+\cdots+v_n||^2=\displaystyle\sum_{i=1}^n||v_i||^2+2\displaystyle\sum_{1\le i<j\le n}v_i\cdot v_j.
+$$
+\proof
+First consider the following identity from the definition of the norm for vectors $u,v\in\R^n$:
+$$
+||u+v||^2=(u+v)\cdot (u+v)=u\cdot u+u\cdot v+ v\cdot u + v\cdot v=||u||^2+||v||^2+2u\cdot v.
+$$
+Now if we let $u=v_1$ and $v= v_2+\cdots+v_n$ we get 
+$$
+||v_1+v_2+\cdots+v_n||^2=||v_1||^2+||v_2+\cdots +v_n||^2+2\sum_{i=2}^n v_1\cdot v_i.
+$$
+If we recurse on $||v_2+\cdots +v_n||^2$ using induction we get the desired result. 
+\end{theorem}
+
+
+\subsection{Variations: Minimizing the dot product}
+Let us consider the situation in which we try to minimize $\delta= \max_{i\neq j}\{v_i\cdot v_j\}$ for $n+1$ vectors in an $n$ dimensional space.
+
+
+\begin{theorem}
+If $N=n+1$ and the vectors in question are denoted $v_1,\cdots, v_N$, then over all configurations of these vectors the minimum value of $v_i\cdot v_j$ for $i\neq j$ is $\frac{-1}{n}$. This is achieved when the vectors are arranged in an $n$ dimensional simplex centered at the origin.  
+\end{theorem}
+
+\begin{proof}
+Let $\delta= \max_{i\neq j}\{v_i\cdot v_j\}$ for a given set of unit vectors $v_1, v_2, \ldots, v_{n+1}$, and let $\delta_{min}$ be the minimum possible $\delta$ obtained across all unit vectors $v_1, v_2, \ldots, v_{n+1}$. We computed in the proof of Theorem ~\ref{simplex} that for the origin centered simplex, we obtain a value of $\delta_{\min}=\frac{-1}{n}$, so $\delta_{\min}\le\frac{-1}{n}$. So we need only show that $\delta_{min} \geq -\frac{1}{n}$ as well. 
+
+
+To see that $\delta_{min} \ge-\frac{1}{n}$ we use the parallelogram law.
+
+Recall that the parallelogram law states that 
+
+$$
+||v_1+\cdots+v_{n+1}||^2=\displaystyle\sum_{i=1}^{n+1}||v_i||^2+2\displaystyle\sum_{1\le i<j\le n+1}v_i\cdot v_j.
+$$
+In our case we know three things. First, since the norm of any vector is greater than or equal to $0$, we can conclude that $||v_1 + \cdots + v_{n+1}||^2 \geq 0$. Second, $v_i\cdot v_j\le\delta$ for any $i<j$. Third, $||v_i||=1$. Therefore 
+$$
+0\le n+1+n(n+1)\delta.
+$$
+This implies that $\delta\ge -\frac{1}{n}$ for any set of unit vectors $v_1, v_2, \ldots, v_{n+1}$, from which we can conclude that $\delta_{min} \ge -\frac{1}{n}$ as well.
+
+Since $\delta_{min} \le -\frac{1}{n}$ and $\delta_{min} \ge -\frac{1}{n}$, we can conclude that $\delta_{min}=-\frac{1}{n}$. From this, we can see that a $\epsilon = \frac{1}{n^2}$ is achievable for the general case of when $N=n+1$ -- this leads us to conclude that the minimum possible $\epsilon$ value for $N=n+1$ is at most $\frac{1}{n^2}$.
+\end{proof}
+
+Note that proving that the minimum possible epsilon for the case of $N = n+1$ is equal to $1/n^2$ is much harder, and we leave this for future work.
+
 
 
 \end{document}
