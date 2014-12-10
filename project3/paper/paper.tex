@@ -104,7 +104,9 @@ Consider a collection of $N$ unit vectors $v_1, \ldots, v_N$ in $\mathbb R^n$. D
 \[\epsilon=\max_{i\neq j}|v_i\cdot v_j|^2.\]
 What is the minimal attainable $\epsilon$?
 
-For $n=N$, it is clear that the optimal value of $\epsilon$ is zero, obtained by letting $v_1,\ldots, v_N$ be any orthonormal basis. For fixed $n$, it is also easy to see that the minimum value of $\epsilon$ is nondecreasing as $N$ increases: that is, if $\epsilon_1$ is the minimum value of $\epsilon$ for $N$ unit vectors in $\mathbb R^n$, and $\epsilon_2$ is the minimum value of $\epsilon$ for $N+1$ unit vectors in $\mathbb R^n$, we must have 
+For $n=N$, it is clear that the optimal value of $\epsilon$ is zero, obtained by letting $v_1,\ldots, v_N$ be any orthonormal basis. And for $N>n$, we must have $\epsilon>0$ as any collection of $N$ vectors is linearly dependent, while any collection of orthonormal vectors is linearly independent. 
+
+For fixed $n$, it is also easy to see that the minimum value of $\epsilon$ is nondecreasing as $N$ increases: that is, if $\epsilon_1$ is the minimum value of $\epsilon$ for $N$ unit vectors in $\mathbb R^n$, and $\epsilon_2$ is the minimum value of $\epsilon$ for $N+1$ unit vectors in $\mathbb R^n$, we must have 
 \[\epsilon_1\leq \epsilon_2.\] 
 
 Otherwise, given a configuration of $N+1$ vectors in $\mathbb R^n$ with $\epsilon=\epsilon_2$, we could simply remove one vector and obtain a configuration of $N$ vectors whose $\epsilon$ would be less than or equal to $\epsilon_1$.
@@ -126,12 +128,9 @@ In particular, we will show that in the case where $N=n+1$, the simplex remains 
 \section{$n=2$, generic $N$}
 In this section, we consider the problem of almost orthogonal vectors of dimensionality $2$.
 
-It is obvious that for $N=2$, we can find an $\epsilon$ equal to $0$, since it easy to pick two unit vectors $v_1$ and $v_2$ of unit length that are orthogonal to each other -- a simple example of such vectors is $[1, 0]^T$ and $[0, 1]^T$. 
+As stated previously, when $N=2$ we can easily obtain an $\epsilon$ equal to $0$; a simple example of such a configuration is $[1, 0]^T$ and $[0, 1]^T$. 
 
-However, we see that the problem gets harder for larger $N$. Let us first consider the specific case of $N=3$; once we build some intuition for the problem, we will try to generalize to arbitrary $N$.
-\\
-
-It's clear that when $N=3$, the value of $\epsilon$ must be greater than $0$, since there is no way three dimensionality-$2$ vectors can be orthogonal to each other. We make this more concrete in the following theorem.
+The problem, however, gets harder for larger $N$. Let us first consider the specific case of $N=3$. Once we build some intuition for the problem, we will generalize the result for arbitrary $N$.
 
 \begin{theorem}
 For $n=2$ and $N=3$, the minimum possible $\epsilon$ is equal to $1/4$.
@@ -340,7 +339,21 @@ Figure $3$ shows an optimum configuration for $n=2$ and $N=5$. Note by taking re
 
 \section{A lower bound}
 
-We can use a well-known lemma to provide a useful lower bound on $\epsilon$ for arbitrary $(n, N)$ pairs. Our proof of the lemma follows that of a paper by Noga Alon\footnote{Lemma 2.2, \emph{Perturbed identity matrices have high rank: proof and applications}, Noga Alon.}.
+In the search for a lower bound on $\epsilon$ for arbitrary $(n, N)$ pairs, it is natural to consider the so-called \emph{Gram matrix} of our collection of vectors. 
+\begin{definition}
+The Gram matrix of a collection of $N$ vectors $v_1,\ldots, v_N$ in $\mathbb R^n$ is the $N$-by-$N$ matrix given by
+\[G(v_1,\ldots, v_N)=\left(\begin{matrix}
+v_1\cdot v_1 & v_1\cdot v_2 & \ldots & v_1\cdot v_n\\
+v_2\cdot v_2 & v_2\cdot v_2 & \ldots & v_2\cdot v_n\\
+\vdots & \vdots & \ddots & \vdots\\
+v_n\cdot v_1 & v_n\cdot v_2 & \ldots & v_n\cdot v_n\end{matrix}\right).\]
+\end{definition}
+Note that the Gram matrix can be written as the product $A^TA$, where $A$ is the $n$-by-$N$ matrix
+\[A=\left(\begin{matrix}
+| & | & \cdots & | & |\\
+v_1 & v_2 & \cdots & v_{N-1} & v_N\\
+| & | & \cdots & | & | \end{matrix}\right).\]
+We can use a well-known lemma on the rank of certain real symmetric matrices to derive a useful lower bound. Our proof of the lemma follows that of a paper by Noga Alon\footnote{Lemma 2.2, \emph{Perturbed identity matrices have high rank: proof and applications}, Noga Alon.}.
 
 \begin{lemma}
 Let $A=(a_{i,j})$ be an $n$-by-$n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
@@ -371,18 +384,17 @@ For any choice of $n$ and $N$, the minimum value of $\epsilon$ satisfies
 \[\epsilon\geq \frac{N-n}{n(N-1)}.\]
 \end{theorem}
 \begin{proof}
-Pick any collection of $N$ unit vectors $v_1,\ldots, v_N$ in $\mathbb R^n$, and define $\epsilon$ as usual. Let us define the $n$-by-$N$ matrix
+Pick any collection of $N$ unit vectors $v_1,\ldots, v_N$ in $\mathbb R^n$, and define $\epsilon$ as usual. Recall the definitions of $A$ and $G$:
 \[A=\left(\begin{matrix}
 | & | & \cdots & | & |\\
 v_1 & v_2 & \cdots & v_{N-1} & v_N\\
 | & | & \cdots & | & | \end{matrix}\right).\] 
-Now consider the $N$-by-$N$ Gram matrix:
 \[G(v_1,\ldots, v_N)=A^TA=\left(\begin{matrix}
 v_1\cdot v_1 & v_1\cdot v_2 & \ldots & v_1\cdot v_n\\
 v_2\cdot v_2 & v_2\cdot v_2 & \ldots & v_2\cdot v_n\\
 \vdots & \vdots & \ddots & \vdots\\
 v_n\cdot v_1 & v_n\cdot v_2 & \ldots & v_n\cdot v_n\end{matrix}\right).\]
-Let $d$ be the rank of $G$; since $A$ has rank at most $n$, we have that $d\leq n$. Note that $G$ is real and symmetric, with $1$s along the diagonal and all other entries with absolute value bounded by $\sqrt \epsilon$. We can apply the lemma to conclude
+Let $d$ be the rank of $G$. Since $A$ has rank at most $n$, so does $A^T$; since the image space of $G$ must be contained in the image space of $A^T$, we must have that $d\leq n$. Note that $G$ is real and symmetric, with $1$s along the diagonal and all other entries with absolute value bounded by $\sqrt \epsilon$. We can apply the lemma to conclude
 \[\epsilon\geq \frac{N-d}{d(N-1)}.\]
 Since $d\leq n$, we have as desired
 \[\epsilon\geq \frac{N-n}{n(N-1)}.\]
