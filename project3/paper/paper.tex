@@ -136,7 +136,7 @@ The problem, however, gets harder for larger $N$. Let us first consider the spec
 For $n=2$ and $N=3$, the minimum possible $\epsilon$ is equal to $1/4$.
 \end{theorem}
 
-Before proving the above theorem, we state and prove the following lemma.
+Before proving the above theorem, we state and prove the following lemma, which will be useful for the general case as well.
 
 \begin{lemma}
 Consider $n$ angles $\theta_1, \theta_2, \ldots, \theta_n \in [0, \pi]$ s.t. $\theta_1 + \theta_2 + \ldots + \theta_n = \pi$. Then $\alpha = \max_i \cos^2 \theta_i$ must equal $\cos^2 \theta_j$ where $j = \text{argmin }\theta_i$.
@@ -394,7 +394,7 @@ v_1\cdot v_1 & v_1\cdot v_2 & \ldots & v_1\cdot v_n\\
 v_2\cdot v_2 & v_2\cdot v_2 & \ldots & v_2\cdot v_n\\
 \vdots & \vdots & \ddots & \vdots\\
 v_n\cdot v_1 & v_n\cdot v_2 & \ldots & v_n\cdot v_n\end{matrix}\right).\]
-Let $d$ be the rank of $G$. Since $A$ has rank at most $n$, so does $A^T$; since the image space of $G$ must be contained in the image space of $A^T$, we must have that $d\leq n$. Note that $G$ is real and symmetric, with $1$s along the diagonal and all other entries with absolute value bounded by $\sqrt \epsilon$. We can apply the lemma to conclude
+Let $d$ be the rank of $G$. Since $A$ has rank at most $n$, so does $A^T$; since the image space of $G$ must be contained in the image space of $A^T$, we have that $d\leq n$. Note that $G$ is real and symmetric, with $1$s along the diagonal and all other entries with absolute value bounded by $\sqrt \epsilon$. We can apply the lemma to conclude
 \[\epsilon\geq \frac{N-d}{d(N-1)}.\]
 Since $d\leq n$, we have as desired
 \[\epsilon\geq \frac{N-n}{n(N-1)}.\]
