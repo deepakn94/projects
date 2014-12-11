@@ -417,7 +417,7 @@ We present now a table of the bounds the theorem gives us for varying $n$ and $N
 
 Note that the bounds for $n=2$ are not tight, as we proved in Section 2 that the minimum $\epsilon$ was given by $\cos^2(\pi/N)$. We shall see, however, that the bounds for $\epsilon$ are in fact tight in the cases where $N=n+1$ and where $n=3, N=6$. One direction for further research might be checking whether the bounds provided by Theorem \ref{lower_bound} are indeed attainable for other combinations of $n$ and $N$.
 
-\section{Some Optimal Configurations}
+\section{Some optimal configurations}
 Below we provide choices of $n$ and $N$ for which we can achieve the lower bound given by Theorem ~\ref{lower_bound}.
 \subsection{$n=3,N=6$}
 Let us consider collections of six vectors in $\mathbb R^3$. As can be seen in Table 1, the lower bound provided in this case by Theorem \ref{lower_bound} is $\frac 1 5$ as well. We shall now see, in fact, that this lower bound is attainable.
@@ -536,7 +536,7 @@ So for this configuration $\epsilon=\frac{1}{n^2}$. By Theorem \ref{lower_bound}
 \end{proof}
 \section{Numerical analysis and associated conjectures}
 
-Since visualizing in spaces of dimensionality $3$ or greater is extremely hard, we used a computational approach to compute near-optimal epsilon values for different $(n, N)$ pairs. We describe this method in greater detail below.
+Because of the difficulty involved with visualization in dimensions 3 and above, we used a computational approach to compute near-optimal epsilon values for different $(n, N)$ pairs. We describe this method in greater detail below.
 
 \begin{lstlisting}
 def get_min_epsilon(n, N, num_iter, start_vectors):
@@ -575,9 +575,7 @@ Our general intuition tells us that perturbing a set of nearly optimal vectors s
 
 At every iteration, we try adding a vector whose norm becomes smaller with every passing iteration, to the already computed optimal vector. We present pseudocode for this algorithm above.
 
-Even though this approach seems simple, it actually produces remarkably precise values -- this can be verified by cross-checking with results we've already proven / conjectured in this paper, this can be seen from values in Table $2$.
-
-In particular, the computed values for $n=2$ are pretty accurate -- the computed values for different values of $N$ are very close to the expected value of $\cos^2 \pi/N$, that we already proved in Section $2$, which makes us confident about the accuracy of this numeric method.
+Though this approach seems simple, it produces  results which seem to agree with the $\epsilon$ we derived for $(2, N)$ in Section 2, and with the $\epsilon$ we derived for $(3, 6)$ and $(n, n+1)$ in Section 4. This gives us some confidence in the accuracy of our algorithm. However, it must be noted that the data do not agree with the bounds produced by Theorem \ref{lower_bound}. There are multiple interpretations of this fact. First, it is possible that the lower bounds produced by Theorem \ref{lower_bound} are not always tight; they in fact are not for the case $(2, N)$. Alternatively, it is possible that our code simply becomes inaccurate for larger $n$ and $N$. This could be a fruitful direction for further research.
 
 
 \begin{table}
@@ -603,15 +601,13 @@ In particular, the computed values for $n=2$ are pretty accurate -- the computed
 
 
 
-\section{Variations}
+\section{A variation of the problem}
 
-We now consider a variation of the above problem, where we actually try to place $N$ vectors in $n$-space as far apart as possible from each other. More concretely, if we define $\delta$ as
+We now consider a variation of the above problem, where we actually try to place $N$ unit vectors in $n$-space as far apart as possible from each other. More concretely, we define $\delta$ as
+$$\delta = \max_{i \neq j} v_i \cdot v_j,$$
+and we formalize our problem as finding the $N$ vectors $v_1, v_2, \ldots, v_N$ that minimize $\delta$.
 
-$$\delta = \max_{i \neq j} v_i \cdot v_j$$,
-
-then we can formalize our problem as finding the $N$ vectors $v_1, v_2, \ldots, v_N$ that minimize $\delta$.
-
-Before proving what the optimum value of $\delta$ is for $N= n+1$, we introduce the parallelogram law.
+Our results on this section concern the case when $N=n+1$. We shall see, in fact, that the optimal value of $\delta$ is given by $-\frac{1}{n}$, we introduce the parallelogram law.
 
 \subsection{The Parallelogram Law}
 
