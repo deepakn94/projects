@@ -102,9 +102,9 @@
 \section{Introduction}
 Consider a collection of $N$ unit vectors $v_1, \ldots, v_N$ in $\mathbb R^n$. Define $\epsilon$ as
 \[\epsilon=\max_{i\neq j}|v_i\cdot v_j|^2.\]
-What is the minimal attainable $\epsilon$?
+In this paper, we try to address the question of what the minimal attainable $\epsilon$ is.
 
-For $n=N$, it is clear that the optimal value of $\epsilon$ is zero, obtained by letting $v_1,\ldots, v_N$ be any orthonormal basis. And for $N>n$, we must have $\epsilon>0$ as any collection of $N$ vectors is linearly dependent, while any collection of orthonormal vectors is linearly independent. 
+For $n=N$, it is clear that the optimal value of $\epsilon$ is zero, obtained by letting $v_1,\ldots, v_N$ be any orthonormal basis. And for $N>n$, we must have $\epsilon>0$ as any collection of $N$ vectors in $n$-space is linearly dependent, while any collection of orthonormal vectors is linearly independent. 
 
 For fixed $n$, it is also easy to see that the minimum value of $\epsilon$ is nondecreasing as $N$ increases: that is, if $\epsilon_1$ is the minimum value of $\epsilon$ for $N$ unit vectors in $\mathbb R^n$, and $\epsilon_2$ is the minimum value of $\epsilon$ for $N+1$ unit vectors in $\mathbb R^n$, we must have 
 \[\epsilon_1\leq \epsilon_2.\] 
@@ -229,9 +229,9 @@ Let $\theta_1$ be the angle between $v_1$ and $v_2$ and $\theta_2$ be the angle 
 
 $$\epsilon = \max_{i \in \{1,2,3\}} \cos ^2 \theta_i$$
 
-From the above lemma, we can conclude that if $j = \text{argmin } \theta_i$ and $\theta_1 + \theta_2 + \theta_3 = \pi$, then $\epsilon = \cos^2 \theta_j$.
+From the above lemma, if $j = \text{argmin } \theta_i$ and $\theta_1 + \theta_2 + \theta_3 = \pi$, then $\epsilon = \cos^2 \theta_j$.
 
-Furthermore, we can obtain an upper bound on $\theta_j$ by observing that $\theta_ 1 + \theta_ 2 + \theta_3 \geq \theta_ j + \theta_j + \theta_j = 3 \theta_j \Rightarrow \theta_j \leq \pi/3$. Since we're interested in the smallest such $\epsilon$ and since the cosine function is a decreasing function in $\theta$ between $0$ and $\pi/2$, we conclude that the optimum value of $\epsilon$ for $n=2$ and $N=3$ is $\cos^2 \pi / 3$. Figure $2$ shows this optimum configuration.
+Furthermore, we can obtain an upper bound on $\theta_j$ by observing that $\theta_ 1 + \theta_ 2 + \theta_3 \geq \theta_ j + \theta_j + \theta_j = 3 \theta_j \Rightarrow \theta_j \leq \pi/3$. Since we're interested in the smallest such $\epsilon$ and since the cosine function is a decreasing function in $\theta$ between $0$ and $\pi/2$, the optimum value of $\epsilon$ for $n=2$ and $N=3$ is $\cos^2 \pi / 3$. Figure $2$ shows this optimum configuration.
 
 \end{proof}
 
@@ -244,15 +244,15 @@ For $n=2$ and arbitrary $N$, the optimum value of $\epsilon$ is given by $\cos^2
 \begin{proof}
 The proof of this theorem is similar to the proof for the specific case of $N=3$.
 
-Again without loss of generality, we can assume that the vectors $v_1, v_2, \ldots, v_N$ are on or above the $x$-axis, and that $v_1 = [1,0]^T$ -- if any vector $v_i$ were not above the $x$-axis, then we could just consider $-v_i$ (the reflection of $v_i$ about the $x$-axis) instead.
+Again without loss of generality, we can assume that the vectors $v_1, v_2, \ldots, v_N$ are on or above the $x$-axis, and that $v_1 = [1,0]^T$ -- if any vector $v_i$ were not above the $x$-axis, then we could just consider $-v_i$ (the reflection of $v_i$ about the origin) instead.
 
 Let us define $\theta_i$ as the angle between the vectors $v_i$ and $v_{i+1}$ for $i \in \{1, 2, \ldots, N-1\}$, and let $\theta_N$ be the angle such that $\theta_1 + \theta_2 + \ldots + \theta_N = \pi$.
 
-Observe that as before, we are interested in maximizing the square of the cosine of the angle between any two vectors in $v_1, v_2, \ldots, v_N$. Note that here, the angle between any two vectors in $v_j$ and $v_k$ in $v_1, v_2, \ldots, v_N$ can be expressed as $\sum_{i=j} ^{k-1} \theta_i$. Note that, however, if $\sum_{i=j}^{k-1} \theta_i \leq \pi/2$, then $\cos^2 \theta_j \geq \cos^2(\sum_{i=j}^{k-1} \theta_i)$ and that if $\sum_{i=j}^{k-1} \theta_i > \pi/2$, then $\cos^2 (\sum_{i=j}^{k-1} \theta_i) = \cos^2 (\pi - \sum_{i=j}^{k-1} \theta_i)$ which is less than $\cos^2 \theta_i$ for any $i$ in $$\{1, 2, \ldots, N-1, N\} \setminus \{j, j+1, \ldots, k-1\},$$ where $j, k \in \{1, 2, \ldots, N-1\}$ and $j \neq k$.
+Observe that as before, we are interested in maximizing the square of the cosine of the angle between any two vectors in $v_1, v_2, \ldots, v_N$. Note that here, the angle between any two vectors in $v_j$ and $v_k$ in $v_1, v_2, \ldots, v_N$ can be expressed as $\sum_{i=j} ^{k-1} \theta_i$. Note that, however, if $\sum_{i=j}^{k-1} \theta_i \leq \pi/2$, then $\cos^2 \theta_j \geq \cos^2(\sum_{i=j}^{k-1} \theta_i)$ and that if $\sum_{i=j}^{k-1} \theta_i > \pi/2$, then $\cos^2 (\sum_{i=j}^{k-1} \theta_i) = \cos^2 (\pi - \sum_{i=j}^{k-1} \theta_i)$ which is less than $\cos^2 \theta_i$ for any $i$ in $$\{1, 2, \ldots, N-1, N\} \setminus \{j, j+1, \ldots, k-1\},$$ where $j, k \in \{1, 2, \ldots, N-1\}$ and $j \neq k$. (the above set must be non-empty since it must at least contain the element $N$)
 
 From this we can conclude that $\epsilon$ is equal to $\max_i \cos^2 \theta_i$. Then, if $j = \text{argmin } \theta_i$, we see that $\epsilon = \cos^2 \theta_j$ by Lemma $2.2$.
 
-Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarrow \theta_j \leq \pi/N$, we conclude that the optimum $\epsilon$ value is in fact equal to $\cos^2 \pi/N$ (again making use of the fact that the cosine function is decreasing between $0$ and $\pi/2$).
+Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarrow \theta_j \leq \pi/N$, we see that the optimum $\epsilon$ value is in fact equal to $\cos^2 \pi/N$ (again making use of the fact that the cosine function is decreasing between $0$ and $\pi/2$).
 \end{proof}
 
 \begin{figure}[!h]
@@ -354,13 +354,17 @@ v_1 & v_2 & \cdots & v_{N-1} & v_N\\
 We can use a well-known lemma on the rank of certain real symmetric matrices to derive a useful lower bound on $\epsilon$. Our proof of the lemma follows that of a paper by Noga Alon\footnote{Lemma 2.2, \emph{Perturbed identity matrices have high rank: proof and applications}, Noga Alon.}.
 
 \begin{lemma}
+<<<<<<< HEAD
 Let $A=(a_{i,j})$ be an $n\times n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
+=======
+Let $A=(a_{i,j})$ be a $n$-by-$n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
+>>>>>>> 5e10c39b68d2c37124c2ed1b574f14a4e08c690e
 \[\epsilon\geq \frac{n-d}{d(n-1)}.\]
 \end{lemma}
 \begin{proof}
 We define $\lambda_1,\ldots, \lambda_n$ to be the eigenvalues of $A$; write $k$ as the number of nonzero eigenvalues. Their sum is the trace of $A$, equal to $n$. We know that the number of nonzero eigenvalues of a complex matrix is less than or equal to the rank of the matrix: so we have that $d\geq k$.
 
-Recall the Cauchy-Schwarz for $\mathbb R^n$: given $(x_1,\ldots, x_n)$ and $(y_1,\ldots, y_n)\in \mathbb R^n$, we have
+Recall the Cauchy-Schwarz inequality for $\mathbb R^n$: given $(x_1,\ldots, x_n)$ and $(y_1,\ldots, y_n)\in \mathbb R^n$, we have
 \[\left(\sum_{i=1}^nx_iy_i\right)^2\leq \left(\sum_{i=1}^n x_i^2\right)\left(\sum_{i=1}^ny_i^2\right).\]
 In our case, let the $x_i$ equal $\lambda_i$, and let each $y_i$ equal 1 when $\lambda_i$ is nonzero and zero when $\lambda_i$ is zero. We get
 \[n^2=\left(\sum_{i=1}^n \lambda_i\right)^2\leq \left(\sum_{i=1}^n \lambda_i^2\right) k\]
@@ -415,7 +419,7 @@ We present now a table of the bounds the theorem gives us for varying $n$ and $N
     \caption {Lower bounds on $\epsilon$ for different values of $(n, N)$, given by Theorem \ref{lower_bound}.}
     \end{table}
 
-Note that the bounds for $n=2$ are not tight, as we proved in Section 2 that the minimum $\epsilon$ was given by $\cos^2(\pi/N)$. We shall see, however, that the bounds for $\epsilon$ are in fact tight in the cases where $N=n+1$ and where $n=3, N=6$. One direction for further research might be checking whether the bounds provided by Theorem \ref{lower_bound} are indeed attainable for other combinations of $n$ and $N$.
+Note that the bounds for $n=2$ are not tight, as we proved in Section 2 that the minimum $\epsilon$ is given by $\cos^2(\pi/N)$ when $n=2$. We shall see, however, that the bounds for $\epsilon$ are in fact tight in the cases where $N=n+1$ and where $n=3, N=6$. One direction for further research might be checking whether the bounds provided by Theorem \ref{lower_bound} are indeed attainable for other combinations of $n$ and $N$.
 
 \section{Some optimal configurations}
 Below we provide choices of $n$ and $N$ for which we can achieve the lower bound given by Theorem ~\ref{lower_bound}.
@@ -513,12 +517,12 @@ Before proceeding with the theorem, we notice that when $n=2$, the configuration
 
 
 \begin{theorem}
-If $N=n+1$, then the minimum value of $\epsilon$ for $i\neq j$ is $\frac{1}{n^2}$. This $\epsilon$ is achieved when the vectors are arranged in an $n$ dimensional simplex centered at the origin.
+If $N=n+1$, then the minimum value of $\epsilon$ for $\frac{1}{n^2}$. This $\epsilon$ is achieved when the vectors are arranged in an $n$ dimensional simplex centered at the origin.
 \label{simplex}
 \end{theorem}
 
 \begin{proof}
-Let $\epsilon$ be as before for a given set of unit vectors $v_1, v_2, \ldots, v_{n+1}$. We show that the origin-centered simplex configuration of the vectors $v_1,\cdots v_{n+1}$ produces a value $\epsilon=\frac{1}{n^2}$. 
+Let $\epsilon$ be defined as before for a given set of unit vectors $v_1, v_2, \ldots, v_{n+1}$. We show that the origin-centered simplex configuration of the vectors $v_1,\cdots v_{n+1}$ produces a value $\epsilon=\frac{1}{n^2}$. 
 
 We must first describe the vectors that make up the origin centered simplex. To center our simplex at the origin we take each vector in the original simplex, and subtract from it the vector representing the centroid of the original simplex. The centroid of the original simplex takes the form $(\frac{1}{N},\frac{1}{N},\ldots,\frac{1}{N})$, so the points of the new simplex take the form
 $$
@@ -575,7 +579,7 @@ Our general intuition tells us that perturbing a set of nearly optimal vectors s
 
 At every iteration, we try adding a vector whose norm becomes smaller with every passing iteration, to the already computed optimal vector. We present pseudocode for this algorithm above.
 
-Though this approach seems simple, it produces  results which seem to agree with the $\epsilon$ we derived for $(2, N)$ in Section 2, and with the $\epsilon$ we derived for $(3, 6)$ and $(n, n+1)$ in Section 4. This gives us some confidence in the accuracy of our algorithm. However, it must be noted that the data do not agree with the bounds produced by Theorem \ref{lower_bound}. There are multiple interpretations of this fact. First, it is possible that the lower bounds produced by Theorem \ref{lower_bound} are not always tight; they in fact are not for the case $(2, N)$. Alternatively, it is possible that our code simply becomes inaccurate for larger $n$ and $N$. This could be a fruitful direction for further research.
+Though this approach seems simple, it produces  results which seem to agree with the $\epsilon$ we derived for $(2, N)$ in Section 2, and with the $\epsilon$ we derived for $(3, 6)$ and $(n, n+1)$ in Section 4. This gives us some confidence in the accuracy of our algorithm. However, it must be noted that the data does not agree with the bounds produced by Theorem \ref{lower_bound}. There are multiple interpretations for this fact. First, it is possible that the lower bounds produced by Theorem \ref{lower_bound} are not always tight -- this is easy to see for the case of $(2, N)$. Alternatively, it is possible that our code simply becomes inaccurate for larger $n$ and $N$. This could be a fruitful direction for further research.
 
 As another note, in some instances the algorithm sometimes finds extrema that are not the extrema we have identified in cases where we provide optimal configurations. For example, for $n=3,N=4$, the $\epsilon$ value attained is very close to the optimal epsilon value of $\frac{1}{9}$, however the corresponding configuration is not a tetrahedron. This implies that in some cases there may be multiple configurations of vectors that are inequivalent up to rotation yet produce the optimal $\epsilon$ value. 
 
@@ -608,11 +612,11 @@ We now consider a variation of the above problem, where we actually try to place
 $$\delta = \max_{i \neq j} v_i \cdot v_j,$$
 and we formalize our problem as finding the $N$ vectors $v_1, v_2, \ldots, v_N$ that minimize $\delta$.
 
-Our results on this section concern the case when $N=n+1$. We shall see, in fact, that the optimal value of $\delta$ is given by $-\frac{1}{n}$, we introduce the parallelogram law.
+Our results on this section concern the case when $N=n+1$. We shall see, in fact, that the optimal value of $\delta$ is given by $-\frac{1}{n}$. To begin, we introduce the paralleogram law.
 
 \subsection{The Parallelogram Law}
 
-First we give the definition of the norm on vectors in $\R^n$ in terms of the dot product:
+First we give the definition of the norm of a sum of vectors in $\R^n$ in terms of the dot product:
 
 \begin{definition}
 For a vector $v\in\R^n$ the norm of $v$ is the positive value of $||v||$ given by the equation
@@ -638,7 +642,7 @@ If we recurse on $||v_2+\cdots +v_n||^2$ using induction we get the desired resu
 \end{theorem}
 
 
-\subsection{Variations: Minimizing the dot product}
+\subsection{Variation: Minimizing the dot product}
 Given the above bound, we proceed to state and prove the following theorem.
 
 
