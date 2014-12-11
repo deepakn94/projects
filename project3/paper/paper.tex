@@ -91,7 +91,7 @@
 
 \makeatother
 
-\title{Almost orthogonal vectors} 
+\title{Almost Orthogonal Vectors} 
 
 \author{Yajit Jain, Deepak Narayanan, Leon Zhang}
 
@@ -125,8 +125,8 @@ In Section 5, we present the results of a computational approach to computing mi
 \[\delta=\max_{i\neq j}v_i\cdot v_j.\]
 In particular, we will show that in the case where $N=n+1$, the simplex remains the optimal configuration.
 
-\section{$n=2$, generic $N$}
-In this section, we consider the problem of almost orthogonal vectors of dimensionality $2$.
+\section{$N$ vectors in $\R^2$}
+In this section, we consider the problem of almost orthogonal vectors in $\R^2$.
 
 As stated previously, when $N=2$ we can easily obtain an $\epsilon$ equal to $0$; a simple example of such a configuration is $[1, 0]^T$ and $[0, 1]^T$. 
 
@@ -248,9 +248,9 @@ Again without loss of generality, we can assume that the vectors $v_1, v_2, \ldo
 
 Let us define $\theta_i$ as the angle between the vectors $v_i$ and $v_{i+1}$ for $i \in \{1, 2, \ldots, N-1\}$, and let $\theta_N$ be the angle such that $\theta_1 + \theta_2 + \ldots + \theta_N = \pi$.
 
-Observe that as before, we are interested in maximizing the square of the cosine of the angle between any two vectors in $v_1, v_2, \ldots, v_N$. Note that here, the angle between any two vectors in $v_j$ and $v_k$ in $v_1, v_2, \ldots, v_N$ can be expressed as $\sum_{i=j} ^{k-1} \theta_i$. Note that, however, if $\sum_{i=j}^{k-1} \theta_i \leq \pi/2$, then $\cos^2 \theta_j \geq \cos^2(\sum_{i=j}^{k-1} \theta_i)$ and that if $\sum_{i=j}^{k-1} \theta_i > \pi/2$, then $\cos^2 (\sum_{i=j}^{k-1} \theta_i) = \cos^2 (\pi - \sum_{i=j}^{k-1} \theta_i)$ which is less than $\cos^2 \theta_i$ for any $i$ in $$\{1, 2, \ldots, N-1, N\} \setminus \{j, j+1, \ldots, k-1\}$$, where $j, k \in \{1, 2, \ldots, N-1\}$ and $j \neq k$.
+Observe that as before, we are interested in maximizing the square of the cosine of the angle between any two vectors in $v_1, v_2, \ldots, v_N$. Note that here, the angle between any two vectors in $v_j$ and $v_k$ in $v_1, v_2, \ldots, v_N$ can be expressed as $\sum_{i=j} ^{k-1} \theta_i$. Note that, however, if $\sum_{i=j}^{k-1} \theta_i \leq \pi/2$, then $\cos^2 \theta_j \geq \cos^2(\sum_{i=j}^{k-1} \theta_i)$ and that if $\sum_{i=j}^{k-1} \theta_i > \pi/2$, then $\cos^2 (\sum_{i=j}^{k-1} \theta_i) = \cos^2 (\pi - \sum_{i=j}^{k-1} \theta_i)$ which is less than $\cos^2 \theta_i$ for any $i$ in $$\{1, 2, \ldots, N-1, N\} \setminus \{j, j+1, \ldots, k-1\},$$ where $j, k \in \{1, 2, \ldots, N-1\}$ and $j \neq k$.
 
-From this we can conclude that $\epsilon$ is equal to $\max_i \cos^2 \theta_i$. Then, if $j = \text{argmin } \theta_i$, then we see that $\epsilon = \cos^2 \theta_j$ by Lemma $2.2$.
+From this we can conclude that $\epsilon$ is equal to $\max_i \cos^2 \theta_i$. Then, if $j = \text{argmin } \theta_i$, we see that $\epsilon = \cos^2 \theta_j$ by Lemma $2.2$.
 
 Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarrow \theta_j \leq \pi/N$, we conclude that the optimum $\epsilon$ value is in fact equal to $\cos^2 \pi/N$ (again making use of the fact that the cosine function is decreasing between $0$ and $\pi/2$).
 \end{proof}
@@ -335,7 +335,7 @@ Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarro
 
 Figure $3$ shows an optimum configuration for $n=2$ and $N=5$. Note by taking reflections of $x_2$ and $x_4$ in Figure $3$, we get five vectors that form a regular $5$-gon -- this can be seen in Figure $4$. A similar transformation can be done for all odd $N$.
 
-\section{A lower bound}
+\section{A lower bound on $\epsilon$}
 
 In the search for a lower bound on $\epsilon$ for arbitrary $(n, N)$ pairs, it is natural to consider the so-called \emph{Gram matrix} of our collection of vectors. 
 \begin{definition}
@@ -354,7 +354,7 @@ v_1 & v_2 & \cdots & v_{N-1} & v_N\\
 We can use a well-known lemma on the rank of certain real symmetric matrices to derive a useful lower bound on $\epsilon$. Our proof of the lemma follows that of a paper by Noga Alon\footnote{Lemma 2.2, \emph{Perturbed identity matrices have high rank: proof and applications}, Noga Alon.}.
 
 \begin{lemma}
-Let $A=(a_{i,j})$ be an $n$-by-$n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
+Let $A=(a_{i,j})$ be an $n\times n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
 \[\epsilon\geq \frac{n-d}{d(n-1)}.\]
 \end{lemma}
 \begin{proof}
@@ -386,12 +386,12 @@ Pick any collection of $N$ unit vectors $v_1,\ldots, v_N$ in $\mathbb R^n$, and 
 \[A=\left(\begin{matrix}
 | & | & \cdots & | & |\\
 v_1 & v_2 & \cdots & v_{N-1} & v_N\\
-| & | & \cdots & | & | \end{matrix}\right).\] 
+| & | & \cdots & | & | \end{matrix}\right)\] 
 \[G(v_1,\ldots, v_N)=A^TA=\left(\begin{matrix}
 v_1\cdot v_1 & v_1\cdot v_2 & \ldots & v_1\cdot v_n\\
 v_2\cdot v_2 & v_2\cdot v_2 & \ldots & v_2\cdot v_n\\
 \vdots & \vdots & \ddots & \vdots\\
-v_n\cdot v_1 & v_n\cdot v_2 & \ldots & v_n\cdot v_n\end{matrix}\right).\]
+v_n\cdot v_1 & v_n\cdot v_2 & \ldots & v_n\cdot v_n\end{matrix}\right)\]
 Let $d$ be the rank of $G$. Since $A$ has rank at most $n$, so does $A^T$; since the image space of $G$ must be contained in the image space of $A^T$, we have that $d\leq n$. Note that $G$ is real and symmetric, with $1$s along the diagonal and all other entries with absolute value bounded by $\sqrt \epsilon$. We can apply the lemma to conclude
 \[\epsilon\geq \frac{N-d}{d(N-1)}.\]
 Since $d\leq n$, we have as desired
@@ -433,7 +433,7 @@ $$
 $$
 There are three possible dot products we get from computing dot products between non-equal vectors chosen from these six vectors: $ab,-ab,a^2-b^2$. This gives us two possible values of $\epsilon$: $(a^2-b^2)^2,(ab)^2$. It would seem that an optimal configuration can be obtained by setting $a^2-b^2=ab$. If we add in the constraint that $a^2+b^2=1$ (since the six vectors we're interested in must live on the unit sphere), we get
 $$
-a=\sqrt{\frac{1}{10}(5-\sqrt{5}}, b=-\frac{1+\sqrt{5}}{2}\sqrt{\frac{1}{10}(5-\sqrt{5}}. 
+a=\sqrt{\frac{1}{10}(5-\sqrt{5}}$$$$ b=-\frac{1+\sqrt{5}}{2}\sqrt{\frac{1}{10}(5-\sqrt{5}}. 
 $$
 If we compute $\epsilon=(a^2-b^2)^2=(ab)^2$, we see that $\epsilon=\frac{1}{5}$. Coupled with our knowledge that $\frac 1 5$ is a lower bound on $\epsilon$, we conclude that these six points give us an optimal configuration.\end{proof}
 \subsection{$N=n+1$}
@@ -445,7 +445,7 @@ To do this, we first introduce the notion of an $n$-dimensional simplex.
 An $n$-dimensional simplex is given by the convex hull of the $n+1$ points in $\R^{n+1}$ described as having a 1 in a single coordinate and zeros in every other coordinate. 
 \end{definition}
 
-Figure $5$ shows diagrams of a 2-dimensional simplex.
+Figure $5$ shows diagrams of a 2-dimensional simplex. Notice that an $n$ dimensional simplex is constructed in $n+1$ dimensions, but exists in a hyperplane of $\R^{n+1}$. 
 
 \begin{figure}[!h]
     \centering
@@ -577,6 +577,7 @@ At every iteration, we try adding a vector whose norm becomes smaller with every
 
 Though this approach seems simple, it produces  results which seem to agree with the $\epsilon$ we derived for $(2, N)$ in Section 2, and with the $\epsilon$ we derived for $(3, 6)$ and $(n, n+1)$ in Section 4. This gives us some confidence in the accuracy of our algorithm. However, it must be noted that the data do not agree with the bounds produced by Theorem \ref{lower_bound}. There are multiple interpretations of this fact. First, it is possible that the lower bounds produced by Theorem \ref{lower_bound} are not always tight; they in fact are not for the case $(2, N)$. Alternatively, it is possible that our code simply becomes inaccurate for larger $n$ and $N$. This could be a fruitful direction for further research.
 
+As another note, in some instances the algorithm sometimes finds extrema that are not the extrema we have identified in cases where we provide optimal configurations. For example, for $n=3,N=4$, the $\epsilon$ value attained is very close to the optimal epsilon value of $\frac{1}{9}$, however the corresponding configuration is not a tetrahedron. This implies that in some cases there may be multiple configurations of vectors that are inequivalent up to rotation yet produce the optimal $\epsilon$ value. 
 
 \begin{table}
    \centering
@@ -601,7 +602,7 @@ Though this approach seems simple, it produces  results which seem to agree with
 
 
 
-\section{A variation of the problem}
+\section{A variation}
 
 We now consider a variation of the above problem, where we actually try to place $N$ unit vectors in $n$-space as far apart as possible from each other. More concretely, we define $\delta$ as
 $$\delta = \max_{i \neq j} v_i \cdot v_j,$$
