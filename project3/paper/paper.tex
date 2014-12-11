@@ -229,9 +229,9 @@ Let $\theta_1$ be the angle between $v_1$ and $v_2$ and $\theta_2$ be the angle 
 
 $$\epsilon = \max_{i \in \{1,2,3\}} \cos ^2 \theta_i$$
 
-From the above lemma, we can conclude that if $j = \text{argmin } \theta_i$ and $\theta_1 + \theta_2 + \theta_3 = \pi$, then $\epsilon = \cos^2 \theta_j$.
+From the above lemma, if $j = \text{argmin } \theta_i$ and $\theta_1 + \theta_2 + \theta_3 = \pi$, then $\epsilon = \cos^2 \theta_j$.
 
-Furthermore, we can obtain an upper bound on $\theta_j$ by observing that $\theta_ 1 + \theta_ 2 + \theta_3 \geq \theta_ j + \theta_j + \theta_j = 3 \theta_j \Rightarrow \theta_j \leq \pi/3$. Since we're interested in the smallest such $\epsilon$ and since the cosine function is a decreasing function in $\theta$ between $0$ and $\pi/2$, we conclude that the optimum value of $\epsilon$ for $n=2$ and $N=3$ is $\cos^2 \pi / 3$. Figure $2$ shows this optimum configuration.
+Furthermore, we can obtain an upper bound on $\theta_j$ by observing that $\theta_ 1 + \theta_ 2 + \theta_3 \geq \theta_ j + \theta_j + \theta_j = 3 \theta_j \Rightarrow \theta_j \leq \pi/3$. Since we're interested in the smallest such $\epsilon$ and since the cosine function is a decreasing function in $\theta$ between $0$ and $\pi/2$, the optimum value of $\epsilon$ for $n=2$ and $N=3$ is $\cos^2 \pi / 3$. Figure $2$ shows this optimum configuration.
 
 \end{proof}
 
@@ -248,11 +248,11 @@ Again without loss of generality, we can assume that the vectors $v_1, v_2, \ldo
 
 Let us define $\theta_i$ as the angle between the vectors $v_i$ and $v_{i+1}$ for $i \in \{1, 2, \ldots, N-1\}$, and let $\theta_N$ be the angle such that $\theta_1 + \theta_2 + \ldots + \theta_N = \pi$.
 
-Observe that as before, we are interested in maximizing the square of the cosine of the angle between any two vectors in $v_1, v_2, \ldots, v_N$. Note that here, the angle between any two vectors in $v_j$ and $v_k$ in $v_1, v_2, \ldots, v_N$ can be expressed as $\sum_{i=j} ^{k-1} \theta_i$. Note that, however, if $\sum_{i=j}^{k-1} \theta_i \leq \pi/2$, then $\cos^2 \theta_j \geq \cos^2(\sum_{i=j}^{k-1} \theta_i)$ and that if $\sum_{i=j}^{k-1} \theta_i > \pi/2$, then $\cos^2 (\sum_{i=j}^{k-1} \theta_i) = \cos^2 (\pi - \sum_{i=j}^{k-1} \theta_i)$ which is less than $\cos^2 \theta_i$ for any $i$ in $$\{1, 2, \ldots, N-1, N\} \setminus \{j, j+1, \ldots, k-1\}$$, where $j, k \in \{1, 2, \ldots, N-1\}$ and $j \neq k$.
+Observe that as before, we are interested in maximizing the square of the cosine of the angle between any two vectors in $v_1, v_2, \ldots, v_N$. Note that here, the angle between any two vectors in $v_j$ and $v_k$ in $v_1, v_2, \ldots, v_N$ can be expressed as $\sum_{i=j} ^{k-1} \theta_i$. Note that, however, if $\sum_{i=j}^{k-1} \theta_i \leq \pi/2$, then $\cos^2 \theta_j \geq \cos^2(\sum_{i=j}^{k-1} \theta_i)$ and that if $\sum_{i=j}^{k-1} \theta_i > \pi/2$, then $\cos^2 (\sum_{i=j}^{k-1} \theta_i) = \cos^2 (\pi - \sum_{i=j}^{k-1} \theta_i)$ which is less than $\cos^2 \theta_i$ for any $i$ in $$\{1, 2, \ldots, N-1, N\} \setminus \{j, j+1, \ldots, k-1\}$$, where $j, k \in \{1, 2, \ldots, N-1\}$ and $j \neq k$. (the above set must be non-empty since it must at least contain the element $N$)
 
 From this we can conclude that $\epsilon$ is equal to $\max_i \cos^2 \theta_i$. Then, if $j = \text{argmin } \theta_i$, then we see that $\epsilon = \cos^2 \theta_j$ by Lemma $2.2$.
 
-Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarrow \theta_j \leq \pi/N$, we conclude that the optimum $\epsilon$ value is in fact equal to $\cos^2 \pi/N$ (again making use of the fact that the cosine function is decreasing between $0$ and $\pi/2$).
+Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarrow \theta_j \leq \pi/N$, we see that the optimum $\epsilon$ value is in fact equal to $\cos^2 \pi/N$ (again making use of the fact that the cosine function is decreasing between $0$ and $\pi/2$).
 \end{proof}
 
 \begin{figure}[!h]
@@ -354,7 +354,7 @@ v_1 & v_2 & \cdots & v_{N-1} & v_N\\
 We can use a well-known lemma on the rank of certain real symmetric matrices to derive a useful lower bound on $\epsilon$. Our proof of the lemma follows that of a paper by Noga Alon\footnote{Lemma 2.2, \emph{Perturbed identity matrices have high rank: proof and applications}, Noga Alon.}.
 
 \begin{lemma}
-Let $A=(a_{i,j})$ be an $n$-by-$n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
+Let $A=(a_{i,j})$ be a $n$-by-$n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
 \[\epsilon\geq \frac{n-d}{d(n-1)}.\]
 \end{lemma}
 \begin{proof}
