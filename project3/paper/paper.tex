@@ -178,11 +178,9 @@ We split our proof into two cases,
 \begin{itemize}
 \item $\theta_1, \theta_2, \ldots, \theta_n \in [0, \pi/2]$: In this case, it is easy to see that $\alpha = \cos^2 \theta_n$ from the fact that $\cos \theta$ is a decreasing function in $\theta$ if $\theta \in [0, \pi/2]$.
 
-\item One of $\theta_1, \theta_2, \dots, \theta_n$ is greater than $\pi/2$:
+\item One of $\theta_1, \theta_2, \dots, \theta_n$ is greater than $\pi/2$: Then in particular $\theta_1 > \pi/2$. We see that $\cos^2 \theta_1 = \cos^2 (\pi - \theta_1)$ which is equal to $\cos^2 (\theta_2 + \theta_3 + \ldots + \theta_n)$. Furthermore, $\pi - \theta_1 = \theta_2 + \theta_3 + \ldots + \theta_n < \pi/2$, which means $\cos^2 \theta_1 = \cos^2 (\theta_2 + \theta_3 + \ldots + \theta_n) < \cos^2 \theta_n$. (since $\theta_n < \theta_2 + \theta_3 + \ldots + \theta_n$)
 
-Then, if $\theta_1 > \pi/2$ we see that $\cos^2 \theta_1 = \cos^2 (\pi - \theta_1)$ which is equal to $\cos^2 (\theta_2 + \theta_3 + \ldots + \theta_n)$. Furthermore, $\pi - \theta_1 = \theta_2 + \theta_3 + \ldots + \theta_n < \pi/2$, which means $\cos^2 \theta_1 = \cos^2 (\theta_2 + \theta_3 + \ldots + \theta_n) < \cos^2 \theta_n$. (since $\theta_n < \theta_2 + \theta_3 + \ldots + \theta_n$)
-
-In addition, we see that for all $i \in \{2, 3, \ldots, n-1\}$, $\cos^2 \theta_i < \cos^2 \theta_n$, from which we can conclude that in this case too, $\alpha$ is equal to $\cos^2 \theta_n$.
+In addition, we see that for all $i \in \{2, 3, \ldots, n-1\}$, $\cos^2 \theta_i < \cos^2 \theta_n$, from which we can conclude that $\alpha$ is still equal to $\cos^2 \theta_n$.
 
 \end{itemize}
 \end{proof}
@@ -192,7 +190,7 @@ Given this lemma, we now prove the theorem stated above.
 \begin{proof}
 Observe that for $N=3$, the quantity $\epsilon$ for three unit-length vectors $v_1, v_2, v_3 \in \mathbb{R}^2$ is given by $$\max \{ |v_1 \cdot v_2|^2, |v_1 \cdot v_3|^2, |v_2 \cdot v_3|^2 \}$$
 
-Since we don't care about the sign of the dot products between any two vectors (we're looking at the squares of the dot products in the above equation), and since $$|v \cdot v'| = |v \cdot (-v')|$$ for some arbitrary vector $v'$, we see that it's easy to transform the three vectors $v_1$, $v_2$ and $v_3$ so that they all lie in the same semi-circle -- to accomplish this, at most one vector needs to be reflected about the origin (multiplied by $-1$).
+Because the sign of the dot product of any two vectors does not matter, and because $$|v \cdot v'| = |v \cdot (-v')|$$ for some arbitrary vector $v'$, we see that it's easy to transform the three vectors $v_1$, $v_2$ and $v_3$ so that they all lie in the same semi-circle -- to accomplish this, at most one vector needs to be reflected about the origin (multiplied by $-1$).
 
 Without loss of generality, let $v_1 = [1, 0]^T$. Also, without loss of generality let us assume that $v_2$ and $v_3$ are above the $x$-axis, and that $v_1$, $v_2$ and $v_3$ are in anti-clockwise order.
 
@@ -353,7 +351,7 @@ Note that the Gram matrix can be written as the product $A^TA$, where $A$ is the
 | & | & \cdots & | & |\\
 v_1 & v_2 & \cdots & v_{N-1} & v_N\\
 | & | & \cdots & | & | \end{matrix}\right).\]
-We can use a well-known lemma on the rank of certain real symmetric matrices to derive a useful lower bound. Our proof of the lemma follows that of a paper by Noga Alon\footnote{Lemma 2.2, \emph{Perturbed identity matrices have high rank: proof and applications}, Noga Alon.}.
+We can use a well-known lemma on the rank of certain real symmetric matrices to derive a useful lower bound on $\epsilon$. Our proof of the lemma follows that of a paper by Noga Alon\footnote{Lemma 2.2, \emph{Perturbed identity matrices have high rank: proof and applications}, Noga Alon.}.
 
 \begin{lemma}
 Let $A=(a_{i,j})$ be an $n$-by-$n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
@@ -422,7 +420,11 @@ Note that the bounds for $n=2$ are not tight, as we proved in Section 2 that the
 \section{Some Optimal Configurations}
 Below we provide choices of $n$ and $N$ for which we can achieve the lower bound given by Theorem ~\ref{lower_bound}.
 \subsection{$n=3,N=6$}
-In this situation we have a lower bound of $\epsilon\ge\frac{1}{5}$ from the above theorem. Consider the following 6 vectors on the unit sphere in $\R^3$ with variables $a$ and $b$. 
+Let us consider collections of six vectors in $\mathbb R^3$. As can be seen in Table 1, the lower bound provided in this case by Theorem \ref{lower_bound} is $\frac 1 5$ as well. We shall now see, in fact, that this lower bound is attainable.
+\begin{theorem}
+For $n=3$ and $N=6$, the optimum value of $\epsilon$ is given by $\frac 1 5$.
+\end{theorem}
+\begin{proof}Consider the following 6 vectors on the unit sphere in $\R^3$ with variables $a$ and $b$. 
 $$
 (a,b,0),(a,0,b),(b,0,a)
 $$
@@ -433,11 +435,11 @@ There are three possible dot products we get from computing dot products between
 $$
 a=\sqrt{\frac{1}{10}(5-\sqrt{5}}, b=-\frac{1+\sqrt{5}}{2}\sqrt{\frac{1}{10}(5-\sqrt{5}}. 
 $$
-If we compute $\epsilon=(a^2-b^2)^2=(ab)^2$, we see that $\epsilon=\frac{1}{5}$; coupling this knowledge with the fact that for $(n, N) = (3, 6)$, we see that these six points give us an optimal configuration.
+If we compute $\epsilon=(a^2-b^2)^2=(ab)^2$, we see that $\epsilon=\frac{1}{5}$. Coupled with our knowledge that $\frac 1 5$ is a lower bound on $\epsilon$, we conclude that these six points give us an optimal configuration.\end{proof}
 \subsection{$N=n+1$}
-Let us now consider the situation in which we try to minimize $\epsilon$ for $n+1$ vectors in an $n$ dimensional space. From Theorem ~\ref{lower_bound} we know that $\epsilon\ge \frac{1}{n^2}$, so if we show that there exist some $n+1$ vectors in $n$-space that achieve an $\epsilon$ equal to $1/n^2$, then we can conclude that $1/n^2$ is the optimal value of $\epsilon$ for $N = n+1$.
+Let us now consider the situation in which we try to minimize $\epsilon$ for $n+1$ vectors in an $n$ dimensional space. From Theorem \ref{lower_bound} we know that $\epsilon\ge \frac{1}{n^2}$, so it suffices to show there exist some $n+1$ vectors in $n$-space that achieve an $\epsilon$ equal to $1/n^2$.
 
-To do this, we first define what we mean by an $n$-dimensional simplex. 
+To do this, we first introduce the notion of an $n$-dimensional simplex. 
 
 \begin{definition}
 An $n$-dimensional simplex is given by the convex hull of the $n+1$ points in $\R^{n+1}$ described as having a 1 in a single coordinate and zeros in every other coordinate. 
@@ -511,7 +513,7 @@ Before proceeding with the theorem, we notice that when $n=2$, the configuration
 
 
 \begin{theorem}
-If $N=n+1$ and the vectors in question are denoted $v_1,\cdots, v_N$, then over all configurations of these vectors the minimum value of $\epsilon$ for $i\neq j$ is $\frac{1}{^2n}$. This is achieved when the vectors are arranged in an $n$ dimensional simplex centered at the origin.
+If $N=n+1$, then the minimum value of $\epsilon$ for $i\neq j$ is $\frac{1}{n^2}$. This $\epsilon$ is achieved when the vectors are arranged in an $n$ dimensional simplex centered at the origin.
 \label{simplex}
 \end{theorem}
 
@@ -530,7 +532,7 @@ Now, taking the dot product between any two such vectors gives us
 $$
 \frac{N}{N-1}\left(-2\cdot\frac{N-1}{N^2}+(N-2)\cdot\frac{1}{N^2}\right)=\frac{N}{N-1}\cdot-\frac{1}{N}=-\frac{1}{N-1}=-\frac{1}{n}.
 $$
-So for this configuration $\epsilon=\frac{1}{n^2}$. By Theorem ~\ref{lower_bound} we know that $\epsilon\ge \frac{1}{n^2}$, so we have achieved the lower bound. 
+So for this configuration $\epsilon=\frac{1}{n^2}$. By Theorem \ref{lower_bound} we know that $\epsilon\ge \frac{1}{n^2}$, so we have achieved the lower bound. 
 \end{proof}
 \section{Numerical analysis and associated conjectures}
 
