@@ -354,11 +354,7 @@ v_1 & v_2 & \cdots & v_{N-1} & v_N\\
 We can use a well-known lemma on the rank of certain real symmetric matrices to derive a useful lower bound on $\epsilon$. Our proof of the lemma follows that of a paper by Noga Alon\footnote{Lemma 2.2, \emph{Perturbed identity matrices have high rank: proof and applications}, Noga Alon.}.
 
 \begin{lemma}
-<<<<<<< HEAD
-Let $A=(a_{i,j})$ be an $n\times n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
-=======
 Let $A=(a_{i,j})$ be a $n$-by-$n$ real symmetric matrix with $a_{i,i}=1$ for all $i$ and $|a_{i,j}|\leq \sqrt{\epsilon}$ for all $i\neq j$. Let $d$ be the rank of $A$. Then
->>>>>>> 5e10c39b68d2c37124c2ed1b574f14a4e08c690e
 \[\epsilon\geq \frac{n-d}{d(n-1)}.\]
 \end{lemma}
 \begin{proof}
@@ -542,47 +538,6 @@ So for this configuration $\epsilon=\frac{1}{n^2}$. By Theorem \ref{lower_bound}
 
 Because of the difficulty involved with visualization in dimensions 3 and above, we used a computational approach to compute near-optimal epsilon values for different $(n, N)$ pairs. We describe this method in greater detail below.
 
-\begin{lstlisting}
-def get_min_epsilon(n, N, num_iter, start_vectors):
-    min_epsilon = 1.0  # Start off with the worst possible epsilon
-    current_vectors = start_vectors
-    i = 0
-    while (i < num_iter):
-        temperature = 1.0 / float(i + 1)
-
-        # Get perturbing vectors
-        random_vectors = get_random_vectors(n, N)
-
-        # Now perturb current_vectors
-        new_vectors = list()
-        for j in xrange(N):
-            new_vector = list()
-            for k in xrange(n):
-                new_vector.append(
-                    current_vectors[j][k] + (
-                    	temperature * random_vectors[j][k]))
-            new_vectors.append(new_vector)
-        normalize_vectors(new_vectors)
-        
-        # Accept change only if new_vectors produces a better epsilon
-        epsilon = compute_epsilon(new_vectors)
-        if epsilon < min_epsilon:
-            min_epsilon = epsilon
-            current_vectors = new_vectors
-            i += 1
-
-    return min_epsilon, current_vectors
-\end{lstlisting}
-\captionof{lstlisting}{The numerical method used to generate optimum epsilon values -- note that we call this method multiple times with different start\_vectors to obtain a reasonable epsilon estimate}
-
-Our general intuition tells us that perturbing a set of nearly optimal vectors slightly could give us a new set of vectors that produce even a smaller epsilon value. Given this, we start off with a set of random vectors, and try to move these vectors towards smaller epsilon values.
-
-At every iteration, we try adding a vector whose norm becomes smaller with every passing iteration, to the already computed optimal vector. We present pseudocode for this algorithm above.
-
-Though this approach seems simple, it produces  results which seem to agree with the $\epsilon$ we derived for $(2, N)$ in Section 2, and with the $\epsilon$ we derived for $(3, 6)$ and $(n, n+1)$ in Section 4. This gives us some confidence in the accuracy of our algorithm. However, it must be noted that the data does not agree with the bounds produced by Theorem \ref{lower_bound}. There are multiple interpretations for this fact. First, it is possible that the lower bounds produced by Theorem \ref{lower_bound} are not always tight -- this is easy to see for the case of $(2, N)$. Alternatively, it is possible that our code simply becomes inaccurate for larger $n$ and $N$. This could be a fruitful direction for further research.
-
-As another note, in some instances the algorithm sometimes finds extrema that are not the extrema we have identified in cases where we provide optimal configurations. For example, for $n=3,N=4$, the $\epsilon$ value attained is very close to the optimal epsilon value of $\frac{1}{9}$, however the corresponding configuration is not a tetrahedron. This implies that in some cases there may be multiple configurations of vectors that are inequivalent up to rotation yet produce the optimal $\epsilon$ value. 
-
 \begin{table}
    \centering
     \begin{tabular}{ | c | c | c | c |}
@@ -601,8 +556,50 @@ As another note, in some instances the algorithm sometimes finds extrema that ar
     $N=12$ & $0.94$ & $0.64$ & $0.41$ \\
     \hline
     \end{tabular}
-    \caption {Minimum values of $\epsilon$ for different values of $(n, N)$, as computed by our annealing method}
+    \caption {Minimum values of $\epsilon$ for different values of $(n, N)$, as computed by our numerical method}
 \end{table}
+
+Our general intuition tells us that perturbing a set of nearly optimal vectors slightly could give us a new set of vectors that produce even a smaller epsilon value. Given this, we start off with a set of random vectors, and try to move these vectors towards smaller epsilon values.
+
+At every iteration, we try adding a vector whose norm becomes smaller with every passing iteration, to the already computed optimal vector. We present pseudocode for this algorithm below.
+
+Though this approach seems simple, it produces  results which seem to agree with the $\epsilon$ we derived for $(2, N)$ in Section 2, and with the $\epsilon$ we derived for $(3, 6)$ and $(n, n+1)$ in Section 4. This gives us some confidence in the accuracy of our algorithm. However, it must be noted that the data does not agree with the bounds produced by Theorem \ref{lower_bound}. There are multiple interpretations for this fact. First, it is possible that the lower bounds produced by Theorem \ref{lower_bound} are not always tight -- this is easy to see for the case of $(2, N)$. Alternatively, it is possible that our code simply becomes inaccurate for larger $n$ and $N$. This could be a fruitful direction for further research.
+
+As another note, in some instances the algorithm sometimes finds extrema that are not the extrema we have identified in cases where we provide optimal configurations. For example, for $n=3,N=4$, the $\epsilon$ value attained is very close to the optimal epsilon value of $\frac{1}{9}$, however the corresponding configuration is not a tetrahedron. This implies that in some cases there may be multiple configurations of vectors that are not equivalent up to rotation yet produce the optimal $\epsilon$ value. 
+
+\begin{lstlisting}
+def get_min_epsilon(n, N, num_iter, start_vectors):
+    min_epsilon = 1.0  # Start off with the worst possible epsilon
+    current_vectors = start_vectors
+    i = 0
+    while (i < num_iter):
+        temperature = 1.0 / float(i + 1)
+
+        # Get perturbing vectors
+        random_vectors = get_random_vectors(n, N)
+
+        # Now perturb current_vectors
+        new_vectors = list()
+        for j in xrange(N):
+            new_vector = list()
+            for k in xrange(n):
+                new_vector.append(
+                    current_vectors[j][k] + (
+                        temperature * random_vectors[j][k]))
+            new_vectors.append(new_vector)
+        normalize_vectors(new_vectors)
+        
+        # Accept change only if new_vectors produces a better epsilon
+        epsilon = compute_epsilon(new_vectors)
+        if epsilon < min_epsilon:
+            min_epsilon = epsilon
+            current_vectors = new_vectors
+            i += 1
+
+    return min_epsilon, current_vectors
+\end{lstlisting}
+\captionof{lstlisting}{The numerical method used to generate optimum epsilon values -- note that we call this method multiple times with different start\_vectors to obtain a reasonable epsilon estimate}
+
 
 
 
