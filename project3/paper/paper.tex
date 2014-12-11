@@ -125,6 +125,8 @@ In Section 5, we present the results of a computational approach to computing mi
 \[\delta=\max_{i\neq j}v_i\cdot v_j.\]
 In particular, we will show that in the case where $N=n+1$, the simplex remains the optimal configuration.
 
+
+{\itshape Leon wrote this section.}
 \section{$N$ vectors in $\R^2$}
 In this section, we consider the problem of almost orthogonal vectors in $\R^2$.
 
@@ -335,6 +337,9 @@ Since $\theta_ 1 + \theta_2 + \ldots + \theta_N \geq N \cdot \theta_j \Rightarro
 
 Figure $3$ shows an optimum configuration for $n=2$ and $N=5$. Note by taking reflections of $x_2$ and $x_4$ in Figure $3$, we get five vectors that form a regular $5$-gon -- this can be seen in Figure $4$. A similar transformation can be done for all odd $N$.
 
+{\itshape Deepak wrote this section. Yajit made minor edits to this section.}
+
+
 \section{A lower bound on $\epsilon$}
 
 In the search for a lower bound on $\epsilon$ for arbitrary $(n, N)$ pairs, it is natural to consider the so-called \emph{Gram matrix} of our collection of vectors. 
@@ -416,6 +421,9 @@ We present now a table of the bounds the theorem gives us for varying $n$ and $N
     \end{table}
 
 Note that the bounds for $n=2$ are not tight, as we proved in Section 2 that the minimum $\epsilon$ is given by $\cos^2(\pi/N)$ when $n=2$. We shall see, however, that the bounds for $\epsilon$ are in fact tight in the cases where $N=n+1$ and where $n=3, N=6$. One direction for further research might be checking whether the bounds provided by Theorem \ref{lower_bound} are indeed attainable for other combinations of $n$ and $N$.
+
+{\itshape Leon wrote this section.}
+
 
 \section{Some optimal configurations}
 Below we provide choices of $n$ and $N$ for which we can achieve the lower bound given by Theorem ~\ref{lower_bound}.
@@ -534,6 +542,10 @@ $$
 $$
 So for this configuration $\epsilon=\frac{1}{n^2}$. By Theorem \ref{lower_bound} we know that $\epsilon\ge \frac{1}{n^2}$, so we have achieved the lower bound. 
 \end{proof}
+
+{\itshape Yajit wrote this section.}
+
+
 \section{Numerical analysis and associated conjectures}
 
 Because of the difficulty involved with visualization in dimensions 3 and above, we used a computational approach to compute near-optimal epsilon values for different $(n, N)$ pairs. We describe this method in greater detail below.
@@ -601,6 +613,7 @@ def get_min_epsilon(n, N, num_iter, start_vectors):
 \captionof{lstlisting}{The numerical method used to generate optimum epsilon values -- note that we call this method multiple times with different start\_vectors to obtain a reasonable epsilon estimate}
 
 
+{\itshape Deepak wrote this section. Leon edited this section. Yajit edited this section.}
 
 
 \section{A variation}
@@ -666,6 +679,8 @@ This implies that $\delta\ge -\frac{1}{n}$ for any set of unit vectors $v_1, v_2
 
 Since $\delta_{min} \le -\frac{1}{n}$ and $\delta_{min} \ge -\frac{1}{n}$, we can conclude that $\delta_{min}=-\frac{1}{n}$.
 \end{proof}
+
+{\itshape Yajit wrote this section.}
 
 
 \end{document}
